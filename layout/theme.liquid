@@ -1,5 +1,6 @@
 <!doctype html>
 <html class="no-js" lang="{{ request.locale.iso_code }}">
+
 <head>
   <!-- Basic page needs ================================================== -->
   <meta charset="utf-8">
@@ -8,7 +9,7 @@
 
   <link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
   {%- unless settings.type_header_font.system? -%}
-    <link rel="preconnect" href="https://fonts.shopifycdn.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.shopifycdn.com" crossorigin>
   {%- endunless -%}
 
   {{ 'swiper-bundle.min.css' | asset_url | stylesheet_tag: preload: true }}
@@ -17,124 +18,133 @@
   {{ 'custom.css' | asset_url | stylesheet_tag: preload: true }}
 
   {% if settings.animations_enabled %}
-    {{ 'animate.min.css' | asset_url | stylesheet_tag: preload: true }}
+  {{ 'animate.min.css' | asset_url | stylesheet_tag: preload: true }}
   {% endif %}
 
   {% if settings.popup--enable %}
-    {{ 'fancybox.min.css' | asset_url | stylesheet_tag: preload: true }}
+  {{ 'fancybox.min.css' | asset_url | stylesheet_tag: preload: true }}
   {% endif %}
 
   {% if settings.favicon != blank %}
-    <link rel="shortcut icon" href="{{ settings.favicon | image_url: width: 180, height: 180, crop: 'center' }}" type="image/png">
-    <link rel="apple-touch-icon" sizes="180x180" href="{{ settings.favicon | image_url: width: 180, height: 180, crop: 'center' }}">
-    <link rel="apple-touch-icon-precomposed" sizes="180x180" href="{{ settings.favicon | image_url: width: 180, height: 180, crop: 'center' }}">
-    <link rel="icon" type="image/png" sizes="32x32" href="{{ settings.favicon | image_url: width: 32, height: 32, crop: 'center' }}">
-    <link rel="icon" type="image/png" sizes="194x194" href="{{ settings.favicon | image_url: width: 194, height: 194, crop: 'center' }}">
-    <link rel="icon" type="image/png" sizes="192x192" href="{{ settings.favicon | image_url: width: 192, height: 192, crop: 'center' }}">
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ settings.favicon | image_url: width: 16, height: 16, crop: 'center' }}">
+  <link rel="shortcut icon" href="{{ settings.favicon | image_url: width: 180, height: 180, crop: 'center' }}"
+    type="image/png">
+  <link rel="apple-touch-icon" sizes="180x180"
+    href="{{ settings.favicon | image_url: width: 180, height: 180, crop: 'center' }}">
+  <link rel="apple-touch-icon-precomposed" sizes="180x180"
+    href="{{ settings.favicon | image_url: width: 180, height: 180, crop: 'center' }}">
+  <link rel="icon" type="image/png" sizes="32x32"
+    href="{{ settings.favicon | image_url: width: 32, height: 32, crop: 'center' }}">
+  <link rel="icon" type="image/png" sizes="194x194"
+    href="{{ settings.favicon | image_url: width: 194, height: 194, crop: 'center' }}">
+  <link rel="icon" type="image/png" sizes="192x192"
+    href="{{ settings.favicon | image_url: width: 192, height: 192, crop: 'center' }}">
+  <link rel="icon" type="image/png" sizes="16x16"
+    href="{{ settings.favicon | image_url: width: 16, height: 16, crop: 'center' }}">
   {% endif %}
 
   {%- unless settings.type_header_font.system? -%}
-    {% # theme-check-disable AssetPreload %}
-    <link rel="preload" as="font" href="{{ settings.type_header_font | font_url }}" type="font/woff2" crossorigin>
-    {% # theme-check-enable AssetPreload %}
+  {% # theme-check-disable AssetPreload %}
+  <link rel="preload" as="font" href="{{ settings.type_header_font | font_url }}" type="font/woff2" crossorigin>
+  {% # theme-check-enable AssetPreload %}
   {%- endunless -%}
   {%- unless settings.type_base_font.system? -%}
-    {% # theme-check-disable AssetPreload %}
-    <link rel="preload" as="font" href="{{ settings.type_base_font | font_url }}" type="font/woff2" crossorigin>
-    {% # theme-check-enable AssetPreload %}
+  {% # theme-check-disable AssetPreload %}
+  <link rel="preload" as="font" href="{{ settings.type_base_font | font_url }}" type="font/woff2" crossorigin>
+  {% # theme-check-enable AssetPreload %}
   {%- endunless -%}
 
   <!-- Title and description ================================================== -->
   <title>
-    {{ page_title }}{% if current_tags %}{% assign meta_tags = current_tags | join: ', ' %} &ndash; {{ 'general.meta.tags' | t: tags: meta_tags }}{% endif %}{% if current_page != 1 %} &ndash; {{ 'general.meta.page' | t: page: current_page }}{% endif %}{% unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless %}
+    {{ page_title }}{% if current_tags %}{% assign meta_tags = current_tags | join: ', ' %} &ndash; {{
+    'general.meta.tags' | t: tags: meta_tags }}{% endif %}{% if current_page != 1 %} &ndash; {{ 'general.meta.page' | t:
+    page: current_page }}{% endif %}{% unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless %}
   </title>
 
   {% if page_description %}
-    <meta name="description" content="{{ page_description | escape }}">
+  <meta name="description" content="{{ page_description | escape }}">
   {% endif %}
 
   <!-- Helpers ================================================== -->
   {% render 'social-meta-tags' %}
-  <link rel="canonical" href="{{ canonical_url }}"/>
+  <link rel="canonical" href="{{ canonical_url }}" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="theme-color" content="{{ settings.color_primary }}">
 
   <!-- CSS ================================================== -->
   {% render 'css-variables' %}
   {% style %}
-    *,
-    *::before,
-    *::after {
-      box-sizing: inherit;
-    }
+  *,
+  *::before,
+  *::after {
+  box-sizing: inherit;
+  }
 
-    html {
-      box-sizing: border-box;
-      background-color: var(--body-color);
-      height: 100%;
-      margin: 0;
-    }
+  html {
+  box-sizing: border-box;
+  background-color: var(--body-color);
+  height: 100%;
+  margin: 0;
+  }
 
-    body {
-      background-color: var(--body-color);
-      min-height: 100%;
-      margin: 0;
-      display: grid;
-      grid-template-rows: auto auto 1fr auto;
-      grid-template-columns: 100%;
-      overflow-x: hidden;
-    }
+  body {
+  background-color: var(--body-color);
+  min-height: 100%;
+  margin: 0;
+  display: grid;
+  grid-template-rows: auto auto 1fr auto;
+  grid-template-columns: 100%;
+  overflow-x: hidden;
+  }
 
-    .sr-only {
-      position: absolute;
-      width: 1px;
-      height: 1px;
-      padding: 0;
-      margin: -1px;
-      overflow: hidden;
-      clip: rect(0, 0, 0, 0);
-      border: 0;
-    }
+  .sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+  }
 
-    .sr-only-focusable:active, .sr-only-focusable:focus {
-      position: static;
-      width: auto;
-      height: auto;
-      margin: 0;
-      overflow: visible;
-      clip: auto;
-    }
+  .sr-only-focusable:active, .sr-only-focusable:focus {
+  position: static;
+  width: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  }
   {% endstyle %}
 
   <!-- Header hook for plugins ================================================== -->
   {{ content_for_header }}
 
   <script type="text/javascript">
-		window.wetheme = {
-			name: 'Flow',
-			webcomponentRegistry: {
+    window.wetheme = {
+      name: 'Flow',
+      webcomponentRegistry: {
         registry: {},
-				checkScriptLoaded: function(key) {
-					return window.wetheme.webcomponentRegistry.registry[key] ? true : false
-				},
-        register: function(registration) {
-            if(!window.wetheme.webcomponentRegistry.checkScriptLoaded(registration.key)) {
-              window.wetheme.webcomponentRegistry.registry[registration.key] = registration
-            }
+        checkScriptLoaded: function (key) {
+          return window.wetheme.webcomponentRegistry.registry[key] ? true : false
+        },
+        register: function (registration) {
+          if (!window.wetheme.webcomponentRegistry.checkScriptLoaded(registration.key)) {
+            window.wetheme.webcomponentRegistry.registry[registration.key] = registration
+          }
         }
       }
     };
-	</script>
+  </script>
 
   {% if template contains 'customers' %}
-    {% # theme-check-disable ParserBlockingScriptTag %}
-    {{ 'shopify_common.js' | shopify_asset_url | script_tag }}
-    {% # theme-check-enable ParserBlockingScriptTag %}
+  {% # theme-check-disable ParserBlockingScriptTag %}
+  {{ 'shopify_common.js' | shopify_asset_url | script_tag }}
+  {% # theme-check-enable ParserBlockingScriptTag %}
   {% endif %}
 
   {% if template.name == 'article' %}
-    <script src="{{ 'textSlideshow.js' | asset_url }}" defer="defer"></script>
+  <script src="{{ 'textSlideshow.js' | asset_url }}" defer="defer"></script>
   {% endif %}
 
   <script>document.documentElement.className = document.documentElement.className.replace('no-js', 'js');</script>
@@ -143,17 +153,19 @@
 </head>
 
 {% comment %}
-  Add the page template as a class for easy page or template specific styling.
+Add the page template as a class for easy page or template specific styling.
 {% endcomment %}
-<body id="{{ page_title | handle }}" class="{% if template == 'page.contact' %}contact-page {% endif %}{% if customer %}customer-logged-in {% endif %}template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }}{% unless settings.animations_enabled %} animations-disabled{% endunless %}{% if settings.page_fade_enabled %} page-fade{% endif %}{% if settings.color_body_bg == settings.header-bg-color %} white--match{% endif %}{% if settings.product-grid != 'natural' %} images-aspect-ratio{% endif %} ">
+
+<body id="{{ page_title | handle }}"
+  class="{% if template == 'page.contact' %}contact-page {% endif %}{% if customer %}customer-logged-in {% endif %}template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }}{% unless settings.animations_enabled %} animations-disabled{% endunless %}{% if settings.page_fade_enabled %} page-fade{% endif %}{% if settings.color_body_bg == settings.header-bg-color %} white--match{% endif %}{% if settings.product-grid != 'natural' %} images-aspect-ratio{% endif %} ">
 
   <noscript>{{ 'swiper-bundle.min.css' | asset_url | stylesheet_tag }}</noscript>
   <noscript>{{ 'photoswipe.min.css' | asset_url | stylesheet_tag }}</noscript>
   {% if settings.animations_enabled %}
-  	<noscript>{{ 'animate.min.css' | asset_url | stylesheet_tag }}</noscript>
+  <noscript>{{ 'animate.min.css' | asset_url | stylesheet_tag }}</noscript>
   {% endif %}
   {% if settings.popup--enable %}
-  	<noscript>{{ 'fancybox.min.css' | asset_url | stylesheet_tag }}</noscript>
+  <noscript>{{ 'fancybox.min.css' | asset_url | stylesheet_tag }}</noscript>
   {% endif %}
   <noscript>{{ 'custom.css' | asset_url | stylesheet_tag }}</noscript>
 
@@ -164,7 +176,8 @@
 
   <div id="DrawerOverlay" class="drawer-overlay"></div>
 
-  <div id="PageContainer" data-editor-open="{{ request.design_mode }}" data-cart-action="{{ settings.ajax_cart_method }}" data-language-url="{{ localization.language.root_url }}">
+  <div id="PageContainer" data-editor-open="{{ request.design_mode }}"
+    data-cart-action="{{ settings.ajax_cart_method }}" data-language-url="{{ localization.language.root_url }}">
     <div class="no-js disclaimer">
       <p>This store requires javascript to be enabled for some features to work correctly.</p>
     </div>
@@ -172,45 +185,48 @@
     {% sections 'header-group' %}
 
     {% if settings.enable_breadcrumbs %}
-      {% unless template == 'index' or template == 'cart' or template == 'search' %}
-        {% unless template.name == 'collection' or template == 'list-collections' or template contains 'contact' or template.name == 'product' %}
-          <div id="breadcrumbs" class="wrapper-padded">
-            {% render 'breadcrumb' %}
-          </div>
-        {% endunless %}
-      {% endunless %}
-    {% endif %}
-
-    {% if template == 'index' %}
-      <div class="flow-homepage">
-    {% elsif template == 'cart' or template contains 'customers/' %}
-      <div class="main-content page-main--wrapper">
-    {% else %}
-      <div class="wrapper main-content page-main--wrapper">
-    {% endif %}
-        {{ content_for_layout }}
-      </div>
-  </div>
-
-  <div class="footer-wrapper">
-      {% sections 'footer-group' %}
+    {% unless template == 'index' or template == 'cart' or template == 'search' %}
+    {% unless template.name == 'collection' or template == 'list-collections' or template contains 'contact' or
+    template.name == 'product' %}
+    <div id="breadcrumbs" class="wrapper-padded">
+      {% render 'breadcrumb' %}
     </div>
+    {% endunless %}
+    {% endunless %}
+    {% endif %}
+    <script>
+      console.log('cart', {{ cart | json }})
+    </script>
+    {% if template == 'index' %}
+    <div class="flow-homepage">
+      {% elsif template == 'cart' or template contains 'customers/' %}
+      <div class="main-content page-main--wrapper">
+        {% else %}
+        <div class="wrapper main-content page-main--wrapper">
+          {% endif %}
+          {{ content_for_layout }}
+        </div>
+      </div>
 
-  <script defer type="module" src="{{ 'theme.min.js' | asset_url }}"></script>
-  <script defer src="{{ 'SafeLoadScripts.js' | asset_url }}"></script>
-  <script defer nomodule src="{{ 'theme.legacy.min.js' | asset_url }}"></script> 
+      <div class="footer-wrapper">
+        {% sections 'footer-group' %}
+      </div>
 
-  {% if settings.popup--enable %}
-    {% render 'popup' %}
-  {% endif %}
+      <script defer type="module" src="{{ 'theme.min.js' | asset_url }}"></script>
+      <script defer src="{{ 'SafeLoadScripts.js' | asset_url }}"></script>
+      <script defer nomodule src="{{ 'theme.legacy.min.js' | asset_url }}"></script>
 
-  {% if settings.enable_verification_popup %}
-    {% render 'verification-popup' %}
-  {% endif %}
+      {% if settings.popup--enable %}
+      {% render 'popup' %}
+      {% endif %}
 
-  {% render 'back-to-top-button' %}
+      {% if settings.enable_verification_popup %}
+      {% render 'verification-popup' %}
+      {% endif %}
 
-  <script type="application/json" id="wetheme-global">
+      {% render 'back-to-top-button' %}
+
+      <script type="application/json" id="wetheme-global">
     {
       {% comment %}Translations that will be used in javascript section handling{% endcomment %}
       "translations": {
@@ -244,6 +260,28 @@
       "giftwrapProduct": {{ settings.giftwrap_product_selector | json }}
     }
   </script>
-  {% if request.design_mode %}<script src="{{ 'theme-editor.js' | asset_url }}" defer="defer"></script>{% endif %}
+      {% if request.design_mode %}
+      <script src="{{ 'theme-editor.js' | asset_url }}" defer="defer"></script>{% endif %}
+
+      <script>
+        document.documentElement.addEventListener('wetheme-cart-update', (e) => {
+          let cart_has_pickup = false;
+          for (let item of e.detail.cart.items) {
+            if (item.properties['Method'] == 'Store pickup') {
+              cart_has_pickup = true;
+            }
+          }
+          setTimeout(() => {
+            if (cart_has_pickup) {
+              document.getElementById('attr_recipient_phone').required = true;
+              document.getElementById('attr_recipient_phone').classList.remove('hidden');
+            } else {
+              document.getElementById('attr_recipient_phone').required = false;
+              document.getElementById('attr_recipient_phone').classList.add('hidden');
+            }
+          }, 2000)
+        });
+      </script>
 </body>
+
 </html>

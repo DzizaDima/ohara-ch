@@ -1,12 +1,8 @@
 <div class="right-drawer-vue">
   {% comment %} There's no route available for the predictive search api URL yet {% endcomment %}
-  <wetheme-right-drawer
-    search-url="/search/suggest.json"
-    is-predictive="{{ settings.predictive_search_enabled }}"
+  <wetheme-right-drawer search-url="/search/suggest.json" is-predictive="{{ settings.predictive_search_enabled }}"
     search-collections="{{ settings.predictive_search_collections }}"
-    language-url="{{ localization.language.root_url }}"
-  >
-  </wetheme-right-drawer>
+    language-url="{{ localization.language.root_url }}"></wetheme-right-drawer>
 </div>
 <script type="text/x-template" id="wetheme-right-drawer-template">
   <div>
@@ -29,7 +25,7 @@
         </div>
 
         <div id="CartContainer" v-if="type === 'cart'">
-          <form action="{{ routes.cart_url }}" method="post" novalidate class="cart ajaxcart" v-if="cart">
+          <form action="{{ routes.cart_url }}" method="post" class="cart ajaxcart" v-if="cart">
             <p class="empty-cart" v-if="cart.item_count === 0">{{ 'cart.general.empty' | t }}</p>
 
             <div class="ajaxcart__inner" v-if="cart.item_count > 0">
@@ -198,6 +194,39 @@
                       {%- endif -%}
                     {%- endcapture -%}
                     <p class="text-center">{{ taxes_shipping_checkout }} {{ 'cart.general.pickup' | t }}</p>
+                  </div>
+
+                  {% liquid 
+                    assign cart_has_pickup = false
+                    for item in cart.items
+                      for property in item.properties
+                        if item.properties['Method'] == 'Store pickup'
+                          assign cart_has_pickup = true
+                        endif
+                      endfor
+                    endfor
+                  %}
+                  
+                  <div class="cart-attributes">
+                    <label for="attr_sender_phone">Buyer phone<span style="color: red;">*</span></label>
+                    <input
+                      type="tel"
+                      id="attr_sender_phone"
+                      name="attributes[Buyer phone]"
+                      placeholder="+41 79 123 45 67"
+                      pattern="^\+(?:(?:41)|(?:[34]\d))[0-9 ]{7,14}$"
+                      required
+                    />
+
+                    <label for="attr_recipient_phone">Recipient phone</label>
+                    <input
+                      type="tel"
+                      id="attr_recipient_phone"
+                      name="attributes[Recipient phone]"
+                        placeholder="+44 7123 456789"
+                        pattern="^\+(?:(?:41)|(?:[34]\d))[0-9 ]{7,14}$"
+                        required
+                      />
                   </div>
 
                   <button type="submit" class="btn cart__checkout" name="checkout">
