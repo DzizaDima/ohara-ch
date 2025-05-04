@@ -21,6 +21,10 @@
   display: none;
 }
 
+label[for="attr_recipient_phone"].hidden{
+  display: none;
+}
+
 #dynamic-checkout-cart{
   width: 150px;
 }
