@@ -265,19 +265,21 @@ Add the page template as a class for easy page or template specific styling.
 
       <script>
         document.documentElement.addEventListener('wetheme-cart-update', (e) => {
-          let cart_has_pickup = false;
+          let cart_has_shipping = false;
           for (let item of e.detail.cart.items) {
-            if (item.properties['Method'] == 'Store pickup') {
-              cart_has_pickup = true;
+            if (item.properties['Method'] == 'Shipping') {
+              cart_has_shipping = true;
             }
           }
           setTimeout(() => {
-            if (cart_has_pickup) {
+            if (cart_has_shipping) {
               document.getElementById('attr_recipient_phone').required = true;
               document.getElementById('attr_recipient_phone').classList.remove('hidden');
+              document.querySelector('label[for="attr_recipient_phone"]').classList.remove('hidden');
             } else {
               document.getElementById('attr_recipient_phone').required = false;
               document.getElementById('attr_recipient_phone').classList.add('hidden');
+              document.querySelector('label[for="attr_recipient_phone"]').classList.add('hidden');
             }
           }, 2000)
         });
