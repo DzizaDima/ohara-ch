@@ -1,0 +1,13 @@
+
+<div class="grid__item">
+  {% render 'grid-view-item', product: product, collection: collection, enable_badges: settings.show_badges, grid_count_desktop: 4, grid_count_mobile: 2 %}
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.template--product-recently-used-grid.name",
+  "settings": [
+
+  ]
+}
+{% endschema %}

@@ -1,0 +1,184 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "template--page",
+      "disabled": true,
+      "settings": {
+        "page_title_enabled": true,
+        "page_width": "narrow"
+      }
+    },
+    "image_image_with_text_overlay_VVLk4x": {
+      "type": "image--image-with-text-overlay",
+      "disabled": true,
+      "settings": {
+        "image_height": "40vw",
+        "bg_image_overlay_opacity": 0,
+        "parallax": true,
+        "title": "",
+        "text": "",
+        "colors": "dark",
+        "textPosition": "center",
+        "textAlignment": "center",
+        "heading--text-size": 26,
+        "text--text-size": 18,
+        "link": "",
+        "button_label": "",
+        "button-text": "#ffffff",
+        "button-background": "#242424"
+      }
+    },
+    "text_rich_text_ALwbnP": {
+      "type": "text--rich-text",
+      "blocks": {
+        "heading_b7UwMh": {
+          "type": "heading",
+          "settings": {
+            "heading": "Private Events"
+          }
+        },
+        "richtext_G8fYEA": {
+          "type": "richtext",
+          "settings": {
+            "text": "<p>Who doesn’t love a good party? Nothing gets us more excited than hearing about how we can be a part of your event.</p>",
+            "text_size": 14
+          }
+        }
+      },
+      "block_order": [
+        "heading_b7UwMh",
+        "richtext_G8fYEA"
+      ],
+      "settings": {
+        "section_width": "narrow",
+        "text_alignment_desktop": "center",
+        "text_alignment_mobile": "center",
+        "colors": "white"
+      }
+    },
+    "image_image_with_text_bTwcmj": {
+      "type": "image--image-with-text",
+      "settings": {
+        "image": "shopify://shop_images/7CC7B4EA-1B88-47D2-9C82-BA2B8CC7E195.jpg",
+        "text_overlapping_image": false,
+        "section-width": "content",
+        "layout": "left",
+        "text_alignment": "left",
+        "title": "From an intimate dinner to a large scale event",
+        "text": "<p>Our designers will meet for a consultation with you to go over details and show you different blooms on site at our shop. After we walk the venue our graphics team will put together a customized mood board outlining colors, containers, mood and style of your event.</p><p>Using inspirational images and floral samples you will have a clear concept of exactly what your event will look and feel like. From an intimate dinner to a large scale event our designers will guide you each step, help track your budget and ensure no detail is overlooked.</p>",
+        "button_label": "SPEAK TO OUR EXPERTS",
+        "button_link": "https://wa.me/message/Q4BVQMNBCLB7L1",
+        "colors": "white"
+      }
+    },
+    "text_rich_text_L6pncW": {
+      "type": "text--rich-text",
+      "blocks": {
+        "heading_xBKLEJ": {
+          "type": "heading",
+          "settings": {
+            "heading": "Our Process"
+          }
+        },
+        "richtext_LGPXmC": {
+          "type": "richtext",
+          "settings": {
+            "text": "<p>Once installed, Starbright will return weekly to care and nurture your new residents. Our dedicated staff will water, clean, prune and fertilize all of the plants so each can complement your space with grace and beauty. Many of our clients request orchids to adorn their space. These gorgeous, flowering plants are rotated on a monthly basis for our clients, so that the orchids are always in full, sumptuous bloom.</p><p>Each event flower design is created only after conferring with the event flower design team who are keenly aware of the client’s vison. We always consider a client’s preferences, directives and objectives. Whether it’s a modern style event flowers or traditional style event flowers, our Events Flowers Team transforms our clients’ vision into reality.</p>",
+            "text_size": 14
+          }
+        }
+      },
+      "block_order": [
+        "heading_xBKLEJ",
+        "richtext_LGPXmC"
+      ],
+      "settings": {
+        "section_width": "narrow",
+        "text_alignment_desktop": "center",
+        "text_alignment_mobile": "center",
+        "colors": "white"
+      }
+    },
+    "image_gallery_p48cV3": {
+      "type": "image--gallery",
+      "blocks": {
+        "image_d6T3jB": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/iStock-476987284_d23400b3-1633-455c-88ea-3726e0014498.jpg",
+            "link": "",
+            "title": "",
+            "subheading": "",
+            "overlay-btn-text": "",
+            "show-gradient-overlay": false,
+            "overlay_font_color": "#262428",
+            "button_text_color": "#ffffff",
+            "button_background_color": "#242424",
+            "overlay_color": "#ffffff"
+          }
+        },
+        "image_N4rET6": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/iStock-1183374015.jpg",
+            "link": "",
+            "title": "",
+            "subheading": "",
+            "overlay-btn-text": "",
+            "show-gradient-overlay": false,
+            "overlay_font_color": "#262428",
+            "button_text_color": "#ffffff",
+            "button_background_color": "#242424",
+            "overlay_color": "#ffffff"
+          }
+        },
+        "image_edGwF7": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/iStock-1208520046.jpg",
+            "link": "",
+            "title": "",
+            "subheading": "",
+            "overlay-btn-text": "",
+            "show-gradient-overlay": false,
+            "overlay_font_color": "#262428",
+            "button_text_color": "#ffffff",
+            "button_background_color": "#242424",
+            "overlay_color": "#ffffff"
+          }
+        }
+      },
+      "block_order": [
+        "image_d6T3jB",
+        "image_N4rET6",
+        "image_edGwF7"
+      ],
+      "settings": {
+        "colors": "white",
+        "title": "Selected from our galrey",
+        "richtext": "",
+        "remove-spacing": false,
+        "full-width": false,
+        "section-width": "full",
+        "content-position": "hide"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "image_image_with_text_overlay_VVLk4x",
+    "text_rich_text_ALwbnP",
+    "image_image_with_text_bTwcmj",
+    "text_rich_text_L6pncW",
+    "image_gallery_p48cV3"
+  ]
+}

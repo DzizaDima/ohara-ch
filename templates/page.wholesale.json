@@ -1,0 +1,400 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "aa41d7d6-fb84-403a-b781-8907723437fe": {
+      "type": "animated-text",
+      "blocks": {
+        "template--14795085709382__aa41d7d6-fb84-403a-b781-8907723437fe-168693086782744581-0": {
+          "type": "text_static",
+          "settings": {
+            "text_static": "<p>Shout about how</p>",
+            "max_width_desktop": 100,
+            "max_width_mobile": 100
+          }
+        },
+        "template--14795085709382__aa41d7d6-fb84-403a-b781-8907723437fe-168693086782744581-1": {
+          "type": "text_dynamic",
+          "settings": {
+            "text_dynamic": "amazing,fantastic,jaw-dropping",
+            "animation_timing": 500,
+            "rotation_interval": 5000
+          }
+        },
+        "template--14795085709382__aa41d7d6-fb84-403a-b781-8907723437fe-168693086782744581-2": {
+          "type": "text_static",
+          "settings": {
+            "text_static": "<p>your brand is.</p>",
+            "max_width_desktop": 100,
+            "max_width_mobile": 100
+          }
+        }
+      },
+      "block_order": [
+        "template--14795085709382__aa41d7d6-fb84-403a-b781-8907723437fe-168693086782744581-0",
+        "template--14795085709382__aa41d7d6-fb84-403a-b781-8907723437fe-168693086782744581-1",
+        "template--14795085709382__aa41d7d6-fb84-403a-b781-8907723437fe-168693086782744581-2"
+      ],
+      "settings": {
+        "colors": "light",
+        "height_desktop": "original",
+        "text_size_desktop": 40,
+        "text_position_desktop": "center",
+        "height_mobile": "s",
+        "text_size_mobile": 38,
+        "text_position_mobile": "center"
+      }
+    },
+    "1647348352214a3e9b": {
+      "type": "text--rich-text",
+      "blocks": {
+        "1e6f01b7-7fdd-491f-b245-e675baab55bb": {
+          "type": "heading",
+          "settings": {}
+        },
+        "500b6487-80ec-4183-ae41-6e173a203c11": {
+          "type": "richtext",
+          "settings": {
+            "text_size": 14
+          }
+        }
+      },
+      "block_order": [
+        "1e6f01b7-7fdd-491f-b245-e675baab55bb",
+        "500b6487-80ec-4183-ae41-6e173a203c11"
+      ],
+      "settings": {
+        "section_width": "narrow",
+        "text_alignment_desktop": "center",
+        "text_alignment_mobile": "left",
+        "colors": "white"
+      }
+    },
+    "6c58d946-d9b9-4b20-8744-6848874cbdd0": {
+      "type": "template--product--info-columns",
+      "blocks": {
+        "template--14795085709382__6c58d946-d9b9-4b20-8744-6848874cbdd0-1686927686819342c0-0": {
+          "type": "image_and_text",
+          "settings": {
+            "grid_image_size": "natural",
+            "button_text": "Learn more",
+            "button_link": ""
+          }
+        },
+        "template--14795085709382__6c58d946-d9b9-4b20-8744-6848874cbdd0-1686927686819342c0-1": {
+          "type": "image_and_text",
+          "settings": {
+            "grid_image_size": "natural",
+            "button_text": "Learn more",
+            "button_link": ""
+          }
+        },
+        "9b4fe509-622e-4579-91e0-b56b67f264bf": {
+          "type": "image_and_text",
+          "settings": {
+            "grid_image_size": "natural",
+            "button_text": "Learn more",
+            "button_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "template--14795085709382__6c58d946-d9b9-4b20-8744-6848874cbdd0-1686927686819342c0-0",
+        "template--14795085709382__6c58d946-d9b9-4b20-8744-6848874cbdd0-1686927686819342c0-1",
+        "9b4fe509-622e-4579-91e0-b56b67f264bf"
+      ],
+      "settings": {
+        "colors": "white",
+        "heading": "",
+        "description": "",
+        "columns_per_row": 3,
+        "text_alignment": "center",
+        "vertical_alignment": "top"
+      }
+    },
+    "d7ae61fb-952c-4654-a622-c9b102e1476b": {
+      "type": "section--contact-form",
+      "blocks": {
+        "template--14754116010054__d7ae61fb-952c-4654-a622-c9b102e1476b-16788945317184afd8-0": {
+          "type": "name_input",
+          "settings": {
+            "required": true,
+            "input_width": "partial"
+          }
+        },
+        "template--14754116010054__d7ae61fb-952c-4654-a622-c9b102e1476b-16788945317184afd8-1": {
+          "type": "email_input",
+          "settings": {
+            "required": true,
+            "input_width": "partial"
+          }
+        },
+        "2dfd1a2d-7b82-4b21-a474-28bd336c7b43": {
+          "type": "custom_input",
+          "settings": {
+            "placeholder": "Company name",
+            "required": true,
+            "input_width": "partial"
+          }
+        },
+        "79b0de8f-96b5-4bfd-b6a3-01d813459a70": {
+          "type": "custom_input",
+          "settings": {
+            "placeholder": "Company website",
+            "required": false,
+            "input_width": "partial"
+          }
+        },
+        "template--14754116010054__d7ae61fb-952c-4654-a622-c9b102e1476b-16788945317184afd8-2": {
+          "type": "tel_input",
+          "settings": {
+            "required": false,
+            "input_width": "partial"
+          }
+        },
+        "6796689d-6777-4edb-bef3-662a34d85afd": {
+          "type": "custom_input",
+          "settings": {
+            "required": false,
+            "input_width": "partial"
+          }
+        },
+        "template--14754116010054__d7ae61fb-952c-4654-a622-c9b102e1476b-16788945317184afd8-3": {
+          "type": "message_input",
+          "settings": {
+            "required": true,
+            "input_width": "full"
+          }
+        }
+      },
+      "block_order": [
+        "template--14754116010054__d7ae61fb-952c-4654-a622-c9b102e1476b-16788945317184afd8-0",
+        "template--14754116010054__d7ae61fb-952c-4654-a622-c9b102e1476b-16788945317184afd8-1",
+        "2dfd1a2d-7b82-4b21-a474-28bd336c7b43",
+        "79b0de8f-96b5-4bfd-b6a3-01d813459a70",
+        "template--14754116010054__d7ae61fb-952c-4654-a622-c9b102e1476b-16788945317184afd8-2",
+        "6796689d-6777-4edb-bef3-662a34d85afd",
+        "template--14754116010054__d7ae61fb-952c-4654-a622-c9b102e1476b-16788945317184afd8-3"
+      ],
+      "settings": {
+        "form_width": "narrow",
+        "section_color_scheme": "light"
+      }
+    },
+    "1647348079be890278": {
+      "type": "image--image-with-text-overlay",
+      "disabled": true,
+      "settings": {
+        "image_height": "40vw",
+        "bg_image_overlay_opacity": 0,
+        "parallax": true,
+        "colors": "light",
+        "textPosition": "center",
+        "textAlignment": "center",
+        "heading--text-size": 26,
+        "text--text-size": 14,
+        "link": "shopify://collections/all",
+        "button_label": "Learn more"
+      }
+    },
+    "3a5e3cbd-f56f-42f1-b9e0-35f23627e367": {
+      "type": "text--rich-text",
+      "blocks": {
+        "22eba20f-b466-49a1-851e-54aecda99da9": {
+          "type": "heading",
+          "settings": {}
+        },
+        "469a12d9-ef0c-4d8a-b370-a60b732535f5": {
+          "type": "richtext",
+          "settings": {
+            "text_size": 14
+          }
+        },
+        "1f81be43-1cf9-4db1-b5c7-c18178141e91": {
+          "type": "button",
+          "settings": {
+            "button_link": "shopify://collections/all",
+            "button_text": "Learn more"
+          }
+        }
+      },
+      "block_order": [
+        "22eba20f-b466-49a1-851e-54aecda99da9",
+        "469a12d9-ef0c-4d8a-b370-a60b732535f5",
+        "1f81be43-1cf9-4db1-b5c7-c18178141e91"
+      ],
+      "settings": {
+        "section_width": "narrow",
+        "text_alignment_desktop": "center",
+        "text_alignment_mobile": "center",
+        "colors": "white"
+      }
+    },
+    "1645808511802dab9f": {
+      "type": "image--logo-list",
+      "blocks": {
+        "16458085115b0355f8-2": {
+          "type": "logo_image",
+          "settings": {
+            "link": ""
+          }
+        },
+        "16458085115b0355f8-3": {
+          "type": "logo_image",
+          "settings": {
+            "link": ""
+          }
+        },
+        "16458085115b0355f8-0": {
+          "type": "logo_image",
+          "settings": {
+            "link": ""
+          }
+        },
+        "16458085115b0355f8-1": {
+          "type": "logo_image",
+          "settings": {
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "16458085115b0355f8-2",
+        "16458085115b0355f8-3",
+        "16458085115b0355f8-0",
+        "16458085115b0355f8-1"
+      ],
+      "settings": {
+        "colors": "accent",
+        "width": 100
+      }
+    },
+    "1647349463c1e81655": {
+      "type": "text--testimonials",
+      "blocks": {
+        "8abd9e75-3d96-493b-9b01-b80010e4d556": {
+          "type": "text",
+          "settings": {
+            "testimonial_text": "<p>Show off incredible feedback from your customers</p>",
+            "customer_name": "Helen",
+            "link": "",
+            "stars": 0
+          }
+        },
+        "a074f829-9485-4c0d-a3f5-49e1a7f69ebf": {
+          "type": "text",
+          "settings": {
+            "testimonial_text": "<p>Show off incredible feedback from your customers</p>",
+            "customer_name": "John",
+            "link": "",
+            "stars": 0
+          }
+        },
+        "1647349463022fe716-0": {
+          "type": "text",
+          "settings": {
+            "testimonial_text": "<p>Show off incredible feedback from your customers</p>",
+            "customer_name": "Salome",
+            "link": "",
+            "stars": 0
+          }
+        }
+      },
+      "block_order": [
+        "8abd9e75-3d96-493b-9b01-b80010e4d556",
+        "a074f829-9485-4c0d-a3f5-49e1a7f69ebf",
+        "1647349463022fe716-0"
+      ],
+      "settings": {
+        "colors": "light",
+        "circle_images": true,
+        "title": ""
+      }
+    },
+    "00922839-f6f7-4a26-a33a-3f08f8558729": {
+      "type": "events-calendar",
+      "blocks": {
+        "template--14754116010054__00922839-f6f7-4a26-a33a-3f08f8558729-167901274996438225-0": {
+          "type": "event",
+          "settings": {
+            "grid_image_size": "square",
+            "tbc": false,
+            "price": "",
+            "url": "",
+            "btn_text": "More info"
+          }
+        },
+        "template--14754116010054__00922839-f6f7-4a26-a33a-3f08f8558729-167901274996438225-1": {
+          "type": "event",
+          "settings": {
+            "grid_image_size": "square",
+            "tbc": false,
+            "price": "",
+            "url": "",
+            "btn_text": "More info"
+          }
+        },
+        "template--14754116010054__00922839-f6f7-4a26-a33a-3f08f8558729-167901274996438225-2": {
+          "type": "event",
+          "settings": {
+            "grid_image_size": "square",
+            "tbc": false,
+            "price": "",
+            "url": "",
+            "btn_text": "More info"
+          }
+        },
+        "c1980483-653e-4241-8b77-9d632d0332b1": {
+          "type": "event",
+          "settings": {
+            "grid_image_size": "square",
+            "tbc": false,
+            "price": "",
+            "url": "",
+            "btn_text": "More info"
+          }
+        }
+      },
+      "block_order": [
+        "template--14754116010054__00922839-f6f7-4a26-a33a-3f08f8558729-167901274996438225-0",
+        "template--14754116010054__00922839-f6f7-4a26-a33a-3f08f8558729-167901274996438225-1",
+        "template--14754116010054__00922839-f6f7-4a26-a33a-3f08f8558729-167901274996438225-2",
+        "c1980483-653e-4241-8b77-9d632d0332b1"
+      ],
+      "settings": {
+        "heading": "UPCOMING EVENTS",
+        "description": "<p>View our upcoming calendar for events across the nation.</p>",
+        "layout": "grid",
+        "cards_per_row": 4,
+        "expand_card": false,
+        "colors": "white"
+      }
+    },
+    "1645634969fb497783": {
+      "type": "newsletter--newsletter",
+      "settings": {
+        "newsletter_description": "<p>Get priority access to events and exclusive offers</p>",
+        "colors": "light"
+      }
+    }
+  },
+  "order": [
+    "aa41d7d6-fb84-403a-b781-8907723437fe",
+    "1647348352214a3e9b",
+    "6c58d946-d9b9-4b20-8744-6848874cbdd0",
+    "d7ae61fb-952c-4654-a622-c9b102e1476b",
+    "1647348079be890278",
+    "3a5e3cbd-f56f-42f1-b9e0-35f23627e367",
+    "1645808511802dab9f",
+    "1647349463c1e81655",
+    "00922839-f6f7-4a26-a33a-3f08f8558729",
+    "1645634969fb497783"
+  ]
+}

@@ -1,0 +1,184 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "template--page",
+      "disabled": true,
+      "settings": {
+        "page_title_enabled": true,
+        "page_width": "narrow"
+      }
+    },
+    "image_image_with_text_overlay_dBH4Mg": {
+      "type": "image--image-with-text-overlay",
+      "settings": {
+        "image": "shopify://shop_images/pexels-roman-odintsov-4551517-1.jpg",
+        "image_height": "40vw",
+        "bg_image_overlay_opacity": 0,
+        "parallax": true,
+        "title": "",
+        "text": "",
+        "colors": "dark",
+        "textPosition": "center",
+        "textAlignment": "center",
+        "heading--text-size": 26,
+        "text--text-size": 18,
+        "link": "",
+        "button_label": "",
+        "button-text": "#ffffff",
+        "button-background": "#242424"
+      }
+    },
+    "text_rich_text_pBWBJp": {
+      "type": "text--rich-text",
+      "blocks": {
+        "heading_AQhKBT": {
+          "type": "heading",
+          "settings": {
+            "heading": "Corporate Events"
+          }
+        },
+        "richtext_kgPDYD": {
+          "type": "richtext",
+          "settings": {
+            "text": "<p>Our dedicated team will sit down to listen to all your needs, create mood boards with inspirational images, provide samples and be on site for setup and breakdown to ensure a professional experience.</p>",
+            "text_size": 14
+          }
+        }
+      },
+      "block_order": [
+        "heading_AQhKBT",
+        "richtext_kgPDYD"
+      ],
+      "settings": {
+        "section_width": "narrow",
+        "text_alignment_desktop": "center",
+        "text_alignment_mobile": "center",
+        "colors": "white"
+      }
+    },
+    "image_image_with_text_VbactW": {
+      "type": "image--image-with-text",
+      "settings": {
+        "image": "shopify://shop_images/iStock-1251525034.jpg",
+        "text_overlapping_image": false,
+        "section-width": "content",
+        "layout": "left",
+        "text_alignment": "left",
+        "title": "Details matter",
+        "text": "<p>Details matter, at O`HARA we strive to go beyond providing excellent products, blooms and foliage plants. Our experienced staff listen to your needs, are mindful of your budget and can guide you in making all the decisions necessary when putting together a corporate event.</p>",
+        "button_label": "SPEAK TO OUR EXPERTS",
+        "button_link": "https://wa.me/message/Q4BVQMNBCLB7L1",
+        "colors": "white"
+      }
+    },
+    "text_rich_text_rEckKW": {
+      "type": "text--rich-text",
+      "blocks": {
+        "heading_4PpegV": {
+          "type": "heading",
+          "settings": {
+            "heading": "Our Process"
+          }
+        },
+        "richtext_wwDP7g": {
+          "type": "richtext",
+          "settings": {
+            "text": "<p>Once a planting solution and maintenance contract is chosen, our installation team deliver and install the new greenery, all with minimum disruption. An assigned technician will then make regular, scheduled visits to ensure plants are watered, fed and in perfect condition.</p>",
+            "text_size": 14
+          }
+        }
+      },
+      "block_order": [
+        "heading_4PpegV",
+        "richtext_wwDP7g"
+      ],
+      "settings": {
+        "section_width": "narrow",
+        "text_alignment_desktop": "center",
+        "text_alignment_mobile": "center",
+        "colors": "white"
+      }
+    },
+    "image_gallery_MGagLy": {
+      "type": "image--gallery",
+      "blocks": {
+        "image_JbRV3C": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/iStock-1251525022.jpg",
+            "link": "",
+            "title": "",
+            "subheading": "",
+            "overlay-btn-text": "",
+            "show-gradient-overlay": false,
+            "overlay_font_color": "#262428",
+            "button_text_color": "#ffffff",
+            "button_background_color": "#242424",
+            "overlay_color": "#ffffff"
+          }
+        },
+        "image_Md7RqT": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/iStock-1251525000.jpg",
+            "link": "",
+            "title": "",
+            "subheading": "",
+            "overlay-btn-text": "",
+            "show-gradient-overlay": false,
+            "overlay_font_color": "#262428",
+            "button_text_color": "#ffffff",
+            "button_background_color": "#242424",
+            "overlay_color": "#ffffff"
+          }
+        },
+        "image_pVP9Jp": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/iStock-476987284.jpg",
+            "link": "",
+            "title": "",
+            "subheading": "",
+            "overlay-btn-text": "",
+            "show-gradient-overlay": false,
+            "overlay_font_color": "#262428",
+            "button_text_color": "#ffffff",
+            "button_background_color": "#242424",
+            "overlay_color": "#ffffff"
+          }
+        }
+      },
+      "block_order": [
+        "image_JbRV3C",
+        "image_Md7RqT",
+        "image_pVP9Jp"
+      ],
+      "settings": {
+        "colors": "white",
+        "title": "Selected from our galrey",
+        "richtext": "",
+        "remove-spacing": false,
+        "full-width": false,
+        "section-width": "full",
+        "content-position": "hide"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "image_image_with_text_overlay_dBH4Mg",
+    "text_rich_text_pBWBJp",
+    "image_image_with_text_VbactW",
+    "text_rich_text_rEckKW",
+    "image_gallery_MGagLy"
+  ]
+}

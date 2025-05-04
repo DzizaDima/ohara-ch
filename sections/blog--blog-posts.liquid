@@ -1,0 +1,507 @@
+{{ 'section-blog-blog-posts.min.css' | asset_url | stylesheet_tag: preload: true }}
+<noscript>{{ 'section-blog-blog-posts.min.css' | asset_url | stylesheet_tag }}</noscript>
+
+<div
+  class="homepage-sections-wrapper homepage-sections-wrapper--{{ section.settings.colors }}"
+  data-wetheme-section-type="blog--blog-posts" data-wetheme-section-id="{{ section.id }}"
+>
+  <div class="wrapper-padded show-on-scroll">
+
+    <div class="homepage-indiv-section-wrapper">
+      <div class="sitewide--title-wrapper" {% if section.settings.richtext == '' %}style="margin-bottom: 30px;"{% endif %}>
+        {% if section.settings.title != '' %}
+          <h2 class="homepage-sections--title">{{ section.settings.title | escape }}</h2>
+        {% endif %}
+      </div>
+
+      {% if section.settings.richtext != '' %}
+        <div class="grid">
+          <div class="grid__item large--one-half push--large--one-quarter">
+            <div class="homepage-sections--description text-link-animated">{{ section.settings.richtext }}</div>
+          </div>
+        </div>
+      {% endif %}
+
+      {% case section.settings.post_limit %}
+        {% when 1 %}
+          {% assign size = "large--one-half push--large--one-quarter" %}
+        {% when 2 %}
+          {% assign size = "large--one-half" %}
+        {% when 3 %}
+          {% assign size = "large--one-third" %}
+        {% when 4 %}
+          {% assign size = "large--one-quarter" %}
+      {% endcase %}
+
+
+      {% comment %} vvvvv START PLACEHOLDER vvvvv {% endcomment %}
+      {% unless section.blocks.first %}
+        <div class="grid medium--hide small--hide">
+          <div class="row">
+            {% for i in (1..section.settings.post_limit) limit: section.settings.post_limit %}
+              <div class="grid__item {{ size }}">
+                <div class="article-image">
+                  {{ 'image' | placeholder_svg_tag: 'icon icon--placeholder' }}
+                </div>
+
+                <div class="blog-title-wrapper{% if article.image %} article-image-in-header{% endif %}">
+                  {% if section.settings.blog_show_date %}
+                    <time class="homepage-blog--date" datetime="{{ "2016-12-25" | date: '%Y-%m-%d' }}">{{ "2016-12-25" | time_tag: format: 'date' }}</time>
+                  {% endif %}
+                  <div class="blog-title--divider"></div>
+                  <h3 class="homepage-blog--title fs-heading-m">{{ 'general.onboarding.blog_title' | t }}</h3>
+                </div>
+
+                <div class="rte home-blog-excerpt">
+                  {{ 'general.onboarding.blog_excerpt' | t }}
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+
+        <div class="homepage-blog-mobile swiper large--hide">
+          <div class="swiper-wrapper">
+            {% for i in (1..section.settings.post_limit) limit: section.settings.post_limit %}
+              <div class="swiper-slide">
+                <div class="grid__item">
+                  <div class="article-image">
+                    {{ 'image' | placeholder_svg_tag: 'icon icon--placeholder' }}
+                  </div>
+
+                  <div class="blog-title-wrapper{% if article.image %} article-image-in-header{% endif %}">
+                    {% if section.settings.blog_show_date %}
+                      <time class="homepage-blog--date" datetime="{{ "2016-12-25" | date: '%Y-%m-%d' }}">{{ "2016-12-25" | time_tag: format: 'date' }}</time>
+                    {% endif %}
+                    <div class="blog-title--divider"></div>
+                    <h3 class="homepage-blog--title fs-heading-m">{{ 'general.onboarding.blog_title' | t }}</h3>
+                  </div>
+
+                  <div class="rte home-blog-excerpt">
+                    {{ 'general.onboarding.blog_excerpt' | t }}
+                  </div>
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+          <div class="swiper-pagination"></div>
+        </div>
+      {% endunless %}
+      {% comment %} ^^^^^ END PLACEHOLDER ^^^^^ {% endcomment %}
+
+
+
+      {% assign block = section.blocks.first %}
+
+        {% case block.type %}
+
+          {% when "article" %}
+
+              <div class="grid medium--hide small--hide" {{ block.shopify_attributes }}>
+                  <div class="row">
+
+                    {% for i in (1..section.settings.post_limit) limit: section.settings.post_limit %}
+                      {% assign blog_post_setting_id = 'blog_post_' | append: i %}
+                      {% assign blog_post_handle = block.settings[blog_post_setting_id] %}
+                      {% assign current_post = articles[blog_post_handle] %}
+
+                        <div class="grid__item {{ size }}">
+
+                          {% unless current_post == empty %}
+
+                            {% if current_post.image %}
+                              <div class="article-image-wrap">
+                                <div class="article-image">
+                                  <a href="{{ current_post.url }}" class="{% if settings.ken_burns_enabled %} kb-enabled{% endif %}" tabindex="-1">
+                                    {% capture post_alt %}{{ current_post.image.alt | default: current_post.title }}{% endcapture %}
+                                    {% render 'responsive-image' with current_post.image, alt: post_alt | escape, crop: 'center', blur: false %}{% comment %}FIXME: add section height option{% endcomment %}
+                                  </a>
+                                </div>
+                              </div>
+                            {% endif %}
+
+                            {% if section.settings.blog_show_date %}
+                              <time class="homepage-blog--date" datetime="{{ current_post.published_at | date: '%Y-%m-%d' }}">{{ current_post.published_at | time_tag: format: 'date' }}</time>
+                            {% endif %}
+
+                            <h3 class="homepage-blog--title fs-heading-m"><a href="{{ current_post.url }}">{{ current_post.title }}</a></h3>
+
+                            <div class="rte">
+                              {% if current_post.excerpt.size > 0 %}
+                                {{ current_post.excerpt }}
+                              {% else %}
+                                <p>{{ current_post.content | strip_html | truncatewords: 20 }}</p>
+                              {% endif %}
+                            </div>
+
+                          {% else %}
+
+                            <div class="article-image">
+                              {{ 'image' | placeholder_svg_tag: 'icon icon--placeholder' }}
+                            </div>
+
+                            <div class="blog-title-wrapper{% if article.image %} article-image-in-header{% endif %}">
+                              {% if section.settings.blog_show_date %}
+                                <time class="homepage-blog--date" datetime="{{ "2016-12-25" | date: '%Y-%m-%d' }}">{{ "2016-12-25" | time_tag: format: 'date' }}</time>
+                              {% endif %}
+                              <div class="blog-title--divider"></div>
+                              <h3 class="homepage-blog--title fs-heading-m">{{ 'general.onboarding.blog_title' | t }}</h3>
+                            </div>
+
+                            <div class="rte home-blog-excerpt">
+                              {{ 'general.onboarding.blog_excerpt' | t }}
+                            </div>
+
+                          {% endunless %}
+
+                        </div>
+
+                    {% endfor %}
+
+                  </div>
+              </div>
+
+              <div class="homepage-blog-mobile swiper large--hide">
+                <div class="swiper-wrapper">
+
+                    {% for i in (1..section.settings.post_limit) limit: section.settings.post_limit %}
+                      {% assign mobile_blog_post_setting_id = 'blog_post_' | append: i %}
+                      {% assign mobile_blog_post_handle = block.settings[mobile_blog_post_setting_id] %}
+                      {% assign mobile_current_post = articles[mobile_blog_post_handle] %}
+
+                          {% unless mobile_current_post == empty %}
+
+                              <div class="swiper-slide">
+                                <div class="grid__item">
+
+                                  {% if mobile_current_post.image %}
+                                    <div class="article-image">
+                                      <a href="{{ mobile_current_post.url }}" tabindex="-1">
+                                        {% capture post_alt %}{{ mobile_current_post.image.alt | default: mobile_current_post.title }}{% endcapture %}
+                                        {% render 'responsive-image' with mobile_current_post.image, alt: post_alt | escape, blur: false %}
+                                      </a>
+                                    </div>
+                                  {% endif %}
+
+                                  {% if section.settings.blog_show_date %}
+                                    <time class="homepage-blog--date" datetime="{{ mobile_current_post.published_at | date: '%Y-%m-%d' }}">{{ mobile_current_post.published_at | time_tag: format: 'date' }}</time>
+                                  {% endif %}
+
+                                  <h3 class="homepage-blog--title fs-heading-m"><a href="{{ mobile_current_post.url }}">{{ mobile_current_post.title }}</a></h3>
+
+                                  <div class="rte">
+                                    {% if mobile_current_post.excerpt.size > 0 %}
+                                      {{ mobile_current_post.excerpt }}
+                                    {% else %}
+                                      <p>{{ mobile_current_post.content | strip_html | truncatewords: 20 }}</p>
+                                    {% endif %}
+                                  </div>
+
+                                </div>
+                              </div>
+
+                          {% else %}
+
+                              <div class="swiper-slide">
+                                <div class="grid__item">
+
+                                  <div class="article-image">
+                                    {{ 'image' | placeholder_svg_tag: 'icon icon--placeholder' }}
+                                  </div>
+
+                                  <div class="blog-title-wrapper{% if article.image %} article-image-in-header{% endif %}">
+                                    {% if section.settings.blog_show_date %}
+                                      <time class="homepage-blog--date" datetime="{{ "2016-12-25" | date: '%Y-%m-%d' }}">{{ "2016-12-25" | time_tag: format: 'date' }}</time>
+                                    {% endif %}
+                                    <div class="blog-title--divider"></div>
+                                    <h3 class="homepage-blog--title fs-heading-m">{{ 'general.onboarding.blog_title' | t }}</h3>
+                                  </div>
+
+                                  <div class="rte home-blog-excerpt">
+                                    {{ 'general.onboarding.blog_excerpt' | t }}
+                                  </div>
+
+                                </div>
+                              </div>
+
+                          {% endunless %}
+
+                    {% endfor %}
+
+                </div>
+                <div class="swiper-pagination"></div>
+              </div>
+
+
+          {% when "blog" %}
+
+            {% assign selected_blog = blogs[block.settings.blog] %}
+
+            <div class="grid medium--hide small--hide" {{ block.shopify_attributes }}>
+                <div class="row">
+
+                  {% unless selected_blog == empty %}
+                    {% for article in selected_blog.articles limit: section.settings.post_limit %}
+
+                      <div class="grid__item {{ size }}">
+
+                        {% if article.image %}
+                          <div class="article-image-wrap">
+                            <div class="article-image">
+                              <a href="{{ article.url }}" class="{% if settings.ken_burns_enabled %} kb-enabled{% endif %}" tabindex="-1">
+                                {% capture post_alt %}{{ article.image.alt | default: article.title }}{% endcapture %}
+                                {% render 'responsive-image' with article.image, alt: post_alt | escape, crop: 'center', blur: false %}{% comment %}FIXME: add section height option{% endcomment %}
+                              </a>
+                            </div>
+                          </div>
+                        {% endif %}
+
+                        {% if section.settings.blog_show_date %}
+                          <time class="homepage-blog--date" datetime="{{ article.published_at | date: '%Y-%m-%d' }}">{{ article.published_at | time_tag: format: 'date' }}</time>
+                        {% endif %}
+
+                        <h3 class="homepage-blog--title fs-heading-m"><a href="{{ article.url }}">{{ article.title }}</a></h3>
+
+                        <div class="rte">
+                          <p>{{ article.excerpt_or_content | strip_html | truncatewords: 20 }}</p>
+                        </div>
+
+                      </div>
+                    {% endfor %}
+
+                  {% else %}
+
+                    {% for i in (1..section.settings.post_limit) limit: section.settings.post_limit %}
+                      <div class="grid__item {{ size }}">
+                          <div class="article-image">
+                            {{ 'image' | placeholder_svg_tag: 'icon icon--placeholder' }}
+                          </div>
+
+                          <div class="blog-title-wrapper{% if article.image %} article-image-in-header{% endif %}">
+                            {% if section.settings.blog_show_date %}
+                              <time class="homepage-blog--date" datetime="{{ "2016-12-25" | date: '%Y-%m-%d' }}">{{ "2016-12-25" | time_tag: format: 'date' }}</time>
+                            {% endif %}
+                            <div class="blog-title--divider"></div>
+                            <h3 class="homepage-blog--title fs-heading-m">{{ 'general.onboarding.blog_title' | t }}</h3>
+                          </div>
+
+                          <div class="rte home-blog-excerpt">
+                            {{ 'general.onboarding.blog_excerpt' | t }}
+                          </div>
+                      </div>
+                    {% endfor %}
+
+                  {% endunless %}
+
+                </div>
+            </div>
+
+            <div class="homepage-blog-mobile swiper large--hide">
+              <div class="swiper-wrapper">
+
+                {% unless selected_blog == empty %}
+
+                  {% for article in selected_blog.articles limit: section.settings.post_limit %}
+                    <div class="swiper-slide">
+                      <div class="grid__item">
+                        {% if article.image %}
+                          <div class="article-image">
+                            <a href="{{ article.url }}" >
+                              {% capture post_alt %}{{ article.image.alt | default: article.title }}{% endcapture %}
+                              {% render 'responsive-image' with article.image, alt: post_alt | escape, blur: false %}
+                            </a>
+                          </div>
+                        {% endif %}
+
+                        {% if section.settings.blog_show_date %}
+                          <time class="homepage-blog--date" datetime="{{ article.published_at | date: '%Y-%m-%d' }}">{{ article.published_at | time_tag: format: 'date' }}</time>
+                        {% endif %}
+                        <h3 class="homepage-blog--title fs-heading-m"><a href="{{ article.url }}">{{ article.title }}</a></h3>
+
+                        <div class="rte">
+                          {% if article.excerpt.size > 0 %}
+                            {{ article.excerpt }}
+                          {% else %}
+                            <p>{{ article.content | strip_html | truncatewords: 20 }}</p>
+                          {% endif %}
+                        </div>
+                      </div>
+                    </div>
+                  {% endfor %}
+
+                {% else %}
+
+                  {% for i in (1..section.settings.post_limit) limit: section.settings.post_limit %}
+                    <div class="swiper-slide">
+                      <div class="grid__item">
+
+                        <div class="article-image">
+                          {{ 'image' | placeholder_svg_tag: 'icon icon--placeholder' }}
+                        </div>
+
+                        <div class="blog-title-wrapper{% if article.image %} article-image-in-header{% endif %}">
+                          {% if section.settings.blog_show_date %}
+                            <time class="homepage-blog--date" datetime="{{ "2016-12-25" | date: '%Y-%m-%d' }}">{{ "2016-12-25" | time_tag: format: 'date' }}</time>
+                          {% endif %}
+                          <div class="blog-title--divider"></div>
+                          <h3 class="homepage-blog--title fs-heading-m">{{ 'general.onboarding.blog_title' | t }}</h3>
+                        </div>
+
+                        <div class="rte home-blog-excerpt">
+                          {{ 'general.onboarding.blog_excerpt' | t }}
+                        </div>
+
+                      </div>
+                    </div>
+                  {% endfor %}
+
+                {% endunless %}
+
+              </div>
+              <div class="swiper-pagination"></div>
+            </div>
+
+        {% endcase %}
+
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.blog--blog-posts.name",
+  "class": "blog-posts-wrapper",
+  "max_blocks": 1,
+  "settings": [
+    {
+      "type": "select",
+      "id": "colors",
+      "label": "t:all.Color_scheme",
+      "default": "white",
+      "options": [
+        {
+          "value": "white",
+          "label": "t:all.Minimal"
+        },
+        {
+          "value": "light",
+          "label": "t:all.Light"
+        },
+        {
+          "value": "accent",
+          "label": "t:all.Feature"
+        },
+        {
+          "value": "dark",
+          "label": "t:all.Dark"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "t:all.Heading",
+      "default": "From the blog"
+    },
+    {
+      "type": "richtext",
+      "id": "richtext",
+      "label": "t:all.Description",
+      "info": "t:all.Optional"
+    },
+    {
+      "type": "checkbox",
+      "id": "blog_show_date",
+      "label": "t:all.Show_dates",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "post_limit",
+      "min": 1,
+      "max": 4,
+      "step": 1,
+      "label": "t:sections.blog--blog-posts.settings.post_limit.label",
+      "default": 3
+    }
+  ],
+  "blocks": [
+    {
+      "type": "article",
+      "name": "t:all.Selected_blog_posts",
+      "settings": [
+        {
+          "type": "header",
+          "content": "t:all.Selected_blog_posts",
+          "info": "t:sections.blog--blog-posts.blocks.article.settings.header-0.info"
+        },
+        {
+          "type": "article",
+          "id": "blog_post_1",
+          "label": "t:sections.blog--blog-posts.blocks.article.settings.blog_post_1.label"
+        },
+        {
+          "type": "article",
+          "id": "blog_post_2",
+          "label": "t:sections.blog--blog-posts.blocks.article.settings.blog_post_2.label"
+        },
+        {
+          "type": "article",
+          "id": "blog_post_3",
+          "label": "t:sections.blog--blog-posts.blocks.article.settings.blog_post_3.label"
+        },
+        {
+          "type": "article",
+          "id": "blog_post_4",
+          "label": "t:sections.blog--blog-posts.blocks.article.settings.blog_post_4.label"
+        }
+      ]
+    },
+    {
+      "type": "blog",
+      "name": "t:all.Selected_blog",
+      "settings": [
+        {
+          "type": "header",
+          "content": "t:all.Selected_blog",
+          "info": "t:sections.blog--blog-posts.blocks.blog.settings.header-0.info"
+        },
+        {
+          "type": "blog",
+          "id": "blog",
+          "label": "t:sections.blog--blog-posts.blocks.blog.settings.blog.label"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.blog--blog-posts.presets.name",
+      "settings": {
+      },
+      "blocks": [
+        {
+          "type": "blog",
+          "settings": {
+            "blog": "News"
+          }
+        }
+      ]
+    }
+  ],
+  "enabled_on": {
+    "templates": [
+      "404",
+      "article",
+      "cart",
+      "collection",
+      "list-collections",
+      "index",
+      "page",
+      "password",
+      "product",
+      "search"
+    ]
+  }
+}
+{% endschema %}

@@ -1,0 +1,118 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "template--page",
+      "disabled": true,
+      "settings": {
+        "page_title_enabled": true,
+        "page_width": "narrow"
+      }
+    },
+    "text_rich_text_KeC9Uj": {
+      "type": "text--rich-text",
+      "blocks": {
+        "heading_fmGA48": {
+          "type": "heading",
+          "settings": {
+            "heading": "CONCIERGE SERVICE"
+          }
+        },
+        "richtext_WAAbTE": {
+          "type": "richtext",
+          "settings": {
+            "text": "<p>At O’Hara Flowers, we offer a bespoke Concierge Service designed to help you find and create exceptional gifts for your loved ones. From luxurious floral arrangements to curated presents, our expert team ensures every detail is perfectly tailored to your wishes. Experience a seamless and refined way to celebrate life’s special moments.</p>",
+            "text_size": 14
+          }
+        }
+      },
+      "block_order": [
+        "heading_fmGA48",
+        "richtext_WAAbTE"
+      ],
+      "settings": {
+        "section_width": "narrow",
+        "text_alignment_desktop": "center",
+        "text_alignment_mobile": "center",
+        "colors": "white"
+      }
+    },
+    "image_gallery_Fmkecm": {
+      "type": "image--gallery",
+      "blocks": {
+        "image_XeKbp9": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/IMG_3809_f0a7a881-d9ce-4487-a435-de2185f4019d.jpg",
+            "link": "",
+            "title": "",
+            "subheading": "",
+            "overlay-btn-text": "",
+            "show-gradient-overlay": false,
+            "overlay_font_color": "#262428",
+            "button_text_color": "#ffffff",
+            "button_background_color": "#242424",
+            "overlay_color": "#ffffff"
+          }
+        },
+        "image_NaP7LT": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/IMG_2246.jpg",
+            "link": "",
+            "title": "",
+            "subheading": "",
+            "overlay-btn-text": "",
+            "show-gradient-overlay": false,
+            "overlay_font_color": "#262428",
+            "button_text_color": "#ffffff",
+            "button_background_color": "#242424",
+            "overlay_color": "#ffffff"
+          }
+        },
+        "image_74LqYz": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/IMG_3767_139bd98a-426f-484d-83d1-1350e9bd4f4d.jpg",
+            "link": "",
+            "title": "",
+            "subheading": "",
+            "overlay-btn-text": "",
+            "show-gradient-overlay": false,
+            "overlay_font_color": "#262428",
+            "button_text_color": "#ffffff",
+            "button_background_color": "#242424",
+            "overlay_color": "#ffffff"
+          }
+        }
+      },
+      "block_order": [
+        "image_XeKbp9",
+        "image_NaP7LT",
+        "image_74LqYz"
+      ],
+      "settings": {
+        "colors": "white",
+        "title": "",
+        "richtext": "",
+        "remove-spacing": true,
+        "full-width": false,
+        "section-width": "content",
+        "content-position": "hide"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "text_rich_text_KeC9Uj",
+    "image_gallery_Fmkecm"
+  ]
+}

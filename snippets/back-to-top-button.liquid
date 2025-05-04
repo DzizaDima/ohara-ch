@@ -1,0 +1,89 @@
+{%- liquid
+  if settings.back_to_top_all
+    assign show_back_to_top = true
+  endif
+
+  if settings.back_to_top_homepage and template == 'index'
+    assign show_back_to_top = true
+  endif
+
+  if settings.back_to_top_collection and template contains 'collection'
+    assign show_back_to_top = true
+  endif
+
+  if settings.back_to_top_product and template contains 'product'
+    assign show_back_to_top = true
+  endif
+-%}
+
+<style>
+  back-to-top {
+    position: fixed;
+    right: calc(22.5px - 1px);
+    bottom: calc(22.5px - 1px);
+    z-index: 101;
+    opacity: 0;
+    transform: translateY(100px);
+    transition: transform 1s ease, opacity 1s ease;
+  }
+
+  @media screen and (max-width: 767px) {
+    back-to-top {
+      right: calc(15px - 1px);
+      bottom: calc(15px - 1px);
+    }
+  }
+
+  @media(prefers-reduced-motion:reduce) {
+    back-to-top {
+      transition: none;
+    }
+  }
+
+  back-to-top.back-to-top--visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .back-to-top-button {
+    border: none;
+    background-color: transparent;
+  }
+
+  .back-to-top-button span {
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, .175);
+    border-radius: var(--alt-btn-border-radius);
+    transition: background .2s ease 0s;
+  }
+
+  .using-keyboard .back-to-top-button:focus,
+  .using-keyboard .back-to-top-button:focus-within,
+  .using-keyboard .back-to-top-button:focus-visible {
+    outline: none;
+    border: none;
+  }
+
+  .using-keyboard .back-to-top-button:focus span {
+    outline: 2px solid var(--primary-btn-bg-color);
+    outline-offset: 1px;
+  }
+</style>
+
+{% if show_back_to_top %}
+  <back-to-top>
+    <button class="back-to-top-button alt-focus" data-selector="back-to-top-button" aria-label="{{ 'general.accessibility.back_to_top.scroll_to_top' | t }}">
+      <span class="btn-hover-default btn-colors-primary">
+        {% render 'theme-icon', icon: 'chevron_up', widthUnset: false iconClasses: 'chevron-up' %}
+      </span>
+    </button>
+  </back-to-top>
+
+  <script src="{{ 'component-back-to-top.js' | asset_url }}" type="module" defer="defer" data-envy-load-key="component-back-to-top"></script>
+{% endif %}

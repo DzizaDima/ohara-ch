@@ -1,0 +1,154 @@
+<blog-nav-banner id="navigation-banner--{{ section.id }}" class="navigation-banner-wrapper wrapper-padded" data-wetheme-section-type="blog--navigation-banner" data-wetheme-section-id="{{ section.id }}">
+  {%- assign banner_linklist = section.settings.banner_linklist -%}
+  {% if linklists[banner_linklist].links.size > 0 %}
+    <nav>
+      {% liquid 
+        assign has_link_animation = false
+        if section.settings.nav_background_color == 'rgba(0,0,0,0)' or section.settings.nav_background_color == settings.color_body_bg
+          assign has_link_animation = true
+        endif
+      %}
+      <ul class="banner-links--desktop{% if has_link_animation %} nav-link-animated--custom{% endif %}">
+        {% for link in linklists[banner_linklist].links %}
+          <li {% if link.object.tags and link.object.tags.size > 0 %} class="children"{% endif %}>
+            <a class="animated-link--item" href="{{ link.url }}">{{ link.title }}</a>
+          </li>
+        {% endfor %}
+      </ul>
+      <ul class="banner-links--mobile-collapsed">
+        {% for link in linklists[banner_linklist].links limit: 4 %}
+          <li {% if link.object.tags and link.object.tags.size > 0 %} class="children"{% endif %}>
+            <a href="{{ link.url }}">{{ link.title }}</a>
+          </li>
+        {% endfor %}
+        
+        <li>
+          <a class="nav-expand inline-icon--wrapper icon--right" href="#"><span>See more</span>{% render 'theme-icon' with icon: 'plus', iconClasses: 'plus-icon', iconSize: 16 %}</a>
+        </li>
+
+      </ul>
+      <ul class="banner-links--mobile-expanded">
+        {% for link in linklists[banner_linklist].links %}
+          <li {% if link.object.tags and link.object.tags.size > 0 %} class="children"{% endif %}>
+            <a href="{{ link.url }}">{{ link.title }}</a>
+          </li>
+        {% endfor %}
+
+        <li>
+          <a class="nav-collapse inline-icon--wrapper icon--right" href="#"><span>See less</span>{% render 'theme-icon' with icon: 'minus', iconClasses: 'minus-icon', iconSize: 16 %}</a>
+        </li>
+
+      </ul>
+    </nav>
+  {% endif %}
+  </blog-nav-banner>
+
+<script src="{{ 'blog-navigation-banner.js' | asset_url }}" async></script>
+  
+{% style %}
+  blog-nav-banner {
+    display: block;
+  }
+
+  .template--blog_header .title-bar {
+    margin-bottom: 0;
+  }
+
+  #navigation-banner--{{ section.id }}.navigation-banner-wrapper nav {
+    padding: 15px 0;
+  }
+
+  #navigation-banner--{{ section.id }}.navigation-banner-wrapper ul {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    justify-content: {% if section.settings.navigation_position == 'center' %}center{% else %}left{% endif %}
+  }
+
+  #navigation-banner--{{ section.id }}.navigation-banner-wrapper ul li a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-size: var(--base-font-size);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #navigation-banner--{{ section.id }}.navigation-banner-wrapper ul li a span {
+    padding-left: 5px;
+  }
+
+  #navigation-banner--{{ section.id }}.navigation-banner-wrapper ul li {
+    padding: 5px 15px;
+    margin: 5px 15px 5px 0;
+    border-radius: 15px;
+    width: max-content;
+    background-color: {{ section.settings.nav_background_color }};
+  }
+
+  @media (max-width: 767px) {
+    #navigation-banner--{{ section.id }}.navigation-banner-wrapper ul.banner-links--desktop {
+      display: none;
+    }
+
+    #navigation-banner--{{ section.id }}.navigation-banner-wrapper ul.banner-links--mobile-expanded {
+      display: none;
+    }
+  }
+
+  @media (min-width: 768px) {
+    #navigation-banner--{{ section.id }}.navigation-banner-wrapper ul.banner-links--mobile-collapsed,
+    #navigation-banner--{{ section.id }}.navigation-banner-wrapper ul.banner-links--mobile-expanded {
+      display: none !important; /* Using 'important' to override the js inline style on larger screens */
+    }
+  }
+{% endstyle %}
+
+{% schema %}
+{
+  "name": "t:sections.blog--navigation-banner.name",
+  "class": "blog--navigation-banner",
+  "settings": [
+    {
+      "type": "link_list",
+      "id": "banner_linklist",
+      "label": "t:all.Navigation",
+      "default": "footer"
+    },
+    {
+      "type": "color",
+      "id": "nav_background_color",
+      "label": "t:all.Background_color",
+      "default": "#EEEEEE"
+    },
+    {
+      "type": "radio",
+      "id": "navigation_position",
+      "label": "t:sections.blog--navigation-banner.settings.navigation_position.label",
+      "default": "center",
+      "options": [
+        {
+          "value": "left",
+          "label": "t:all.Left"
+        },
+        {
+          "value": "center",
+          "label": "t:all.Center"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.blog--navigation-banner.presets.name"
+    }
+  ],
+  "enabled_on": {
+    "templates": [
+      "blog"
+    ]
+  }
+}
+{% endschema %}

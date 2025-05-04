@@ -1,0 +1,54 @@
+{% comment %}
+    Renders a set of inputs for a gift card recipient
+
+    Usage:
+    {% form 'product' %}
+        {%- render 'ship-gift-card-recipient-form' -%}
+    {% endform %}
+{% endcomment %}
+
+<div class="product__meta--gift-card-recipient">
+    {%- assign gift_card_recipient_control_flag = 'properties[__shopify_send_gift_card_to_recipient]' -%}
+    {%- assign checkbox_label = 'gift_cards.recipient.checkbox' | t -%}
+    <div class="product__send-as-gift">
+        <input type="checkbox" id="show_gift_card_recipient_checkbox" name="{{ gift_card_recipient_control_flag }}" class="focus-visible" v-model="sendAsGift" autocomplete="off" />
+        <label for="show_gift_card_recipient_checkbox">{{ checkbox_label }}</label>
+    </div>
+    {% liquid
+        assign emailInputString = 'gift_cards.recipient.email_label' | t
+        assign emailInputName = 'properties[Recipient email]'
+        assign nameInputString = 'gift_cards.recipient.name_label' | t
+        assign nameInputName = 'properties[Recipient name]'
+        assign msgInputString = 'gift_cards.recipient.message_label' | t
+        assign msgInputName = 'properties[Message]'
+    %}
+    <div class="gift-card--recipient-form-wrapper">
+        
+        <div class="gift-card--recipient-form-input-container">
+            {% liquid
+                assign formId = 'form_' | append: emailInputString | downcase | handleize
+                assign input_attr = 'aria-labelledby="' | append: formId | append: '" data-aid="email-input"'
+                assign emailInputPlaceholder = emailInputString | prepend: ' *'
+            %}
+            {% render 'form-input' with type: 'email', has_label: false, animate_label: false, label_text: emailInputString, id: formId, placeholder: emailInputPlaceholder, name: emailInputName, required: true, attributes: input_attr, disabled: true %}
+        </div>
+        
+        <div class="gift-card--recipient-form-input-container">
+            {% liquid
+                assign formId = 'form_' | append: nameInputString | downcase | handleize
+                assign input_attr = 'aria-labelledby="' | append: formId | append: '" data-aid="name-input"'
+            %}
+            {% render 'form-input' with type: 'text', has_label: false, animate_label: false, label_text: nameInputString, id: formId, placeholder: nameInputString, name: nameInputName, required: false, attributes: input_attr, disabled: true %}
+        </div>
+
+        <div class="gift-card--recipient-form-input-container">
+            {% liquid
+            assign formId = 'form_' | append: msgInputString | downcase | handleize
+            assign input_attr = 'aria-labelledby="' | append: formId | append: '" data-aid="message-input"'
+            assign max_characters = 200
+            assign max_characters_message = 'gift_cards.recipient.max_characters' | t: max: max_characters
+            %}
+            {% render 'form-input--textarea' with has_label: false, animate_label: false, label_text: msgInputString, max_characters: max_characters, secondary_label: max_characters_message, id: formId, placeholder: msgInputString, name: msgInputName, required: false, attributes: input_attr, disabled: true %}
+        </div>
+    </div>
+</div>

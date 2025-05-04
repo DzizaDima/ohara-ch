@@ -1,0 +1,18 @@
+{% comment %}
+  Set the default grid_item_width if no variable is set
+{% endcomment %}
+
+{% case section.settings.items_per_row %}
+{% when 2 %}
+  {% capture grid_item_width %}large--one-half medium--one-half small--one-half{% endcapture %}
+{% when 3 %}
+  {% capture grid_item_width %}large--one-third medium--one-half small--one-half{% endcapture %}
+{% when 4 %}
+  {% capture grid_item_width %}large--one-quarter medium--one-half small--one-half{% endcapture %}
+{% when 5 %}
+  {% capture grid_item_width %}large--one-fifth medium--one-half small--one-half{% endcapture %}
+{% endcase %}
+
+<div class="grid__item {{ grid_item_width }}">
+	{% render 'grid-view-item', product: product, collection: collection, enable_badges: settings.show_badges, grid_count_desktop: section.settings.items_per_row, grid_count_mobile: 2 %}
+</div>

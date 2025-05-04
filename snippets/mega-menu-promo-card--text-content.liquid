@@ -1,0 +1,42 @@
+{%- comment -%}
+  Renders mega-menu promo card text. Accepts: 
+    promo_text_overlay: {Bool} True when the promo-card-text overlaps img. False when it goes below img.
+    promo_text_heading: {String} Heading text.
+    promo_link: {String} Link value.
+    text_color: {String} Color picker hex value.
+    promo_text_subheading: {String} Subheading text.
+    attr: {String} Title/subtitle attributes if needed.
+{%- endcomment -%}
+
+{% liquid
+  assign tag = "span"
+  assign promo_text_hover_classes = ""
+  assign tabindex_attr = ""
+  if promo_link != blank and promo_text_overlay == false
+    assign tag = "a"
+    assign tabindex_attr = " tabindex='-1'"
+    assign promo_text_hover_classes = " nav-link-animated--custom"
+  endif
+
+  assign text_color_attr = ""
+  if text_color != blank
+    assign text_color_attr = " style='color: " | append: text_color | append: ";'"
+  endif
+%}
+
+<div class="mega-menu-promo-text--wrapper">
+
+  <div class="mega-menu-promo-text{{ promo_text_hover_classes }}">
+    {% if promo_text_heading != blank %}
+      <span class="mega-menu-promo-text-content">
+        <{{ tag }} class="h4 mega-menu-promo-title promo-text{% if promo_link != blank %} animated-link--item{% endif %}"{{ attr }}{{ text_color_attr }}{{ tabindex_attr }}>{{ promo_text_heading }}</{{ tag }}>
+      </span>
+    {% endif %}
+    {% if promo_text_subheading != blank %}
+      <span class="mega-menu-promo-text-content">
+        <{{ tag }} class="h5 mega-menu-promo-subtitle promo-text"{{ attr }}{{ text_color_attr }}{{ tabindex_attr }}>{{ promo_text_subheading }}</{{ tag }}>
+      </span>
+    {% endif %}
+  </div>
+
+</div>

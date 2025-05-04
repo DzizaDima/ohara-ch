@@ -1,0 +1,201 @@
+{{ 'section-text-testimonials.min.css' | asset_url | stylesheet_tag: preload: true }}
+<noscript>{{ 'section-text-testimonials.min.css' | asset_url | stylesheet_tag }}</noscript>
+
+{% case section.settings.colors %}
+  {% when 'white' %}
+    {%- assign color_scheme = 'homepage-sections-wrapper--white' -%}
+  {% when 'light' %}
+    {%- assign color_scheme = 'homepage-sections-wrapper--light' -%}
+  {% when 'accent' %}
+    {%- assign color_scheme = 'homepage-sections-wrapper--accent' -%}
+  {% when 'dark' %}
+    {%- assign color_scheme = 'homepage-sections-wrapper--dark' -%}
+{% endcase %}
+
+<div
+  class="homepage-sections-wrapper {{ color_scheme }}{% if section.settings.circle_images %} testimonial--circle-images{% endif %}"
+  data-wetheme-section-type="text--testimonials" data-wetheme-section-id="{{ section.id }}"
+>
+
+<div class="wrapper show-on-scroll">
+
+  {% if section.settings.title != blank %}
+    <div class="sitewide--title-wrapper">
+
+      <h2 class="homepage-sections--title">{{ section.settings.title | escape }}</h2>
+    </div>
+  {% endif %}
+
+  <div class="testimonials-block">
+
+    {% for block in section.blocks %}
+      {%- assign testimonial_has_link = false -%}
+      {% if block.settings.link != blank %}
+        {%- assign testimonial_has_link = true -%}
+      {% endif %}
+
+      <div class="testimonial--single-item" {{ block.shopify_attributes }}>
+
+        {% if testimonial_has_link %}
+          <a href="{{ block.settings.link }}">
+        {% endif %}
+
+        {% if block.settings.image != blank %}
+          <div class="testimonial-section--image">
+            {% assign img_alt =  block.settings.image.alt | escape | default: shop.name %}
+            {% render 'responsive-image' with block.settings.image, alt: img_alt, crop: 'center', default_size: '200x200', force_height: 200, force_aspect: 1, allow_stretch: true %}
+          </div>
+        {% endif %}
+
+        {% if testimonial_has_link %}
+          </a>
+        {% endif %}
+
+        {% if block.settings.stars > 0 %}
+          {% if testimonial_has_link %}
+            <a href="{{ block.settings.link }}">
+          {% endif %}
+
+          <div class="testimonials--star-wrapper inline-icon--wrapper">
+            {% assign star_total = block.settings.stars %}
+            {% for i in (1..star_total) %}
+              {% render 'theme-icon' with icon: 'star-filled', iconAttributes: 'aria-hidden="true"', iconSize: 20 %}
+            {% endfor %}
+          </div>
+
+          {% if testimonial_has_link %}
+            </a>
+          {% endif %}
+        {% endif %}
+
+        {% if block.settings.testimonial_text != blank %}
+          <div class="testimonials--text-wrapper text-inline-link-animated">
+            {{ block.settings.testimonial_text }}
+          </div>
+        {% endif %}
+
+        {% if block.settings.customer_name != blank %}
+          {% if testimonial_has_link %}
+            <a href="{{ block.settings.link }}">
+          {% endif %}
+
+          <span class="testimonials--customer-name">{{ block.settings.customer_name | escape }}</span>
+
+          {% if testimonial_has_link %}
+            </a>
+          {% endif %}
+        {% endif %}
+
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.text--testimonials.name",
+  "class": "homepage-section--testimonials-wrapper",
+  "settings": [
+    {
+      "type": "select",
+      "id": "colors",
+      "label": "t:all.Color_scheme",
+      "default": "white",
+      "options": [
+        {
+          "value": "white",
+          "label": "t:all.Minimal"
+        },
+        {
+          "value": "light",
+          "label": "t:all.Light"
+        },
+        {
+          "value": "accent",
+          "label": "t:all.Feature"
+        },
+        {
+          "value": "dark",
+          "label": "t:all.Dark"
+        }
+      ]
+    },
+    {
+      "type": "checkbox",
+      "id": "circle_images",
+      "label": "t:sections.text--testimonials.settings.circle_images.label",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "t:all.Heading",
+      "default": "Testimonials"
+    }
+  ],
+  "max_blocks": 4,
+  "blocks": [
+    {
+      "type": "text",
+      "name": "t:all.Testimonial",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "t:all.Image",
+          "info": "t:sections.text--testimonials.blocks.text.settings.image.info"
+        },
+        {
+          "type": "richtext",
+          "id": "testimonial_text",
+          "label": "t:all.Text"
+        },
+        {
+          "type": "text",
+          "id": "customer_name",
+          "label": "t:sections.text--testimonials.blocks.text.settings.customer_name.label",
+          "info": "t:all.Optional"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "t:all.Link",
+          "info": "t:all.Optional"
+        },
+        {
+          "type": "range",
+          "id": "stars",
+          "min": 0,
+          "max": 5,
+          "step": 1,
+          "label": "t:sections.text--testimonials.blocks.text.settings.stars.label",
+          "default": 0
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.text--testimonials.presets.name",
+      "blocks": [
+        {
+          "type": "text",
+          "settings": {
+            "testimonial_text": "<p>\"Show off incredible feedback from your customers\"</p>",
+            "customer_name": "John Smith",
+            "stars": 5
+          }
+        }
+      ]
+    }
+  ],
+  "disabled_on": {
+    "groups": [
+      "header",
+      "footer"
+    ]
+  }
+}
+{% endschema %}

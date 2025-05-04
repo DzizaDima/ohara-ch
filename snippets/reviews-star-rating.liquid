@@ -1,0 +1,87 @@
+{% if rating_product.metafields.reviews.rating.value == blank %}
+  {% assign no_reviews = true %}
+{% endif %}
+
+{% assign show_empty_reviews = false %}
+{% if rating_product.metafields.reviews.rating.value == blank and show_product_rating_if_no_reviews == true %}
+  {% assign show_empty_reviews = true %}
+{% endif %}
+
+{% case color_scheme %}
+  {% when 'light' %}
+    {% assign star_rating_color = settings.colorSchemeLightText %}
+  {% when 'accent' %}
+    {% assign star_rating_color = settings.homepage-sections-accent-secondary-color %}
+  {% when 'dark' %}
+    {% assign star_rating_color = settings.colorSchemeDarkText %}
+  {% else %}
+    {% assign star_rating_color = settings.star_rating_color %}
+{% endcase %}
+
+{% assign empty_star_color = star_rating_color | color_modify: 'alpha', 0.15 %}
+
+{% liquid
+  assign rating_value = rating_product.metafields.reviews.rating.value.rating
+  assign rating_value_rounded = rating_value | round: 1
+  assign rating_max = rating_product.metafields.reviews.rating.value.scale_max
+  assign rating_decimal = 0
+  assign decimal = rating_value | modulo: 1
+  if decimal >= 0.3 and decimal <= 0.7
+    assign rating_decimal = 0.5
+  elsif decimal > 0.7
+    assign rating_decimal = 1
+  endif
+
+  assign full_stars = rating_value | floor | plus: rating_decimal | floor
+  assign empty_stars = rating_max | round | minus: full_stars
+  if rating_decimal == 0.5
+    assign empty_stars = empty_stars | minus: 1
+  endif
+%}
+
+{% if no_reviews %}
+  {% unless show_empty_reviews == false %}
+    <div class="reviews-star-rating no-rating{% if classes %} {{ classes }}{% endif %}">
+      <div class="reviews-star-rating__stars" role="img" aria-label="{{ 'products.product.no_reviews' | t }}">
+        {% for i in (1..5) %}
+          {% render 'theme-icon' with icon: 'star-filled', iconColor: empty_star_color, iconSize: star_size %}
+        {% endfor %}
+      </div>
+      <span>
+        {{ no_reviews_label }}
+      </span>
+    </div>
+  {% endunless %}
+{% else %}
+  <div class="reviews-star-rating has-rating{% if classes %} {{ classes }}{% endif %}">
+    <div class="reviews-star-rating__stars" role="img" aria-label="{{ 'products.product.reviews_rating' | t: value: rating_value_rounded, max: rating_max }}">
+      {% if full_stars > 0 %}
+        {% for i in (1..full_stars) %}
+          {% render 'theme-icon' with icon: 'star-filled', iconColor: star_rating_color, iconSize: star_size %}
+        {% endfor %}
+      {% endif %}
+
+      {% if rating_decimal == 0.5 %}
+        {% render 'theme-icon' with icon: 'star-half-filled', iconColor: star_rating_color, iconSize: star_size %}
+      {% endif %}
+
+      {% if empty_stars > 0 %}
+        {% for i in (1..empty_stars) %}
+          {% render 'theme-icon' with icon: 'star-filled', iconColor: empty_star_color, iconSize: star_size %}
+        {% endfor %}
+      {% endif %}
+    </div>
+    <span class="reviews-star-rating__value-reviews">
+      {% if show_rating_as == 'count' %}
+        {{ rating_product.metafields.reviews.rating_count }}
+        {% if rating_product.metafields.reviews.rating_count == 1 %} 
+          {{ 'products.product.review' | t }}
+        {% else %}
+          {{ 'products.product.reviews' | t }}
+        {% endif %}
+      {% elsif show_rating_as == 'average_rating' %}
+        ({{ rating_value_rounded }})
+      {% endif %}
+    </span>
+  </div>
+{% endif %}

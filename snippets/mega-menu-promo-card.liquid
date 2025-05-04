@@ -1,0 +1,76 @@
+{%- comment -%}
+  Renders a promo mega-menu card. Accepts: 
+    promo_wrapper_classes: {String} Wrapper classes.
+    promo_block_id: {String} Shopify block id.
+    promo_wrapper_attr: {String} Wrapper attributes.
+    promo_img: {Obj} Shopify image obj.
+    promo_img_crop: {String} Image aspect-ratio value. Options are: "saquare", "tall", "wide" or "natural".
+    promo_text_overlay: {Bool} When true, promo text overlays img.
+    promo_text_heading: {String} Heading text.
+    promo_text_subheading:{String} Subheading text.
+    promo_text_color: {String} Color picker hex value.
+    promo_link: {String} Link value.
+    promo_mobile_nav: {Bool} Whether the promo card is included on the mobile nav drawer or not.
+{%- endcomment -%}
+
+{% liquid
+
+  assign promo_wrapper_classes = "mega-menu-promo-card " | append: promo_wrapper_classes | append: " block-id-" | append: promo_block_id
+
+  assign promo_text = false
+  if promo_text_heading != blank or promo_text_subheading != blank
+    assign promo_text = true
+  endif
+
+  assign promo_layout_classes = ""
+  if promo_text and promo_text_overlay == false
+    assign promo_layout_classes = " has-promo-text--below-img"
+  endif
+
+  assign promo_img_props = "style='max-width: '" | append: promo_img.width | append: 'px;'
+
+  assign promo_img_alt = promo_img.alt | default: promo_text_heading | default: shop.name
+  assign promo_img_alt = promo_img_alt | escape
+
+  assign tag = "div"
+  assign accessibility_attr = ""
+  if promo_link != blank
+    assign tag = "a"
+    assign attr = "href='" | append: promo_link | append: "'"
+    assign sr-announcement = promo_img.alt | append: " " | append: promo_text_heading | append: " " | append: promo_text_subheading
+    assign accessibility_attr = " tabindex='0' aria-label='" | append: sr-announcement | append: "'"
+    assign promo_img_props = promo_img_props | append: " tabindex='-1' "
+  endif
+
+  assign img_crop = ""
+  assign img_stretch = false
+  if promo_img_crop != "natural"
+    assign img_crop = " mega-menu-aspect-ratio" | append: " aspect-ratio--" | append: promo_img_crop
+    assign img_stretch = true
+  endif
+%}
+
+
+<li class="{{ promo_wrapper_classes }}" {{ promo_wrapper_attr }}>
+  <div class="inner mega-menu--image-wrapper">
+    <div class="mega-menu-promo{{ promo_layout_classes }}">
+
+      <{{ tag }} class="mega-menu-promo-wrapper{% if promo_link != blank %} nav-link-animated--custom{% endif %}"{{ attr }}{{ accessibility_attr }}>
+
+        <div class="mega-menu-promo-image{{ img_crop }}">
+          {% render 'responsive-image' with promo_img, allow_stretch: img_stretch, alt: promo_img_alt, props: promo_img_props %}
+        </div>
+
+        {% if promo_text != blank and promo_text_overlay %}
+          {% render 'mega-menu-promo-card--text-content' with promo_text_heading: promo_text_heading, promo_link: promo_link, promo_text_subheading: promo_text_subheading, promo_text_overlay: promo_text_overlay, text_color: promo_text_color %}
+        {% endif %}
+    
+      </{{ tag }}>
+
+      {% if promo_text != blank and promo_text_overlay == false %}
+        {% render 'mega-menu-promo-card--text-content' with promo_text_heading: promo_text_heading, promo_link: promo_link, promo_text_subheading: promo_text_subheading, promo_text_overlay: promo_text_overlay, attr: attr %}
+
+      {% endif %}
+    </div>
+  </div>
+</li>

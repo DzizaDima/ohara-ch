@@ -1,0 +1,142 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "product-form": {
+      "type": "template--product",
+      "blocks": {
+        "title": {
+          "type": "title",
+          "settings": {
+            "title_font": "h1",
+            "margin_bottom": 0
+          }
+        },
+        "price": {
+          "type": "price",
+          "settings": {
+            "price_font": "h3",
+            "shipping_policy": false,
+            "tax_included": false,
+            "margin_bottom": 20
+          }
+        },
+        "f0f0e917-92a5-4957-a68e-2d0bb38d7819": {
+          "type": "separator",
+          "settings": {
+            "margin_bottom": 40
+          }
+        },
+        "options": {
+          "type": "options",
+          "settings": {
+            "hide_out_of_stock_variants": false,
+            "variant_style": "swatches",
+            "thumbnail_changes_variant": false,
+            "size_guide_page": "",
+            "size_option_name": "Size",
+            "margin_bottom": 30
+          }
+        },
+        "quantity": {
+          "type": "quantity",
+          "settings": {
+            "margin_bottom": 40
+          }
+        },
+        "a7717974-ed85-4cde-80ef-4751178acf57": {
+          "type": "text-with-icon",
+          "settings": {
+            "icon": "clock",
+            "text": "Instant email delivery",
+            "link": "",
+            "margin_bottom": 10
+          }
+        },
+        "3dee115e-1389-46ac-8cd5-1583cfd9f4dc": {
+          "type": "text-with-icon",
+          "settings": {
+            "icon": "wallet",
+            "text": "Secure checkout",
+            "link": "",
+            "margin_bottom": 30
+          }
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_smart_checkout": true,
+            "enable_gift_card_recipient_form": true,
+            "margin_bottom": 20
+          }
+        },
+        "a55b9011-1b1a-4353-9d97-7bdcd60949f2": {
+          "type": "product-description",
+          "settings": {
+            "collapsible_tab": false,
+            "icon": "none",
+            "heading": "Description",
+            "open_close_icon": "plus_minus",
+            "margin_bottom": 20
+          }
+        },
+        "b3864090-4f25-4db2-bddb-c549e9472be6": {
+          "type": "collapsible-tab",
+          "settings": {
+            "icon": "none",
+            "open_close_icon": "caret",
+            "page": "",
+            "open_by_default": false,
+            "margin_bottom": 40
+          }
+        },
+        "4fdb087c-4728-4785-b270-a71a092b7898": {
+          "type": "social_sharing",
+          "settings": {
+            "margin_bottom": 20
+          }
+        }
+      },
+      "block_order": [
+        "title",
+        "price",
+        "f0f0e917-92a5-4957-a68e-2d0bb38d7819",
+        "options",
+        "quantity",
+        "a7717974-ed85-4cde-80ef-4751178acf57",
+        "3dee115e-1389-46ac-8cd5-1583cfd9f4dc",
+        "buy_buttons",
+        "a55b9011-1b1a-4353-9d97-7bdcd60949f2",
+        "b3864090-4f25-4db2-bddb-c549e9472be6",
+        "4fdb087c-4728-4785-b270-a71a092b7898"
+      ],
+      "settings": {
+        "enable_sticky": true,
+        "show_out_of_stock_email": true,
+        "image_size": "medium",
+        "image-display": "thumbnails",
+        "thumbnail_position": "left",
+        "enable_video_loop": true,
+        "app_margin_bottom": 20
+      }
+    },
+    "product-description": {
+      "type": "template--product--description",
+      "disabled": true,
+      "settings": {
+        "enable_readmore": false
+      }
+    }
+  },
+  "order": [
+    "product-form",
+    "product-description"
+  ]
+}

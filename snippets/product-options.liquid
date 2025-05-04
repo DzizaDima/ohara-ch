@@ -1,0 +1,59 @@
+{% comment %}
+Dropdowns or swatches for product
+
+Parameters:
+* section_id: id of a section
+* variant_style: 'dropdowns' | 'swatches'
+{% endcomment %}
+
+{% assign hide_default_title = false %}
+{% if product.variants.size == 1 and product.variants.first.title contains 'Default' %}
+  {% assign hide_default_title = true %}
+{% endif %}
+
+{% if product.variants.size > 0 %}
+  <div {% if classes %}{{ classes }} {% endif %}{% if block_attributes %}{{ block_attributes }}{% endif %}>
+    {% if variant_style == 'dropdowns' %}
+
+      {% for option in product.options_with_values %}
+
+        {% assign option_index = forloop.index0 %}
+
+        <div class="selector-wrapper js{% if hide_default_title == true %} hide{% endif %}">
+          {%- render 'variant-dropdown',
+            option_index: option_index,
+            forloop_index: forloop.index,
+            forloop_index0: forloop.index0,
+            dropdown_option: option,
+            dropdown_product: product,
+            size_option_name: size_option_name,
+            size_guide_page: size_guide_page,
+            hide_out_of_stock_variants: hide_out_of_stock_variants
+          -%}
+        </div>
+      {% endfor %}
+
+    {% else %}
+
+      {% if hide_default_title == false %}
+        {% for option in product.options %}
+          {% render 'swatch' with option, product: product, size_option_name: size_option_name, size_guide_page: size_guide_page, hide_out_of_stock_variants: hide_out_of_stock_variants %}
+        {% endfor %}
+      {% endif %}
+
+    {% endif %}
+  </div>
+{% endif %}
+
+
+<select name="id" id="productSelect-{{ section.id }}" data-section="{{ section.id }}" class="product-single__variants original-select no-js" autocomplete="off" v-model="variant && variant.id">
+  {% for variant in product.variants %}
+    {% if variant.available %}
+      <option {% if variant.id == current_variant.id %} selected {% endif %} value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money_with_currency }}</option>
+    {% else %}
+      <option value="{{ variant.id }}" disabled>
+        {{ variant.title }} - {{ 'products.product.sold_out' | t }}
+      </option>
+    {% endif %}
+  {% endfor %}
+</select>

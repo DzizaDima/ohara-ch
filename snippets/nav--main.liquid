@@ -1,0 +1,137 @@
+{% liquid 
+  assign menu = linklists[section.settings.main_linklist]
+%}
+
+{% if settings.header-border-color != 'rgba(0,0,0,0)' %}
+  {% style %}
+    .site-nav__dropdown.mega-menu-dropdown {
+      top: calc(100% + 1px);
+    }
+  {% endstyle %}
+{% endif %}
+
+{% for link in menu.links %}
+
+  {% if link.links != blank %}
+    {% assign link-title = link.title | strip | downcase %}
+    {% assign is-mega-menu = false %}
+
+    {% if mega_menu %}
+      {% for block in section.blocks %}
+        {% assign block-title = block.settings.mega-menu | strip | downcase %}
+        {% if block-title == link-title %}
+          {% assign is-mega-menu = true %}
+          {% assign mega-menu-block = block %}
+        {% endif %}
+      {% endfor %}
+    {% endif %}
+
+    <li class="site-nav--has-dropdown first-level-dropdown {% if is-mega-menu %} mega-menu{% endif %}" aria-haspopup="true">
+      <a href="{{ link.url }}" class="site-nav__link">
+        <div class="site-nav--link-wrapper">
+          <span class="site-nav--link-text animated-underline">
+            {{ link.title }}
+          </span>
+        </div>
+      </a>
+
+      {% liquid 
+        assign has_subdropdowns = false
+        for sub_link in link.links
+          if sub_link.levels > 0
+            assign has_subdropdowns = true
+          endif
+        endfor
+      %}
+
+      <ul 
+        class="site-nav__dropdown{% unless is-mega-menu %} standard-dropdown{% else %} mega-menu-dropdown{% endunless %}{% if request.design_mode %} theme-editor-active{% endif %}{% if has_subdropdowns %} has--subdropdowns{% endif %}"
+        data-logo-placement="{{ logo_position }}"
+      >
+        {% if is-mega-menu %}
+
+          <div class="container">
+            {% render 'mega-menu' with mega-menu-block, link: link %}
+          </div>
+
+        {% else %}
+          {% for sub_link in link.links %}
+          {% if sub_link.levels > 0 %}
+              <li class="site-nav--has-dropdown" aria-haspopup="true">
+                <a href="{{ sub_link.url }}" class="site-nav__link">
+                  <div class="site-nav--link-wrapper inline-icon--wrapper icon--right">
+                    <div>
+                      <span class="site-nav--link-text animated-underline">
+                        {{ sub_link.title | escape }}
+                      </span>
+                    </div>
+                    <span class="site-nav--link-icon">{% render 'theme-icon' with icon: 'chevron_right' %}</span>
+                  </div>
+                </a>
+                <ul class="site-nav__subdropdown">
+                  {% for sub_sub_link in sub_link.links %}
+                    <li>
+                  <a href="{{ sub_sub_link.url }}" class="site-nav__link">
+                    <div class="site-nav--link-wrapper">
+                      <div>
+                        <span class="site-nav--link-text animated-underline">
+                          {{ sub_sub_link.title | escape }}
+                        </span>
+                      </div>
+                    </div>
+                  </a>
+                    </li>
+                  {% endfor %}
+                </ul>
+              </li>
+            {% else %}
+              <li>
+                <a href="{{ sub_link.url }}" class="site-nav__link">
+                  <div class="site-nav--link-wrapper">
+                    <div>
+                      <span class="site-nav--link-text animated-underline">
+                        {{ sub_link.title | escape }}
+                      </span>
+                    </div>
+                  </div>
+                </a>
+              </li>
+            {% endif %}
+          {% endfor %}
+          {% endif %}
+      </ul>
+    </li>
+
+  {% else %}
+    {% assign link-title = link.title | strip | downcase %}
+    {% assign is-mega-menu = false %}
+
+    {% if mega_menu %}
+      {% for block in section.blocks %}
+        {% assign block-title = block.settings.mega-menu | strip | downcase %}
+        {% if block-title == link-title %}
+          {% assign is-mega-menu = true %}
+          {% assign mega-menu-block = block %}
+        {% endif %}
+      {% endfor %}
+    {% endif %}
+
+    <li class="first-level-dropdown{% if is-mega-menu %} site-nav--has-dropdown mega-menu{% endif %}" {% if is-mega-menu %}aria-haspopup="true"{% endif %}>
+      <a href="{{ link.url }}" class="site-nav__link">
+        <div class="site-nav--link-wrapper">
+          <span class="site-nav--link-text animated-underline">
+            {{ link.title }}
+          </span>
+        </div>
+      </a>
+
+      {% if is-mega-menu %}
+        <ul class="site-nav__dropdown{% unless is-mega-menu %} standard-dropdown{% else %} mega-menu-dropdown{% endunless %}{% if request.design_mode %} theme-editor-active{% endif %}">
+          <div class="container">
+            {% render 'mega-menu' with mega-menu-block, link: link %}
+          </div>
+        </ul>
+      {% endif %}
+    </li>
+  {% endif %}
+{% endfor %}

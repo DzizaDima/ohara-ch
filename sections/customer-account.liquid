@@ -1,0 +1,125 @@
+<!-- /sections/customer-account.liquid -->
+{% comment %}
+
+  For all available customer liquid tags:
+    - http://docs.shopify.com/themes/liquid-variables/customer
+
+{% endcomment %}
+
+<div class="wrapper-padded">
+  <div class="grid page-main--wrapper">
+
+  <div class="grid__item">
+    <div class="sitewide--title-wrapper">
+      
+      <h1 class="page--title">{{ 'customer.account.title' | t }}</h1>
+    </div>
+  </div>
+
+    <div class="grid__item two-thirds medium-down--one-whole">
+      <h4 class="account--sub-title">{{ 'customer.orders.title' | t }}</h4>
+
+      {% comment %}
+        If we have past orders, loop through each one
+      {% endcomment %}
+      {% paginate customer.orders by 20 %}
+        {% if customer.orders.size != 0 %}
+
+          <div class="table-wrap">
+            <table class="full table--responsive account-area--order-details">
+              <thead>
+                <tr>
+                  <th>{{ 'customer.orders.order_number' | t }}</th>
+                  <th>{{ 'customer.orders.date' | t }}</th>
+                  <th>{{ 'customer.orders.payment_status' | t }}</th>
+                  <th>{{ 'customer.orders.fulfillment_status' | t }}</th>
+                  <th>{{ 'customer.orders.total' | t }}</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for order in customer.orders %}
+                  <tr class="text-link-animated">
+                    <td data-label="{{ 'customer.orders.order_number' | t }}">{{ order.name | link_to: order.customer_url }}</td>
+                    <td data-label="{{ 'customer.orders.date' | t }}">{{ order.created_at | time_tag: format: 'date' }}</td>
+                    <td data-label="{{ 'customer.orders.payment_status' | t }}">{{ order.financial_status_label }}{% if order.financial_status_label == 'Refunded' or order.financial_status_label == 'Partially refunded' %} <span class="money">{{ order.total_refunded_amount | money }}</span>{% endif %}</td>
+                    <td data-label="{{ 'customer.orders.fulfillment_status' | t }}">{{ order.fulfillment_status_label }}</td>
+                    <td data-label="{{ 'customer.orders.total' | t }}">
+                      {% if order.financial_status_label == 'Refunded' or order.financial_status_label == 'Partially refunded' %}
+                        <span class="money order--refunded-total">{{ order.total_price | money }}</span>
+                        <span class="money">{{ order.total_price | minus: order.total_refunded_amount | money }}</span>
+                      {% else %}
+                        <span class="money">{{ order.total_price | money }}</span>
+                      {% endif %}
+                    </td>
+                  </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+
+        {% else %}
+
+          <p>{{ 'customer.orders.none' | t }}</p>
+
+        {% endif %}
+        {% if paginate.pages > 0 %}
+          <hr>
+          <div class="pagination">
+            {{ paginate | default_pagination | replace: '&laquo; Previous', '&larr;' | replace: 'Next &raquo;', '&rarr;' }}
+          </div>
+        {% endif %}
+      {% endpaginate %}
+    </div>
+
+    <div class="grid__item one-third medium-down--one-whole">
+      <h4 class="account--sub-title">{{ 'customer.account.details' | t }}</h4>
+
+      <h5 class="account-customer-name">{{ customer.name }}</h5>
+
+      {% if customer.default_address != nil %}
+        <p>
+        {{ customer.default_address.address1 }}<br>
+
+        {% if customer.default_address.address2 != "" %}
+          {{ customer.default_address.address2 }}<br>
+        {% endif %}
+
+        {% if customer.default_address.city != "" %}
+          {{ customer.default_address.city }}<br>
+        {% endif %}
+
+        {% if customer.default_address.province_code != "" %}
+          {{ customer.default_address.province_code | upcase }}<br>
+        {% endif %}
+
+        {% if customer.default_address.zip != "" %}
+          {{ customer.default_address.zip | upcase }}<br>
+        {% endif %}
+
+        {% if customer.default_address.country != "" %}
+          {{ customer.default_address.country }}<br>
+        {% endif %}
+
+        {% if customer.default_address.phone != "" %}
+          {{ customer.default_address.phone }}
+        {% endif %}
+        </p>
+
+      {% endif %}
+
+      <p class="text-link-animated"><a href="{{ routes.account_addresses_url }}">{{ 'customer.account.view_addresses' | t }} ({{ customer.addresses_count }})</a></p>
+
+      <a href="{{ routes.account_logout_url }}" class="btn account-section--btn account-logout--btn">{{ 'layout.customer.log_out' | t }}</a>
+    </div>
+
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.customer-account.name",
+  "settings": [
+
+  ]
+}
+{% endschema %}

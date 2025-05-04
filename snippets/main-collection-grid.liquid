@@ -1,0 +1,135 @@
+{% assign display-total-collection-products-number-rows = desktop_products_per_row %}
+{% assign display-total-collection-products-per-row = products_per_page %}
+
+{% assign display-total-collection-products-total = display-total-collection-products-number-rows | times: display-total-collection-products-per-row %}
+
+{% paginate collection.products by display-total-collection-products-total %}
+
+  {%- capture pagination_list -%}
+    <ul>
+      {% if paginate.previous %}
+        <li class="pagination-arrow"><a class="standalone-icon--wrapper" aria-label="{{ 'general.accessibility.pagination.previous' | t }}" href="{{ paginate.previous.url }}">
+          {% render 'theme-icon', icon: 'chevron_left', iconSize: 20 %}
+        </a></li>
+      {% else %}
+        <li class="prev disabled"><a href="#" onclick="return false;">&laquo;</a></li>
+      {% endif %}
+
+      {% for part in paginate.parts %}
+        {% if part.is_link %}
+          <li class="pagination-number">{{ part.title | link_to: part.url }}</li>
+        {% else %}
+          {% if part.title == '&hellip;' %}
+            <li class="ellipsis">{{ part.title }}</li>
+          {% else %}
+            <li class="active pagination-number">{{ part.title | link_to: part.url }}</li>
+          {% endif %}
+        {% endif %}
+      {% endfor %}
+
+      {% if paginate.next %}
+        <li class="pagination-arrow pagination-next"><a class="standalone-icon--wrapper" aria-label="{{ 'general.accessibility.pagination.next' | t }}" href="{{ paginate.next.url }}">
+          {% render 'theme-icon', icon: 'chevron_right', iconSize: 20 %}
+        </a></li>
+      {% else %}
+        <li class="next disabled"><a href="#" onclick="return false;">&raquo;</a></li>
+      {% endif %}
+    </ul>
+  {%- endcapture -%}
+
+  {% capture paginate_style %}
+    {% if paginate.pages > 1 %}
+      {% if pagination_options == 'pagination_infinite_scrolling' %}
+        <div style="display: none" class="pagination-loading">
+          {% render 'theme-icon' with icon: 'circle-notch', iconClasses: 'spin flex-full', icon_fill: settings.color_primary_button_text, iconSize: '20' %}
+          <span class="sr-only">{{ 'collections.paginate.load_more' | t }}</span>
+        </div>
+        <noscript>
+          <div class="noscript-pagination">
+            {{ pagination_list }}
+          </div>
+        </noscript>
+      {% endif %}
+
+      <div
+        class="pagination{% if pagination_options == 'pagination_infinite_scrolling' %} pagination-infinite{% elsif pagination_options == 'pagination_load_more' %} pagination--load-more{% endif %}"
+        data-paginate-items="{{ paginate.items }}"
+        data-paginate-offset="{{ paginate.current_offset }}"
+        data-paginate-size="{{ paginate.page_size }}"
+      >
+        {{ pagination_list }}
+      </div>
+    {% endif %}
+  {% endcapture %}
+
+{% case desktop_products_per_row %}
+  {% when 2 %}
+    {% assign desktop_item_width = 'large--one-half wow fadeInUp' %}
+  {% when 3 %}
+    {% assign desktop_item_width = 'large--one-third wow fadeInUp' %}
+  {% when 4 %}
+    {% assign desktop_item_width = 'large--one-quarter wow fadeInUp' %}
+  {% when 5 %}
+    {% assign desktop_item_width = 'large--one-fifth wow fadeInUp' %}
+  {% when 6 %}
+    {% assign desktop_item_width = 'large--one-sixth wow fadeInUp' %}
+{% endcase %}
+
+{% assign tablet_item_width = 'medium--one-half' %}
+
+{% case mobile_products_per_row %}
+  {% when "1" %}
+    {% assign mobile_item_width = 'small--one-whole' %}
+  {% when "2" %}
+    {% assign mobile_item_width = 'small--one-half' %}
+{% endcase %}
+
+{%- assign grid_item_width = desktop_item_width | append: ' ' | append: tablet_item_width | append: ' ' | append: mobile_item_width -%}
+
+  <div
+    id="CollectionProductGrid"
+    data-section-id="{{ section.id }}"
+    class="{{ classes }}"
+    data-wetheme-section-type="template--collection"
+    data-wetheme-section-id="{{ section.id }}"
+  >
+
+    <div class="collection-style--grid">
+      <div class="collection-main-body grid-uniform">
+
+        <input type="hidden" id="grid_item_width_classes" value="{{ grid_item_width }}" />
+
+        <div
+          class="collection-main-body-inner product-grid--wrapper"
+          data-grid-id="{{ section.id }}"
+          id="template--collection"
+        >
+          {% for product in collection.products %}
+            <div class="grid__item {{ grid_item_width }}">
+              {% render 'grid-view-item', product: product, collection: collection, enable_badges: settings.show_badges, grid_count_desktop: desktop_products_per_row, grid_count_mobile: mobile_products_per_row %}
+            </div>
+          {% else %}
+            {% if collection.handle == 'all' and collection.all_vendors.size == 0 and collection.all_types.size == 0 %}
+              {% for i in (1..display-total-collection-products-total) %}
+                {% capture svg_index %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}
+                {% capture svg_index_reversed %}{% cycle 6, 5, 4, 3, 2, 1 %}{% endcapture %}
+                <div class="grid__item {{ grid_item_width }}">
+                  {% render 'grid-view-item-placeholder', svg_index: svg_index, svg_index_reversed: svg_index_reversed %}
+                </div>
+              {% endfor %}
+            {% else %}
+              {% comment %}
+                If collection exists but is empty, display message
+              {% endcomment %}
+              <div class="grid__item">
+                <p>{{ 'collections.general.no_matches' | t }}</p>
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+    {{ paginate_style }}
+  </div>
+
+{% endpaginate %}

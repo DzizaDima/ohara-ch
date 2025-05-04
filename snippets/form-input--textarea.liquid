@@ -1,0 +1,77 @@
+{% comment %}
+    Renders a textarea
+
+    Accepts:
+    - has_label: {Boolean} use if the input should be accompanied by a label
+    - animate_label: {Boolean} use if you want to animate label on input focus
+    - label_text: {String} the text to display as the label
+    - label_class: {String} any custom classes for the label element
+    - max_characters: {Number} the maximum number of characters allowed in the textarea (optional)
+    - secondary_label: {String} the text to display as a secondary label. The label will be positioned below the textarea (optional)
+    - container_classes: {String} add custom classes to the container
+    - id: {String} ID to be applied to the input
+    - classes: {String} custom classes to be applied to the input (optional)
+    - placeholder: {String} use if you want to show placeholder text for the input
+    - name: {String} the name attribute of the input
+    - attributes: {String} add custom element attributes (data-* or aria)
+    - required: {Boolean} use if the input cannot be submitted unless a value is provided
+    - rows: {Number} The number of visible text lines for the textarea.
+    - content: {String} textarea content. To be used along with 'form.body' or 'cart.note' if needed
+    - data_aid: {String} data aid for the textarea
+    - disabled: {Boolean} determines whether the input is disabled or not
+
+    Usage:
+      {% render 'form-input--textarea' with id: 'contact-form--message', classes: 'py-3', placeholder: 'Message', name: 'contact[body]', attributes: 'aria-label="Message"', required: true, content: form.body  %}
+      {% render 'form-input--textarea' with id: 'cart-note', classes: 'py-3', has_label: true, label_text: 'Gift note', name: 'note', attributes: 'aria-label="Special instructions"', required: true, rows: 20, content: cart.note %}
+
+    Usage with animate_label:
+      {% render 'form-input--textarea' with id: 'contact-form--message', has_label: true, animate_label: true, label_text: 'Message', classes: 'w-full', name: 'contact[body]', attributes: 'aria-label="Message"', required: true, rows: 10, content: form.body %}
+{% endcomment %}
+
+{% capture label %}
+  <label {% if label_class %}class="{{ label_class }}" {% endif %}{% if id %}for="{{ id }}" {% endif %}{% if animate_label %}animate-label{% endif %}>{{ label_text }}</label>
+{% endcapture %}
+
+{% unless animate_label %}
+  {% if has_label %}
+    {{ label }}
+  {% endif %}
+{% endunless %}
+
+{% if secondary_label or container_classes %}
+  <div {% if container_classes %}class="{{ container_classes }}"{% endif %}>
+{% endif %}
+
+{% if animate_label %}
+  <div>
+{% endif %}
+
+<textarea
+  name="{{ name }}" 
+  {% if classes %}class="{{ classes }}"{% endif %} 
+  placeholder="{{ placeholder }}" 
+  {% if animate_label %} animate-label{% endif %}
+  {% if id %} id="{{ id }}"{% endif %}
+  {% if attributes %} {{ attributes }}{% endif %}
+  {% if required %} required="required"{% endif %}
+  rows="{{ rows | default: 10 }}"
+  {% if max_characters %}maxlength="{{ max_characters }}"{% endif %}
+  {% if data_aid %}data-aid="{{ data_aid }}"{% else %}data-aid="textarea"{% endif %}
+  {% if disabled %}disabled{% endif %}
+>{% if content %}{{ content }}{% endif %}</textarea>
+
+{% if has_label and animate_label == true %}
+  {{ label }}
+{% endif %}
+
+{% if animate_label %}
+  </div>
+{% endif %}
+
+{% if secondary_label %}
+  <label>{{ secondary_label }}</label>
+{% endif %}
+
+{% if secondary_label or container_classes %}
+  </div>
+{% endif %}

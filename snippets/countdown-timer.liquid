@@ -1,0 +1,179 @@
+{%- liquid
+
+  assign max_days = 999
+  assign max_days_length = max_days | append: "" | size
+
+  assign now_timestamp = 'now' | date: '%s' | times: 1000
+
+  # Calculate seven days from now (for placeholder before inputs are entered)
+
+  assign placeholder_time = 86400000 | times: 7
+  assign placeholder_timestamp = now_timestamp | plus: placeholder_time
+  assign placeholder_end_date = placeholder_timestamp | divided_by: 1000 | date: '%m-%d-%Y %H:%M:%S'
+
+  # If inputs are blank, set the timer end to the placeholder end
+
+  if end_date_setting == blank and end_time_setting == blank
+    assign end_date_input = placeholder_end_date | split: ' ' | first
+    assign end_time_input = placeholder_end_date | split: ' ' | last
+  else
+    assign end_date_input = end_date_setting
+    assign end_time_input = end_time_setting
+  endif
+
+  # Date data for web component
+
+  assign end_date = end_date_input | split: '-'
+  assign month = end_date[0]
+  assign day = end_date[1]
+  assign year = end_date[2]
+
+  # Time data for web component
+
+  assign end_time = end_time_input | split: ':'
+  assign hour = end_time[0]
+  assign minute = end_time[1]
+  assign second = end_time[2]
+
+  # Get the time remaining once date setting is fully populated
+
+  if end_date_input.size == 10
+    assign input_is_complete = true
+  endif
+
+  if input_is_complete
+    assign date_components = end_date_input | split: '-'
+    assign formatted_date = date_components[1] | append: '-' | append: date_components[0] | append: '-' | append: date_components[2]
+    assign end_timestamp = formatted_date | append: ' ' | append: end_time_input | date: '%s' | times: 1000
+    assign time_remaining = end_timestamp | minus: now_timestamp
+  endif
+
+  # If end is in the future and less than the max days away, populate the countdown with the initial time remaining (while the webcompnent is loading)
+
+  assign time_remaining_max = max_days | times: 86400000
+  if time_remaining > 0 and time_remaining < time_remaining_max
+    assign set_timer = true
+  endif
+  if set_timer
+    assign days_remaining = time_remaining | divided_by: 86400000
+    assign hours_remaining = time_remaining | divided_by: 3600000 | modulo : 24
+    assign minutes_remaining = time_remaining | divided_by: 1000 | divided_by: 60 | modulo : 60
+    assign seconds_remaining = time_remaining | divided_by: 1000 | modulo : 60
+  endif
+
+  # Hide timer if end is in the past and hide timer when complete is enabled
+
+  if hide_when_complete and time_remaining < 0
+    assign hide_timer = true
+  endif
+
+  if time_labels
+    assign show_labels = true
+  endif
+-%}
+
+{% if background_color_override != blank %}
+  <style>
+    [data-timer-id="{{ timer_id }}"] .countdown-timer__separator-dot {
+      background-color: {{ background_color_override }};
+    }
+  </style>
+{% endif %}
+
+{% capture separator %}
+  <div class="countdown-timer__separator"><span class="countdown-timer__separator-dot"></span><span class="countdown-timer__separator-dot"></span></div>
+{% endcapture %}
+
+<countdown-timer
+  data-timer-id="{{ timer_id }}"
+  data-timezone="{{ 'now' | date: '%z' }}"
+  data-year="{{ year }}"
+  data-month="{{ month }}"
+  data-day="{{ day }}"
+  data-hour="{{ hour | default: 00 }}"
+  data-minute="{{ minute | default: 00 }}"
+  data-second="{{ second | default: 00 }}"
+  data-max-days="{{ max_days }}"
+  data-hide-when-complete="{{ hide_when_complete }}"
+  class="countdown-timer__component{% if hide_timer %} hide{% endif %}"
+  role="presentation"
+  {% if is_block %}{{ block.shopify_attributes }}{% endif %}
+>
+  <div class="countdown-timer__container">
+
+    <div class="countdown-timer__digit-group-container" aria-hidden="true">
+      <div class="countdown-timer__digit-group">
+        {% for i in (1..max_days_length) %}
+        {% assign days_index = max_days_length | plus: 1 | minus: i | times: -1 %}
+        {% assign digit = days_remaining | slice: days_index %}
+          <div class="countdown-timer__digit h1{% if days_index < -2 and digit == blank %} hide{% endif %}">
+            <div data-digit{% if days_index < -2 %} data-hide-when-zero{% endif %}>
+              <div data-digit-last>{{ digit | default: 0 }}</div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+      {% if show_labels %}
+        <span>{{ 'general.time.days' | t }}</span>
+      {% endif %}
+    </div>
+
+    {{ separator }}
+
+    <div class="countdown-timer__digit-group-container" aria-hidden="true">
+      <div class="countdown-timer__digit-group">
+        {% for i in (1..2) %}
+          <div class="countdown-timer__digit h1">
+            {% assign hours_index = 3 | minus: i | times: -1 %}
+            <div data-digit>
+              <div data-digit-last>{{ hours_remaining | slice: hours_index | default: 0 }}</div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+      {% if show_labels %}
+        <span>{{ 'general.time.hours' | t }}</span>
+      {% endif %}
+    </div>
+
+    {{ separator }}
+
+    <div class="countdown-timer__digit-group-container" aria-hidden="true">
+      <div class="countdown-timer__digit-group">
+        {% for i in (1..2) %}
+          <div class="countdown-timer__digit h1">
+            {% assign minutes_index = 3 | minus: i | times: -1 %}
+            <div data-digit>
+              <div data-digit-last>{{ minutes_remaining | slice: minutes_index | default: 0 }}</div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+      {% if show_labels %}
+        <span>{{ 'general.time.minutes' | t }}</span>
+      {% endif %}
+    </div>
+
+    {{ separator }}
+
+    <div class="countdown-timer__digit-group-container" aria-hidden="true">
+      <div class="countdown-timer__digit-group">
+        {% for i in (1..2) %}
+          <div class="countdown-timer__digit h1">
+            {% assign seconds_index = 3 | minus: i | times: -1 %}
+            <div data-digit>
+              <div data-digit-last>{{ seconds_remaining | slice: seconds_index | default: 0 }}</div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+      {% if show_labels %}
+        <span>{{ 'general.time.seconds' | t }}</span>
+      {% endif %}
+    </div>
+  </div>
+</countdown-timer>
+
+<safe-load-scripts class="hidden">
+  <script src="{{ 'component-countdown-timer.js' | asset_url }}" type="module" defer="defer" data-flow-load-key="component-countdown-timer"></script>
+</safe-load-scripts>

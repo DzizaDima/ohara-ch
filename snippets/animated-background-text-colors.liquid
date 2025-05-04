@@ -1,0 +1,49 @@
+<animated-background-text-colors class="{{ announcement_bar_layout }}" style="background-color: {{ section.blocks[0].settings.announcement_bg_color }}; color: {{ section.blocks[0].settings.announcement_text_color }};">
+
+  {%- for block in section.blocks -%}          
+    <div 
+      data-announcement-block
+      data-background-color-block="{{ block.settings.announcement_bg_color }}" 
+      data-front-color-block="{{ block.settings.announcement_text_color }}"
+      data-announcement-block-index="{{ forloop.index0 }}" 
+      class="announcement_block block-id-{{ block.id }}{% if forloop.first %} active{% endif %}" 
+      {{ block.shopify_attributes }}
+    >
+
+
+          {%- if block.settings.announcement_text != blank -%}
+            {% style %}
+              .block-id-{{ block.id }} .announcement_wrapper.text-link-animated a {
+                background: linear-gradient(to top, {{ block.settings.announcement_text_color | color_modify: 'alpha', 0.5 }} 0, {{ block.settings.announcement_text_color | color_modify: 'alpha', 0.5 }} 0), linear-gradient(to top, currentColor 0, currentColor 0);
+                background-size: 100% 1px, 0 1px;
+                background-position: 100% 100%, 0 100%;
+                background-repeat: no-repeat;
+              }
+
+              .block-id-{{ block.id }} .announcement_wrapper.text-link-animated a:hover {
+                background-size: 0 1px, 100% 1px;
+              }
+            {% endstyle %}
+
+            <div class="announcement_wrapper text-link-animated" data-announcement>
+              <span class="announcement_text">{{ block.settings.announcement_text }}</span>
+            </div>
+
+          {%- endif -%}
+
+
+    </div>
+  {%- endfor -%}
+
+  {%- liquid
+    if enable_social_icons
+      render 'social-icons' with icon_wrapper_classes: 'icon-no-padding', icon_classes: 'fa-2x'
+    endif 
+  -%}
+  
+</animated-background-text-colors>
+{%- if section.blocks.size > 1 -%}
+  <safe-load-scripts class="hidden">
+    <script src="{{ 'component-animated-background-text-colors.js' | asset_url }}" type="module" defer="defer" data-flow-load-key="component-animated-background-text-colors"></script>
+  </safe-load-scripts>
+{%- endif -%}

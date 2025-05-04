@@ -1,0 +1,43 @@
+<!-- /sections/customer-activate-account.liquid -->
+
+<div class="wrapper-padded">
+  <div class="grid page-main--wrapper">
+    <div class="grid__item large--one-third push--large--one-third text-center">
+
+      <div class="sitewide--title-wrapper">
+        
+        <h1 class="page--title">{{ 'customer.activate_account.title' | t }}</h1>
+      </div>
+      <p>{{ 'customer.activate_account.subtext' | t }}</p>
+
+      {% comment %}
+        This form must use 'activate_customer_password'
+      {% endcomment %}
+      <div class="form-vertical">
+        {% form 'activate_customer_password' %}
+
+          {{ form.errors | default_errors }}
+
+          <label for="CustomerPassword" class="hidden-label">{{ 'customer.activate_account.password' | t }}</label>
+          <input type="password" value="" name="customer[password]" id="CustomerPassword" class="input-full" placeholder="{{ 'customer.activate_account.password' | t }}">
+
+          <label for="CustomerPasswordConfirmation" class="hidden-label">{{ 'customer.activate_account.password_confirm' | t }}</label>
+          <input type="password" value="" name="customer[password_confirmation]" id="CustomerPasswordConfirmation" class="input-full" placeholder="{{ 'customer.activate_account.password_confirm' | t }}">
+
+          <button type="submit" class="btn btn--full">{{ 'customer.activate_account.submit' | t }}</button>
+          <button type="submit" class="btn customer-account-cancel btn--full" name="decline">{{ 'customer.activate_account.cancel' | t }}</button>
+        {% endform %}
+      </div>
+
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.customer-activate-account.name",
+  "settings": [
+
+  ]
+}
+{% endschema %}

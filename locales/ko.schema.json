@@ -1,0 +1,2393 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin language editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "settings_schema": {
+    "Colors": {
+      "name": "색상",
+      "settings": {
+        "header-0": {
+          "content": "일반"
+        },
+        "color_primary": {
+          "label": "링크"
+        },
+        "color_body_bg_secondary": {
+          "label": "보조 배경",
+          "info": "홈 및 제품 페이지의 배경에 사용됩니다."
+        },
+        "sale_price_color": {
+          "label": "할인 가격"
+        },
+        "star_rating_color": {
+          "label": "별 등급"
+        },
+        "header-6": {
+          "content": "뱃지"
+        },
+        "sale_badge_color": {
+          "label": "할인 뱃지"
+        },
+        "sold_out_badge_color": {
+          "label": "품절 뱃지"
+        },
+        "sold_out_badge_font_color": {
+          "label": "뱃지 글꼴 색상"
+        },
+        "cart_color": {
+          "label": "장바구니 표시",
+          "info": "모바일 장바구니 수량\/가치 표시기"
+        },
+        "header-transparent-text": {
+          "label": "오버레이 텍스트"
+        },
+        "header-transparent-background": {
+          "label": "오버레이 배경",
+          "info": "오버레이 카트 수와 '헤더 불투명도'가 0% 이상일 때 사용됩니다."
+        },
+        "colorSchemeLightBackground": {
+          "label": "밝은 배경"
+        },
+        "colorSchemeLightText": {
+          "label": "밝은 텍스트"
+        },
+        "homepage-sections-accent-primary-color": {
+          "label": "기능 배경"
+        },
+        "homepage-sections-accent-secondary-color": {
+          "label": "기능 텍스트"
+        },
+        "colorSchemeDarkBackground": {
+          "label": "어두운 배경"
+        },
+        "colorSchemeDarkText": {
+          "label": "어두운 텍스트"
+        },
+        "header-25": {
+          "content": "색상 계획"
+        },
+        "header-35": {
+          "content": "장바구니 서랍"
+        },
+        "header-38": {
+          "content": "푸터"
+        }
+      }
+    },
+    "Typography": {
+      "name": "서체",
+      "settings": {
+        "header-0": {
+          "content": "헤딩"
+        },
+        "heading_font_case": {
+          "label": "헤딩 케이스"
+        },
+        "header_font_case": {
+          "label": "내비게이션 케이스"
+        },
+        "button_style": {
+          "options": {
+            "circle": "둥근 모서리",
+            "rounded": "둥근 모서리",
+            "square": "사각 모서리"
+          }
+        },
+        "header-18": {
+          "content": "라벨"
+        },
+        "header-22": {
+          "content": "로고 텍스트"
+        },
+        "header-24": {
+          "content": "알림 바"
+        }
+      }
+    },
+    "Cart": {
+      "name": "장바구니",
+      "settings": {
+        "ajax_cart_method": {
+          "label": "장바구니에 추가 액션",
+          "options": {
+            "drawer": "서랍 표시",
+            "added": "'추가됨' 메시지 표시",
+            "page": "장바구니로 이동"
+          }
+        },
+        "cart_vendor_enable": {
+          "label": "상품 판매자 표시"
+        },
+        "cart_notes_enable": {
+          "label": "장바구니 메모 활성화"
+        },
+        "giftwrap_gift_note": {
+          "label": "선물 메시지 활성화"
+        },
+        "enable-additional-checkout-buttons": {
+          "label": "다이내믹 체크아웃 버튼 활성화",
+          "info": "[더 알아보기](https:\/\/help.shopify.com\/ko\/manual\/sell-online\/online-store\/dynamic-checkout)"
+        }
+      }
+    },
+    "Products": {
+      "name": "제품",
+      "settings": {
+        "header-0": {
+          "content": "기프트 랩핑"
+        },
+        "giftwrap_product_selector": {
+          "label": "기프트 랩 상품"
+        },
+        "giftwrap_label_text": {
+          "label": "기프트 랩 라벨"
+        }
+      }
+    },
+    "Product_card": {
+      "name": "제품 카드",
+      "settings": {
+        "hover-effect": {
+          "label": "호버 효과 활성화",
+          "info": "마우스를 올렸을 때 제품의 두 번째 이미지를 보여줍니다"
+        },
+        "badges": {
+          "label": "배지",
+          "show_badges": "뱃지 표시"
+        },
+        "discount_badge_type": {
+          "label": "세일 배지 표시",
+          "options": {
+            "percentage": "백분율",
+            "value": "값",
+            "hide": "'세일' 텍스트"
+          }
+        },
+        "price": {
+          "sale_price_color": "세일 가격 색상",
+          "when_price_varies": {
+            "label": "가격이 변동될 때...",
+            "options": {
+              "show_from_price": "'부터' 가격 표시",
+              "show_max_price": "최대 가격 표시"
+            }
+          }
+        },
+        "show_rating": {
+          "label": "별점 표시",
+          "show_if_no_reviews": "평가가 없는 경우 표시",
+          "info": "평가를 표시하려면 제품 리뷰 앱을 추가하세요. [자세히 알아보기](https:\/\/help.shopify.com\/manual\/online-store\/themes\/theme-structure\/theme-features#featured-collection-show-product-rating)"
+        },
+        "show_product_rating_as": {
+          "label": "별점을 다음과 같이 표시...",
+          "options": {
+            "count": "개수 (예: \"3\" 리뷰)",
+            "average": "평균 평점 (예: \"4.5\")",
+            "stars_only": "별만"
+          }
+        },
+        "product_card_swatches": {
+          "label": "색상 견본",
+          "color_swatch_info": {
+            "content": "색상 견본을 표시하려면 다음 중 하나의 변형 옵션 이름이 있어야 합니다: color, colour, couleur, color, farbe, 색 ,色 ,färg ,farve. 맞춤 견본 이미지를 업로드해야 할 수도 있습니다. [자세히 알아보기](https:\/\/support.eightthemes.com\/hc\/en-us\/articles\/360020105257-How-to-Upload-Color-Swatches)"
+          },
+          "show_color_swatches": {
+            "label": "색상 견본 보기"
+          },
+          "show_color_label": {
+            "label": "색상 라벨 표시"
+          }
+        },
+        "quick_shop_button": {
+          "label": "빠른 쇼핑 버튼",
+          "display_style": {
+            "label": "디스플레이 스타일",
+            "info": "'이미지 위'로 설정된 경우, 버튼은 작은 화면에서 아이콘으로, 큰 화면에서 호버 시 보여집니다.",
+            "options": {
+              "over_image": "이미지 위에",
+              "below_image": "이미지 아래에"
+            }
+          }
+        },
+        "below_image_style": {
+          "label": "\"이미지 아래\" 스타일"
+        },
+        "hover_navigation_desktop": {
+          "label": "내비게이션(데스크톱)",
+          "info": "‘추천 제품’, ‘최근 본 제품’, ‘특집 컬렉션’ 섹션에서 사용됩니다",
+          "options": {
+            "left_and_right": "호버 시 좌우",
+            "right": "호버 시 오른쪽",
+            "above": "위",
+            "none": "없음"
+          }
+        }
+      }
+    },
+    "Back_to_top_button": {
+      "name": "맨 위로 버튼",
+      "settings": {
+        "paragraph-0": {
+          "content": "모바일에서 맨 위로 버튼은 스크롤 시에만 표시됩니다."
+        },
+        "back_to_top_homepage": {
+          "label": "홈페이지에 표시"
+        },
+        "back_to_top_collection": {
+          "label": "컬렉션 템플릿에 표시"
+        },
+        "back_to_top_product": {
+          "label": "제품 템플릿에 표시"
+        },
+        "back_to_top_all": {
+          "label": "모든 템플릿에 표시"
+        }
+      }
+    },
+    "Search": {
+      "name": "검색",
+      "settings": {
+        "predictive_search_enabled": {
+          "label": "예측 검색 활성화"
+        },
+        "predictive_search_show_price": {
+          "label": "가격 표시"
+        }
+      }
+    },
+    "Social_media": {
+      "name": "소셜 미디어",
+      "settings": {
+        "header-0": {
+          "content": "계정"
+        },
+        "sm_facebook_link": {
+          "label": "Facebook",
+          "info": "https:\/\/www.facebook.com\/shopify"
+        },
+        "sm_x_link": {
+          "label": "X",
+          "info": "https:\/\/x.com\/shopify"
+        },
+        "sm_instagram_link": {
+          "label": "Instagram",
+          "info": "https:\/\/instagram.com\/shopify"
+        },
+        "sm_tumblr_link": {
+          "label": "Tumblr",
+          "info": "https:\/\/shopify.tumblr.com\/"
+        },
+        "sm_pinterest_link": {
+          "label": "Pinterest",
+          "info": "https:\/\/www.pinterest.com\/shopify"
+        },
+        "sm_youtube_link": {
+          "label": "YouTube",
+          "info": "https:\/\/www.youtube.com\/user\/shopify"
+        },
+        "sm_vimeo_link": {
+          "label": "Vimeo",
+          "info": "https:\/\/www.vimeo.com\/shopify"
+        },
+        "sm_flickr_link": {
+          "label": "Flickr",
+          "info": "https:\/\/www.flickr.com\/photos\/shopify"
+        },
+        "sm_snapchat_link": {
+          "label": "Snapchat",
+          "info": "https:\/\/www.snapchat.com\/add\/shopify"
+        },
+        "sm_houzz_link": {
+          "label": "Houzz",
+          "info": "https:\/\/www.houzz.com\/shopify"
+        },
+        "sm_linkedin_link": {
+          "label": "LinkedIn",
+          "info": "https:\/\/linkedin.com\/company\/shopify"
+        },
+        "sm_tiktok_link": {
+          "label": "TikTok",
+          "info": "https:\/\/www.tiktok.com\/@shopify"
+        },
+        "header-13": {
+          "content": "공유"
+        },
+        "social_sharing_blog": {
+          "label": "블로그 게시물 공유 활성화"
+        },
+        "share_facebook": {
+          "label": "Facebook에 공유"
+        },
+        "share_x": {
+          "label": "X에서 공유"
+        },
+        "share_pinterest": {
+          "label": "Pinterest에 핀"
+        }
+      }
+    },
+    "Breadcrumbs": {
+      "name": "브레드크럼",
+      "settings": {
+        "enable_breadcrumbs": {
+          "label": "브레드크럼 활성화",
+          "info": "제품, 블로그 및 페이지 헤더 아래에 브레드크럼 내비게이션을 표시합니다."
+        }
+      }
+    },
+    "Popup": {
+      "name": "팝업",
+      "settings": {
+        "popup--enable": {
+          "label": "팝업 활성화"
+        },
+        "pop-up-time": {
+          "label": "팝업이 다시 표시되는 일수",
+          "options": {
+            "7": "일주일",
+            "14": "두 주",
+            "21": "세 주",
+            "28": "네 주"
+          }
+        },
+        "pop-up-text-header-text": {
+          "label": "제목 텍스트"
+        },
+        "pop-up-text-description-text": {
+          "label": "설명 텍스트"
+        },
+        "popup--show-social-icons": {
+          "label": "소셜 아이콘 활성화"
+        },
+        "popup--show-newsletter": {
+          "label": "뉴스레터 가입 활성화"
+        },
+        "desktop-popup-style": {
+          "label": "팝업 스타일"
+        },
+        "pop-up-delay": {
+          "label": "팝업 표시 지연 시간"
+        },
+        "header-9": {
+          "content": "테스트 모드"
+        },
+        "popup--test-mode": {
+          "info": "테스트 모드는 팝업을 모든 페이지에서 표시하도록 강제하며 팝업을 편집할 때만 사용해야 합니다. 스토어를 시작할 때 '테스트 모드'를 비활성화해야 합니다."
+        }
+      }
+    },
+    "Verification_pop_up": {
+      "name": "확인 팝업",
+      "settings": {
+        "enable_verification_popup": {
+          "label": "확인 팝업 활성화"
+        },
+        "verification-pop-up__test-mode": {
+          "label": "테스트 모드 활성화",
+          "info": "팝업을 강제로 새로 고침마다 표시하며 팝업을 편집할 때만 사용해야 합니다. 스토어를 시작할 때 '테스트 모드'를 비활성화해야 합니다."
+        },
+        "verification_background_opacity": {
+          "label": "배경 불투명도"
+        },
+        "verification-popup__logo": {
+          "info": "250 x 133픽셀 권장"
+        },
+        "exit-button__text": {
+          "label": "거절 버튼 텍스트"
+        },
+        "confirm-button__text": {
+          "label": "승인 버튼 텍스트"
+        },
+        "header-15": {
+          "content": "거부"
+        },
+        "deny-button__text": {
+          "label": "반환 버튼 텍스트"
+        }
+      }
+    },
+    "Favicon": {
+      "name": "파비콘",
+      "settings": {
+        "favicon": {
+          "label": "파비콘 이미지",
+          "info": "32 x 32픽셀로 축소됩니다."
+        }
+      }
+    },
+    "Animations": {
+      "name": "애니메이션",
+      "settings": {
+        "animations_enabled": {
+          "label": "애니메이션 활성화",
+          "info": "홈페이지 섹션과 컬렉션 페이지에 페이드 인 애니메이션을 활성화합니다."
+        },
+        "page_fade_enabled": {
+          "label": "페이지 페이드 전환 활성화",
+          "info": "로드 시 페이지가 페이드 인\/아웃되도록 허용합니다."
+        },
+        "ken_burns_enabled": {
+          "label": "줌 효과 활성화",
+          "info": "선택한 홈페이지 이미지에 미묘한 줌 효과를 활성화합니다. [더 알아보기](https:\/\/support.eightthemes.com\/hc\/en-us\/articles\/360020107017-Introduction-to-Theme-Settings#animations)"
+        }
+      }
+    }
+  },
+  "sections": {
+    "accordion": {
+      "label": "텍스트",
+      "name": "아코디언\/FAQ",
+      "blocks": {
+        "tab_content": {
+          "name": "탭 콘텐츠"
+        }
+      },
+      "presets": {
+        "name": "아코디언\/FAQ",
+        "blocks": {
+        }
+      }
+    },
+    "advanced-layout--custom-html": {
+      "label": "컨테이너 너비",
+      "name": "사용자 정의 HTML",
+      "settings": {
+      },
+      "blocks": {
+        "html": {
+          "settings": {
+            "width": {
+              "label": "컨테이너 너비",
+              "options": {
+                "25_percentage": "25%",
+                "33_percentage": "33%",
+                "50_percentage": "50%",
+                "66_percentage": "66%",
+                "75_percentage": "75%",
+                "100_percentage": "100%"
+              }
+            }
+          }
+        }
+      },
+      "presets": {
+        "blocks": {
+        }
+      }
+    },
+    "advanced-layout--custom-liquid": {
+      "name": "사용자 정의 리퀴드",
+      "blocks": {
+      }
+    },
+    "advanced-layout--hero": {
+      "label": "호버 이미지",
+      "name": "히어로",
+      "settings": {
+        "header-0": {
+          "content": "주요 콘텐츠"
+        },
+        "header-2": {
+          "content": "이미지 설정"
+        },
+        "header-10": {
+          "content": "비디오 설정"
+        }
+      },
+      "blocks": {
+        "text": {
+          "settings": {
+            "featured_image": {
+              "info": "500 x 250픽셀 (권장)"
+            },
+            "featured_image_size": {
+              "label": "이미지 높이",
+              "options": {
+                "original": "원본 (크롭되지 않음)"
+              }
+            },
+            "hero-menu-image": {
+              "label": "호버 이미지",
+              "info": "1500 x 1000픽셀 (권장)"
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "히어로",
+        "blocks": {
+          "text-0": {
+            "hero-menu-heading": "베스트셀러를 강조하세요"
+          },
+          "text-1": {
+            "hero-menu-heading": "새 컬렉션을 홍보하세요"
+          }
+        }
+      }
+    },
+    "animated-text": {
+      "label": "버튼 배경 호버",
+      "name": "애니메이션 텍스트",
+      "blocks": {
+        "text_static": {
+          "name": "정적 텍스트",
+          "settings": {
+            "max_width_desktop": {
+              "label": "최대 너비 (데스크톱)"
+            },
+            "max_width_mobile": {
+              "label": "최대 너비 (모바일)"
+            }
+          }
+        },
+        "text_dynamic": {
+          "name": "동적 텍스트",
+          "settings": {
+            "text_dynamic": {
+              "info": "여러 단어를 추가하려면 쉼표로 구분하여 사용합니다. 예: 놀라운, 환상적인, 베스트셀러, 놀라운"
+            },
+            "animation_timing": {
+              "label": "애니메이션 타이밍"
+            },
+            "rotation_interval": {
+              "label": "회전 간격"
+            }
+          }
+        },
+        "button": {
+          "settings": {
+            "header-2": {
+              "content": "버튼 색상"
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "애니메이션 텍스트",
+        "blocks": {
+        }
+      }
+    },
+    "announcement-bar": {
+      "label": "텍스트",
+      "name": "공지 바",
+      "settings": {
+        "desktop_social_icons": {
+          "label": "데스크톱에서 소셜 미디어 아이콘 표시"
+        }
+      },
+      "blocks": {
+        "announcement": {
+          "name": "공지사항"
+        }
+      },
+      "presets": {
+        "name": "공지 바",
+        "blocks": {
+          "announcement-0": {
+            "announcement_text": "여기에 어떤 내용을 알립니다"
+          },
+          "announcement-1": {
+            "announcement_text": "컬렉션을 홍보하세요"
+          },
+          "announcement-2": {
+            "announcement_text": "할인 판매 중"
+          }
+        }
+      }
+    },
+    "apps": {
+      "name": "앱",
+      "settings": {
+        "include_margins": {
+          "label": "섹션 여백을 테마와 동일하게 만듭니다."
+        }
+      },
+      "blocks": {
+      },
+      "presets": {
+        "name": "앱"
+      }
+    },
+    "blog--blog-posts": {
+      "label": "블로그",
+      "name": "블로그 게시물",
+      "settings": {
+        "post_limit": {
+          "label": "표시할 게시물 수"
+        }
+      },
+      "blocks": {
+        "article": {
+          "settings": {
+            "header-0": {
+              "info": "특집할 블로그 게시물을 선택합니다."
+            },
+            "blog_post_1": {
+              "label": "첫 번째 블로그 게시물"
+            },
+            "blog_post_2": {
+              "label": "두 번째 블로그 게시물"
+            },
+            "blog_post_3": {
+              "label": "세 번째 블로그 게시물"
+            },
+            "blog_post_4": {
+              "label": "네 번째 블로그 게시물"
+            }
+          }
+        },
+        "blog": {
+          "settings": {
+            "header-0": {
+              "info": "특집할 블로그를 선택합니다."
+            },
+            "blog": {
+              "label": "블로그"
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "블로그 게시물",
+        "blocks": {
+          "blog-0": {
+            "blog": "뉴스"
+          }
+        }
+      }
+    },
+    "blog--navigation-banner": {
+      "name": "내비게이션 배너",
+      "settings": {
+        "navigation_position": {
+          "label": "내비게이션 정렬"
+        }
+      },
+      "blocks": {
+      },
+      "presets": {
+        "name": "내비게이션 배너"
+      }
+    },
+    "collage-builder": {
+      "label": "텍스트",
+      "name": "콜라주 빌더",
+      "settings": {
+        "section_width": {
+          "label": "섹션 너비"
+        },
+        "width_1": {
+          "label": "첫 번째 블록 너비"
+        },
+        "height_1": {
+          "label": "첫 번째 블록 높이"
+        },
+        "width_2": {
+          "label": "두 번째 블록 너비"
+        },
+        "height_2": {
+          "label": "두 번째 블록 높이"
+        },
+        "width_3": {
+          "label": "세 번째 블록 너비"
+        },
+        "height_3": {
+          "label": "세 번째 블록 높이"
+        },
+        "width_4": {
+          "label": "네 번째 블록 너비"
+        },
+        "height_4": {
+          "label": "네 번째 블록 높이"
+        },
+        "width_5": {
+          "label": "다섯 번째 블록 너비"
+        },
+        "height_5": {
+          "label": "다섯 번째 블록 높이"
+        },
+        "width_6": {
+          "label": "여섯 번째 블록 너비"
+        },
+        "height_6": {
+          "label": "여섯 번째 블록 높이"
+        },
+        "block_alignment": {
+          "label": "블록 정렬"
+        }
+      },
+      "blocks": {
+        "image": {
+          "settings": {
+            "mobile_image": {
+              "label": "모바일 이미지"
+            }
+          }
+        },
+        "background_video": {
+          "name": "배경 비디오"
+        },
+        "video": {
+          "settings": {
+            "mobile_video_url": {
+              "label": "URL에서 비디오 임베드 (선택사항)"
+            },
+            "button_icon_color": {
+              "label": "버튼 아이콘"
+            },
+            "button_icon_hover_color": {
+              "label": "버튼 아이콘 호버"
+            }
+          }
+        },
+        "countdown_timer": {
+          "settings": {
+            "timer_complete_message": {
+              "info": "타이머가 0에 도달했을 때 이 메시지가 표시됩니다."
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "콜라주 빌더",
+        "blocks": {
+          "image-0": {
+            "desktop_position": "md-min-align-top md-min-justify-left",
+            "mobile_position": "md-max-align-top md-max-justify-left"
+          },
+          "background_video-2": {
+            "desktop_position": "md-min-align-bottom md-min-justify-left",
+            "mobile_position": "md-max-align-bottom md-max-justify-left"
+          },
+          "text-3": {
+            "text_alignment": "왼쪽",
+            "desktop_position": "md-min-align-center md-min-justify-left"
+          },
+          "image-4": {
+            "heading": "컬렉션으로 이동"
+          },
+          "image-5": {
+            "heading": "배너 프로모션 생성"
+          }
+        }
+      }
+    },
+    "collection--collection-list": {
+      "label": "오버레이 색상",
+      "name": "컬렉션 목록",
+      "settings": {
+        "items-per-row": {
+          "label": "행당 컬렉션 수"
+        },
+        "fill-the-area": {
+          "label": "공간을 채우기 위해 컬렉션 확장"
+        },
+        "content-position": {
+          "label": "제목 위치"
+        }
+      },
+      "blocks": {
+        "featured_collection": {
+          "settings": {
+            "collection_img": {
+              "info": "1600 x 1600픽셀 권장"
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "컬렉션 목록",
+        "blocks": {
+        }
+      }
+    },
+    "collection--featured-collection": {
+      "label": "글꼴",
+      "name": "추천 컬렉션",
+      "settings": {
+        "show_view_all": {
+          "label": "'모두 보기' 버튼 표시"
+        }
+      },
+      "presets": {
+        "name": "추천 컬렉션",
+        "blocks": {
+        }
+      }
+    },
+    "countdown-timer": {
+      "label": "메시지",
+      "name": "카운트다운 타이머",
+      "settings": {
+        "image": {
+          "info": "최소 1000 x 750픽셀 권장."
+        },
+        "overlay_color": {
+          "label": "데스크톱 오버레이"
+        },
+        "text_color": {
+          "info": "모바일에서 이미지를 사용할 때 표시되지 않음."
+        },
+        "background_color": {
+          "info": "'이미지'를 선택하지 않았을 때 표시됨."
+        }
+      },
+      "blocks": {
+        "countdown_timer": {
+          "settings": {
+            "hide_when_complete": {
+              "label": "카운트다운이 0에 도달하면 숨김"
+            }
+          }
+        },
+        "timer_complete_message": {
+          "settings": {
+            "paragraph-0": {
+              "content": "타이머가 0에 도달했을 때 메시지를 표시하려면 이 블록을 추가합니다."
+            },
+            "text": {
+              "label": "메시지"
+            }
+          }
+        }
+      },
+      "presets": {
+        "blocks": {
+          "timer_complete_message-0": {
+            "text": "이 초특가를 놓친 거에요."
+          },
+          "heading-1": {
+            "heading": "특가 마감 임박"
+          },
+          "text-3": {
+            "text": "없어지기 전에 이 초특가를 확인하세요."
+          },
+          "button-4": {
+            "label": "지금 쇼핑하기"
+          }
+        }
+      }
+    },
+    "customer-account": {
+      "name": "계정",
+      "settings": {
+      },
+      "blocks": {
+      }
+    },
+    "customer-activate-account": {
+      "name": "계정 활성화",
+      "settings": {
+      },
+      "blocks": {
+      }
+    },
+    "customer-addresses": {
+      "name": "주소",
+      "settings": {
+      },
+      "blocks": {
+      }
+    },
+    "customer-login": {
+      "name": "로그인",
+      "settings": {
+      },
+      "blocks": {
+      }
+    },
+    "customer-order": {
+      "name": "주문",
+      "settings": {
+      },
+      "blocks": {
+      }
+    },
+    "customer-register": {
+      "name": "등록",
+      "settings": {
+      },
+      "blocks": {
+      }
+    },
+    "customer-reset-password": {
+      "name": "비밀번호 재설정",
+      "settings": {
+      },
+      "blocks": {
+      }
+    },
+    "events-calendar": {
+      "label": "텍스트",
+      "name": "이벤트 달력",
+      "settings": {
+        "layout": {
+          "label": "레이아웃",
+          "options": {
+            "list": "목록"
+          }
+        },
+        "cards_per_row": {
+          "label": "행당 이벤트 수"
+        },
+        "expand_card": {
+          "label": "마지막 행에 이벤트 카드 확장"
+        }
+      },
+      "blocks": {
+        "event": {
+          "name": "이벤트",
+          "settings": {
+            "day": {
+              "label": "날짜"
+            },
+            "month": {
+              "label": "월",
+              "options": {
+                "Jan": "1월",
+                "Feb": "2월",
+                "Mar": "3월",
+                "Apr": "4월",
+                "May": "5월",
+                "Jun": "6월",
+                "Jul": "7월",
+                "Aug": "8월",
+                "Sep": "9월",
+                "Oct": "10월",
+                "Nov": "11월",
+                "Dec": "12월"
+              }
+            },
+            "tbc": {
+              "label": "'TBC'로 날짜 대체",
+              "info": "이를 사용하면 날짜 및 시간 설정을 숨기고 그 자리에 TBC 메시지가 표시됩니다."
+            },
+            "day_time": {
+              "label": "날짜 및 시간",
+              "info": "예: 토요일, 오후 7:30"
+            },
+            "price": {
+              "info": "상점 통화로 가격을 표시하려면 숫자 값을 사용하세요 (예: '10'). 여러 통화를 사용하는 경우 통화 코드로 구분된 목록을 사용하세요 (예: 'USD:10, EUR:9, GBP:8')"
+            },
+            "event_heading": {
+              "label": "이벤트 제목"
+            },
+            "event_location": {
+              "label": "장소"
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "이벤트 달력",
+        "blocks": {
+        }
+      }
+    },
+    "featured-menu": {
+      "label": "이미지 (데스크톱 전용)",
+      "name": "추천 메뉴",
+      "settings": {
+        "image_desktop_default": {
+          "label": "데스크톱 기본 이미지 (선택사항)"
+        },
+        "image_mobile": {
+          "label": "모바일 이미지 (선택사항)"
+        },
+        "menu_position": {
+          "label": "메뉴 위치"
+        },
+        "alignment_desktop": {
+          "label": "데스크톱 정렬"
+        },
+        "alignment_mobile": {
+          "label": "모바일 정렬"
+        },
+        "menu_items_color": {
+          "label": "메뉴 항목 색상"
+        },
+        "menu_item_size": {
+          "label": "메뉴 항목 크기"
+        }
+      },
+      "blocks": {
+        "menu_item": {
+          "settings": {
+            "menu_item_image": {
+              "label": "이미지 (데스크톱 전용)"
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "추천 메뉴",
+        "blocks": {
+        }
+      }
+    },
+    "footer-bottom": {
+      "name": "푸터 하단",
+      "settings": {
+        "show_methods_of_payment": {
+          "label": "결제 아이콘 표시"
+        },
+        "center_content_on_desktop": {
+          "label": "데스크톱에서 콘텐츠 가운데 정렬"
+        }
+      },
+      "blocks": {
+      }
+    },
+    "footer-main": {
+      "label": "헤딩",
+      "name": "푸터 메인",
+      "settings": {
+        "alignment": {
+          "label": "정렬"
+        }
+      },
+      "blocks": {
+        "menu": {
+          "settings": {
+            "footer_linklist": {
+              "label": "푸터 메뉴",
+              "info": "이 네비게이션은 드롭다운 항목에 대한 제한된 지원을 갖고 있습니다"
+            }
+          }
+        },
+        "newsletter": {
+          "settings": {
+            "footer_newsletter_description": {
+              "label": "뉴스레터 설명"
+            }
+          }
+        },
+        "social": {
+          "name": "소셜 아이콘",
+          "settings": {
+            "paragraph-1": {
+              "content": "테마 설정에서 소셜 설정 및 계정을 편집하세요"
+            }
+          }
+        },
+        "follow_on_shop": {
+          "name": "쇼핑 앱에서 팔로우",
+          "settings": {
+            "paragraph-0": {
+              "content": "Shop 앱에서 storefront를 위한 팔로우 버튼을 표시하세요. [자세히 알아보기](https:\/\/help.shopify.com\/ko\/manual\/online-store\/themes\/customizing-themes\/follow-on-shop)"
+            }
+          }
+        }
+      }
+    },
+    "gift-card": {
+      "name": "헤더",
+      "blocks": {
+      }
+    },
+    "header": {
+      "label": "모바일 드로어에 표시",
+      "name": "헤더",
+      "settings": {
+        "sticky_header": {
+          "label": "'스티키' 헤더 활성화"
+        },
+        "logo-placement": {
+          "label": "로고 배치",
+          "options": {
+            "above": "위에"
+          }
+        },
+        "cart-style": {
+          "label": "카트 아이콘",
+          "options": {
+            "shopping_bag": "가방",
+            "shopping_cart": "카트"
+          }
+        },
+        "enable_search": {
+          "label": "검색 활성화"
+        },
+        "overlay_header_homepage": {
+          "label": "홈페이지에서 활성화"
+        },
+        "overlay_header_collection": {
+          "label": "컬렉션에서 활성화"
+        },
+        "overlay_header_list_collection": {
+          "label": "컬렉션 목록에서 활성화"
+        },
+        "overlay_header_contact": {
+          "label": "연락처 페이지에서 활성화"
+        },
+        "overlay_logo": {
+          "label": "오버레이 로고"
+        },
+        "overlay_opacity": {
+          "label": "헤더 투명도",
+          "info": "메뉴가 읽을 수 있도록 조정하세요"
+        },
+        "main_linklist": {
+          "label": "주 메뉴"
+        },
+        "dropdown_alignment": {
+          "label": "드롭다운 정렬"
+        },
+        "logo_max_width_mobile": {
+          "info": "크기는 사용 가능한 공간에 따라 조절될 수 있습니다"
+        },
+        "header-14": {
+          "content": "오버레이 헤더"
+        },
+        "show_icons": {
+          "label": "데스크톱에 아이콘 표시",
+          "info": "계정, 검색 및 장바구니 링크를 아이콘으로 전환"
+        },
+        "header-10": {
+          "content": "아이콘"
+        },
+        "cart_count": {
+          "label": "장바구니 수 표시"
+        },
+        "logo_padding": {
+          "label": "데스크톱 로고 간격"
+        }
+      },
+      "blocks": {
+        "content": {
+          "name": "메가 메뉴",
+          "settings": {
+            "mega-menu": {
+              "info": "메가 메뉴 드롭다운을 적용하려면 기존 메뉴 항목을 입력하세요. [더 알아보기](https:\/\/support.eightthemes.com\/hc\/en-us\/articles\/360020104997-How-to-Set-Up-a-Mega-Menu)"
+            },
+            "header-1": {
+              "content": "프로모션 1"
+            },
+            "header-10": {
+              "content": "프로모션 2"
+            }
+          }
+        }
+      }
+    },
+    "image--gallery": {
+      "label": "오버레이 색상",
+      "name": "갤러리",
+      "settings": {
+        "full-width": {
+          "label": "모바일에서 한 이미지 당 한 줄"
+        },
+        "content-position": {
+          "label": "콘텐츠 위치"
+        }
+      },
+      "blocks": {
+        "image": {
+          "settings": {
+            "image": {
+              "info": "같은 크기로 이미지를 잘라내는 것을 권장합니다."
+            },
+            "color": {
+              "info": "'콘텐츠 위치'가 '오버레이' 또는 '호버 시'로 설정된 경우에만 다음 설정이 적용됩니다."
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "갤러리",
+        "blocks": {
+        }
+      }
+    },
+    "image--image-with-text-overlay": {
+      "name": "텍스트 오버레이 이미지",
+      "settings": {
+        "parallax": {
+          "info": "섹션 높이가 '원본'으로 설정되어 있을 때는 패럴랙스가 보이지 않습니다."
+        }
+      },
+      "blocks": {
+      },
+      "presets": {
+        "name": "텍스트 오버레이 이미지"
+      }
+    },
+    "image--image-with-text": {
+      "name": "텍스트 이미지",
+      "settings": {
+        "image": {
+          "info": "최소 권장 크기 2000px 너비, 900px 높이"
+        },
+        "text_overlapping_image": {
+          "label": "이미지 위에 콘텐츠 오버레이"
+        }
+      },
+      "blocks": {
+      },
+      "presets": {
+        "name": "텍스트 이미지"
+      }
+    },
+    "image--logo-list": {
+      "label": "링크",
+      "name": "추천 로고",
+      "settings": {
+        "colors": {
+          "info": "각 '스킴'의 색상은 관리자의 '일반 설정' > '색상' 섹션에서 변경할 수 있습니다.",
+          "options": {
+            "white": "흰색"
+          }
+        }
+      },
+      "presets": {
+        "name": "로고 목록",
+        "blocks": {
+        }
+      }
+    },
+    "image--slideshow": {
+      "label": "버튼 배경 호버",
+      "name": "슬라이드쇼",
+      "settings": {
+        "desktop_height": {
+          "label": "데스크톱 높이"
+        },
+        "mobile_height": {
+          "label": "모바일 높이"
+        },
+        "slide_navigation_style": {
+          "label": "슬라이드 탐색 스타일",
+          "options": {
+            "arrows": "화살표",
+            "bars": "바",
+            "dots": "도트"
+          }
+        },
+        "slide_transition_delay": {
+          "label": "이미지 변경 주기"
+        }
+      },
+      "blocks": {
+        "image": {
+          "name": "슬라이드",
+          "settings": {
+            "first_button_label": {
+              "label": "첫 번째 버튼 라벨",
+              "info": "라벨을 비워두면 슬라이드 전체가 링크 역할을 합니다."
+            },
+            "first_button_link": {
+              "label": "첫 번째 버튼 링크"
+            },
+            "second_button_label": {
+              "label": "두 번째 버튼 라벨"
+            },
+            "second_button_link": {
+              "label": "두 번째 버튼 링크"
+            },
+            "image_overlay": {
+              "label": "이미지 오버레이"
+            },
+            "image_overlay_opacity": {
+              "label": "이미지 오버레이 불투명도"
+            },
+            "caption-text": {
+              "label": "캡션 텍스트"
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "슬라이드쇼"
+      }
+    },
+    "newsletter--newsletter": {
+      "name": "뉴스레터",
+      "blocks": {
+      }
+    },
+    "product--accordion-with-image": {
+      "label": "아코디언 내용",
+      "name": "이미지와 함께 아코디언",
+      "settings": {
+        "image--background-color": {
+          "label": "이미지 배경 색상"
+        },
+        "image--text-color": {
+          "label": "이미지 텍스트 색상"
+        }
+      },
+      "blocks": {
+        "accordion": {
+          "name": "아코디언 항목",
+          "settings": {
+            "accordion_header": {
+              "label": "아코디언 제목"
+            },
+            "accordion_content": {
+              "label": "아코디언 내용"
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "이미지와 함께 아코디언",
+        "blocks": {
+        }
+      }
+    },
+    "products--featured-product": {
+      "label": "품절 메시지",
+      "name": "추천 상품",
+      "settings": {
+        "title_font": {
+          "label": "제목 크기"
+        },
+        "price_font": {
+          "label": "가격 크기"
+        },
+        "show-giftwrap": {
+          "label": "선물 포장 표시",
+          "info": "선물 포장에 대한 자세한 정보는 여기를 참조하세요: [더 알아보기](https:\/\/support.eightthemes.com\/hc\/en-us\/articles\/360020396138-How-to-Enable-Product-Gift-Wrapping)"
+        },
+        "paragraph-8": {
+          "content": "테마 설정 > 제품에서 선물 포장 제품을 선택하세요."
+        },
+        "show_product_description": {
+          "label": "상품 설명 표시"
+        },
+        "show_quantity_selector": {
+          "label": "수량 선택기 표시"
+        },
+        "show_add_to_cart": {
+          "label": "장바구니에 추가 버튼 표시"
+        },
+        "image-placement": {
+          "label": "위치"
+        }
+      },
+      "presets": {
+        "name": "추천 상품"
+      }
+    },
+    "scrolling-banner": {
+      "name": "스크롤 배너"
+    },
+    "section--contact-form": {
+      "label": "입력 너비",
+      "name": "문의 양식",
+      "settings": {
+        "paragraph-0": {
+          "content": "문의 양식은 모든 제출을 귀하의 스토어의 발신자 이메일 주소로 전송합니다. 이 이메일은 Shopify 관리 설정 > 스토어 세부 정보 > 연락처 정보에서 편집할 수 있습니다."
+        }
+      },
+      "blocks": {
+        "name_input": {
+          "name": "이름 필드"
+        },
+        "email_input": {
+          "name": "이메일 필드"
+        },
+        "tel_input": {
+          "name": "전화번호 필드"
+        },
+        "message_input": {
+          "name": "메시지 필드"
+        },
+        "custom_input": {
+          "name": "사용자 정의 필드",
+          "settings": {
+            "placeholder": {
+              "label": "입력 이름"
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "문의 양식"
+      }
+    },
+    "shop-the-look": {
+      "name": "룩 구매",
+      "blocks": {
+        "look": {
+          "name": "룩",
+          "settings": {
+            "header": {
+              "product_one": "제품 하나",
+              "product_two": "제품 둘",
+              "product_three": "제품 셋",
+              "product_four": "제품 넷"
+            },
+            "hotspot_color": {
+              "label": "핫스팟 색상"
+            },
+            "hotspot_horizontal_position": {
+              "label": "핫스팟 가로 위치"
+            },
+            "hotspot_vertical_position": {
+              "label": "핫스팟 세로 위치"
+            }
+          }
+        }
+      }
+    },
+    "store-availability": {
+      "name": {
+      },
+      "settings": {
+      },
+      "blocks": {
+      }
+    },
+    "store-information--map": {
+      "name": "지도",
+      "settings": {
+        "address": {
+          "label": "주소 및 운영 시간"
+        },
+        "map_address": {
+          "label": "지도 주소",
+          "info": "Google 지도에서 정확한 위치를 찾습니다."
+        },
+        "api_key": {
+          "label": "Google 지도 API 키",
+          "info": "지도를 표시하려면 [Google 지도 API 키를 등록](https:\/\/help.shopify.com\/manual\/using-themes\/troubleshooting\/map-section-api-key)해야 합니다."
+        },
+        "button_text": {
+          "label": "지도 링크 레이블"
+        },
+        "layout": {
+          "options": {
+            "left": "왼쪽",
+            "right": "오른쪽"
+          }
+        },
+        "background_image": {
+          "info": "지도가 로드되지 않는 경우에 표시됩니다."
+        }
+      },
+      "blocks": {
+      },
+      "presets": {
+        "name": "지도"
+      }
+    },
+    "template--article": {
+      "name": "문서 페이지",
+      "settings": {
+        "show_recent_posts": {
+          "label": "최신 기사 표시"
+        },
+        "blog_show_date": {
+          "label": "날짜 표시"
+        }
+      },
+      "blocks": {
+      }
+    },
+    "template--blog": {
+      "name": "블로그 페이지",
+      "settings": {
+        "show_author_name": {
+          "label": "작성자 이름 표시"
+        },
+        "show_recent_posts": {
+          "label": "최근 글 표시"
+        }
+      },
+      "blocks": {
+      }
+    },
+    "template--collection--header": {
+      "paragraph-0": {
+        "content": "컬렉션 설명(존재하는 경우)."
+      },
+      "name": "컬렉션 헤더",
+      "settings": {
+      },
+      "blocks": {
+        "collection_image": {
+          "name": "컬렉션 이미지",
+          "settings": {
+            "collection-image-size": {
+              "label": "컬렉션 이미지 크기"
+            }
+          }
+        },
+        "title": {
+          "name": "컬렉션 제목"
+        },
+        "description": {
+          "name": "컬렉션 설명",
+          "settings": {
+            "paragraph-0": {
+              "content": "컬렉션 설명(존재하는 경우)."
+            }
+          }
+        }
+      }
+    },
+    "template--collection": {
+      "label": "글꼴",
+      "name": "컬렉션 그리드",
+      "settings": {
+        "pagination_options": {
+          "label": "페이지 네비게이션 유형",
+          "options": {
+            "pagination_default": "페이지 네비게이션",
+            "pagination_infinite_scrolling": "무한 스크롤링",
+            "pagination_load_more": "더 보기 버튼"
+          }
+        },
+        "header-5": {
+          "content": "헤더 및 필터링"
+        },
+        "enable_collection_title": {
+          "label": "컬렉션 제목 표시"
+        },
+        "enable_collection_description": {
+          "label": "컬렉션 설명 표시"
+        },
+        "show_swatch_filter_labels": {
+          "label": "견본 필터 라벨 표시"
+        }
+      }
+    },
+    "template--collections-list": {
+      "label": "글꼴",
+      "name": "컬렉션 목록",
+      "settings": {
+        "banner_image": {
+          "info": "권장 크기: 2000px x 300px"
+        },
+        "parallax": {
+          "info": "이미지 크기가 '원본'으로 설정된 경우에는 파랄랙스가 표시되지 않습니다."
+        },
+        "header-4": {
+          "content": "레이아웃 옵션"
+        },
+        "show_title": {
+          "label": "페이지 제목 표시"
+        },
+        "layout": {
+          "label": "레이아웃 스타일",
+          "options": {
+            "preview": "미리보기"
+          }
+        },
+        "items_per_row": {
+          "label": "행당 항목 수",
+          "info": "데스크탑에만 적용됩니다."
+        },
+        "header-8": {
+          "content": "컬렉션 선택"
+        },
+        "paragraph-9": {
+          "content": "모든 컬렉션이 기본적으로 나열됩니다. 목록을 사용자 정의하려면 '선택함'을 선택하고 컬렉션을 추가하세요."
+        },
+        "show_options": {
+          "label": "표시할 컬렉션",
+          "options": {
+            "all": "모두",
+            "selected": "선택함"
+          }
+        },
+        "selected_collections": {
+          "label": "선택한 컬렉션"
+        }
+      }
+    },
+    "template--page": {
+      "label": "이미지 링크",
+      "name": "페이지",
+      "settings": {
+        "page_title_enabled": {
+          "label": "페이지 제목 표시"
+        }
+      },
+      "blocks": {
+        "text": {
+          "name": "사이드바 제목"
+        },
+        "richtext": {
+          "name": "사이드바 텍스트"
+        },
+        "menu": {
+          "name": "사이드바 메뉴"
+        },
+        "image_picker": {
+          "name": "사이드바 이미지",
+          "settings": {
+            "image_title": {
+              "label": "이미지 제목"
+            }
+          }
+        }
+      }
+    },
+    "template--password": {
+      "name": "비밀번호 페이지",
+      "settings": {
+        "paragraph-13": {
+          "content": "[Shopify 설정에서 비밀번호 페이지 메시지 편집](http:\/\/www.shopify.com\/admin\/online_store\/preferences)"
+        },
+        "social_media_icons": {
+          "info": "일반 설정에서 소셜 설정과 계정을 편집하세요."
+        },
+        "newsletter_enable": {
+          "label": "뉴스레터 가입 표시"
+        }
+      },
+      "blocks": {
+      }
+    },
+    "template--product--description": {
+      "name": "상품 설명",
+      "settings": {
+        "enable_readmore": {
+          "label": "설명에 '더 읽기' 활성화"
+        }
+      },
+      "blocks": {
+      }
+    },
+    "template--product--info-columns": {
+      "label": "버튼 링크",
+      "name": "정보 열",
+      "settings": {
+        "columns_per_row": {
+          "label": "데스크탑 당 열 수"
+        },
+        "vertical_alignment": {
+          "label": "수직 정렬"
+        }
+      },
+      "blocks": {
+        "image_and_text": {
+          "name": "이미지와 텍스트"
+        },
+        "video_and_text": {
+          "name": "비디오와 텍스트",
+          "settings": {
+            "grid_video_size": {
+              "label": "비디오 크기",
+              "options": {
+                "tall": "긴형 (9:16)",
+                "wide": "와이드 (16:9)"
+              }
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "정보 열",
+        "blocks": {
+        }
+      }
+    },
+    "template--product--recently-viewed": {
+      "label": "글꼴",
+      "name": "최근 본 상품",
+      "presets": {
+        "name": "최근 본 상품",
+        "settings": {
+          "recently_viewed_title": "최근 본 상품"
+        },
+        "blocks": {
+        }
+      }
+    },
+    "template--product--recommendations": {
+      "label": "글꼴",
+      "name": "상품 추천",
+      "settings": {
+        "paragraph-0": {
+          "content": "동적 추천은 주문 및 제품 정보를 사용하여 시간이 지남에 따라 변경 및 개선됩니다. [더 알아보기](https:\/\/help.shopify.com\/themes\/development\/recommended-products)"
+        }
+      },
+      "presets": {
+        "name": "상품 추천",
+        "settings": {
+          "product_recommendations_heading": "관련 상품"
+        },
+        "blocks": {
+        }
+      }
+    },
+    "template--product-recently-used-grid": {
+      "name": "최근 본 상품",
+      "blocks": {
+      }
+    },
+    "template--product": {
+      "label": "하단 여백",
+      "name": "제품",
+      "settings": {
+        "enable_sticky": {
+          "label": "데스크탑에서 고정 콘텐츠 활성화"
+        },
+        "show_out_of_stock_email": {
+          "label": "품절 이메일 활성화"
+        },
+        "image_size": {
+          "info": "권장되는 최소 폭 950px. [더 알아보기](https:\/\/support.eightthemes.com\/hc\/en-us\/articles\/360020257118-Image-Dimensions)"
+        },
+        "image-display": {
+          "label": "보조 미디어 표시",
+          "options": {
+            "full_size": "전체 크기",
+            "thumbnails": "섬네일"
+          }
+        },
+        "thumbnail_position": {
+          "label": "섬네일 위치",
+          "options": {
+            "below": "주요 미디어 아래",
+            "left": "주요 미디어 왼쪽",
+            "right": "주요 미디어 오른쪽"
+          }
+        },
+        "header-8": {
+          "content": "앱 블록 간격"
+        },
+        "app_margin_bottom": {
+          "info": "제품 양식에 표시되는 설치된 앱 블록 아래의 간격을 제어합니다."
+        }
+      },
+      "blocks": {
+        "price": {
+          "settings": {
+            "shipping_policy": {
+              "label": "배송 정책 링크 표시"
+            },
+            "tax_included": {
+              "label": "\"세금 포함\" 메시지 표시"
+            }
+          }
+        },
+        "vendor": {
+          "name": "판매자"
+        },
+        "options": {
+          "name": "옵션",
+          "settings": {
+            "thumbnail_changes_variant": {
+              "label": "섬네일을 기반으로 옵션 변경"
+            },
+            "size_guide_page": {
+              "label": "사이즈 가이드 페이지"
+            },
+            "size_option_name": {
+              "label": "지정된 변형 옵션에 표시"
+            },
+            "header-3": {
+              "content": "사이즈 가이드"
+            }
+          }
+        },
+        "linked-products": {
+          "name": "연결된 제품",
+          "settings": {
+            "swatches_size": {
+              "label": "스와치 크기"
+            },
+            "paragraph-4": {
+              "content": "메타필드를 사용하는 것을 권장합니다. [더 알아보기](https:\/\/support.eightthemes.com\/hc\/en-us\/articles\/12573137881617)"
+            }
+          }
+        },
+        "product-description": {
+          "name": "제품 설명",
+          "settings": {
+            "paragraph-2": {
+              "content": "이러한 설정은 '접이식 탭 활성화'가 선택된 경우에만 적용됩니다."
+            }
+          }
+        },
+        "sku": {
+          "name": "SKU"
+        },
+        "separator": {
+          "name": "분리자"
+        },
+        "collapsible-tab": {
+          "settings": {
+            "open_by_default": {
+              "label": "기본적으로 탭 열기"
+            }
+          }
+        },
+        "giftwrap": {
+          "name": "선물 포장",
+          "settings": {
+            "paragraph-0": {
+              "content": "테마 설정 > 제품에서 선물 포장 제품을 선택하세요. [더 알아보기](https:\/\/support.eightthemes.com\/hc\/en-us\/articles\/360020396138-How-to-Enable-Product-Gift-Wrapping)."
+            }
+          }
+        },
+        "buy_buttons": {
+          "name": "구매 버튼",
+          "settings": {
+            "enable_gift_card_recipient_form": {
+              "label": "기프트 카드 제품에 대한 수령자 정보 양식 표시",
+              "info": "기프트 카드 제품은 선택 사항으로 수령자에게 개인 메시지와 함께 직접 전송할 수 있습니다. [더 알아보기](https:\/\/help.shopify.com\/manual\/online-store\/themes\/customizing-themes\/add-gift-card-recipient-fields)"
+            }
+          }
+        },
+        "local_pickup": {
+          "name": "매장 픽업",
+          "settings": {
+            "paragraph-0": {
+              "content": "표시하려면 위치를 설정해야 합니다. [더 알아보기](https:\/\/help.shopify.com\/en\/manual\/locations)"
+            }
+          }
+        },
+        "trust_badges": {
+          "name": "신뢰 뱃지",
+          "settings": {
+            "trust-badge": {
+              "label": "신뢰 뱃지",
+              "info": "권장 크기는 100 x 300px입니다. [더 알아보기](https:\/\/support.eightthemes.com\/hc\/en-us\/articles\/360020242537-Trust-Badges)"
+            }
+          }
+        },
+        "product_meta": {
+          "name": "제품 메타",
+          "settings": {
+            "paragraph-0": {
+              "content": "제품 태그, 컬렉션 및 유형을 표시합니다."
+            }
+          }
+        },
+        "complementary-products": {
+          "name": "보완 제품",
+          "settings": {
+            "paragraph-0": {
+              "content": "보완 제품을 선택하려면 검색 및 탐색 앱을 추가하세요. [더 알아보기](https:\/\/help.shopify.com\/en\/manual\/online-store\/search-and-discovery\/product-recommendations)"
+            },
+            "products_limit": {
+              "label": "표시할 제품 수"
+            }
+          }
+        },
+        "cross-sells": {
+          "name": "교차 판매",
+          "settings": {
+            "cross_sell_product_1": {
+              "label": "첫 번째 제품"
+            },
+            "cross_sell_product_2": {
+              "label": "두 번째 제품"
+            },
+            "cross_sell_product_3": {
+              "label": "세 번째 제품"
+            }
+          }
+        },
+        "social_sharing": {
+          "name": "소셜 미디어"
+        },
+        "star_rating": {
+          "name": "스타 등급",
+          "settings": {
+            "star_size": {
+              "label": "스타 크기"
+            },
+            "no_reviews_label": {
+              "label": "평가 없음"
+            }
+          }
+        }
+      }
+    },
+    "template--search": {
+      "name": "검색 페이지",
+      "settings": {
+        "header-0": {
+          "content": "필터링 및 정렬"
+        },
+        "show_swatch_filter_labels": {
+          "label": "견본 필터 라벨 표시"
+        }
+      },
+      "blocks": {
+      }
+    },
+    "text--product-testimonials": {
+      "label": "작성자",
+      "name": "제품 후기",
+      "blocks": {
+        "textarea": {
+          "settings": {
+            "image": {
+              "info": "권장 크기 200 x 200px"
+            },
+            "author": {
+              "label": "작성자"
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "제품 후기",
+        "blocks": {
+        }
+      }
+    },
+    "text--rich-text": {
+      "label": "텍스트 크기",
+      "name": "리치 텍스트",
+      "settings": {
+        "text_alignment_mobile": {
+          "label": "모바일에서 텍스트 정렬"
+        }
+      },
+      "blocks": {
+        "page": {
+          "name": "페이지"
+        }
+      },
+      "presets": {
+        "name": "리치 텍스트",
+        "blocks": {
+        }
+      }
+    },
+    "text--testimonials": {
+      "label": "리뷰 별",
+      "name": "평가",
+      "settings": {
+        "circle_images": {
+          "label": "원형 이미지"
+        }
+      },
+      "blocks": {
+        "text": {
+          "settings": {
+            "image": {
+              "info": "권장 크기 400px x 400px"
+            },
+            "customer_name": {
+              "label": "고객 이름"
+            },
+            "stars": {
+              "label": "리뷰 별"
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "평가",
+        "blocks": {
+          "text-0": {
+            "customer_name": "존 스미스"
+          }
+        }
+      }
+    },
+    "text--text-adverts": {
+      "label": "링크",
+      "name": "텍스트 광고",
+      "blocks": {
+        "text": {
+          "name": "광고"
+        }
+      },
+      "presets": {
+        "name": "텍스트 광고",
+        "blocks": {
+        }
+      }
+    },
+    "text--text-slideshow": {
+      "label": "버튼 레이블",
+      "name": "텍스트 슬라이드쇼",
+      "presets": {
+        "name": "텍스트 슬라이드쇼",
+        "blocks": {
+        }
+      }
+    },
+    "video--video-hero": {
+      "name": "비디오 히어로",
+      "settings": {
+        "mobileHeight": {
+          "label": "모바일 섹션 높이",
+          "options": {
+            "fit": "화면 폭에 맞추기"
+          }
+        },
+        "textShadow": {
+          "label": "텍스트 그림자"
+        },
+        "subheading--text-size": {
+          "label": "부제목 크기"
+        }
+      },
+      "blocks": {
+      },
+      "presets": {
+        "name": "비디오 히어로"
+      }
+    },
+    "video--video": {
+      "name": "비디오",
+      "settings": {
+        "image": {
+          "info": "자동 재생이 활성화되어 있지 않은 경우에만 표시됩니다."
+        }
+      },
+      "blocks": {
+      }
+    },
+    "visual-navigation-banner": {
+      "label": "텍스트",
+      "name": "시각적 네비게이션 배너",
+      "blocks": {
+        "navigation_link": {
+          "name": "네비게이션 항목",
+          "settings": {
+            "link_image": {
+              "info": "권장 크기 100 x 100px"
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "시각적 네비게이션 배너",
+        "blocks": {
+        }
+      }
+    },
+    "template--cart": {
+      "name": "장바구니"
+    }
+  },
+  "all": {
+    "1": "1",
+    "2": "2",
+    "Color_scheme": "색상 구성",
+    "Caption_color_scheme": "캡션 색상 구성",
+    "Minimal": "미니멀",
+    "Light": "라이트",
+    "Feature": "특징",
+    "Dark": "다크",
+    "Heading": "제목",
+    "Icon_style": "아이콘 스타일",
+    "Plus_minus": "플러스\/마이너스",
+    "Caret": "캐럿",
+    "Text": "텍스트",
+    "Custom_HTML": "사용자 정의 HTML",
+    "HTML": "HTML",
+    "Custom_Liquid": "사용자 정의 리퀴드",
+    "Content": "콘텐츠",
+    "Video": "비디오",
+    "Image": "이미지",
+    "Overlay_opacity": "오버레이 투명도",
+    "percentage": "%",
+    "Description": "설명",
+    "Overlay_text_color": "오버레이 텍스트 색상",
+    "Button_label": "버튼 레이블",
+    "Link": "링크",
+    "Video_URL": "비디오 URL",
+    "Autoplay": "자동 재생",
+    "Video_will_be_muted_and_some_devices_may_prevent_autoplay_": "비디오는 음소거되며 일부 기기에서 자동 재생이 방지될 수 있습니다.",
+    "Loop": "반복",
+    "Mute": "음소거",
+    "Menu_item": "메뉴 항목",
+    "Subheading": "부제목",
+    "Featured_image": "특별 이미지",
+    "Small": "작음",
+    "Medium": "중간",
+    "Large": "큼",
+    "Extra_Large": "매우 큼",
+    "Link_to_any_collection_product_or_page": "모든 컬렉션, 제품 또는 페이지에 링크",
+    "Desktop": "데스크탑",
+    "Image_optional": "이미지 (선택사항)",
+    "2000_x_900px_recommended": "2000 x 900px 권장",
+    "Section_height": "섹션 높이",
+    "Fullscreen": "전체 화면",
+    "Original": "원본",
+    "Text_size": "텍스트 크기",
+    "px": "px",
+    "Text_position": "텍스트 위치",
+    "Top_left": "왼쪽 상단",
+    "Top_center": "중앙 상단",
+    "Top_right": "오른쪽 상단",
+    "Center_left": "왼쪽 중앙",
+    "Center": "중앙",
+    "Center_right": "오른쪽 중앙",
+    "Bottom_left": "왼쪽 하단",
+    "Bottom_center": "하단 중앙",
+    "Bottom_right": "오른쪽 하단",
+    "Mobile": "모바일",
+    "Text_color": "텍스트 색상",
+    "If_a_color_is_selected_it_will_override_the_color_scheme": "색상을 선택하면 색상 구성을 덮어씁니다.",
+    "ms": "밀리초",
+    "Button": "버튼",
+    "Button_link": "버튼 링크",
+    "Button_text": "버튼 텍스트",
+    "Button_background": "버튼 배경",
+    "Button_text_hover": "버튼 텍스트 호버",
+    "Button_background_hover": "버튼 배경 호버",
+    "To_choose_which_icons_to_display_go_to_Theme_settings__Social_media_": "표시할 아이콘을 선택하려면 '테마 설정 > 소셜 미디어'로 이동하십시오.",
+    "Color": "색상",
+    "Background": "배경",
+    "Caption_background": "캡션 배경",
+    "Optional": "선택 사항",
+    "Show_dates": "날짜 표시",
+    "Selected_blog_posts": "선택된 블로그 게시물",
+    "Selected_blog": "선택된 블로그",
+    "Navigation": "내비게이션",
+    "Background_color": "배경 색상",
+    "Left": "왼쪽",
+    "Remove_spacing": "간격 제거",
+    "Full_width": "전체 너비",
+    "Content_width": "컨텐츠 너비",
+    "1_2_width": "1\/2 너비",
+    "1_3_width": "1\/3 너비",
+    "2_3_width": "2\/3 너비",
+    "1_4_width": "1\/4 너비",
+    "3_4_width": "3\/4 너비",
+    "Extra_small": "추가 작음",
+    "Extra_large": "추가 큼",
+    "Top": "상단",
+    "Bottom": "하단",
+    "Heading_size": "제목 크기",
+    "Desktop_content_position": "데스크톱 컨텐츠 위치",
+    "Right": "오른쪽",
+    "Mobile_content_position": "모바일 컨텐츠 위치",
+    "Colors": "색상",
+    "Overlay": "오버레이",
+    "A_Shopify_hosted_video": "Shopify 호스팅 비디오",
+    "Embed_video_from_URL": "URL에서 비디오 삽입",
+    "Accepts_YouTube_and_Vimeo__Video_will_be_muted_and_some_devices_may_prevent_autoplay__Learn_morehttps___support_eightthemes_com_hc_en_us_articles_360020109497_Product_Mediaheading_2": "YouTube 및 Vimeo를 지원합니다. 비디오는 음소거되며 일부 기기에서 자동 재생이 방지될 수 있습니다. [더 알아보기](https:\/\/support.eightthemes.com\/hc\/en-us\/articles\/360020109497-Product-Media#heading-2)",
+    "Mobile_video": "모바일 비디오",
+    "A_Shopify_hosted_video_optional": "Shopify 호스팅 비디오 (선택사항)",
+    "Accepts_YouTube_and_Vimeo__Learn_morehttps___support_eightthemes_com_hc_en_us_articles_360020109497_Product_Mediaheading_2": "YouTube 및 Vimeo를 지원합니다. [더 알아보기](https:\/\/support.eightthemes.com\/hc\/en-us\/articles\/360020109497-Product-Media#heading-2)",
+    "Text_alignment": "텍스트 정렬",
+    "Countdown_timer": "카운트다운 타이머",
+    "Countdown_end_date": "카운트다운 종료 날짜",
+    "Use_the_format_mm_dd_yyyy_eg__01_31_2024": "mm-dd-yyyy 형식을 사용하십시오 (예: 01-31-2024)",
+    "Countdown_end_time": "카운트다운 종료 시간",
+    "Use_the_format_hh_mm_ss_eg__23_59_59__Use_the_timezone_specified_in_your_Shopify_admin": "hh:mm:ss 형식을 사용하십시오 (예: 23:59:59). Shopify 관리자에서 지정된 시간대를 사용하십시오.",
+    "Show_timer_labels": "타이머 레이블 표시",
+    "Out_of_time_message": "시간 초과 메시지",
+    "md_min_align_center_md_min_justify_center": "md-min-align-center md-min-justify-center",
+    "md_max_align_center_md_max_justify_center": "md-max-align-center md-max-justify-center",
+    "Width": "너비",
+    "On_hover": "호버 시",
+    "Below_image": "이미지 아래",
+    "Collection": "컬렉션",
+    "Image_Optional": "이미지 (선택사항)",
+    "Enable_overlay_gradient": "오버레이 그라데이션 활성화",
+    "Overlay_color": "오버레이 색상",
+    "Grid_layout": "그리드 레이아웃",
+    "Rows_per_page_on_desktop": "데스크톱 페이지당 행 수",
+    "Product_per_row_on_desktop": "데스크톱 페이지당 제품 수",
+    "Product_per_row_on_mobile": "모바일 페이지당 제품 수",
+    "Enable": "활성화",
+    "Product_image": "제품 이미지",
+    "Title": "제목",
+    "Font": "폰트",
+    "Body": "본문",
+    "Price": "가격",
+    "Layout_on_desktop": "데스크톱 레이아웃",
+    "text_position_on_desktop": "데스크톱 텍스트 위치",
+    "Content_on_left": "컨텐츠 왼쪽",
+    "Content_on_right": "컨텐츠 오른쪽",
+    "Text_alignment_on_desktop": "데스크톱 텍스트 정렬",
+    "Centered": "가운데 정렬",
+    "Grid": "그리드",
+    "This_applies_if_section_layout_is_set_to_Grid_": "이것은 섹션 레이아웃이 '그리드'로 설정된 경우 적용됩니다.",
+    "Image_size": "이미지 크기",
+    "Natural": "자연적",
+    "Square_1_1": "정사각형 (1:1)",
+    "Tall_2_3": "세로 (2:3)",
+    "Wide_4_3": "와이드 (4:3)",
+    "Minimum_section_height": "최소 섹션 높이",
+    "1400_x_1400px_recommended": "1400 x 1400px 권장",
+    "Menu": "메뉴",
+    "Footer_text": "푸터 텍스트",
+    "Country_region_selector": "국가\/지역 선택기",
+    "To_add_a_country_region_go_to_your_market_settings__admin_settings_markets": "국가\/지역을 추가하려면 [마켓 설정](\/admin\/settings\/markets)으로 이동하십시오.",
+    "Enable_country_region_selector": "국가\/지역 선택기 활성화",
+    "Language_selector": "언어 선택기",
+    "To_add_a_language_go_to_your_language_settings__admin_settings_languages": "언어를 추가하려면 [언어 설정](\/admin\/settings\/languages)으로 이동하십시오.",
+    "Enable_language_selector": "언어 선택기 활성화",
+    "Newsletter": "뉴스레터",
+    "Header": "헤더",
+    "Logo_image": "로고 이미지",
+    "Preferred_width": "선호하는 너비",
+    "Logo": "로고",
+    "Logo_width": "로고 너비",
+    "Logo_width_on_desktop": "데스크톱 로고 너비",
+    "Logo_width_on_mobile": "모바일 로고 너비",
+    "Mobile_navigation": "모바일 내비게이션",
+    "Show_social_media_icons": "소셜 미디어 아이콘 표시",
+    "Quantity": "수량",
+    "None": "없음",
+    "Image_aspect_ratio": "이미지 가로 세로 비율",
+    "Overlay_text_on_image": "이미지 위의 오버레이 텍스트",
+    "Show_in_mobile_drawer": "모바일 서랍에서 표시",
+    "Hide": "숨김",
+    "Background_image": "배경 이미지",
+    "Enable_parallax_effect": "패럴랙스 효과 활성화",
+    "Full_screen": "전체 화면",
+    "sec": "초",
+    "Body_text": "본문 텍스트",
+    "Body_text_size": "본문 텍스트 크기",
+    "Make_a_great__first_impression": "훌륭한 첫 인상을 남기세요",
+    "Image_link": "이미지 링크",
+    "Product": "제품",
+    "Variant_style": "변형 스타일",
+    "You_may_need_to_upload_custom_swatch_images__Learn_morehttps___support_eightthemes_com_hc_en_us_articles_360020105257_How_to_Upload_Color_Swatches": "사용자 정의 스와치 이미지를 업로드해야 할 수 있습니다. [더 알아보기](https:\/\/support.eightthemes.com\/hc\/en-us\/articles\/360020105257-How-to-Upload-Color-Swatches)",
+    "Dropdowns": "드롭다운",
+    "Swatches": "스와치",
+    "Hide_out_of_stock_variants": "품절된 변형 숨기기",
+    "Show_vendor": "공급업체 표시",
+    "Show_dynamic_checkout_button": "다이내믹 체크아웃 버튼 표시",
+    "Lets_customers_check_out_directly_using_a_familiar_payment_method__Learn_morehttps___help_shopify_com_manual_using_themes_change_the_layout_dynamic_checkout": "고객이 익숙한 결제 방법을 사용하여 직접 체크아웃할 수 있게 합니다. [더 알아보기](https:\/\/help.shopify.com\/manual\/using-themes\/change-the-layout\/dynamic-checkout)",
+    "Media": "미디어",
+    "Learn_more_about_media_typeshttps___help_shopify_com_en_manual_products_product_media": "미디어 유형에 대한 [더 많은 정보](https:\/\/help.shopify.com\/en\/manual\/products\/product-media)",
+    "Enable_video_looping": "비디오 루핑 활성화",
+    "Product_rating": "제품 평점",
+    "Label": "레이블",
+    "Rating": "평점",
+    "To_display_a_rating_add_a_product_rating_metafield_admin_metafields_product": "평점을 표시하려면 [제품 평점 메타필드](\/admin\/metafields\/product)를 추가하십시오.",
+    "Full_icon": "전체 아이콘",
+    "Empty_icon": "빈 아이콘",
+    "Maximum": "최대값",
+    "Select_a_maximum_equal_to_the_rating_metafields_scale_maximum_admin_metafields_product": "평점 메타필드의 [스케일 최대값](\/admin\/metafields\/product)과 동일한 값을 선택하십시오.",
+    "Image_with_offers": "제안과 함께 이미지",
+    "Link_hover_border_color": "링크 호버 테두리 색상",
+    "Text_with_icon": "아이콘과 함께 텍스트",
+    "Icon": "아이콘",
+    "Home_with_smile": "웃음으로 홈",
+    "Store": "상점",
+    "Flag": "깃발",
+    "Customer_service": "고객 서비스",
+    "Chat_bubble": "채팅 버블",
+    "Chat_bubble_with_smile": "웃음이 있는 채팅 버블",
+    "Question_and_answer": "질문과 답변",
+    "Wallet": "지갑",
+    "Price_tag": "가격표",
+    "Crown": "왕관",
+    "Exchange": "환전",
+    "Gift": "선물",
+    "Clock": "시계",
+    "Truck": "트럭",
+    "Measuring_tape": "측정 테이프",
+    "Info": "정보",
+    "Heart": "하트",
+    "Map_pin": "지도 핀",
+    "Car": "자동차",
+    "Takeaway": "포장",
+    "Restaurant": "레스토랑",
+    "Cup": "컵",
+    "Star": "별",
+    "Sun": "태양",
+    "Moon": "달",
+    "Cake": "케이크",
+    "Handbag": "핸드백",
+    "Umbrella": "우산",
+    "Recycle": "재활용",
+    "Stock_level_indicator": "재고 수준 표시기",
+    "Product_inventory_must_be_tracked_to_use_this_functionality_": "이 기능을 사용하려면 제품 재고를 추적해야 합니다.",
+    "Style": "스타일",
+    "Out_of_stock_products_show_Classic_count": "품절 제품은 '클래식 카운트'로 표시됩니다.",
+    "Classic_count": "클래식 카운트",
+    "Bar_count": "바 카운트",
+    "Bar_indicator_color": "바 표시기 색상",
+    "Standard": "표준",
+    "Enable_animation": "애니메이션 활성화",
+    "Show_low_stock_warning_at": "낮은 재고 경고 표시",
+    "Show_stock_level_count": "재고 수준 카운트 표시",
+    "Show_stock_level_notice": "재고 수준 공지 표시",
+    "Always": "항상",
+    "When_stock_level_is_lower_than_low_stock_threshold": "재고 수준이 낮은 재고 임계값보다 낮을 때",
+    "In_stock_message": "재고 있음 메시지",
+    "Low_stock_message": "낮은 재고 메시지",
+    "Out_of_stock_message": "품절 메시지",
+    "Narrow": "좁게",
+    "Required": "필수",
+    "Input_width": "입력 폭",
+    "Partial": "부분",
+    "Full": "전체",
+    "partial": "부분",
+    "full": "전체",
+    "Show_tags": "태그 표시",
+    "Sidebar": "사이드바",
+    "The_title_of_the_collection_": "컬렉션의 제목.",
+    "Desktop_position": "데스크톱 위치",
+    "Top_bar": "상단 바",
+    "Enable_filtering": "필터링 활성화",
+    "Customize_filters_admin_menus": "[필터를 사용자 정의](\/admin\/menus)",
+    "Enable_sorting": "정렬 활성화",
+    "2000_x_800px_recommended": "2000 x 800px 권장",
+    "Required_to_show_the_button": "버튼을 표시하려면 필요함",
+    "Or_embed_video_from_URL": "또는 URL에서 비디오 삽입",
+    "Size": "크기",
+    "Bottom_margin": "하단 여백",
+    "Block_spacing": "블록 간격",
+    "Grid_image_size": "그리드 이미지 크기",
+    "Products": "제품",
+    "Enable_collapsible_tab": "접히는 탭 활성화",
+    "Collapsible_tab": "접히는 탭",
+    "Custom_icon": "사용자 정의 아이콘",
+    "Aspect_ratio_of_1_1_recommended": "1:1 권장 종횡비",
+    "Open_Close_icon_style": "열기\/닫기 아이콘 스타일",
+    "Page_content": "페이지 내용",
+    "Image_style": "이미지 스타일",
+    "Circle": "원형",
+    "Square": "사각형",
+    "Testimonial": "추천서",
+    "Text_hover": "텍스트 호버",
+    "Borders": "테두리",
+    "Buttons": "버튼",
+    "Letter_spacing": "글자 간격",
+    "Normal_case": "일반 케이스",
+    "Lowercase": "소문자",
+    "Uppercase": "대문자",
+    "Case": "대소문자",
+    "Verification_question": "확인 질문",
+    "Settings": "설정",
+    "Vendor": "공급업체",
+    "Show_title": "제목 보기",
+    "Maximum_lines": "최대 줄 수",
+    "Maximum_lines_info": "0으로 설정하면 절삭하지 않음.",
+    "Show_price": "가격 표시",
+    "Enable_desktop": "활성화 (데스크탑)",
+    "Enable_mobile": "활성화 (모바일)",
+    "Products_to_show": "보여줄 제품",
+    "Max_products_to_show": "표시할 최대 제품 수",
+    "Product_per_row_desktop": "행당 제품 (데스크탑)",
+    "Product_per_row_mobile": "행당 제품 (모바일)",
+    "Layout": "레이아웃",
+    "Slider": "슬라이더",
+    "Filled": "채워진",
+    "Outlined": "윤곽이 그려진",
+    "Position": "위치",
+    "animation": "애니메이션",
+    "show_fade": "페이드 표시",
+    "direction": "방향",
+    "speed": "속도",
+    "space_between_blocks_desktop": "블록 사이 공간 (데스크탑)",
+    "space_between_blocks_mobile": "블록 사이 공간 (모바일)",
+    "rotate": "회전",
+    "enable_borders": "테두리 활성화",
+    "fill": "채우기",
+    "outline": "윤곽",
+    "font_size_desktop": "글꼴 크기 (데스크탑)",
+    "font_size_mobile": "글꼴 크기 (모바일)",
+    "height_desktop": "높이 (데스크탑)",
+    "height_mobile": "높이 (모바일)"
+  }
+}

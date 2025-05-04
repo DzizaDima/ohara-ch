@@ -1,0 +1,80 @@
+{% comment %}
+  Renders a filter swatch for a given filter option, this can either be a color or image swatch.
+
+  Accepts:
+    type {String}: The type of swatch to render, either 'color' or 'image'
+    value {Object}: Will be an array of color drops, or image drop, depending on the "type"
+    presentation {String}: The presentation of the swatch, which can only be 'swatch'
+    show_swatch_label {Boolean}: Whether or not to show the swatch label
+    swatch_label {String}: The label to show for the swatch
+
+  Usage:
+    {% render 'filter-swatch',
+      type: value.display.type,
+      value: value.display.value,
+      presentation: filter.presentation
+    %}
+{% endcomment %}
+
+<div class="filter-swatch--wrapper">
+  {% case type %}
+    {% when 'colors' %}
+      {% liquid
+        assign size_limit = value.size | at_most: 4
+        assign rotation = '0deg'
+        if size_limit == 2
+          assign rotation = '45deg'
+        endif
+
+        assign angle_increment = 360 | divided_by: size_limit
+        assign angle = 0
+      %}
+
+      {%- capture conic_gradient -%}
+        {%- for color in value limit: size_limit -%}
+          {{ color }} {{ angle }}deg{%- assign angle = angle | plus: angle_increment %} {{ angle }}deg{%- unless forloop.last %}, {%- endunless -%}
+        {%- endfor -%}
+      {%- endcapture -%}
+
+      <div class="filter-swatch--swatch">
+        <div 
+          class="filter-swatch--color" 
+          style="background: conic-gradient({{ conic_gradient }}); transform: rotateZ({{ rotation }});"
+        >
+          <span class="filter-swatch-sold-out filter-swatch-sold-out-background"></span>
+          <span class="filter-swatch-sold-out filter-swatch-sold-out-foreground"></span>
+        </div>
+      </div>
+    {% when 'image' %}
+      <div class="filter-swatch--swatch">
+        {{
+          value
+          | image_url: width: 300
+          | image_tag: class: 'filter-swatch--image', alt: value.alt
+        }}
+
+        <span class="filter-swatch-sold-out filter-swatch-sold-out-background"></span>
+        <span class="filter-swatch-sold-out filter-swatch-sold-out-foreground"></span>
+      </div>
+    {% else %}
+      <div class="filter-swatch--swatch empty-state">
+        {% comment %} Color swatch empty state {% endcomment %}
+        <div class="filter-swatch--color color-swatch-empty">
+          <span class="filter-swatch-sold-out filter-swatch-sold-out-background color-swatch--disabled"></span>
+          <span class="filter-swatch-sold-out filter-swatch-sold-out-foreground color-swatch--disabled"></span>
+        </div>
+
+        {% comment %} Image swatch empty state {% endcomment %}
+        <div class="filter-swatch--image image-swatch-empty"></div>
+
+        <span class="filter-swatch-sold-out filter-swatch-sold-out-background image-swatch--disabled"></span>
+        <span class="filter-swatch-sold-out filter-swatch-sold-out-foreground image-swatch--disabled"></span>
+      </div>
+  {% endcase %}
+
+  {% if show_swatch_label %}
+    <div class="filter-swatch--label">{{ swatch_label | escape }}</div>
+  {% else %}
+    <span class="sr-only">{{ swatch_label | escape }}</span>
+  {% endif %}
+</div>

@@ -1,0 +1,132 @@
+{% liquid
+  assign crop_setting = settings.product-grid
+
+  if crop_setting == "square" or crop_setting == "tall" or crop_setting == "wide"
+    assign image_crop = "aspect-ratio--" | append: crop_setting
+  else
+    assign image_crop = false
+  endif
+
+  assign alignment_class = 'text-align--' | append: settings.product_card_text_alignment
+
+  assign quick_shop_desktop_enabled = settings.enable_quick_shop_desktop
+  assign quick_shop_mobile_enabled = settings.enable_quick_shop_mobile
+
+  if quick_shop_desktop_enabled == false and quick_shop_mobile_enabled
+    assign quick_shop_mobile_only = true
+  endif
+
+  if quick_shop_desktop_enabled and quick_shop_mobile_enabled == false
+    assign quick_shop_desktop_only = true
+  endif
+
+  if settings.show_product_card_vendor
+    assign vendor_font = 'product-grid--vendor-font-' | append: settings.type_card_vendor_font
+  endif
+
+  if settings.show_product_card_title
+    assign title_font = 'product-grid--title-font-' | append: settings.type_card_title_font
+  endif
+
+  if settings.show_product_card_price
+    assign price_font = 'product-grid--price-font-' | append: settings.type_card_price_font
+  endif
+
+  if settings.show_card_color_swatches
+    assign show_color_label = settings.show_card_color_swatch_label
+  endif
+
+  assign svg_index = svg_index | plus: 0 | default: 1
+
+  if settings.product_card_max_lines > 0
+    if settings.product_card_max_lines == 1
+      assign truncate_value = 20
+    elsif settings.product_card_max_lines == 2
+      assign truncate_value = 40
+    elsif settings.product_card_max_lines == 3
+      assign truncate_value = 60
+    elsif settings.product_card_max_lines == 4
+      assign truncate_value = 80
+    endif
+  endif
+%}
+
+<safe-load-scripts class="hidden">
+  <script src="{{ 'component-product-card.js' | asset_url }}" type="module" defer="defer" data-flow-load-key="component-product-card"></script>
+</safe-load-scripts>
+
+<product-card class="grid-view-item {{ alignment_class }}">
+  <div class="grid-view-item-image">
+
+    {% if settings.show_badges %}
+      {%- if svg_index == 1 -%}
+        {%- render 'badge' with badge: 'sold-out' -%}
+      {%- endif -%}
+    {% endif %}
+
+    <a href="/admin/products" class="grid-view-item__link" tabindex="-1">
+      {% if image_crop %}<div class="aspect-ratio {{ image_crop }}">{% endif %}
+        <div class="grid-view-item__image grid-view-item--placeholder{% unless image_crop %} ratio-natural{% endunless %}">
+            {{ 'product-' | append: svg_index | placeholder_svg_tag: 'icon icon--placeholder grid__image primary-placeholder-image' }}
+
+            {% if settings.hover-effect %}
+                {{ 'product-' | append: svg_index_reversed | placeholder_svg_tag: 'icon icon--placeholder grid__image secondary-placeholder-image' }}
+            {% endif %}
+        </div>
+      {% if image_crop %}</div>{% endif %}
+    </a>
+
+    {% if quick_shop_desktop_enabled or quick_shop_mobile_enabled %}
+      {% if settings.quick_shop_button_display == 'over_image' %}
+        <div class="product-card-image--bottom-wrapper">
+          <div class="quick-add-wrapper">
+            {% if quick_shop_desktop_enabled %}
+              <a class="btn quick-add-button-onboarding quick-add-button-onboarding-desktop" tabindex="0" href="{{ product.url | within: collection }}">{{ 'products.product.add_to_cart' | t }}</a>
+            {% endif %}
+
+            {% if quick_shop_mobile_enabled %}
+              <a class="quick-add-button-onboarding quick-add-button-onboarding-mobile btn-hover-default-inner icon-btn-focus-inner" tabindex="0" href="{{ product.url | within: collection }}"><span class="btn-colors-primary round-icon-btn-sm">{% render 'theme-icon' with icon: 'shopping-bag', iconClasses: 'quick-view-mobile-icon', iconSize: 16 %}</span></a>
+            {% endif %}
+          </div>
+        </div>
+      {% endif %}
+    {% endif %}
+
+  </div>
+
+  {% if settings.show_product_card_vendor %}
+    <div class="product-grid--vendor {{ vendor_font }}">{{ 'homepage.onboarding.product_vendor' | t }}</div>
+  {% endif %}
+
+  {% if settings.show_product_card_title %}
+    <div class="product-grid--title {{ title_font }}">
+      <a{% unless settings.product_card_text_alignment == 'right' %} class="text-truncate--line"{% endunless %} href="/admin/products">{% if settings.product_card_max_lines > 0 and settings.product_card_text_alignment == 'right' %}{{ 'homepage.onboarding.product_title' | t | truncate: truncate_value }}{% else %}{{ 'homepage.onboarding.product_title' | t }}{% endif %}</a>
+    </div>
+  {% endif %}
+
+  {% if settings.show_product_card_price %}
+    <div class="product-grid--price {{ price_font }}">
+      <a href="/admin/products" tabindex="-1">
+        <span class="money">{{ 1999 | money }}</span>
+      </a>
+    </div>
+  {% endif %}
+
+  {% if settings.show_product_rating %}
+    <div class="product-grid--rating">
+      {% render 'reviews-star-rating' with rating_product: product, star_color: settings.star_rating_color, classes: alignment_class, star_size: settings.star_size, no_reviews_label: settings.no_reviews_label, show_rating_as: settings.show_rating_as, show_product_rating_if_no_reviews: settings.show_product_rating_if_no_reviews, color_scheme: section_color_scheme %}
+    </div>
+  {% endif %}
+
+  {% if settings.show_card_color_swatches %}
+    {% render 'card-color-swatch' with swatch_product: product, hide_out_of_stock_variants: false, show_color_label: show_color_label %}
+  {% endif %}
+
+  {% if quick_shop_desktop_enabled or quick_shop_mobile_enabled %}
+    {% if settings.quick_shop_button_display == 'below_image' %}
+      <div class="product-grid--quick-shop quick-shop--block{% if quick_shop_mobile_only %} large-hide{% elsif quick_shop_desktop_only %} small-hide{% endif %}">
+        <button class="btn{% if settings.quick_shop_button_style == 'outline' %} btn--secondary{% endif %} quick-add-button quick-add-button-desktop" type="submit" tabindex="0">{{ 'products.product.add_to_cart' | t }}</button>
+      </div>
+    {% endif %}
+  {% endif %}
+</product-card>

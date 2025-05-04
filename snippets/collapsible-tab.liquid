@@ -1,0 +1,54 @@
+<div class="collapsible-tab js{% if open_by_default %} open{% endif %}">
+    <collapsible-button tabindex="0">
+        <div class="summary">
+            {% render 'text-with-icon', icon: icon, custom_icon: custom_icon, text: heading, text_classes: heading_classes %}
+            <span class="inline-icon--wrapper icon--right">
+                {% if open_close_icon == "plus_minus" %}
+                    {% render 'theme-icon' with icon: 'plus', iconClasses: 'plus-icon' %}
+                    {% render 'theme-icon' with icon: 'minus', iconClasses: 'minus-icon' %}
+                {% elsif open_close_icon == "caret" %}
+                    {% render 'theme-icon', icon: 'chevron_down', iconClasses: 'chevron-down' %}
+                {% endif %}
+            </span>
+        </div>
+    </collapsible-button>
+
+    {% if content != blank %}
+        <div class="collapsible-content">
+            <div class="content rte">
+                <div class="text-link-animated">
+                    {{ content }}
+                </div>
+            </div>
+        </div>
+    {% endif %}
+</div>
+
+<div class="no-js">
+    {% comment %} Fallback html when JS is disabled. {% endcomment %}
+    <div class="collapsible-tab">
+        <details class="collapsible-tab-content"{% if open_by_default %} open{% endif %}>
+            <summary class="summary" role="button" aria-expanded="false" tabindex="0">
+                {% render 'text-with-icon', icon: icon, custom_icon: custom_icon, text: heading, text_classes: heading_classes %}
+                <span class="inline-icon--wrapper icon--right">
+                    {% if open_close_icon == "plus_minus" %}
+                        {% render 'theme-icon' with icon: 'plus', iconClasses: 'plus-icon' %}
+                        {% render 'theme-icon' with icon: 'minus', iconClasses: 'minus-icon' %}
+                    {% elsif open_close_icon == "caret" %}
+                        {% render 'theme-icon', icon: 'chevron_up', iconClasses: 'chevron-up' %}
+                        {% render 'theme-icon', icon: 'chevron_down', iconClasses: 'chevron-down' %}
+                    {% endif %}
+                </span>
+            </summary>
+            {% if content != blank %}
+                <div class="rte text-link-animated">
+                    {{ content }}
+                </div>
+            {% endif %}
+        </details>
+    </div>
+</div>
+
+<safe-load-scripts class="hidden">
+    <script src="{{ 'component-collapsible-button.js' | asset_url }}" type="module" defer="defer" data-flow-load-key="component-collapsible-button"></script>
+</safe-load-scripts>

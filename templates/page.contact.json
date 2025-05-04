@@ -1,0 +1,61 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "057a50d5-3fee-4ea2-a832-2d38f47b959a": {
+      "type": "section--contact-form",
+      "blocks": {
+        "template--14753984643142__057a50d5-3fee-4ea2-a832-2d38f47b959a-16788945317184afd8-0": {
+          "type": "name_input",
+          "settings": {
+            "required": true,
+            "input_width": "full"
+          }
+        },
+        "template--14753984643142__057a50d5-3fee-4ea2-a832-2d38f47b959a-16788945317184afd8-1": {
+          "type": "email_input",
+          "settings": {
+            "required": true,
+            "input_width": "full"
+          }
+        },
+        "f03adfd7-1474-4f7a-a28a-c0c1430bd42d": {
+          "type": "tel_input",
+          "settings": {
+            "required": false,
+            "input_width": "full"
+          }
+        },
+        "template--14753984643142__057a50d5-3fee-4ea2-a832-2d38f47b959a-16788945317184afd8-3": {
+          "type": "message_input",
+          "settings": {
+            "required": false,
+            "input_width": "full"
+          }
+        }
+      },
+      "block_order": [
+        "template--14753984643142__057a50d5-3fee-4ea2-a832-2d38f47b959a-16788945317184afd8-0",
+        "template--14753984643142__057a50d5-3fee-4ea2-a832-2d38f47b959a-16788945317184afd8-1",
+        "f03adfd7-1474-4f7a-a28a-c0c1430bd42d",
+        "template--14753984643142__057a50d5-3fee-4ea2-a832-2d38f47b959a-16788945317184afd8-3"
+      ],
+      "settings": {
+        "form_width": "narrow",
+        "form_title": "Contact us",
+        "form_description": "<p>Whether it’s an enquiry about a current order, our flower school or event our team of experts are here to help and will respond as soon as possible.</p>",
+        "section_color_scheme": "white"
+      }
+    }
+  },
+  "order": [
+    "057a50d5-3fee-4ea2-a832-2d38f47b959a"
+  ]
+}

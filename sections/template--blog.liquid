@@ -1,0 +1,260 @@
+<!-- /templates/blog.liquid -->
+{% comment %}
+
+  Loop through a defined number of articles with the 'paginate' tag.
+  Don't forget to close the tag after your loop.
+
+{% endcomment %}
+
+{% paginate blog.articles by 4 %}
+
+{% comment %}
+  This template is also used for listing out articles of a specific tag.
+  You can change layouts or styles by checking if current_tags is true.
+{% endcomment %}
+
+<div class="wrapper-padded main-page-container">
+  <div class="grid blog-main--wrapper">
+
+    <div class="sitewide--title-wrapper">
+      {% if current_tags %}
+
+        <h1 class="page--title">{{ blog.title | link_to: blog.url }} &mdash; {{ current_tags.first }}</h1>
+      {% else %}
+
+        <h1 class="page--title">
+          <span class="blog-main--title">{{ blog.title }}</span>
+          <a href="{{ shop.url }}{{ blog.url }}.atom" class="blog-main--title-icon standalone-icon--wrapper">
+            {% render 'theme-icon' with icon: 'rss', iconSize: 16, iconAttributes: 'aria-hidden="true"', iconClasses: 'fa-rss' %}
+          </a>
+        </h1>
+      {% endif %}
+    </div>
+
+    <div class="grid__item large--three-quarters blog-template--main">
+
+      {% comment %}
+        Loop through each article in your blog. This is limited to what you set for pagination above.
+
+        For more info on article liquid tags:
+          - http://docs.shopify.com/themes/liquid-variables/article
+      {% endcomment %}
+
+      {% for article in blog.articles %}
+
+        <div class="article--indiv grid">
+
+          <div class="grid__item large--one-quarter blog-template--individual">
+            <div>
+              {% if section.settings.show_author_name %}
+                {{ article.author }}<br />
+              {% endif %}
+              {% if section.settings.blog_show_date %}
+                <time class="indiv-post-time" datetime="{{ article.published_at | date: '%Y-%m-%d' }}">{{ article.published_at | time_tag: format: 'date' }}</time>
+              {% endif %}
+            </div>
+
+        <ul class="blog-sidebar--meta nav-link-animated--custom">
+        {% if blog.comments_enabled? %}
+        <li>
+        <a class="animated-link--item" href="{{ article.url }}#comments">
+        {{ 'blogs.comments.with_count' | t: count: article.comments_count }}
+        </a>
+        </li>
+        {% endif %}
+
+  {% if article.tags.size > 0 %}
+    <li>
+      <span>{{ 'blogs.article.tags' | t }}:</span>
+      {% for tag in article.tags %}
+        <a class="animated-link--item" href="{{ blog.url }}/tagged/{{ tag | handle }}">{{ tag }}</a>{% unless forloop.last %}, {% endunless %}
+      {% endfor %}
+    </li>
+  {% endif %}
+        </ul>
+
+      </div>
+
+          <div class="grid__item large--three-quarters">
+
+            {% if article.image %}
+            <div class="article__featured-image-wrap">
+              <a class="article__featured-image{% if settings.ken_burns_enabled %} kb-enabled{% endif %}" href="{{ article.url }}">
+                {% capture article_alt %}{{ article.image.alt | default: article.title }}{% endcapture %}
+                {% render 'responsive-image' with article.image, alt: article_alt | escape %}
+              </a>
+            </div>
+            {% endif %}
+
+              <h2 class="blog-main--article-title">
+                <a href="{{ article.url }}">{{ article.title }}</a>
+              </h2>
+
+            {% comment %}
+              Add a surrounding div with class 'rte' to anything that will come from the rich text editor.
+              Since this is just a listing page, you can either use the excerpt or truncate the full article.
+            {% endcomment %}
+            <div class="rte">
+                {{ article.excerpt_or_content | strip_html | truncatewords: 100 }}
+            </div>
+
+            <p class="blog-main--article-read-more-link nav-link-animated--custom">
+              <a class="animated-link--item" href="{{ article.url }}">{{ 'blogs.article.read_more' | t }}</a>
+              {% render 'theme-icon' with icon: 'chevron_right', iconSize: 16 %}
+            </p>
+
+      </div>
+
+        </div>
+
+        {% unless forloop.last %}<hr>{% endunless %}
+
+      {% endfor %}
+
+    </div>
+
+    <div class="grid__item large--one-quarter">
+
+      {% if section.settings.blog-sidebar-image %}
+        {% if section.settings.blog-sidebar-link %}
+          <a href="{{ section.settings.blog-sidebar-link }}" itemprop="url">
+        {% endif %}
+
+        {% capture blog_sidebar_alt %}{{ section.settings.blog-sidebar-image.alt | default: shop.name }}{% endcapture %}
+        {% render 'responsive-image' with section.settings.blog-sidebar-image, alt: article.title, class: 'blog-sidebar-image', alt: blog_sidebar_alt | escape %}
+
+        {% if section.settings.blog-sidebar-link %}
+          </a>
+        {% endif %}
+      {% endif %}
+
+      {% if section.settings.blog-sidebar-description != '' %}
+        <div class="rte text-link-animated">{{ section.settings.blog-sidebar-description }}</div>
+      {% endif %}
+
+      {% if section.settings.show_recent_posts %}
+      <div class="h4">{{ 'blogs.sidebar.recent_articles' | t }}</div>
+      <ul class="no-bullets blog-sidebar--recent-articles nav-link-animated--custom">
+        {% for article in blogs[blog.handle].articles limit: 6 %}
+          <li>
+            <a class="animated-link--item" href="{{ article.url }}">{{ article.title }}</a>
+            <br>
+            {% if section.settings.blog_show_date %}
+              <time datetime="{{ article.published_at | date: '%Y-%m-%d' }}">{{ article.published_at | time_tag: format: 'date' }}</time>
+            {% endif %}
+          </li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+
+      {% if section.settings.show_blog_tags %}
+        <div class="h4">{{ 'blogs.sidebar.categories' | t }}</div>
+        <ul class="no-bullets blog-sidebar--all-categories">
+          {% for tag in blog.all_tags %}
+            {% if current_tags contains tag %}
+            <li>{{ tag }}</li>
+            {% else %}
+            <li>{{ tag | link_to_tag: tag }}</li>
+            {% endif %}
+          {% endfor %}
+        </ul>
+      {% endif %}
+
+
+
+    </div>
+
+    <div class="grid__item large--one-whole pagination-wrapper">
+        {% if paginate.pages > 1 %}
+  <div class="pagination grid__item large--one-whole">
+
+    <ul>
+      {% if paginate.previous %}
+        <li class="pagination-arrow"><a class="standalone-icon--wrapper" aria-label="{{ 'general.accessibility.pagination.previous' | t }}" href="{{ paginate.previous.url }}">
+          {% render 'theme-icon', icon: 'chevron_left', iconSize: 20 %}
+        </a></li>
+      {% else %}
+        <li class="prev disabled"><a href="#" onclick="return false;">&laquo;</a></li>
+      {% endif %}
+
+      {% for part in paginate.parts %}
+        {% if part.is_link %}
+          <li class="pagination-number">{{ part.title | link_to: part.url }}</li>
+        {% else %}
+          {% if part.title == '&hellip;' %}
+          <li class="ellipsis">{{ part.title }}</li>
+          {% else %}
+          <li class="active pagination-number">{{ part.title | link_to: part.url }}</li>
+          {% endif %}
+        {% endif %}
+      {% endfor %}
+
+      {% if paginate.next %}
+        <li class="pagination-arrow"><a class="standalone-icon--wrapper" aria-label="{{ 'general.accessibility.pagination.next' | t }}" href="{{ paginate.next.url }}">
+          {% render 'theme-icon', icon: 'chevron_right', iconSize: 20 %}
+        </a></li>
+      {% else %}
+        <li class="next disabled"><a href="#" onclick="return false;">&raquo;</a></li>
+      {% endif %}
+    </ul>
+
+  </div>
+  {% endif %}
+
+    </div>
+
+  </div>
+</div>
+
+{% endpaginate %}
+
+{% schema %}
+{
+  "name": "t:sections.template--blog.name",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_author_name",
+      "label": "t:sections.template--blog.settings.show_author_name.label",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "t:all.Sidebar"
+    },
+    {
+      "type": "image_picker",
+      "id": "blog-sidebar-image",
+      "label": "t:all.Image"
+    },
+    {
+      "type": "richtext",
+      "id": "blog-sidebar-description",
+      "label": "t:all.Description"
+    },
+    {
+      "type": "url",
+      "id": "blog-sidebar-link",
+      "label": "t:all.Link"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_blog_tags",
+      "label": "t:all.Show_tags",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "show_recent_posts",
+      "label": "t:sections.template--blog.settings.show_recent_posts.label",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "blog_show_date",
+      "label": "t:all.Show_dates",
+      "default": true
+    }
+  ]
+}
+{% endschema %}

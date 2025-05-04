@@ -1,0 +1,76 @@
+{% comment %}
+  Renders a "complementary products" block that displays complementary products based on Shopify's Search & Discovery app.
+
+  Accepts:
+  - classes: {String} additional classes to add to the component
+  - attributes: {String} attributes to add to the component
+  - title: {String} heading of the block eg. block.settings.title
+  - products_limit: {Number} the number of the product recommendations to display eg. block.settings.products_limit
+  - collapsible: {Boolean} whether the block should be collapsible or not eg. block.settings.collapsible
+  - open_close_icon: {String} the icon to display when the block is open or closed eg. block.settings.open_close_icon
+  - custom_icon: {String} the custom icon to display eg. block.settings.custom_icon
+  - icon: {String} the icon to display eg. block.settings.icon
+  - id: {String} the id of the block eg. block.id
+
+  Usage:
+    {% render 'complementary-products-block' with block_settings: block.settings %}
+{% endcomment %}
+
+<complementary-products
+  {%- if classes != blank -%}class="{{ classes | strip }}"{%- endif -%}
+  {{ complementary_products_classes }}
+  {%- if attributes -%}{{ attributes }}{%- endif -%}
+  data-url="{{ routes.product_recommendations_url }}?section_id={{ section.id }}&product_id={{ product.id }}&limit={{ products_limit }}&intent=complementary"
+>
+
+  {%- if recommendations.performed and recommendations.products_count > 0 -%}
+    {%- if collapsible -%}
+      {% liquid
+        if custom_icon != blank
+          assign icon = custom_icon
+          assign custom_icon = true
+        else
+          assign icon = icon
+          assign custom_icon = false
+        endif 
+      %}
+
+      <div class="collapsible-tab">
+        <collapsible-button tabindex="0">
+          <div class="summary">
+            {% render 'text-with-icon', icon: icon, custom_icon: custom_icon, text: title, text_classes: 'label-font' %}
+            <span class="inline-icon--wrapper icon--right">
+              {% if open_close_icon == "plus_minus" %}
+                {% render 'theme-icon' with icon: 'plus', iconClasses: 'plus-icon' %}
+                {% render 'theme-icon' with icon: 'minus', iconClasses: 'minus-icon' %}
+              {% elsif open_close_icon == "caret" %}
+                {% render 'theme-icon', icon: 'chevron_down', iconClasses: 'chevron-down' %}
+              {% endif %}
+            </span>
+          </div>
+        </collapsible-button>
+
+        <div class="collapsible-content">
+          <div class="content rte">
+              {% assign recommended_products = recommendations.products | map: 'handle' %}
+              {% render 'cross-sells' with title: blank, cross_sells_products: recommended_products, id: id %}
+          </div>
+        </div>
+      </div>
+    {%- else -%}
+      {% assign recommended_products = recommendations.products | map: 'handle' %}
+      {% render 'cross-sells' with title: title, cross_sells_products: recommended_products, id: id %}
+    {%- endif -%}
+  {%- endif -%}
+
+</complementary-products>
+
+{%- if collapsible -%}
+  <safe-load-scripts class="hidden">
+    <script src="{{ 'component-collapsible-button.js' | asset_url }}" type="module" defer="defer" data-flow-load-key="component-collapsible-button"></script>
+  </safe-load-scripts>
+{%- endif -%}
+  
+<safe-load-scripts class="hidden">
+  <script src="{{ 'component-complementary-products.js' | asset_url }}" defer="defer" type="module" data-flow-load-key="component-complementary-products"></script>
+</safe-load-scripts>

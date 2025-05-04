@@ -1,0 +1,425 @@
+{{ 'section-shop-the-look.min.css' | asset_url | stylesheet_tag }}
+
+{% if section.blocks.size > 0 %}
+  <safe-load-scripts class="hidden">
+    <script src="{{ 'component-shop-the-look.js' | asset_url }}" type="module" defer="defer" data-flow-load-key="component-shop-the-look"></script>
+  </safe-load-scripts>
+
+  <style>
+    .shop-the-look--{{ section.id }} .shop-the-look__image-container .swiper-slide img,
+    .shop-the-look--{{ section.id }} .shop-the-look__image-container .swiper-slide svg {
+      aspect-ratio: {{ section.settings.image_aspect_ratio }};
+    }
+  </style>
+
+  {% assign no_of_placeholder_products_to_show = 3 %}
+{% endif %}
+
+<section
+  class="shop-the-look--{{ section.id }} shop-the-look__container homepage-sections-wrapper--{{ section.settings.colors }}{% if request.visual_preview_mode %} animated fadeInUp{% else %} show-on-scroll{% endif %}"
+  data-wetheme-section-type="shop-the-look"
+  data-wetheme-section-id="{{ section.id }}"
+  >
+
+  {% comment %} Replace the below code block with section header snippet once available {% endcomment %}
+  {% if section.settings.title != blank or section.settings.description != blank %}
+    <div class="shop-the-look__header text-link-animated">
+      {% if section.settings.title != blank %}
+        <h2 class="homepage-sections--title">{{ section.settings.title }}</h2>
+      {% endif %}
+      {% if section.settings.description != blank %}
+        <div class="rte homepage-sections--description">{{ section.settings.description }}</div>
+      {% endif %}
+    </div>
+  {% endif %}
+
+  {% if section.blocks.size > 0 %}
+    <shop-the-look class="shop-the-look__content" data-section-id="{{ section.id }}">
+      <div class="shop-the-look__image-container">
+
+        {% comment %} Main image swiper (one slide per block) {% endcomment %}
+        <div class="swiper" data-image-swiper>
+          <div class="swiper-wrapper">
+            {% for block in section.blocks %}
+
+              {% comment %} Keep track of how many products added to inform number of hotspots to add (if none added, show 3 placeholder hotspots) {% endcomment %}
+              {%- liquid
+                assign block_index = forloop.index0
+                assign products_count = 0
+
+                for product_index in (1..4)
+                  assign product_id = 'product_' | append: product_index
+
+                  if block.settings[product_id] != blank
+                    assign products_count = products_count | plus: 1
+                  endif
+                endfor
+
+                if products_count == 0
+                  assign products_count = no_of_placeholder_products_to_show
+                endif
+              -%}
+
+              <div class="swiper-slide" data-swiper-slide-index="{{ forloop.index0 }}" {{ block.shopify_attributes }}>
+                <div class="shop-the-look__slide-inner">
+
+                  {% if block.settings.image %}
+                    {% render 'responsive-image' with block.settings.image %}
+                  {% else %}
+                    {% comment %} Show different placeholder images per block {% endcomment %}
+                    {% capture placeholder_svg_int %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}
+                    {% assign placeholder_svg = 'collection-' | append: placeholder_svg_int %}
+                    <div class="shop-the-look__placeholder-image">
+                      {{ placeholder_svg | placeholder_svg_tag: 'icon icon--placeholder' }}
+                    </div>
+                  {% endif %}
+
+                  {% comment %} Hotspots {% endcomment %}
+                  {% for product_index in (1..products_count) %}
+                    {% capture horizontal_position %}hotspot_horizontal_position_{{ product_index }}{% endcapture %}
+                    {% capture vertical_position %}hotspot_vertical_position_{{ product_index }}{% endcapture %}
+                    <button
+                      data-hotspot-button
+                      data-block-index="{{ block_index }}"
+                      data-product-index="{{ product_index }}"
+                      class="shop-the-look__hotspot"
+                      type="button"
+                      style="--hotspot-vertical-position: {{ block.settings[vertical_position] }}%; --hotspot-horizontal-position: {{ block.settings[horizontal_position] }}%;"
+                      aria-current="{% if forloop.first %}true{% else %}false{% endif %}"
+                      aria-label="{{ 'general.accessibility.navigation.go_to_item' | t: number: product_index }}"
+                    >
+                      <span class="shop-the-look__hotspot-icon" style="--hotspot-color: {{ block.settings.hotspot_color }}"></span>
+                    </button>
+                  {% endfor %}
+
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+          {% render 'swiper-pagination-arrows' %}
+        </div>
+      </div>
+
+      {% comment %} 'View products' button on mobile {% endcomment %}
+      <div class="shop-the-look__open-modal-btn-container">
+        <button class="btn" type="button" data-open-modal-btn>{{ 'sections.shop_the_look.view_products' | t }}</button>
+      </div>
+
+      <div class="shop-the-look__product-card-container" data-modal>
+
+        {% comment %} Keep track of how many products added to inform number of product cards to show (if none added, show placeholder product cards) {% endcomment %}
+        {% for block in section.blocks %}
+          {%- liquid
+            assign products_count = 0
+            assign show_placeholder = false
+
+            for product_index in (1..4)
+              assign product_id = 'product_' | append: product_index
+
+              if block.settings[product_id] != blank
+                assign products_count = products_count | plus: 1
+              endif
+            endfor
+
+            if products_count == 0
+              assign show_placeholder = true
+              assign svg_index_offset = forloop.index0
+            endif
+
+            if products_count == 1
+              assign no_scrollbar = true
+            endif
+          -%}
+
+          {% comment %} Product card swiper (one swiper per block) {% endcomment %}
+          <div class="swiper shop-the-look__product-card-swiper" data-product-card-swiper data-block-index="{{ forloop.index0 }}" aria-current="{% if forloop.first %}true{% else %}false{% endif %}">
+            <div class="swiper-wrapper{% unless no_scrollbar %} has-scrollbar{% endunless %}">
+              {% if show_placeholder %}
+
+                {% for product_index in (1..no_of_placeholder_products_to_show) %}
+                  {% comment %} Cycle through product placeholders, offsetting by 1 with each block iteration to match product placeholder type (eg. bag) to the collection placeholder type (eg. bag collection) {% endcomment %}
+                  {% assign svg_index = forloop.index0 | plus: svg_index_offset | modulo: 6 | plus: 1 %}
+                  {% capture svg_index_reversed %}{% cycle 6, 5, 4, 3, 2, 1 %}{% endcapture %}
+                  <div class="swiper-slide shop-the-look__placeholder-product-card" data-product-index="{{ product_index }}">
+                    {% render 'grid-view-item-placeholder', svg_index: svg_index, svg_index_reversed: svg_index_reversed, section_color_scheme: section.settings.colors %}
+                  </div>
+                {% endfor %}
+
+              {% else %}
+
+                {% for product_index in (1..products_count) %}
+                  {% capture product_id %}product_{{ product_index }}{% endcapture %}
+                    <div class="swiper-slide" data-product-index="{{ product_index }}">
+                      {% if block.settings[product_id] != blank %}
+                        {% comment %} Global product card {% endcomment %}
+                        {% render 'grid-view-item', product: block.settings[product_id], collection: null, enable_badges: settings.show_badges, grid_count_desktop: 3, grid_count_mobile: 1, section_color_scheme: section.settings.colors %}
+                      {% elsif request.design_mode %}
+                        {% comment %} If we're in the editor and a product setting has been missed, show a help message eg. 'Add a product: Product one' {% endcomment %}
+                        {% capture product_label_translation %}
+                          {% case product_index %}
+                            {% when 1 %}{{ 'sections.shop_the_look.product_one' | t }}
+                            {% when 2 %}{{ 'sections.shop_the_look.product_two' | t }}
+                            {% when 3 %}{{ 'sections.shop_the_look.product_three' | t }}
+                            {% when 4 %}{{ 'sections.shop_the_look.product_four' | t }}
+                          {% endcase %}
+                        {% endcapture %}
+                        <div class="shop-the-look__onboarding-product-prompt">
+                          <p>{{ 'general.onboarding.add_product' | t }}: {{ product_label_translation }}</p>
+                        </div>
+                      {% endif %}
+                    </div>
+                {% endfor %}
+
+              {% endif %}
+            </div>
+            <div class="swiper-scrollbar"></div>
+          </div>
+        {% endfor %}
+
+        {% comment %} Mobile modal close (X) button {% endcomment %}
+        <button type="button" data-close-modal-btn class="shop-the-look__modal-close icon-fallback-text standalone-icon--wrapper" aria-label="{{ 'general.accessibility.dismiss.close' | t }}">
+          <span class="fallback-text">{{ 'general.accessibility.dismiss.close' | t }}</span>
+          {% render 'theme-icon' with icon: 'close', iconSize: 20 %}
+        </button>
+      </div>
+    </shop-the-look>
+  {% endif %}
+</section>
+
+{% schema %}
+{
+  "name": "t:sections.shop-the-look.name",
+  "max_blocks": 6,
+  "settings": [
+    {
+      "type": "inline_richtext",
+      "id": "title",
+      "label": "t:all.Heading",
+      "default": "Shop the look"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "t:all.Description"
+    },
+    {
+      "type": "select",
+      "id": "image_aspect_ratio",
+      "label": "t:all.Image_aspect_ratio",
+      "default": "auto",
+      "options": [
+        {
+          "value": "auto",
+          "label": "t:all.Original"
+        },
+        {
+          "value": "1 / 1",
+          "label": "t:all.Square_1_1"
+        },
+        {
+          "value": "2 / 3",
+          "label": "t:all.Tall_2_3"
+        },
+        {
+          "value": "4 / 3",
+          "label": "t:all.Wide_4_3"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "colors",
+      "label": "t:all.Color_scheme",
+      "default": "white",
+      "options": [
+        {
+          "value": "white",
+          "label": "t:all.Minimal"
+        },
+        {
+          "value": "light",
+          "label": "t:all.Light"
+        },
+        {
+          "value": "accent",
+          "label": "t:all.Feature"
+        },
+        {
+          "value": "dark",
+          "label": "t:all.Dark"
+        }
+      ]
+    }
+  ],
+  "blocks": [
+    {
+      "type": "look",
+      "name": "t:sections.shop-the-look.blocks.look.name",
+      "settings": [
+        {
+          "type": "header",
+          "content": "t:all.Image"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "t:all.Image"
+        },
+        {
+          "type": "color",
+          "id": "hotspot_color",
+          "label": "t:sections.shop-the-look.blocks.look.settings.hotspot_color.label",
+          "default": "#FFFFFF"
+        },
+        {
+          "type": "header",
+          "content": "t:sections.shop-the-look.blocks.look.settings.header.product_one"
+        },
+        {
+          "type": "product",
+          "id": "product_1",
+          "label": "t:all.Product"
+        },
+        {
+          "type": "range",
+          "id": "hotspot_horizontal_position_1",
+          "label": "t:sections.shop-the-look.blocks.look.settings.hotspot_horizontal_position.label",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "default": 25,
+          "unit": "%"
+        },
+        {
+          "type": "range",
+          "id": "hotspot_vertical_position_1",
+          "label": "t:sections.shop-the-look.blocks.look.settings.hotspot_vertical_position.label",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "default": 25,
+          "unit": "%"
+        },
+        {
+          "type": "header",
+          "content": "t:sections.shop-the-look.blocks.look.settings.header.product_two"
+        },
+        {
+          "type": "product",
+          "id": "product_2",
+          "label": "t:all.Product"
+        },
+        {
+          "type": "range",
+          "id": "hotspot_horizontal_position_2",
+          "label": "t:sections.shop-the-look.blocks.look.settings.hotspot_horizontal_position.label",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "default": 25,
+          "unit": "%"
+        },
+        {
+          "type": "range",
+          "id": "hotspot_vertical_position_2",
+          "label": "t:sections.shop-the-look.blocks.look.settings.hotspot_vertical_position.label",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "default": 75,
+          "unit": "%"
+        },
+        {
+          "type": "header",
+          "content": "t:sections.shop-the-look.blocks.look.settings.header.product_three"
+        },
+        {
+          "type": "product",
+          "id": "product_3",
+          "label": "t:all.Product"
+        },
+        {
+          "type": "range",
+          "id": "hotspot_horizontal_position_3",
+          "label": "t:sections.shop-the-look.blocks.look.settings.hotspot_horizontal_position.label",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "default": 75,
+          "unit": "%"
+        },
+        {
+          "type": "range",
+          "id": "hotspot_vertical_position_3",
+          "label": "t:sections.shop-the-look.blocks.look.settings.hotspot_vertical_position.label",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "default": 50,
+          "unit": "%"
+        },
+        {
+          "type": "header",
+          "content": "t:sections.shop-the-look.blocks.look.settings.header.product_four"
+        },
+        {
+          "type": "product",
+          "id": "product_4",
+          "label": "t:all.Product"
+        },
+        {
+          "type": "range",
+          "id": "hotspot_horizontal_position_4",
+          "label": "t:sections.shop-the-look.blocks.look.settings.hotspot_horizontal_position.label",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "default": 75,
+          "unit": "%"
+        },
+        {
+          "type": "range",
+          "id": "hotspot_vertical_position_4",
+          "label": "t:sections.shop-the-look.blocks.look.settings.hotspot_vertical_position.label",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "default": 75,
+          "unit": "%"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.shop-the-look.name",
+      "blocks": [
+        {
+          "type": "look",
+          "settings": {
+            "hotspot_horizontal_position_1": 30,
+            "hotspot_vertical_position_1": 40,
+            "hotspot_horizontal_position_2": 40,
+            "hotspot_vertical_position_2": 65
+          }
+        },
+        {
+          "type": "look",
+          "settings": {
+            "hotspot_vertical_position_1": 40,
+            "hotspot_horizontal_position_2": 60,
+            "hotspot_vertical_position_2": 30,
+            "hotspot_vertical_position_3": 60
+          }
+        }
+      ]
+    }
+  ],
+  "disabled_on": {
+    "groups": [
+      "footer",
+      "header"
+    ]
+  }
+}
+{% endschema %}

@@ -1,0 +1,268 @@
+{{ 'section-product-recommendations.min.css' | asset_url | stylesheet_tag: preload: true }}
+<noscript>{{ 'section-product-recommendations.min.css' | asset_url | stylesheet_tag }}</noscript>
+
+{% liquid 
+  assign remove_title_padding = false
+  assign remove_description_padding = false
+
+  if section.settings.layout_style == 'slider' and settings.hover_navigation_desktop == 'above'
+    if section.settings.product_recommendations_heading != blank and section.settings.product_recommendations_description == blank
+      assign remove_title_padding = true
+    endif
+
+    if section.settings.product_recommendations_description != blank
+      assign remove_description_padding = true
+    endif
+  endif
+
+  assign tablet_item_width = 'medium--one-third'
+
+  case section.settings.grid-desktop
+    when 2
+      assign desktop_item_width = 'large--one-half'
+      assign tablet_item_width = 'medium--one-half'
+    when 3
+      assign desktop_item_width = 'large--one-third'
+    when 4
+      assign desktop_item_width = 'large--one-quarter'
+    when 5
+      assign desktop_item_width = 'large--one-fifth'
+    when 6
+      assign desktop_item_width = 'large--one-sixth'
+  endcase
+
+  case section.settings.grid-mobile
+    when "1"
+      assign mobile_item_width = 'small--one-whole'
+    when "2"
+      assign mobile_item_width = 'small--one-half'
+  endcase
+
+  assign grid_item_width = desktop_item_width | append: ' ' | append: tablet_item_width | append: ' ' | append: mobile_item_width
+%}
+
+{% unless request.visual_preview_mode %}
+  <safe-load-scripts class="hidden">
+    <script src="{{ 'component-product-recommendations.js' | asset_url }}" defer="defer" type="module" data-flow-load-key="product-recommendations"></script>
+  </safe-load-scripts>
+{% endunless %}
+
+<product-recommendations
+  class="product-recommendations homepage-sections-wrapper homepage-sections-wrapper--{{ section.settings.colors }}{% if section.settings.layout_style == 'slider' %} slider-nav--{{ settings.hover_navigation_desktop }}{% endif %}"
+  data-recommendations-url="{{ routes.product_recommendations_url }}?section_id={{ section.id }}&product_id={{ product.id }}&limit={{ section.settings.products_to_show }}"
+  data-wetheme-section-type="template--product--recommendations"
+  data-wetheme-section-id="{{ section.id }}"
+>
+
+  {%- if recommendations.performed and recommendations.products_count > 0 or request.visual_preview_mode -%}
+    <div class="product-page-related-products product-sticker-stop">
+      <div class="wrapper-padded" data-grid-slider-wrapper>
+        {% comment %} Section heading {% endcomment %}
+        {% unless section.settings.product_recommendations_heading == blank %}
+          <div class="sitewide--title-wrapper">
+            <h2 class="homepage-sections--title{% if remove_title_padding %} remove--spacing{% endif %}">{{ section.settings.product_recommendations_heading }}</h2>
+          </div>
+        {% endunless %}
+
+        {% comment %} Section description {% endcomment %}
+        {% if section.settings.product_recommendations_description != blank %}
+          <div class="rte section-description--wrapper text-link-animated{% if remove_description_padding %} remove--spacing{% endif %}">
+            {{ section.settings.product_recommendations_description }}
+          </div>
+        {% endif %}
+
+        <div class="product-grid--wrapper{% if section.settings.layout_style == 'slider' %} product-grid--slider-enabled{% endif %}">
+          {%- if section.settings.layout_style == 'slider' -%}
+            <safe-load-scripts class="hidden">
+              <script src="{{ 'component-grid-slider.js' | asset_url }}" defer="defer" type="module" data-flow-load-key="grid-slider"></script>
+            </safe-load-scripts>
+
+            <!-- navigation -->
+            <div class="swiper-btn--wrapper small-hide swiper-btn-layout__{{ settings.hover_navigation_desktop }}">
+              <div class="swiper-button--prev btn">
+                {% render 'theme-icon', icon: 'chevron_left' %}
+              </div>
+              <div class="swiper-button--next btn">
+                {% render 'theme-icon', icon: 'chevron_right' %}
+              </div>
+            </div>
+
+            <grid-slider 
+              class="swiper product-recommendations__slideshow"
+              data-slides-per-view-desktop="{{ section.settings.grid-desktop }}"
+              data-slides-per-view-mobile="{{ section.settings.grid-mobile }}"
+              data-product-limit="{{ section.settings.products_to_show }}"
+            >
+              <div class="swiper-wrapper">
+          {%- endif -%}
+
+            {% comment %} Render grid (if not preview mode) {% endcomment %}
+            {% unless request.visual_preview_mode %}
+              {%- for product in recommendations.products -%}
+                {%- unless grid_item_width -%}
+                  {%- assign grid_item_width = 'large--one-third medium--one-half' -%}
+                {%- endunless -%}
+
+                <div class="grid__item{% if section.settings.layout_style == 'slider' %} swiper-slide {{ grid_item_width }}{% else %} {{ grid_item_width }}{% endif %}">
+                  <div class="grid-view-item">
+                    {% render 'grid-view-item', product: product, collection: null, enable_badges: settings.show_badges, grid_count_desktop: section.settings.grid-desktop, grid_count_mobile: section.settings.grid-mobile, section_color_scheme: section.settings.colors %}
+                  </div>
+                </div>
+              {%- endfor -%}
+            {% endunless %}
+
+            {% comment %} Render placholder grid for visual preview {% endcomment %}
+            {% if request.visual_preview_mode %}
+              {% for i in (1..section.settings.products_to_show) %}
+                {% capture svg_index %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}
+                {% if section.settings.layout_style == 'slider' %}
+                  <div class="grid__item {{ grid_item_width }} swiper-slide">
+                {% else %}
+                  <div class="grid__item {{ grid_item_width }} featured-product--grid-item">
+                {% endif %}
+                    {% render 'grid-view-item-placeholder', svg_index: svg_index %}
+                </div>
+              {% endfor %}
+            {% endif %}
+
+          {%- if section.settings.layout_style == 'slider' -%}
+              </div>
+            </grid-slider>
+
+             <!-- pagination -->
+            <div class="swiper-pagination"></div>
+
+            <!-- scrollbar -->
+            <div class="swiper-scrollbar large-hide"></div>
+          {%- endif -%}
+        </div>
+      </div>
+    </div>
+  {%- endif -%}
+</product-recommendations>
+
+
+{% schema %}
+{
+  "name": "t:sections.template--product--recommendations.name",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "t:sections.template--product--recommendations.settings.paragraph-0.content"
+    },
+    {
+      "type": "text",
+      "id": "product_recommendations_heading",
+      "label": "t:all.Heading",
+      "default": "You may also like"
+    },
+    {
+      "type": "richtext",
+      "id": "product_recommendations_description",
+      "label": "t:all.Description"
+    },
+    {
+      "type": "header",
+      "content": "t:all.Layout"
+    },
+    {
+      "type": "radio",
+      "id": "layout_style",
+      "label": "t:all.Style",
+      "options": [
+        {
+          "value": "grid",
+          "label": "t:all.Grid"
+        },
+        {
+          "value": "slider",
+          "label": "t:all.Slider"
+        }
+      ],
+      "default": "slider"
+    },
+    {
+      "type": "range",
+      "id": "products_to_show",
+      "min": 2,
+      "max": 30,
+      "step": 1,
+      "label": "t:all.Max_products_to_show",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "grid-desktop",
+      "min": 2,
+      "max": 5,
+      "step": 1,
+      "label": "t:all.Product_per_row_desktop",
+      "default": 4
+    },
+    {
+      "type": "radio",
+      "id": "grid-mobile",
+      "label": "t:all.Product_per_row_mobile",
+      "options": [
+        {
+          "value": "1",
+          "label": "t:all.1"
+        },
+        {
+          "value": "2",
+          "label": "t:all.2"
+        }
+      ],
+      "default": "2"
+    },
+    {
+      "type": "header",
+      "content": "t:all.Color"
+    },
+    {
+      "type": "select",
+      "id": "colors",
+      "label": "t:all.Color_scheme",
+      "default": "white",
+      "options": [
+        {
+          "value": "white",
+          "label": "t:all.Minimal"
+        },
+        {
+          "value": "light",
+          "label": "t:all.Light"
+        },
+        {
+          "value": "accent",
+          "label": "t:all.Feature"
+        },
+        {
+          "value": "dark",
+          "label": "t:all.Dark"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.template--product--recommendations.presets.name",
+      "category": {
+        "en": "Products",
+        "de": "Produkte",
+        "es": "Productos",
+        "fr": "Produits",
+        "pt-PT": "Produtos"
+      },
+      "settings": {
+        "product_recommendations_heading": "You may also like"
+      }
+    }
+  ],
+  "enabled_on": {
+    "templates": [
+      "product"
+    ]
+  }
+}
+{% endschema %}

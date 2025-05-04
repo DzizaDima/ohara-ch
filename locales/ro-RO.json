@@ -1,0 +1,543 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin language editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "general": {
+    "meta": {
+      "tags": "Etichetat \"{{ tags }}\"",
+      "page": "Pagina {{ page }}"
+    },
+    "404": {
+      "title": "404 Pagina nu a fost găsită",
+      "subtext_html": "Pagina pe care ați solicitat-o nu există."
+    },
+    "continue_shopping": "Continuați cumpărăturile",
+    "breadcrumbs": {
+      "home": "Acasă",
+      "home_link_title": "Înapoi la pagina principală"
+    },
+    "newsletter_form": {
+      "newsletter_email": "email@example.com",
+      "submit": "Abonează-te",
+      "confirmation": "Mulțumim pentru abonare"
+    },
+    "newsletter_form_section": {
+      "header": "Alătură-te listei noastre de corespondență",
+      "header_text": "Adresă de email:",
+      "newsletter_text": "Introduceți emailul",
+      "submit": "Alătură-te",
+      "thanks": "Mulțumim pentru alăturare!",
+      "newsletter_email": "E-mail client"
+    },
+    "search": {
+      "no_results_html": "Căutarea dvs. pentru \"{{ terms }}\" nu a produs rezultate.",
+      "results_for_html": "Căutarea dvs. pentru \"{{ terms }}\" a dezvăluit următoarele:",
+      "title": "Căutare",
+      "placeholder": "Căutați în magazinul nostru",
+      "submit": "Caută",
+      "products": "Produse",
+      "articles": "Articole",
+      "suggestions": "Sugestii",
+      "pages": "Pagini",
+      "collections": "Colecții",
+      "results": "Rezultate",
+      "view_all": "Vezi toate rezultatele",
+      "clear": "Șterge"
+    },
+    "social": {
+      "share_the_love": "Împarte dragostea"
+    },
+    "onboarding": {
+      "modal_title": "Aproape am terminat...",
+      "no_products_html": "Nu aveți produse în colecția paginii principale. Acest substituent va apărea până când <a href=\"\/admin\/collections?tutorial=Frontpage\">adaugați un produs la această colecție<\/a>.",
+      "add_product": "Adăugați un produs",
+      "product_title": "Titlul produsului",
+      "product_description": "Această zonă este utilizată pentru a descrie detaliile produsului dvs. Spuneți clienților despre aspectul, senzația și stilul produsului dvs. Adăugați detalii despre culoare, materiale utilizate, mărime și locul de fabricație.",
+      "no_collections_html": "Nu aveți nicio colecție de afișat aici. <a href=\"\/admin\/custom_collections\">Adăugați câteva colecții<\/a> pentru a merge împreună cu pagina principală implicită.",
+      "add_collection": "Adăugați o colecție",
+      "collection_title": "Titlul colecției",
+      "blog_title": "Titlul postării dvs.",
+      "blog_excerpt": "Magazinul dvs. nu a publicat încă nicio postare pe blog. Un blog poate fi folosit pentru a discuta despre lansări de produse noi, sfaturi sau alte știri pe care doriți să le împărtășiți cu clienții dvs. Puteți verifica blogul de comerț electronic Shopify pentru inspirație și sfaturi pentru propriul dvs. magazin și blog.",
+      "no_content": "Această secțiune nu conține momentan niciun conținut. Adăugați conținut în această secțiune folosind panoul lateral."
+    },
+    "verification_popup": {
+      "return_text": "Înapoi"
+    },
+    "localization": {
+      "country_label": "Țară\/regione",
+      "language_label": "Limba",
+      "update_language": "Actualizare limbă",
+      "update_country": "Actualizare țară\/regione"
+    },
+    "accessibility": {
+      "back_to_top": {
+        "scroll_to_top": "Derulați în partea de sus"
+      },
+      "3d_model": {
+        "load_3d_model": "Încărcați modelul 3D"
+      },
+      "play_icon": {
+        "play_media": "Redați media"
+      },
+      "quantity": {
+        "increase_quantity": "Creșteți cantitatea",
+        "decrease_quantity": "Scădeți cantitatea"
+      },
+      "social_media": {
+        "facebook": "Facebook",
+        "x": "X",
+        "instagram": "Instagram",
+        "tumblr": "Tumblr",
+        "pinterest": "Pinterest",
+        "youtube": "YouTube",
+        "vimeo": "Vimeo",
+        "flickr": "Flickr",
+        "snapchat": "Snapchat",
+        "houzz": "Houzz",
+        "linkedin": "LinkedIn",
+        "tiktok": "TikTok"
+      },
+      "dismiss": {
+        "close": "Închideți"
+      },
+      "contact_form": {
+        "submit": "Trimiteți"
+      },
+      "pagination": {
+        "previous": "Anterioară",
+        "next": "Următoare"
+      },
+      "navigation": {
+        "go_to_item": "Mergi la articolul {{ number }}"
+      }
+    },
+    "time": {
+      "days": "Zile",
+      "hours": "Ore",
+      "minutes": "Minute",
+      "seconds": "Secunde"
+    },
+    "numbers": {
+      "number_1": "Unu",
+      "number_2": "Doi",
+      "number_3": "Trei",
+      "number_4": "Patru",
+      "number_5": "Cinci",
+      "number_6": "Șase",
+      "number_7": "Șapte",
+      "number_8": "Opt",
+      "number_9": "Nouă",
+      "number_10": "Zece",
+      "number_11": "Unsprezece",
+      "number_12": "Doisprezece"
+    }
+  },
+  "blogs": {
+    "article": {
+      "author_on_date_html": "Scris de {{ author }} la data de {{ date }}",
+      "older_post": "Articol mai vechi",
+      "newer_post": "Articol mai nou",
+      "tags": "Etichete",
+      "comment_meta_html": "{{ author }} la data de {{ date }}",
+      "read_more": "Citește mai mult"
+    },
+    "comments": {
+      "title": "Lăsați un comentariu",
+      "name": "Nume",
+      "email": "Email",
+      "message": "Mesaj",
+      "post": "Trimiteți comentariul",
+      "moderated": "Vă rugăm să rețineți că comentariile trebuie să fie aprobate înainte de a fi publicate",
+      "success_moderated": "Comentariul dvs. a fost postat cu succes. Îl vom publica în curând, deoarece blogul nostru este moderat.",
+      "success": "Comentariul dvs. a fost postat cu succes! Mulțumim!",
+      "with_count": {
+        "one": "{{ count }} comentariu",
+        "other": "{{ count }} comentarii"
+      }
+    },
+    "sidebar": {
+      "recent_articles": "Articole recente",
+      "categories": "Categorii"
+    }
+  },
+  "cart": {
+    "general": {
+      "title": "Coș de cumpărături",
+      "remove": "Eliminați",
+      "note": "Instrucțiuni speciale pentru vânzător",
+      "see_more": "Aflați mai mult",
+      "subtotal": "Subtotal",
+      "taxes_and_shipping_at_checkout": "Taxe și livrare calculate la finalizarea comenzii",
+      "taxes_and_shipping_policy_at_checkout_html": "Taxe și <a href=\"{{ link }}\">livrare<\/a> calculate la finalizarea comenzii",
+      "taxes_included_but_shipping_at_checkout": "Taxa inclusă și livrarea calculate la finalizarea comenzii",
+      "taxes_included_and_shipping_policy_html": "Taxa inclusă. <a href=\"{{ link }}\">Livrare<\/a> calculate la finalizarea comenzii.",
+      "update": "Actualizați coșul",
+      "checkout": "Finalizați comanda",
+      "empty": "Coșul dvs. este momentan gol.",
+      "close_cart": "Închideți coșul",
+      "savings_html": "Economisiți {{ price }}"
+    },
+    "label": {
+      "product": "Produs",
+      "price": "Preț",
+      "quantity": "Cantitate",
+      "total": "Total"
+    }
+  },
+  "collections": {
+    "general": {
+      "all_of_collection": "Toate {{ collection }}",
+      "product_collections": "Colecții de produse",
+      "no_matches": "Ne pare rău, nu există produse în această colecție",
+      "link_title": "Răsfoiți colecția noastră {{ title }}",
+      "see_more": "Afișați mai multe",
+      "grid_view": "Vizualizare în grilă",
+      "list_view": "Vizualizare în listă",
+      "view_all": "Afișați toate",
+      "view_all_label": "Afișați toate produsele din colecția {{ collection_name }}",
+      "items_with_count": {
+        "one": "{{ count }} articol",
+        "other": "{{ count }} articole"
+      }
+    },
+    "sidebar": {
+      "tags": "Etichete"
+    },
+    "sorting": {
+      "title": "Sortare după",
+      "featured": "Recomandate",
+      "best_selling": "Cele mai vândute",
+      "az": "Alfabetic, A-Z",
+      "za": "Alfabetic, Z-A",
+      "price_ascending": "Preț, de la mic la mare",
+      "price_descending": "Preț, de la mare la mic",
+      "date_descending": "Data, de la nou la vechi",
+      "date_ascending": "Data, de la vechi la nou"
+    },
+    "filters": {
+      "title_tags": "Filtru",
+      "all_tags": "Toate produsele",
+      "clear_all": "Ștergeți tot"
+    },
+    "onboarding": {
+      "modal_title": "Această pagină va afișa toate produsele din magazinul dvs.",
+      "no_products_html": "Momentan nu există produse, dar odată ce începeți să le adăugați, acestea vor apărea aici, indiferent dacă sunt sau nu într-o colecție.",
+      "add_product": "Adăugați produs"
+    },
+    "paginate": {
+      "youve_viewed": "Ați vizualizat {{ x }} din {{ y }} produse",
+      "loading": "încărcare...",
+      "load_more": "Încărcați mai mult"
+    }
+  },
+  "sections": {
+    "collection_template": {
+      "new_color_selected": "Ați selectat o nouă culoare",
+      "color_label": "Numele culorii",
+      "apply": "Aplicați",
+      "clear": "Ștergeți",
+      "clear_all": "Ștergeți tot",
+      "empty": "Niciun produs găsit",
+      "from": "De la",
+      "filter_and_sort": "Filtrare și sortare",
+      "filter_by_label": "Filtrează după",
+      "filter_button": "Filtru",
+      "filters_selected": {
+        "one": "{{ count }} selectat",
+        "other": "{{ count }} selectate"
+      },
+      "max_price": "Cel mai mare preț este {{ price }}",
+      "product_count": {
+        "one": "Se afișează {{ product_count }} din {{ count }} produs",
+        "other": "Se afișează {{ product_count }} din {{ count }} produse"
+      },
+      "reset": "Resetați",
+      "sort_button": "Sortare",
+      "sort_by_label": "Sortare după",
+      "title": "Colecție",
+      "to": "Către",
+      "use_fewer_filters_html": "Utilizați mai puține filtre sau <a class=\"{{ class }}\" href=\"{{ link }}\">ștergeți-le pe toate<\/a>"
+    },
+    "events_calendar": {
+      "tbc_text": "În curs de stabilit"
+    },
+    "map": {
+      "address_error": "Eroare la căutarea adresei respective",
+      "address_no_results": "Nu există rezultate pentru adresa respectivă",
+      "address_query_limit_html": "Ai depășit limita de utilizare a API-ului Google. Ia în considerare trecerea la un <a href=\"https:\/\/developers.google.com\/maps\/premium\/usage-limits\">Plan Premium<\/a>.",
+      "auth_error_html": "A apărut o problemă la autentificarea cheii API pentru Google Maps."
+    },
+    "shop_the_look": {
+      "view_products": "Vizualizați produsele",
+      "product_one": "Produs unu",
+      "product_two": "Produs doi",
+      "product_three": "Produs trei",
+      "product_four": "Produs patru"
+    }
+  },
+  "contact": {
+    "form": {
+      "name": "Nume",
+      "email": "Email",
+      "phone": "Număr de telefon",
+      "message": "Mesaj",
+      "send": "Trimite",
+      "post_success": "Mulțumim că ne-ați contactat. Vom reveni la dvs. în cel mai scurt timp posibil."
+    }
+  },
+  "customer": {
+    "account": {
+      "title": "Contul meu",
+      "details": "Detalii cont",
+      "view_addresses": "Vizualizați adresele",
+      "return": "Întoarcere la detaliile contului"
+    },
+    "activate_account": {
+      "title": "Activare cont",
+      "subtext": "Creați-vă parola pentru a activa contul dvs.",
+      "password": "Parolă",
+      "password_confirm": "Confirmare parolă",
+      "submit": "Activează contul",
+      "cancel": "Refuză invitația"
+    },
+    "addresses": {
+      "title": "Adresele dvs.",
+      "default": "Implicit",
+      "add_new": "Adaugă o adresă nouă",
+      "edit_address": "Editează adresa",
+      "first_name": "Prenume",
+      "last_name": "Nume",
+      "company": "Companie",
+      "address1": "Adresă1",
+      "address2": "Adresă2",
+      "city": "Oraș",
+      "country": "Țară",
+      "province": "Județ",
+      "zip": "Cod poștal\/ZIP",
+      "phone": "Telefon",
+      "set_default": "Setează ca adresă implicită",
+      "add": "Adaugă adresă",
+      "update": "Actualizează adresă",
+      "cancel": "Anulează",
+      "edit": "Editează",
+      "delete": "Șterge"
+    },
+    "login": {
+      "title": "Conectare",
+      "email": "Email",
+      "password": "Parolă",
+      "forgot_password": "Ați uitat parola?",
+      "sign_in": "Conectare",
+      "cancel": "Întoarcere la magazin",
+      "guest_title": "Continuați ca vizitator",
+      "guest_continue": "Continuați"
+    },
+    "orders": {
+      "title": "Istoric comenzi",
+      "order_number": "Comandă",
+      "date": "Data",
+      "payment_status": "Starea plății",
+      "fulfillment_status": "Starea livrării",
+      "total": "Total",
+      "none": "Nu ați plasat nicio comandă încă."
+    },
+    "order": {
+      "title": "Comanda {{ name }}",
+      "date": "Plasată la data de {{ date }}",
+      "cancelled": "Comanda anulată la data de {{ date }}",
+      "cancelled_reason": "Motiv: {{ reason }}",
+      "billing_address": "Adresa de facturare",
+      "payment_status": "Starea plății",
+      "shipping_address": "Adresa de livrare",
+      "fulfillment_status": "Starea livrării",
+      "discount": "Reducere",
+      "shipping": "Livrare",
+      "tax": "Taxă",
+      "product": "Produs",
+      "sku": "SKU",
+      "price": "Preț",
+      "quantity": "Cantitate",
+      "total": "Total",
+      "fulfilled_at_html": "Livrată la data de {{ date }}",
+      "subtotal": "Subtotal"
+    },
+    "recover_password": {
+      "title": "Resetați parola",
+      "email": "Email",
+      "submit": "Trimite",
+      "cancel": "Anulează",
+      "subtext": "Vă vom trimite un email pentru a vă reseta parola.",
+      "success": "V-am trimis un email cu un link pentru a vă actualiza parola."
+    },
+    "reset_password": {
+      "title": "Resetați parola contului",
+      "subtext": "Introduceți o nouă parolă pentru {{ email }}",
+      "password": "Parolă",
+      "password_confirm": "Confirmare parolă",
+      "submit": "Resetează parola"
+    },
+    "register": {
+      "title": "Creați cont",
+      "first_name": "Prenume",
+      "last_name": "Nume",
+      "email": "Email",
+      "password": "Parolă",
+      "submit": "Creează",
+      "cancel": "Întoarcere la magazin"
+    }
+  },
+  "homepage": {
+    "sections": {
+      "frontpage_title": "Colecția paginii principale",
+      "featured_title": "Colecții recomandate",
+      "news_title": "Ultimele știri"
+    },
+    "onboarding": {
+      "modal_title": "Aproape am terminat...",
+      "no_products_html": "Acest substituent va apărea până când adăugați un produs în această colecție.",
+      "add_product": "Adăugați un produs",
+      "product_title": "Titlul produsului",
+      "product_vendor": "Producător",
+      "no_collections_html": "Nu aveți nicio colecție de afișat aici. <a href=\"\/admin\/custom_collections\">Adăugați câteva colecții<\/a> pentru a merge împreună cu pagina principală implicită.",
+      "add_collection": "Adăugați o colecție",
+      "collection_title": "Titlul colecției",
+      "no_content": "Această secțiune nu conține momentan niciun conținut. Adăugați conținut în această secțiune folosind panoul lateral."
+    }
+  },
+  "layout": {
+    "navigation": {
+      "menu": "Navigație"
+    },
+    "drawers": {
+      "browse": "Răsfoiește",
+      "close_menu": "Închide meniul",
+      "close": "Închide"
+    },
+    "cart": {
+      "title": "Coș",
+      "items_count": {
+        "one": "produs",
+        "other": "produse"
+      }
+    },
+    "customer": {
+      "account": "Cont",
+      "logged_in_as_html": "Conectat ca {{ first_name }}",
+      "log_out": "Deconectare",
+      "log_in": "Conectare",
+      "create_account": "Creați un cont"
+    },
+    "header": {
+      "search": "Căutare",
+      "account": "Cont",
+      "your_cart": "Coșul tău",
+      "currency": "Monedă",
+      "language": "Limba"
+    }
+  },
+  "products": {
+    "general": {
+      "previous_product_html": "&larr; Produs anterior",
+      "next_product_html": "Produs următor &rarr;",
+      "from_text": "De la",
+      "sale_price": "Preț de vânzare",
+      "regular_price": "Preț regulat",
+      "product_reviews": "Recenzii produs",
+      "yes": "Da",
+      "giftwrap_label": "Ambalaj cadou",
+      "giftwrap_note": "Mesaj cadou",
+      "giftwrap_note_placeholder": "Adăugați mesajul dvs. pentru cadou aici",
+      "from_text_html": "De la {{ price }}"
+    },
+    "product": {
+      "sold_out": "Epuizat",
+      "on_sale": "La reducere",
+      "on_sale_from_html": "La reducere de la {{ price }}",
+      "sale": "Redus",
+      "unavailable": "Indisponibil",
+      "compare_at": "Comparați cu",
+      "quantity": "Cantitate",
+      "add_to_cart": "Adăugați în coș",
+      "view_options": "Vizualizați opțiunile",
+      "added": "Adăugat",
+      "add": "Adăugare",
+      "loading": "Încărcare",
+      "choose_option": "Selectați opțiunea",
+      "is_not_available": "nu este disponibil",
+      "quick_shop": "Vizualizare rapidă",
+      "size_guide": "Ghid de mărimi",
+      "tags": "Etichete",
+      "category": "Categorie",
+      "type": "Tip",
+      "include_taxes": "Taxa inclusă.",
+      "shipping_policy_html": "<a href=\"{{ link }}\">Livrare<\/a> calculată la finalizarea comenzii.",
+      "quote": "Citat",
+      "in_stock": "În stoc",
+      "low_stock": "Stoc limitat",
+      "out_of_stock": "Lipsă din stoc",
+      "stock_left": "rămase",
+      "out_of_stock_html": "Faceți clic <a href=\"#\"><strong>aici<\/strong><\/a> pentru a fi notificat prin email când {{ product }} devine disponibil.",
+      "wrong_email": "Vă rugăm să furnizați o adresă de email validă.",
+      "out_of_stock_success": "Mulțumim! Vă vom notifica când acest produs devine disponibil!",
+      "read_more_html": "Citește mai mult",
+      "read_less_html": "Citește mai puțin",
+      "view_in_space": "Vizualizați în spațiul dvs.",
+      "view_in_space_label": "Vizualizați în spațiul dvs., încarcă elementul în fereastra realității augmentate",
+      "video_thumbnail_alt": "Încărcați și redați videoclipul în vizualizatorul galeriei, {{ imageAlt }}",
+      "model_thumbnail_alt": "Încărcați modelul 3D în vizualizatorul galeriei, {{ imageAlt }}",
+      "reviews_rating": "Evaluare recenzii - {{ value }} din {{ max }} stele",
+      "reviews": "recenzii",
+      "review": "recenzie",
+      "no_reviews": "Fără recenzii"
+    }
+  },
+  "store_availability": {
+    "general": {
+      "view_store_info": "Vizualizați informații despre magazin",
+      "check_other_stores": "Verificați disponibilitatea la alte magazine",
+      "pick_up_available": "Ridicare disponibilă",
+      "pick_up_currently_unavailable": "Ridicare momentan indisponibilă",
+      "pick_up_available_at_html": "Ridicare disponibilă la {{ location_name }}",
+      "pick_up_unavailable_at_html": "Ridicare momentan indisponibilă la {{ location_name }}"
+    }
+  },
+  "gift_cards": {
+    "issued": {
+      "title": "Iată cardul tău cadou de {{ value }} pentru {{ shop }}!",
+      "subtext": "Iată cardul tău cadou!",
+      "disabled": "Dezactivat",
+      "expired": "Expirat la {{ expiry }}",
+      "active": "Expiră la {{ expiry }}",
+      "redeem": "Folosește acest cod la finalizarea comenzii pentru a-ți valorifica cardul cadou",
+      "shop_link": "Începe cumpărăturile",
+      "print": "Imprimă",
+      "add_to_apple_wallet": "Adaugă în Portofel Apple"
+    },
+    "recipient": {
+      "checkbox": "Doresc să trimit acesta ca un cadou",
+      "email_label": "Email destinatar",
+      "name_label": "Nume destinatar (opțional)",
+      "message_label": "Mesaj (opțional)",
+      "max_characters": "{{ max }} caractere max"
+    }
+  },
+  "coming_soon": {
+    "general": {
+      "title": "Vă rugăm să vă conectați",
+      "opening_soon": "Va fi disponibil în curând...",
+      "thanks_mailing": "Mulțumim că v-ați înscris!",
+      "find_out": "Aflați când vom deschide",
+      "password": "Introduceți magazinul cu parolă",
+      "store_owner": "Sunteți proprietarul magazinului?",
+      "store_owner_html": "<a href=\"\/admin\">Conectați-vă aici<\/a>",
+      "continue": "Continuă",
+      "powered_by_html": "Acest magazin va fi alimentat de <a href=\"http:\/\/www.shopify.com\">Shopify<\/a>"
+    }
+  }
+}

@@ -1,0 +1,107 @@
+{% comment %}
+  Check if the product is on sale and set a variable to be used below.
+
+  Accepts:
+  - price_product: The product object to check for a sale price.
+  - collection: The collection object to use for the product URL.
+
+  {%- render 'product-grid-item-price', price_product: product, collection: collection -%}
+{% endcomment %}
+
+{% liquid 
+  assign on_sale = false
+  assign target = price_product
+
+  if price_product.price_varies
+    for variant in price_product.variants
+      if settings.when_card_price_varies == 'show_from_price'
+        if variant.price == price_product.price_min and variant.compare_at_price == price_product.compare_at_price_min
+          if variant.compare_at_price > variant.price
+            comment
+              The current variant in the loop is the cheapest and it's on sale - use it as the 'from' price target
+            endcomment
+            assign on_sale = true
+            assign target = variant
+          endif
+          break
+        elsif variant.price == price_product.price_min
+          comment 
+            The current variant in the loop is the cheapest but not on sale - use it as the 'from' price target
+          endcomment
+          assign target = variant
+          break
+        endif
+      elsif settings.when_card_price_varies == 'show_max_price'
+        if variant.price == price_product.price_max and variant.compare_at_price == price_product.compare_at_price_max
+          if variant.compare_at_price > variant.price
+            comment
+              The current variant in the loop is the most expensive and it's on sale - use it as the 'max' price target
+            endcomment
+            assign on_sale = true
+            assign target = variant
+          endif
+          break
+        elsif variant.price == price_product.price_max
+          comment 
+            The current variant in the loop is the most expensive but not on sale - use it as the target 'max' price target
+          endcomment
+          assign target = variant
+          break
+        endif
+      endif
+    endfor
+  else
+    if price_product.compare_at_price > price_product.price
+      comment 
+        The product is on sale and there's only one variant - use the product as the target
+      endcomment
+      assign on_sale = true
+      assign target = price_product
+    endif
+  endif
+%}
+
+{% comment %}
+  You can show a leading 'from' or 'up to' by checking 'product.price_varies'
+  if your variants have different prices.
+{% endcomment %}
+{% capture from_text %}
+  <span class="price--from-text">{{ 'products.general.from_text' | t }}</span>
+{% endcapture %}
+
+{% capture product_price %}
+  <span class="money price--regular-price">{{ target.price | money }}</span>
+{% endcapture %}
+
+{% capture product_compare_at_price %}
+  <span class="money price-line-through sale-price price--compare-at-price">
+    <span class="visually-hidden">{{ 'products.general.regular_price' | t }}</span>
+    {{- target.compare_at_price | money -}}
+  </span>
+{% endcapture %}
+
+{% capture product_sale_price %}
+  <span class="money price--sale-price">{{ target.price | money }}</span>
+{% endcapture %}
+
+<a href="{{ price_product.url | within: collection }}" data-product-id="{{ price_product.id }}" tabindex="-1">
+    {% comment %} On sale {% endcomment %}
+    <div class="product-price--sale{% unless on_sale %} hidden{% endunless %}">
+      {% if price_product.price_varies and settings.when_card_price_varies == 'show_from_price' %}
+          {{ from_text }}
+      {% endif %}
+      {{ product_compare_at_price }}
+      {{ product_sale_price }}
+    </div>
+  
+    {% comment %} Regular {% endcomment %}
+    <div class="product-price--regular{% if on_sale %} hidden{% endif %}">
+        {% if price_product.price_varies and settings.when_card_price_varies == 'show_from_price' %}
+          {{ from_text }}
+        {% endif %}
+        {{ product_price }}
+    </div>
+
+  {% assign first_variant = price_product.variants[0] %}
+  {% render 'unit-price-measurement-variant', variant: first_variant %}
+</a>

@@ -1,0 +1,95 @@
+{% comment %}
+  Renders a sale badge or sold-out badge for a product
+
+  Accepts:
+	- badge: {string} The type of badge to render. Can be 'sale' or 'sold-out'
+		- badge_product: {product} The product to render the badge for
+
+  Usage:
+    {%- render 'badge' with badge: 'sale', badge_product: product -%}
+{% endcomment %}
+
+{% liquid 
+  assign current_variant_on_sale = false
+  assign target = badge_product
+
+  if badge_product.price_varies
+    for variant in badge_product.variants
+      if settings.when_card_price_varies == 'show_from_price'
+        if variant.price == badge_product.price_min and variant.compare_at_price == badge_product.compare_at_price_min
+          if variant.compare_at_price > variant.price
+            comment
+              The current variant in the loop is the cheapest and it's on sale - use it as the 'from' price target
+            endcomment
+            assign current_variant_on_sale = true
+            assign target = variant
+          endif
+        elsif variant.price == badge_product.price_min
+          comment 
+            The current variant in the loop is the cheapest but not on sale - use it as the 'from' price target
+          endcomment
+          assign target = variant
+        endif
+      elsif settings.when_card_price_varies == 'show_max_price'
+        if variant.price == badge_product.price_max and variant.compare_at_price == badge_product.compare_at_price_max
+          if variant.compare_at_price > variant.price
+            comment
+              The current variant in the loop is the most expensive and it's on sale - use it as the 'max' price target
+            endcomment
+            assign current_variant_on_sale = true
+            assign target = variant
+          endif
+        elsif variant.price == badge_product.price_max
+          comment 
+            The current variant in the loop is the most expensive but not on sale - use it as the target 'max' price target
+          endcomment
+          assign target = variant
+        endif
+      endif
+    endfor
+  else
+    if badge_product.compare_at_price > badge_product.price
+      comment 
+        The product is on sale and there's only one variant - use the product as the target
+      endcomment
+      assign current_variant_on_sale = true
+      assign target = badge_product
+    endif
+  endif
+
+	if badge_product.price_varies and target.compare_at_price > target.price
+		assign product_on_sale = true
+	elsif badge_product.compare_at_price_max > badge_product.price
+		assign product_on_sale = true
+	else
+		assign product_on_sale = false
+	endif
+
+	assign discount_percentage = target.compare_at_price | minus: target.price | times: 100.0 | divided_by: target.compare_at_price | money_without_currency | times: 100 | remove: '.0' | prepend: "-" | append: '%'
+	assign discount_value = target.compare_at_price | minus: target.price | money | prepend: "-"
+%}
+
+{%- if badge == 'sale' -%}
+	{% if product_on_sale == true %}
+		{% case settings.discount_badge_type %}
+			{% when 'hide' %}
+				<div class="sale-badge badge">{{ 'products.product.sale' | t }}</div>
+
+			{% when 'percentage' %}
+				{% if current_variant_on_sale and discount_percentage != '-0%' %}
+					<div class="sale-badge badge">{{ discount_percentage }}</div>
+				{% else %}
+					<div class="sale-badge badge">{{ 'products.product.sale' | t }}</div>
+				{% endif %}
+
+			{% when 'value' %}
+				{% if current_variant_on_sale %}
+					<div class="sale-badge badge">{{ discount_value }}</div>
+				{% else %}
+					<div class="sale-badge badge">{{ 'products.product.sale' | t }}</div>
+				{% endif %}
+		{% endcase %}
+	{% endif %}
+{%- elsif badge == 'sold-out' -%}
+	<div class="sold-out-badge badge">{{ 'products.product.sold_out' | t }}</div>
+{%- endif -%}

@@ -1,0 +1,154 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "product-form": {
+      "type": "template--product",
+      "blocks": {
+        "title": {
+          "type": "title",
+          "settings": {
+            "title_font": "h1",
+            "margin_bottom": 0
+          }
+        },
+        "price": {
+          "type": "price",
+          "settings": {
+            "price_font": "h3",
+            "shipping_policy": false,
+            "tax_included": false,
+            "margin_bottom": 20
+          }
+        },
+        "a55b9011-1b1a-4353-9d97-7bdcd60949f2": {
+          "type": "product-description",
+          "settings": {
+            "collapsible_tab": false,
+            "icon": "none",
+            "heading": "Description",
+            "open_close_icon": "plus_minus",
+            "margin_bottom": 20
+          }
+        },
+        "options": {
+          "type": "options",
+          "settings": {
+            "hide_out_of_stock_variants": false,
+            "variant_style": "swatches",
+            "thumbnail_changes_variant": false,
+            "size_guide_page": "",
+            "size_option_name": "Size",
+            "margin_bottom": 30
+          }
+        },
+        "quantity": {
+          "type": "quantity",
+          "settings": {
+            "margin_bottom": 40
+          }
+        },
+        "text_with_icon_FpgGjJ": {
+          "type": "text-with-icon",
+          "settings": {
+            "icon": "none",
+            "text": "Pick ups on Saturdays until 9 am",
+            "link": "",
+            "margin_bottom": 20
+          }
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_smart_checkout": false,
+            "enable_gift_card_recipient_form": true,
+            "margin_bottom": 20
+          }
+        },
+        "cross_sells_HPat9b": {
+          "type": "cross-sells",
+          "settings": {
+            "title": "Don't forget to add",
+            "price_display_1": 1000000,
+            "cross_sell_product_1": "branden-carton-bag",
+            "price_display_2": 1000000000000,
+            "cross_sell_product_2": "tenfold-bubble",
+            "price_display_3": 100000000000,
+            "cross_sell_product_3": "blue-ming-vase",
+            "collapsible_tab": false,
+            "icon": "none",
+            "open_close_icon": "plus_minus",
+            "margin_bottom": 20
+          }
+        },
+        "9c341458-2d2c-4317-a2cc-346e220f53e0": {
+          "type": "collapsible-tab",
+          "settings": {
+            "icon": "none",
+            "heading": "Size Guide",
+            "open_close_icon": "plus_minus",
+            "text": "",
+            "page": "size-chart",
+            "open_by_default": false,
+            "margin_bottom": 0
+          }
+        }
+      },
+      "block_order": [
+        "title",
+        "price",
+        "a55b9011-1b1a-4353-9d97-7bdcd60949f2",
+        "options",
+        "quantity",
+        "text_with_icon_FpgGjJ",
+        "buy_buttons",
+        "cross_sells_HPat9b",
+        "9c341458-2d2c-4317-a2cc-346e220f53e0"
+      ],
+      "custom_css": [
+        "#buunto-date-picker .buunto-date-picker {max-width: none;}"
+      ],
+      "settings": {
+        "enable_sticky": false,
+        "show_out_of_stock_email": false,
+        "blocked_date": "21.04.2025",
+        "image_size": "medium",
+        "image-display": "thumbnails",
+        "thumbnail_position": "left",
+        "enable_video_loop": true,
+        "app_margin_bottom": 20
+      }
+    },
+    "product-description": {
+      "type": "template--product--description",
+      "disabled": true,
+      "settings": {
+        "enable_readmore": false
+      }
+    },
+    "product-recommendations": {
+      "type": "template--product--recommendations",
+      "settings": {
+        "product_recommendations_heading": "You might also like",
+        "product_recommendations_description": "",
+        "layout_style": "slider",
+        "products_to_show": 8,
+        "grid-desktop": 3,
+        "grid-mobile": "2",
+        "colors": "white"
+      }
+    }
+  },
+  "order": [
+    "product-form",
+    "product-description",
+    "product-recommendations"
+  ]
+}

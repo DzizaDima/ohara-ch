@@ -1,0 +1,218 @@
+{{ 'section-image-with-text.min.css' | asset_url | stylesheet_tag: preload: true }}
+<noscript>{{ 'section-image-with-text.min.css' | asset_url | stylesheet_tag }}</noscript>
+
+{% case section.settings.colors %}
+  {% when 'white' %}
+    {%- assign color_scheme = 'homepage-sections-wrapper--white' -%}
+  {% when 'light' %}
+    {%- assign color_scheme = 'homepage-sections-wrapper--light' -%}
+  {% when 'accent' %}
+    {%- assign color_scheme = 'homepage-sections-wrapper--accent' -%}
+  {% when 'dark' %}
+    {%- assign color_scheme = 'homepage-sections-wrapper--dark' -%}
+{% endcase %}
+
+
+<div
+  class="homepage-sections-wrapper {{ color_scheme }} {% unless section.settings.text_overlapping_image %} feature-row--no-overlapping{% else %} feature-row--overlapping{% endunless %}{% if section.settings.section-width == 'content' %} content-width{% else %} full-width{% endif %}"
+  data-wetheme-section-type="image--image-with-text" data-wetheme-section-id="{{ section.id }}"
+>
+
+  {% capture image_layout %}
+    <div class="grid__item homepage-content--image homepage-content--{{ section.id }}{% if section.settings.text_overlapping_image %} overlapping-text{% else %} large--one-half{% endif %}{% if settings.ken_burns_enabled %} kb-enabled{% endif %}">
+      <div>
+        {% if section.settings.image != blank %}
+          <div id="rellax--{{ section.id }}" class="img" data-rellax-percentage="0.5" data-rellax-speed="-6">
+            {% assign img_alt = section.settings.image.alt | default: shop.name %}
+            {% render 'responsive-image' with section.settings.image, alt: img_alt | escape, sizes: '100vw' %}
+          </div>
+        {% else %}
+          <div id="rellax--{{ section.id }}" class="placeholder-background img" data-rellax-percentage="0.5" data-rellax-speed="-6">
+            {{ 'lifestyle-1' | placeholder_svg_tag: 'icon icon--placeholder' }}
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  {% endcapture %}
+
+  {% if section.settings.section-width == 'content' %}
+    <div class="wrapper-padded">
+  {% endif %}
+
+    <div class="homepage-indiv-section-wrapper grid--full homepage-featured-content-wrapper feature-row__text--{{ section.settings.layout }} feature-row__text-alignment--{{ section.settings.text_alignment }}">
+      {{ image_layout }}
+
+      <div class="feature_row__image_wrapper{% if section.settings.text_overlapping_image %} homepage-featured-content-box{% else %} large--one-half{% endif %}">
+        {% if section.settings.title != blank or section.settings.text != blank or section.settings.button_label != blank %}
+
+          {% unless section.settings.text_overlapping_image %}
+            <div class="no-overlap-content-box">
+          {% endunless %}
+
+            <div class="homepage-featured-content-box-inner show-on-scroll">
+
+              {% if section.settings.title != blank %}
+                <div class="sitewide--title-wrapper">
+                  <h2 class="homepage-sections--title">{{ section.settings.title | escape }}</h2>
+                </div>
+              {% endif %}
+
+              {% if section.settings.text != blank %}
+                <div class="rte featured-row__subtext textarea text-link-animated">{{ section.settings.text }}</div>
+              {% endif %}
+
+              {% if section.settings.button_label != blank and section.settings.button_link != blank %}
+                <div class="clearfix">
+                  <a href="{{ section.settings.button_link }}" class="btn homepage-featured-box-btn">
+                    {{ section.settings.button_label | escape }}
+                  </a>
+                </div>
+              {% endif %}
+
+            </div>
+
+          {% unless section.settings.text_overlapping_image %}
+            </div>
+          {% endunless %}
+        {% endif %}
+      </div>
+    </div>
+
+  {% if section.settings.section-width == 'content' %}
+    </div>
+  {% endif %}
+
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.image--image-with-text.name",
+  "class": "image-with-text-wrapper",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "t:all.Image",
+      "info": "t:sections.image--image-with-text.settings.image.info"
+    },
+    {
+      "type": "checkbox",
+      "id": "text_overlapping_image",
+      "label": "t:sections.image--image-with-text.settings.text_overlapping_image.label",
+      "default": false
+    },
+    {
+      "type": "select",
+      "id": "section-width",
+      "label": "t:all.Width",
+      "default": "full",
+      "options": [
+        {
+          "value": "full",
+          "label": "t:all.Full_width"
+        },
+        {
+          "value": "content",
+          "label": "t:all.Content_width"
+        }
+      ]
+    },
+    {
+      "type": "radio",
+      "id": "layout",
+      "label": "t:all.Layout_on_desktop",
+      "default": "left",
+      "options": [
+        {
+          "value": "left",
+          "label": "t:all.Content_on_right"
+        },
+        {
+          "value": "right",
+          "label": "t:all.Content_on_left"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "text_alignment",
+      "label": "t:all.Text_alignment_on_desktop",
+      "default": "center",
+      "options": [
+        {
+          "value": "left",
+          "label": "t:all.Left"
+        },
+        {
+          "value": "center",
+          "label": "t:all.Centered"
+        },
+        {
+          "value": "right",
+          "label": "t:all.Right"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "t:all.Heading",
+      "default": "Share brand or product details"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "t:all.Text",
+      "default": "<p>Pair large text with an image to give focus to your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "t:all.Button_label"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "t:all.Button_link"
+    },
+    {
+      "type": "header",
+      "content": "t:all.Color"
+    },
+    {
+      "type": "select",
+      "id": "colors",
+      "label": "t:all.Color_scheme",
+      "default": "light",
+      "options": [
+        {
+          "value": "white",
+          "label": "t:all.Minimal"
+        },
+        {
+          "value": "light",
+          "label": "t:all.Light"
+        },
+        {
+          "value": "accent",
+          "label": "t:all.Feature"
+        },
+        {
+          "value": "dark",
+          "label": "t:all.Dark"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.image--image-with-text.presets.name"
+    }
+  ],
+  "disabled_on": {
+    "groups": [
+      "header"
+    ]
+  }
+}
+{% endschema %}

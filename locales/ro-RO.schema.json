@@ -1,0 +1,2392 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin language editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "settings_schema": {
+    "Colors": {
+      "name": "Culori",
+      "settings": {
+        "header-0": {
+          "content": "General"
+        },
+        "color_primary": {
+          "label": "Link-uri"
+        },
+        "color_body_bg_secondary": {
+          "label": "Fundal Secundar",
+          "info": "Utilizat pentru fundaluri pe paginile principale și de produs"
+        },
+        "sale_price_color": {
+          "label": "Preț Redus"
+        },
+        "star_rating_color": {
+          "label": "Evaluare cu stele"
+        },
+        "header-6": {
+          "content": "Badge-uri"
+        },
+        "sale_badge_color": {
+          "label": "Badge Redus"
+        },
+        "sold_out_badge_color": {
+          "label": "Badge Stoc Epurat"
+        },
+        "sold_out_badge_font_color": {
+          "label": "Culoare Font Badge"
+        },
+        "cart_color": {
+          "label": "Indicator Coș",
+          "info": "Indicator mobil cantitate\/valoare coș"
+        },
+        "header-transparent-text": {
+          "label": "Text Suprapunere"
+        },
+        "header-transparent-background": {
+          "label": "Fundal Suprapunere",
+          "info": "Utilizat pentru numărătoarea coșului de suprapunere și când 'Opacitatea antetului' este mai mare de 0%."
+        },
+        "colorSchemeLightBackground": {
+          "label": "Fundal Luminos"
+        },
+        "colorSchemeLightText": {
+          "label": "Text Luminos"
+        },
+        "homepage-sections-accent-primary-color": {
+          "label": "Fundal Accent pentru Funcționalitate"
+        },
+        "homepage-sections-accent-secondary-color": {
+          "label": "Text Accent pentru Funcționalitate"
+        },
+        "colorSchemeDarkBackground": {
+          "label": "Fundal Întunecat"
+        },
+        "colorSchemeDarkText": {
+          "label": "Text Întunecat"
+        },
+        "header-25": {
+          "content": "Scheme de Culori"
+        },
+        "header-35": {
+          "content": "Sertar Coș"
+        },
+        "header-38": {
+          "content": "Subsol"
+        }
+      }
+    },
+    "Typography": {
+      "name": "Tipografie",
+      "settings": {
+        "header-0": {
+          "content": "Titluri"
+        },
+        "heading_font_case": {
+          "label": "Litera inițială a Titlului"
+        },
+        "header_font_case": {
+          "label": "Litera inițială Navigație"
+        },
+        "button_style": {
+          "options": {
+            "circle": "Margini Rotunjite",
+            "rounded": "Margini Rotunjite",
+            "square": "Margini Pătrate"
+          }
+        },
+        "header-18": {
+          "content": "Etichete"
+        },
+        "header-22": {
+          "content": "Text Logo"
+        },
+        "header-24": {
+          "content": "Bară Anunț"
+        }
+      }
+    },
+    "Cart": {
+      "name": "Coș",
+      "settings": {
+        "ajax_cart_method": {
+          "label": "Acțiune Adăugare în Coș",
+          "options": {
+            "drawer": "Afișează Sertar",
+            "added": "Afișează Mesaj 'Adăugat'",
+            "page": "Mergi la Coș"
+          }
+        },
+        "cart_vendor_enable": {
+          "label": "Afișare Producător Produs"
+        },
+        "cart_notes_enable": {
+          "label": "Permite Note Coș"
+        },
+        "giftwrap_gift_note": {
+          "label": "Permite Mesaj Cadou"
+        },
+        "enable-additional-checkout-buttons": {
+          "label": "Permite Buton Dinamic de Finalizare",
+          "info": "[Află mai mult](https:\/\/help.shopify.com\/en\/manual\/sell-online\/online-store\/dynamic-checkout)"
+        }
+      }
+    },
+    "Products": {
+      "name": "Produse",
+      "settings": {
+        "header-0": {
+          "content": "Împachetare Cadou"
+        },
+        "giftwrap_product_selector": {
+          "label": "Produs Împachetare Cadou"
+        },
+        "giftwrap_label_text": {
+          "label": "Etichetă Împachetare Cadou"
+        }
+      }
+    },
+    "Product_card": {
+      "name": "Carduri de produs",
+      "settings": {
+        "hover-effect": {
+          "label": "Activează Efect Hover",
+          "info": "Afișează a doua imagine a produsului tău la survol"
+        },
+        "badges": {
+          "label": "Insigne",
+          "show_badges": "Afișare Badge-uri"
+        },
+        "discount_badge_type": {
+          "label": "Afișarea ecusonului de vânzare",
+          "options": {
+            "percentage": "Procentaj",
+            "value": "Valoare",
+            "hide": "Text 'Vânzare'"
+          }
+        },
+        "price": {
+          "sale_price_color": "Culoarea prețului de vânzare",
+          "when_price_varies": {
+            "label": "Când prețul variază...",
+            "options": {
+              "show_from_price": "Afișează prețul 'de la'",
+              "show_max_price": "Afișează prețul maxim"
+            }
+          }
+        },
+        "show_rating": {
+          "label": "Afișați evaluarea cu stele",
+          "show_if_no_reviews": "Afișează dacă nu există evaluări",
+          "info": "Pentru a afișa o evaluare, adăugați o aplicație de recenzii ale produsului. [Aflați mai multe](https:\/\/help.shopify.com\/manual\/online-store\/themes\/theme-structure\/theme-features#featured-collection-show-product-rating)"
+        },
+        "show_product_rating_as": {
+          "label": "Afișează ratingul cu stele ca...",
+          "options": {
+            "count": "Număr (ex. \"3\" recenzii)",
+            "average": "Rating mediu (ex. \"4.5\")",
+            "stars_only": "Doar stele"
+          }
+        },
+        "product_card_swatches": {
+          "label": "Mostră de culori",
+          "color_swatch_info": {
+            "content": "Pentru a afișa mostre de culoare, trebuie să aveți un nume de opțiune variantă dintre următoarele: color, colour, couleur, color, farbe, 색 ,色 ,färg ,farve. S-ar putea să fie necesar să încărcați imagini personalizate pentru mostre. [Aflați mai multe](https:\/\/support.eightthemes.com\/hc\/en-us\/articles\/360020105257-How-to-Upload-Color-Swatches)"
+          },
+          "show_color_swatches": {
+            "label": "Afișează mostre de culoare"
+          },
+          "show_color_label": {
+            "label": "Afișează eticheta de culoare"
+          }
+        },
+        "quick_shop_button": {
+          "label": "Buton de cumpărături rapide",
+          "display_style": {
+            "label": "Stilul de afișare",
+            "info": "Dacă este setat pe 'peste imagine', butonul va apărea ca o icoană pe ecranele mai mici și la hover pe ecranele mai mari.",
+            "options": {
+              "over_image": "Peste imagine",
+              "below_image": "Sub imagine"
+            }
+          }
+        },
+        "below_image_style": {
+          "label": "Stilul \"Sub imagine\""
+        },
+        "hover_navigation_desktop": {
+          "label": "Navigare (desktop)",
+          "info": "Utilizat în secțiunile ‘Produse recomandate’, ‘Vizualizate recent’ și ‘Colecția recomandată’",
+          "options": {
+            "left_and_right": "Stânga și dreapta la hover",
+            "right": "Dreapta la hover",
+            "above": "Deasupra",
+            "none": "Niciunul"
+          }
+        }
+      }
+    },
+    "Back_to_top_button": {
+      "name": "Buton Înapoi Sus",
+      "settings": {
+        "paragraph-0": {
+          "content": "Pe dispozitivele mobile, butonul 'Înapoi Sus' va fi afișat doar când derulați în sus"
+        },
+        "back_to_top_homepage": {
+          "label": "Afișare pe Pagina Principală"
+        },
+        "back_to_top_collection": {
+          "label": "Afișare pe Șabloane Colecție"
+        },
+        "back_to_top_product": {
+          "label": "Afișare pe Șabloane Produs"
+        },
+        "back_to_top_all": {
+          "label": "Afișare pe Toate Șabloanele"
+        }
+      }
+    },
+    "Search": {
+      "name": "Căutare",
+      "settings": {
+        "predictive_search_enabled": {
+          "label": "Activează Căutare Predictivă"
+        },
+        "predictive_search_show_price": {
+          "label": "Afișare Preț"
+        }
+      }
+    },
+    "Social_media": {
+      "name": "Social Media",
+      "settings": {
+        "header-0": {
+          "content": "Conturi"
+        },
+        "sm_facebook_link": {
+          "label": "Facebook",
+          "info": "https:\/\/www.facebook.com\/shopify"
+        },
+        "sm_x_link": {
+          "label": "X",
+          "info": "https:\/\/x.com\/shopify"
+        },
+        "sm_instagram_link": {
+          "label": "Instagram",
+          "info": "https:\/\/instagram.com\/shopify"
+        },
+        "sm_tumblr_link": {
+          "label": "Tumblr",
+          "info": "https:\/\/shopify.tumblr.com\/"
+        },
+        "sm_pinterest_link": {
+          "label": "Pinterest",
+          "info": "https:\/\/www.pinterest.com\/shopify"
+        },
+        "sm_youtube_link": {
+          "label": "YouTube",
+          "info": "https:\/\/www.youtube.com\/user\/shopify"
+        },
+        "sm_vimeo_link": {
+          "label": "Vimeo",
+          "info": "https:\/\/www.vimeo.com\/shopify"
+        },
+        "sm_flickr_link": {
+          "label": "Flickr",
+          "info": "https:\/\/www.flickr.com\/photos\/shopify"
+        },
+        "sm_snapchat_link": {
+          "label": "Snapchat",
+          "info": "https:\/\/www.snapchat.com\/add\/shopify"
+        },
+        "sm_houzz_link": {
+          "label": "Houzz",
+          "info": "https:\/\/www.houzz.com\/shopify"
+        },
+        "sm_linkedin_link": {
+          "label": "LinkedIn",
+          "info": "https:\/\/linkedin.com\/company\/shopify"
+        },
+        "sm_tiktok_link": {
+          "label": "TikTok",
+          "info": "https:\/\/www.tiktok.com\/@shopify"
+        },
+        "header-13": {
+          "content": "Partajare"
+        },
+        "social_sharing_blog": {
+          "label": "Activează Partajare Articole Blog"
+        },
+        "share_facebook": {
+          "label": "Partajare pe Facebook"
+        },
+        "share_x": {
+          "label": "Partajează pe X"
+        },
+        "share_pinterest": {
+          "label": "Pin pe Pinterest"
+        }
+      }
+    },
+    "Breadcrumbs": {
+      "name": "Breadcrumb-uri",
+      "settings": {
+        "enable_breadcrumbs": {
+          "label": "Activează Breadcrumb-uri",
+          "info": "Afișează navigarea breadcrumb sub antet pe paginile de produse, bloguri și pagini"
+        }
+      }
+    },
+    "Popup": {
+      "name": "Popup",
+      "settings": {
+        "popup--enable": {
+          "label": "Activează Popup"
+        },
+        "pop-up-time": {
+          "label": "Zile până la Afișarea Popup-ului din Nou",
+          "options": {
+            "7": "O săptămână",
+            "14": "Două săptămâni",
+            "21": "Trei săptămâni",
+            "28": "Patru săptămâni"
+          }
+        },
+        "pop-up-text-header-text": {
+          "label": "Text Antet Popup"
+        },
+        "pop-up-text-description-text": {
+          "label": "Text Descriere Popup"
+        },
+        "popup--show-social-icons": {
+          "label": "Activează Icoane Sociale"
+        },
+        "popup--show-newsletter": {
+          "label": "Activează Înregistrarea la Newsletter"
+        },
+        "desktop-popup-style": {
+          "label": "Stil Popup pe Desktop"
+        },
+        "pop-up-delay": {
+          "label": "Întârziere până la Afișarea Popup-ului"
+        },
+        "header-9": {
+          "content": "Mod de Testare"
+        },
+        "popup--test-mode": {
+          "info": "Modul de testare forțează afișarea popup-ului pe fiecare pagină și ar trebui folosit doar pentru editarea acestuia. Asigurați-vă că 'Modul de Testare' este dezactivat la lansarea magazinului."
+        }
+      }
+    },
+    "Verification_pop_up": {
+      "name": "Pop-Up de Verificare",
+      "settings": {
+        "enable_verification_popup": {
+          "label": "Activează Pop-Up de Verificare"
+        },
+        "verification-pop-up__test-mode": {
+          "label": "Activează Mod de Testare",
+          "info": "Modul de testare forțează afișarea verificării la fiecare reîmprospătare și ar trebui folosit doar pentru editarea acestuia. Asigurați-vă că 'Modul de Testare' este dezactivat la lansarea magazinului."
+        },
+        "verification_background_opacity": {
+          "label": "Opacitate Fundal Verificare"
+        },
+        "verification-popup__logo": {
+          "info": "Recomandat 250 x 133px"
+        },
+        "exit-button__text": {
+          "label": "Text Buton Refuz"
+        },
+        "confirm-button__text": {
+          "label": "Text Buton Aprobare"
+        },
+        "header-15": {
+          "content": "Respins"
+        },
+        "deny-button__text": {
+          "label": "Text Buton Întoarcere"
+        }
+      }
+    },
+    "Favicon": {
+      "name": "Favicon",
+      "settings": {
+        "favicon": {
+          "label": "Imagine Favicon",
+          "info": "Va fi redimensionată la 32 x 32px"
+        }
+      }
+    },
+    "Animations": {
+      "name": "Animații",
+      "settings": {
+        "animations_enabled": {
+          "label": "Activează Animații",
+          "info": "Activează animații de estompare pentru secțiunile de pe pagina principală și paginile de colecții"
+        },
+        "page_fade_enabled": {
+          "label": "Activează Tranziția de Estompare a Paginii",
+          "info": "Permite paginilor să se estompeze la încărcare"
+        },
+        "ken_burns_enabled": {
+          "label": "Activează Efect de Zoom",
+          "info": "Activează un efect de zoom subtil pe imaginile selectate de pe pagina principală la încărcarea inițială. [Află mai mult](https:\/\/support.eightthemes.com\/hc\/en-us\/articles\/360020107017-Introduction-to-Theme-Settings#animations)"
+        }
+      }
+    }
+  },
+  "sections": {
+    "accordion": {
+      "label": "Text",
+      "name": "Accordion\/Întrebări frecvente",
+      "blocks": {
+        "tab_content": {
+          "name": "Conținut tab"
+        }
+      },
+      "presets": {
+        "name": "Accordion\/Întrebări frecvente",
+        "blocks": {
+        }
+      }
+    },
+    "advanced-layout--custom-html": {
+      "label": "Lățime container",
+      "name": "HTML personalizat",
+      "settings": {
+      },
+      "blocks": {
+        "html": {
+          "settings": {
+            "width": {
+              "label": "Lățime container",
+              "options": {
+                "25_percentage": "25%",
+                "33_percentage": "33%",
+                "50_percentage": "50%",
+                "66_percentage": "66%",
+                "75_percentage": "75%",
+                "100_percentage": "100%"
+              }
+            }
+          }
+        }
+      },
+      "presets": {
+        "blocks": {
+        }
+      }
+    },
+    "advanced-layout--custom-liquid": {
+      "name": "Liquid personalizat",
+      "blocks": {
+      }
+    },
+    "advanced-layout--hero": {
+      "label": "Imagine activare",
+      "name": "Erou",
+      "settings": {
+        "header-0": {
+          "content": "Conținut recomandat"
+        },
+        "header-2": {
+          "content": "Setări imagine"
+        },
+        "header-10": {
+          "content": "Setări video"
+        }
+      },
+      "blocks": {
+        "text": {
+          "settings": {
+            "featured_image": {
+              "info": "500 x 250px (recomandat)"
+            },
+            "featured_image_size": {
+              "label": "Înălțime imagine",
+              "options": {
+                "original": "Original (necropat)"
+              }
+            },
+            "hero-menu-image": {
+              "label": "Imagine activare",
+              "info": "1500 x 1000px (recomandat)"
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "Erou",
+        "blocks": {
+          "text-0": {
+            "hero-menu-heading": "Evidențiați cele mai bune vânzări"
+          },
+          "text-1": {
+            "hero-menu-heading": "Promovați o nouă colecție"
+          }
+        }
+      }
+    },
+    "animated-text": {
+      "label": "Fundal buton activare",
+      "name": "Text animat",
+      "blocks": {
+        "text_static": {
+          "name": "Text static",
+          "settings": {
+            "max_width_desktop": {
+              "label": "Lățime maximă (desktop)"
+            },
+            "max_width_mobile": {
+              "label": "Lățime maximă (mobil)"
+            }
+          }
+        },
+        "text_dynamic": {
+          "name": "Text dinamic",
+          "settings": {
+            "text_dynamic": {
+              "info": "Utilizați o listă separată de virgule pentru a adăuga cuvinte multiple. De exemplu: uimitor, fantastic, cel mai bine vândut, uimitor"
+            },
+            "animation_timing": {
+              "label": "Sincronizare animație"
+            },
+            "rotation_interval": {
+              "label": "Interval rotație"
+            }
+          }
+        },
+        "button": {
+          "settings": {
+            "header-2": {
+              "content": "Culori buton"
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "Text animat",
+        "blocks": {
+        }
+      }
+    },
+    "announcement-bar": {
+      "label": "Text",
+      "name": "Bară de anunțuri",
+      "settings": {
+        "desktop_social_icons": {
+          "label": "Afișează icoanele rețelelor sociale pe desktop"
+        }
+      },
+      "blocks": {
+        "announcement": {
+          "name": "Anunț"
+        }
+      },
+      "presets": {
+        "name": "Bară de anunțuri",
+        "blocks": {
+          "announcement-0": {
+            "announcement_text": "Anunțați ceva aici"
+          },
+          "announcement-1": {
+            "announcement_text": "Promovați o colecție"
+          },
+          "announcement-2": {
+            "announcement_text": "Redus acum"
+          }
+        }
+      }
+    },
+    "apps": {
+      "name": "Aplicații",
+      "settings": {
+        "include_margins": {
+          "label": "Faceți marginile secțiunii la fel ca în temă"
+        }
+      },
+      "blocks": {
+      },
+      "presets": {
+        "name": "Aplicații"
+      }
+    },
+    "blog--blog-posts": {
+      "label": "Blog",
+      "name": "Articole de blog",
+      "settings": {
+        "post_limit": {
+          "label": "Articole de afișat"
+        }
+      },
+      "blocks": {
+        "article": {
+          "settings": {
+            "header-0": {
+              "info": "Alegeți articolele de blog pe care doriți să le evidențiați"
+            },
+            "blog_post_1": {
+              "label": "Primul articol de blog"
+            },
+            "blog_post_2": {
+              "label": "Al doilea articol de blog"
+            },
+            "blog_post_3": {
+              "label": "Al treilea articol de blog"
+            },
+            "blog_post_4": {
+              "label": "Al patrulea articol de blog"
+            }
+          }
+        },
+        "blog": {
+          "settings": {
+            "header-0": {
+              "info": "Alegeți blogul pe care doriți să-l evidențiați"
+            },
+            "blog": {
+              "label": "Blog"
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "Articole de blog",
+        "blocks": {
+          "blog-0": {
+            "blog": "Știri"
+          }
+        }
+      }
+    },
+    "blog--navigation-banner": {
+      "name": "Banner de navigare",
+      "settings": {
+        "navigation_position": {
+          "label": "Aliniere navigație"
+        }
+      },
+      "blocks": {
+      },
+      "presets": {
+        "name": "Banner de navigare"
+      }
+    },
+    "collage-builder": {
+      "label": "Text",
+      "name": "Constructor de colaje",
+      "settings": {
+        "section_width": {
+          "label": "Lățime secțiune"
+        },
+        "width_1": {
+          "label": "Lățime primul bloc"
+        },
+        "height_1": {
+          "label": "Înălțime primul bloc"
+        },
+        "width_2": {
+          "label": "Lățime al doilea bloc"
+        },
+        "height_2": {
+          "label": "Înălțime al doilea bloc"
+        },
+        "width_3": {
+          "label": "Lățime al treilea bloc"
+        },
+        "height_3": {
+          "label": "Înălțime al treilea bloc"
+        },
+        "width_4": {
+          "label": "Lățime al patrulea bloc"
+        },
+        "height_4": {
+          "label": "Înălțime al patrulea bloc"
+        },
+        "width_5": {
+          "label": "Lățime al cincilea bloc"
+        },
+        "height_5": {
+          "label": "Înălțime al cincilea bloc"
+        },
+        "width_6": {
+          "label": "Lățime al șaselea bloc"
+        },
+        "height_6": {
+          "label": "Înălțime al șaselea bloc"
+        },
+        "block_alignment": {
+          "label": "Aliniere bloc"
+        }
+      },
+      "blocks": {
+        "image": {
+          "settings": {
+            "mobile_image": {
+              "label": "Imagine pentru mobil"
+            }
+          }
+        },
+        "background_video": {
+          "name": "Video de fundal"
+        },
+        "video": {
+          "settings": {
+            "mobile_video_url": {
+              "label": "Încorporați video din URL (opțional)"
+            },
+            "button_icon_color": {
+              "label": "Culoare pictogramă buton"
+            },
+            "button_icon_hover_color": {
+              "label": "Culoare pictogramă buton la hover"
+            }
+          }
+        },
+        "countdown_timer": {
+          "settings": {
+            "timer_complete_message": {
+              "info": "Acest mesaj va apărea când cronometrul ajunge la zero"
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "Constructor de colaje",
+        "blocks": {
+          "image-0": {
+            "desktop_position": "md-min-align-top md-min-justify-left",
+            "mobile_position": "md-max-align-top md-max-justify-left"
+          },
+          "background_video-2": {
+            "desktop_position": "md-min-align-bottom md-min-justify-left",
+            "mobile_position": "md-max-align-bottom md-max-justify-left"
+          },
+          "text-3": {
+            "text_alignment": "stânga",
+            "desktop_position": "md-min-align-center md-min-justify-left"
+          },
+          "image-4": {
+            "heading": "Link către o colecție"
+          },
+          "image-5": {
+            "heading": "Creați o promoție banner"
+          }
+        }
+      }
+    },
+    "collection--collection-list": {
+      "label": "Culoare suprapunere",
+      "name": "Listă de colecții",
+      "settings": {
+        "items-per-row": {
+          "label": "Colecții per rând"
+        },
+        "fill-the-area": {
+          "label": "Extindeți colecțiile pentru a umple spațiul"
+        },
+        "content-position": {
+          "label": "Poziția titlului"
+        }
+      },
+      "blocks": {
+        "featured_collection": {
+          "settings": {
+            "collection_img": {
+              "info": "Recomandat 1600 x 1600 pixeli"
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "Listă de colecții",
+        "blocks": {
+        }
+      }
+    },
+    "collection--featured-collection": {
+      "label": "Font",
+      "name": "Colecție de top",
+      "settings": {
+        "show_view_all": {
+          "label": "Afișați butonul 'Vizualizare toate'"
+        }
+      },
+      "presets": {
+        "name": "Colecție de top",
+        "blocks": {
+        }
+      }
+    },
+    "countdown-timer": {
+      "label": "Mesaj",
+      "name": "Cronometru de numărare inversă",
+      "settings": {
+        "image": {
+          "info": "Minim 1000 x 750px recomandat."
+        },
+        "overlay_color": {
+          "label": "Suprapunere pe desktop"
+        },
+        "text_color": {
+          "info": "Nu este vizibil când se utilizează o imagine pe mobil."
+        },
+        "background_color": {
+          "info": "Vizibil când nu este selectată nicio 'Imagine'."
+        }
+      },
+      "blocks": {
+        "countdown_timer": {
+          "settings": {
+            "hide_when_complete": {
+              "label": "Ascundeți când cronometrul ajunge la zero"
+            }
+          }
+        },
+        "timer_complete_message": {
+          "settings": {
+            "paragraph-0": {
+              "content": "Adăugați acest bloc pentru a afișa un mesaj când cronometrul ajunge la zero"
+            },
+            "text": {
+              "label": "Mesaj"
+            }
+          }
+        }
+      },
+      "presets": {
+        "blocks": {
+          "timer_complete_message-0": {
+            "text": "Ați ratat tocmai această ofertă"
+          },
+          "heading-1": {
+            "heading": "Oferta se încheie curând"
+          },
+          "text-3": {
+            "text": "Profită de ofertă înainte să dispară"
+          },
+          "button-4": {
+            "label": "Cumpără acum"
+          }
+        }
+      }
+    },
+    "customer-account": {
+      "name": "Cont",
+      "settings": {
+      },
+      "blocks": {
+      }
+    },
+    "customer-activate-account": {
+      "name": "Activare cont",
+      "settings": {
+      },
+      "blocks": {
+      }
+    },
+    "customer-addresses": {
+      "name": "Adrese",
+      "settings": {
+      },
+      "blocks": {
+      }
+    },
+    "customer-login": {
+      "name": "Conectare",
+      "settings": {
+      },
+      "blocks": {
+      }
+    },
+    "customer-order": {
+      "name": "Comandă",
+      "settings": {
+      },
+      "blocks": {
+      }
+    },
+    "customer-register": {
+      "name": "Înregistrare",
+      "settings": {
+      },
+      "blocks": {
+      }
+    },
+    "customer-reset-password": {
+      "name": "Resetare parolă",
+      "settings": {
+      },
+      "blocks": {
+      }
+    },
+    "events-calendar": {
+      "label": "Text",
+      "name": "Calendar de evenimente",
+      "settings": {
+        "layout": {
+          "label": "Aspect",
+          "options": {
+            "list": "Listă"
+          }
+        },
+        "cards_per_row": {
+          "label": "Evenimente pe rând"
+        },
+        "expand_card": {
+          "label": "Extindeți cardurile de eveniment pentru a umple ultimul rând"
+        }
+      },
+      "blocks": {
+        "event": {
+          "name": "Eveniment",
+          "settings": {
+            "day": {
+              "label": "Data"
+            },
+            "month": {
+              "label": "Luna",
+              "options": {
+                "Jan": "Ian",
+                "Feb": "Feb",
+                "Mar": "Mar",
+                "Apr": "Apr",
+                "May": "Mai",
+                "Jun": "Iun",
+                "Jul": "Iul",
+                "Aug": "Aug",
+                "Sep": "Sep",
+                "Oct": "Oct",
+                "Nov": "Noi",
+                "Dec": "Dec"
+              }
+            },
+            "tbc": {
+              "label": "Suprascrieți data cu 'TBC'",
+              "info": "Folosirea acestui lucru va ascunde orice setări de dată și oră și va afișa un mesaj 'TBC' în locul lor."
+            },
+            "day_time": {
+              "label": "Zi și oră",
+              "info": "De exemplu, Sâmbătă, 19:30"
+            },
+            "price": {
+              "info": "Utilizați o valoare numerică pentru a afișa prețul în moneda magazinului (de exemplu, '10'). Dacă utilizați mai multe valute, utilizați o listă separată prin virgulă cu codurile valutare (de exemplu, 'USD:10, EUR:9, GBP:8')."
+            },
+            "event_heading": {
+              "label": "Titlul evenimentului"
+            },
+            "event_location": {
+              "label": "Locația"
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "Calendar de evenimente",
+        "blocks": {
+        }
+      }
+    },
+    "featured-menu": {
+      "label": "Imagine (doar desktop)",
+      "name": "Meniu recomandat",
+      "settings": {
+        "image_desktop_default": {
+          "label": "Imagine implicită pentru desktop (opțional)"
+        },
+        "image_mobile": {
+          "label": "Imagine pentru mobil (opțional)"
+        },
+        "menu_position": {
+          "label": "Poziția meniului"
+        },
+        "alignment_desktop": {
+          "label": "Aliniere pe desktop"
+        },
+        "alignment_mobile": {
+          "label": "Aliniere pe mobil"
+        },
+        "menu_items_color": {
+          "label": "Culoarea elementelor de meniu"
+        },
+        "menu_item_size": {
+          "label": "Dimensiunea elementului de meniu"
+        }
+      },
+      "blocks": {
+        "menu_item": {
+          "settings": {
+            "menu_item_image": {
+              "label": "Imagine (doar desktop)"
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "Meniu recomandat",
+        "blocks": {
+        }
+      }
+    },
+    "footer-bottom": {
+      "name": "Subsol",
+      "settings": {
+        "show_methods_of_payment": {
+          "label": "Afișați pictogramele de plată"
+        },
+        "center_content_on_desktop": {
+          "label": "Centrați conținutul pe desktop"
+        }
+      },
+      "blocks": {
+      }
+    },
+    "footer-main": {
+      "label": "Antet",
+      "name": "Antet principal",
+      "settings": {
+        "alignment": {
+          "label": "Aliniere"
+        }
+      },
+      "blocks": {
+        "menu": {
+          "settings": {
+            "footer_linklist": {
+              "label": "Meniu de subsol",
+              "info": "Această navigare are suport limitat pentru elementele cu meniuri derulante"
+            }
+          }
+        },
+        "newsletter": {
+          "settings": {
+            "footer_newsletter_description": {
+              "label": "Descrierea newsletter-ului"
+            }
+          }
+        },
+        "social": {
+          "name": "Iconițe sociale",
+          "settings": {
+            "paragraph-1": {
+              "content": "Editați setările sociale și conturile în Setările temei"
+            }
+          }
+        },
+        "follow_on_shop": {
+          "name": "Urmărește pe Magazin",
+          "settings": {
+            "paragraph-0": {
+              "content": "Afișați butonul de urmărire pentru magazinul dvs. pe aplicația Shop. [Aflați mai mult](https:\/\/help.shopify.com\/en\/manual\/online-store\/themes\/customizing-themes\/follow-on-shop)"
+            }
+          }
+        }
+      }
+    },
+    "gift-card": {
+      "name": "Antet",
+      "blocks": {
+      }
+    },
+    "header": {
+      "label": "Afișare în meniul mobil",
+      "name": "Antet",
+      "settings": {
+        "sticky_header": {
+          "label": "Activează antetul „sticky”"
+        },
+        "logo-placement": {
+          "label": "Plasare logo",
+          "options": {
+            "above": "Deasupra"
+          }
+        },
+        "cart-style": {
+          "label": "Iconița coșului",
+          "options": {
+            "shopping_bag": "Geantă",
+            "shopping_cart": "Coș"
+          }
+        },
+        "enable_search": {
+          "label": "Activează căutarea"
+        },
+        "overlay_header_homepage": {
+          "label": "Activează pe pagina de start"
+        },
+        "overlay_header_collection": {
+          "label": "Activează pe paginile de colecție"
+        },
+        "overlay_header_list_collection": {
+          "label": "Activează pe pagina listă de colecții"
+        },
+        "overlay_header_contact": {
+          "label": "Activează pe pagina de contact"
+        },
+        "overlay_logo": {
+          "label": "Logo suprapus"
+        },
+        "overlay_opacity": {
+          "label": "Opacitate antet",
+          "info": "Ajustați pentru a vă asigura că meniul este lizibil"
+        },
+        "main_linklist": {
+          "label": "Meniu principal"
+        },
+        "dropdown_alignment": {
+          "label": "Aliniere meniu derulant"
+        },
+        "logo_max_width_mobile": {
+          "info": "Dimensiunea poate fi ajustată în funcție de spațiul disponibil"
+        },
+        "header-14": {
+          "content": "Antet suprapus"
+        },
+        "show_icons": {
+          "label": "Afișați pictogramele pe desktop",
+          "info": "Comută legăturile pentru Cont, Căutare și Coș la pictograme"
+        },
+        "header-10": {
+          "content": "Iconițe"
+        },
+        "cart_count": {
+          "label": "Afișare număr coș de cumpărături"
+        },
+        "logo_padding": {
+          "label": "Spațiere logo pe desktop"
+        }
+      },
+      "blocks": {
+        "content": {
+          "name": "Mega meniu",
+          "settings": {
+            "mega-menu": {
+              "info": "Introduceți un element de meniu existent pentru a aplica un meniu mega derulant. [Aflați mai mult](https:\/\/support.eightthemes.com\/hc\/en-us\/articles\/360020104997-How-to-Set-Up-a-Mega-Menu)"
+            },
+            "header-1": {
+              "content": "Promoție unu"
+            },
+            "header-10": {
+              "content": "Promoție doi"
+            }
+          }
+        }
+      }
+    },
+    "image--gallery": {
+      "label": "Culoare suprapusă",
+      "name": "Galerie",
+      "settings": {
+        "full-width": {
+          "label": "O imagine pe rând pe mobil"
+        },
+        "content-position": {
+          "label": "Poziția conținutului"
+        }
+      },
+      "blocks": {
+        "image": {
+          "settings": {
+            "image": {
+              "info": "Recomandăm ca imaginile să fie decupate la aceeași dimensiune"
+            },
+            "color": {
+              "info": "Următoarele setări se aplică doar dacă 'poziția conținutului' este setată pe 'overlay' sau 'la hover'."
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "Galerie",
+        "blocks": {
+        }
+      }
+    },
+    "image--image-with-text-overlay": {
+      "name": "Imagine cu suprapunere text",
+      "settings": {
+        "parallax": {
+          "info": "Paralaxa nu va fi vizibilă când „Înălțimea secțiunii” este setată la „Original”"
+        }
+      },
+      "blocks": {
+      },
+      "presets": {
+        "name": "Imagine cu suprapunere text"
+      }
+    },
+    "image--image-with-text": {
+      "name": "Imagine cu text",
+      "settings": {
+        "image": {
+          "info": "Dimensiuni minime recomandate 2000px lățime, 900px înălțime"
+        },
+        "text_overlapping_image": {
+          "label": "Suprapuneți conținutul pe imagine"
+        }
+      },
+      "blocks": {
+      },
+      "presets": {
+        "name": "Imagine cu text"
+      }
+    },
+    "image--logo-list": {
+      "label": "Link",
+      "name": "Logo-uri de prezentare",
+      "settings": {
+        "colors": {
+          "info": "Culorile din fiecare „scheme” pot fi schimbate în secțiunea „Setări generale” > „Culori” din panoul de administrare",
+          "options": {
+            "white": "Alb"
+          }
+        }
+      },
+      "presets": {
+        "name": "Listă de logo-uri",
+        "blocks": {
+        }
+      }
+    },
+    "image--slideshow": {
+      "label": "Fundal buton survolare",
+      "name": "Slideshow",
+      "settings": {
+        "desktop_height": {
+          "label": "Înălțime pe desktop"
+        },
+        "mobile_height": {
+          "label": "Înălțime pe mobil"
+        },
+        "slide_navigation_style": {
+          "label": "Stil de navigare diapozitiv",
+          "options": {
+            "arrows": "Săgeți",
+            "bars": "Bare",
+            "dots": "Puncte"
+          }
+        },
+        "slide_transition_delay": {
+          "label": "Schimbă imaginile la fiecare"
+        }
+      },
+      "blocks": {
+        "image": {
+          "name": "Diapozitiv",
+          "settings": {
+            "first_button_label": {
+              "label": "Etichetă primul buton",
+              "info": "Întregul diapozitiv va acționa ca un link dacă eticheta este lăsată goală."
+            },
+            "first_button_link": {
+              "label": "Link primul buton"
+            },
+            "second_button_label": {
+              "label": "Etichetă al doilea buton"
+            },
+            "second_button_link": {
+              "label": "Link al doilea buton"
+            },
+            "image_overlay": {
+              "label": "Suprapunere imagine"
+            },
+            "image_overlay_opacity": {
+              "label": "Opacitate suprapunere imagine"
+            },
+            "caption-text": {
+              "label": "Text subtitrare"
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "Slideshow"
+      }
+    },
+    "newsletter--newsletter": {
+      "name": "Newsletter",
+      "blocks": {
+      }
+    },
+    "product--accordion-with-image": {
+      "label": "Conținut panou acordeon",
+      "name": "Acordeon cu imagine",
+      "settings": {
+        "image--background-color": {
+          "label": "Culoare fundal imagine"
+        },
+        "image--text-color": {
+          "label": "Culoare text imagine"
+        }
+      },
+      "blocks": {
+        "accordion": {
+          "name": "Element acordeon",
+          "settings": {
+            "accordion_header": {
+              "label": "Antet acordeon"
+            },
+            "accordion_content": {
+              "label": "Conținut acordeon"
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "Acordeon cu imagine",
+        "blocks": {
+        }
+      }
+    },
+    "products--featured-product": {
+      "label": "Mesaj pentru produsul indisponibil",
+      "name": "Produs recomandat",
+      "settings": {
+        "title_font": {
+          "label": "Mărime titlu"
+        },
+        "price_font": {
+          "label": "Mărime preț"
+        },
+        "show-giftwrap": {
+          "label": "Afișează împachetare cadou",
+          "info": "[Aflați mai mult](https:\/\/support.eightthemes.com\/hc\/en-us\/articles\/360020396138-How-to-Enable-Product-Gift-Wrapping) despre împachetarea cadou"
+        },
+        "paragraph-8": {
+          "content": "Selectați un produs pentru împachetare cadou în Setările temei > Produs"
+        },
+        "show_product_description": {
+          "label": "Afișează descrierea produsului"
+        },
+        "show_quantity_selector": {
+          "label": "Afișează selectorul de cantitate"
+        },
+        "show_add_to_cart": {
+          "label": "Afișează butonul „Adaugă în coș”"
+        },
+        "image-placement": {
+          "label": "Poziție"
+        }
+      },
+      "presets": {
+        "name": "Produs recomandat"
+      }
+    },
+    "scrolling-banner": {
+      "name": "Banner derulant"
+    },
+    "section--contact-form": {
+      "label": "Lățime intrare",
+      "name": "Formular de contact",
+      "settings": {
+        "paragraph-0": {
+          "content": "Formularul de contact trimite toate mesajele la adresa de e-mail a expeditorului magazinului dvs. Puteți modifica această adresă de e-mail în setările de administrare Shopify > Detalii magazin > Informații de contact."
+        }
+      },
+      "blocks": {
+        "name_input": {
+          "name": "Câmp nume"
+        },
+        "email_input": {
+          "name": "Câmp e-mail"
+        },
+        "tel_input": {
+          "name": "Câmp telefon"
+        },
+        "message_input": {
+          "name": "Câmp mesaj"
+        },
+        "custom_input": {
+          "name": "Câmp personalizat",
+          "settings": {
+            "placeholder": {
+              "label": "Nume intrare"
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "Formular de contact"
+      }
+    },
+    "shop-the-look": {
+      "name": "Cumpără look-ul",
+      "blocks": {
+        "look": {
+          "name": "Look",
+          "settings": {
+            "header": {
+              "product_one": "Produs unu",
+              "product_two": "Produs doi",
+              "product_three": "Produs trei",
+              "product_four": "Produs patru"
+            },
+            "hotspot_color": {
+              "label": "Culoarea hotspot-ului"
+            },
+            "hotspot_horizontal_position": {
+              "label": "Poziția orizontală a hotspot-ului"
+            },
+            "hotspot_vertical_position": {
+              "label": "Poziția verticală a hotspot-ului"
+            }
+          }
+        }
+      }
+    },
+    "store-availability": {
+      "name": "Disponibilitate magazin",
+      "settings": {
+      },
+      "blocks": {
+      }
+    },
+    "store-information--map": {
+      "name": "Hartă",
+      "settings": {
+        "address": {
+          "label": "Adresă și program"
+        },
+        "map_address": {
+          "label": "Adresă hartă",
+          "info": "Google Maps va găsi locația exactă"
+        },
+        "api_key": {
+          "label": "Cheie API Google Maps",
+          "info": "Va trebui să [înregistrați o Cheie API Google Maps](https:\/\/help.shopify.com\/manual\/using-themes\/troubleshooting\/map-section-api-key) pentru a afișa harta"
+        },
+        "button_text": {
+          "label": "Etichetă legătură hartă"
+        },
+        "layout": {
+          "options": {
+            "left": "Stânga",
+            "right": "Dreapta"
+          }
+        },
+        "background_image": {
+          "info": "Se afișează dacă harta nu se încarcă"
+        }
+      },
+      "blocks": {
+      },
+      "presets": {
+        "name": "Hartă"
+      }
+    },
+    "template--article": {
+      "name": "Pagini de articole",
+      "settings": {
+        "show_recent_posts": {
+          "label": "Afișează „Cele mai recente articole”"
+        },
+        "blog_show_date": {
+          "label": "Afișează data"
+        }
+      },
+      "blocks": {
+      }
+    },
+    "template--blog": {
+      "name": "Pagini de blog",
+      "settings": {
+        "show_author_name": {
+          "label": "Afișează numele autorului"
+        },
+        "show_recent_posts": {
+          "label": "Afișează „Articole recente”"
+        }
+      },
+      "blocks": {
+      }
+    },
+    "template--collection--header": {
+      "paragraph-0": {
+        "content": "Descrierea colecției, dacă există una."
+      },
+      "name": "Antet colecție",
+      "settings": {
+      },
+      "blocks": {
+        "collection_image": {
+          "name": "Imagine colecție",
+          "settings": {
+            "collection-image-size": {
+              "label": "Mărime imagine colecție"
+            }
+          }
+        },
+        "title": {
+          "name": "Titlu colecție"
+        },
+        "description": {
+          "name": "Descriere colecție",
+          "settings": {
+            "paragraph-0": {
+              "content": "Descrierea colecției, dacă există una."
+            }
+          }
+        }
+      }
+    },
+    "template--collection": {
+      "label": "Font",
+      "name": "Grilă colecție",
+      "settings": {
+        "pagination_options": {
+          "label": "Tip paginare",
+          "options": {
+            "pagination_default": "Navigare paginată",
+            "pagination_infinite_scrolling": "Derulare infinită",
+            "pagination_load_more": "Buton „Încarcă mai mult”"
+          }
+        },
+        "header-5": {
+          "content": "Antet și filtrare"
+        },
+        "enable_collection_title": {
+          "label": "Activează titlul colecției"
+        },
+        "enable_collection_description": {
+          "label": "Activează descrierea colecției"
+        },
+        "show_swatch_filter_labels": {
+          "label": "Afișați etichetele filtrelor de mostre"
+        }
+      }
+    },
+    "template--collections-list": {
+      "label": "Font",
+      "name": "Listă colecții",
+      "settings": {
+        "banner_image": {
+          "info": "Recomandat 2000px x 300px"
+        },
+        "parallax": {
+          "info": "Paralaxa nu va fi vizibilă când „Mărime imagine” este setată la „Original”"
+        },
+        "header-4": {
+          "content": "Opțiuni de aspect"
+        },
+        "show_title": {
+          "label": "Afișează titlul paginii"
+        },
+        "layout": {
+          "label": "Stil aspect",
+          "options": {
+            "preview": "Previzualizare"
+          }
+        },
+        "items_per_row": {
+          "label": "Elemente pe rând",
+          "info": "Se aplică doar pentru desktop"
+        },
+        "header-8": {
+          "content": "Alege colecțiile"
+        },
+        "paragraph-9": {
+          "content": "Toate colecțiile dvs. sunt listate în mod implicit. Pentru a personaliza lista, alegeți „Selectate” și adăugați colecții."
+        },
+        "show_options": {
+          "label": "Colecțiile de afișat",
+          "options": {
+            "all": "Toate",
+            "selected": "Selectate"
+          }
+        },
+        "selected_collections": {
+          "label": "Colecții selectate"
+        }
+      }
+    },
+    "template--page": {
+      "label": "Legătură imagine",
+      "name": "Pagină",
+      "settings": {
+        "page_title_enabled": {
+          "label": "Activează titlul paginii"
+        }
+      },
+      "blocks": {
+        "text": {
+          "name": "Titlu bară laterală"
+        },
+        "richtext": {
+          "name": "Text bară laterală"
+        },
+        "menu": {
+          "name": "Meniu bară laterală"
+        },
+        "image_picker": {
+          "name": "Imagine bară laterală",
+          "settings": {
+            "image_title": {
+              "label": "Titlu imagine"
+            }
+          }
+        }
+      }
+    },
+    "template--password": {
+      "name": "Pagină parolă",
+      "settings": {
+        "paragraph-13": {
+          "content": "[Editați mesajul paginii de parolă în setările Shopify ale magazinului dvs.](http:\/\/www.shopify.com\/admin\/online_store\/preferences)"
+        },
+        "social_media_icons": {
+          "info": "Editați setările sociale și conturile în setările generale"
+        },
+        "newsletter_enable": {
+          "label": "Afișează înscrierea la newsletter"
+        }
+      },
+      "blocks": {
+      }
+    },
+    "template--product--description": {
+      "name": "Descriere produs",
+      "settings": {
+        "enable_readmore": {
+          "label": "Activează „Citește mai mult” pentru descriere"
+        }
+      },
+      "blocks": {
+      }
+    },
+    "template--product--info-columns": {
+      "label": "Legătură buton",
+      "name": "Coloane informative",
+      "settings": {
+        "columns_per_row": {
+          "label": "Coloane per rând pe desktop"
+        },
+        "vertical_alignment": {
+          "label": "Aliniere verticală"
+        }
+      },
+      "blocks": {
+        "image_and_text": {
+          "name": "Imagine și text"
+        },
+        "video_and_text": {
+          "name": "Video și text",
+          "settings": {
+            "grid_video_size": {
+              "label": "Mărime video",
+              "options": {
+                "tall": "Înalt (9:16)",
+                "wide": "Lățime (16:9)"
+              }
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "Coloane informative",
+        "blocks": {
+        }
+      }
+    },
+    "template--product--recently-viewed": {
+      "label": "Font",
+      "name": "Produse vizualizate recent",
+      "presets": {
+        "name": "Produse vizualizate recent",
+        "settings": {
+          "recently_viewed_title": "Produse vizualizate recent"
+        },
+        "blocks": {
+        }
+      }
+    },
+    "template--product--recommendations": {
+      "label": "Font",
+      "name": "Recomandări de produse",
+      "settings": {
+        "paragraph-0": {
+          "content": "Recomandările dinamice utilizează informații despre comenzi și produse pentru a se schimba și îmbunătăți în timp. [Aflați mai mult](https:\/\/help.shopify.com\/themes\/development\/recommended-products)"
+        }
+      },
+      "presets": {
+        "name": "Recomandări de produse",
+        "settings": {
+          "product_recommendations_heading": "S-ar putea să-ți placă și"
+        },
+        "blocks": {
+        }
+      }
+    },
+    "template--product-recently-used-grid": {
+      "name": "Produse vizualizate recent",
+      "blocks": {
+      }
+    },
+    "template--product": {
+      "label": "Margine inferioară",
+      "name": "Produs",
+      "settings": {
+        "enable_sticky": {
+          "label": "Activează conținut lipicios pe desktop"
+        },
+        "show_out_of_stock_email": {
+          "label": "Activează email pentru stoc epuizat"
+        },
+        "image_size": {
+          "info": "Recomandat minim 950px lățime. [Aflați mai mult](https:\/\/support.eightthemes.com\/hc\/en-us\/articles\/360020257118-Image-Dimensions)"
+        },
+        "image-display": {
+          "label": "Afișare media secundară",
+          "options": {
+            "full_size": "Mărime completă",
+            "thumbnails": "Miniaturi"
+          }
+        },
+        "thumbnail_position": {
+          "label": "Poziția miniaturii",
+          "options": {
+            "below": "Sub media principală",
+            "left": "În stânga media principală",
+            "right": "În dreapta media principală"
+          }
+        },
+        "header-8": {
+          "content": "Spațiere blocuri aplicație"
+        },
+        "app_margin_bottom": {
+          "info": "Control pentru spațierea de sub blocurile aplicației instalate care se afișează în formularul produsului"
+        }
+      },
+      "blocks": {
+        "price": {
+          "settings": {
+            "shipping_policy": {
+              "label": "Afișează legătura politicii de livrare"
+            },
+            "tax_included": {
+              "label": "Afișează mesajul \"taxa inclusă\""
+            }
+          }
+        },
+        "vendor": {
+          "name": "Producător"
+        },
+        "options": {
+          "name": "Opțiuni",
+          "settings": {
+            "thumbnail_changes_variant": {
+              "label": "Schimbă varianta pe baza miniaturii"
+            },
+            "size_guide_page": {
+              "label": "Pagina ghidului de dimensiuni"
+            },
+            "size_option_name": {
+              "label": "Afișează pe o opțiune de variantă specificată"
+            },
+            "header-3": {
+              "content": "Ghid de dimensiuni"
+            }
+          }
+        },
+        "linked-products": {
+          "name": "Produse conectate",
+          "settings": {
+            "swatches_size": {
+              "label": "Mărime mostre"
+            },
+            "paragraph-4": {
+              "content": "Recomandăm utilizarea metafield-urilor. [Aflați mai mult](https:\/\/support.eightthemes.com\/hc\/en-us\/articles\/12573137881617)"
+            }
+          }
+        },
+        "product-description": {
+          "name": "Descriere produs",
+          "settings": {
+            "paragraph-2": {
+              "content": "Aceste setări se aplică doar atunci când opțiunea 'Activează filele pliante' este bifată"
+            }
+          }
+        },
+        "sku": {
+          "name": "SKU"
+        },
+        "separator": {
+          "name": "Separator"
+        },
+        "collapsible-tab": {
+          "settings": {
+            "open_by_default": {
+              "label": "Deschide fila implicit"
+            }
+          }
+        },
+        "giftwrap": {
+          "name": "Ambalare cadou",
+          "settings": {
+            "paragraph-0": {
+              "content": "Selectați un produs pentru ambalare cadou la Setări temă > Produs. [Aflați mai mult](https:\/\/support.eightthemes.com\/hc\/en-us\/articles\/360020396138-How-to-Enable-Product-Gift-Wrapping)."
+            }
+          }
+        },
+        "buy_buttons": {
+          "name": "Butoane de cumpărare",
+          "settings": {
+            "enable_gift_card_recipient_form": {
+              "label": "Afișează formularul pentru informații destinatar pentru produsele card de cadou",
+              "info": "Produsele card de cadou pot fi trimise opțional direct unui destinatar împreună cu un mesaj personal. [Aflați mai mult](https:\/\/help.shopify.com\/manual\/online-store\/themes\/customizing-themes\/add-gift-card-recipient-fields)"
+            }
+          }
+        },
+        "local_pickup": {
+          "name": "Ridicare locală",
+          "settings": {
+            "paragraph-0": {
+              "content": "Locațiile trebuie să fie configurate pentru a permite afișarea. [Aflați mai mult](https:\/\/help.shopify.com\/en\/manual\/locations)"
+            }
+          }
+        },
+        "trust_badges": {
+          "name": "Sigle de încredere",
+          "settings": {
+            "trust-badge": {
+              "label": "Siglă de încredere",
+              "info": "Recomandat 100 x 300px. [Aflați mai mult](https:\/\/support.eightthemes.com\/hc\/en-us\/articles\/360020242537-Trust-Badges)"
+            }
+          }
+        },
+        "product_meta": {
+          "name": "Meta produs",
+          "settings": {
+            "paragraph-0": {
+              "content": "Afișează etichetele produsului, colecții și tipul"
+            }
+          }
+        },
+        "complementary-products": {
+          "name": "Produse complementare",
+          "settings": {
+            "paragraph-0": {
+              "content": "Pentru a selecta produse complementare, adăugați aplicația Căutare și Descoperire. [Aflați mai mult](https:\/\/help.shopify.com\/en\/manual\/online-store\/search-and-discovery\/product-recommendations)"
+            },
+            "products_limit": {
+              "label": "Produse de afișat"
+            }
+          }
+        },
+        "cross-sells": {
+          "name": "Vânzări încrucișate",
+          "settings": {
+            "cross_sell_product_1": {
+              "label": "Primul produs"
+            },
+            "cross_sell_product_2": {
+              "label": "Al doilea produs"
+            },
+            "cross_sell_product_3": {
+              "label": "Al treilea produs"
+            }
+          }
+        },
+        "social_sharing": {
+          "name": "Partajare pe rețele sociale"
+        },
+        "star_rating": {
+          "name": "Rating cu stele",
+          "settings": {
+            "star_size": {
+              "label": "Mărime stea"
+            },
+            "no_reviews_label": {
+              "label": "Fără evaluare"
+            }
+          }
+        }
+      }
+    },
+    "template--search": {
+      "name": "Pagină de căutare",
+      "settings": {
+        "header-0": {
+          "content": "Filtrare și sortare"
+        },
+        "show_swatch_filter_labels": {
+          "label": "Afișați etichetele filtrelor de mostre"
+        }
+      },
+      "blocks": {
+      }
+    },
+    "text--product-testimonials": {
+      "label": "Autor",
+      "name": "Testimoniale produs",
+      "blocks": {
+        "textarea": {
+          "settings": {
+            "image": {
+              "info": "Recomandat 200 x 200px"
+            },
+            "author": {
+              "label": "Autor"
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "Testimoniale produs",
+        "blocks": {
+        }
+      }
+    },
+    "text--rich-text": {
+      "label": "Dimensiune text",
+      "name": "Text bogat",
+      "settings": {
+        "text_alignment_mobile": {
+          "label": "Aliniere text pe dispozitiv mobil"
+        }
+      },
+      "blocks": {
+        "page": {
+          "name": "Pagină"
+        }
+      },
+      "presets": {
+        "name": "Text bogat",
+        "blocks": {
+        }
+      }
+    },
+    "text--testimonials": {
+      "label": "Stele recenzie",
+      "name": "Testimoniale",
+      "settings": {
+        "circle_images": {
+          "label": "Imagini circulare"
+        }
+      },
+      "blocks": {
+        "text": {
+          "settings": {
+            "image": {
+              "info": "Recomandat 400px x 400px"
+            },
+            "customer_name": {
+              "label": "Nume client"
+            },
+            "stars": {
+              "label": "Stele recenzie"
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "Testimoniale",
+        "blocks": {
+          "text-0": {
+            "customer_name": "John Smith"
+          }
+        }
+      }
+    },
+    "text--text-adverts": {
+      "label": "Legătură",
+      "name": "Anunțuri text",
+      "blocks": {
+        "text": {
+          "name": "Anunț"
+        }
+      },
+      "presets": {
+        "name": "Anunțuri text",
+        "blocks": {
+        }
+      }
+    },
+    "text--text-slideshow": {
+      "label": "Etichetă buton",
+      "name": "Slideshow text",
+      "presets": {
+        "name": "Slideshow text",
+        "blocks": {
+        }
+      }
+    },
+    "video--video-hero": {
+      "name": "Video erou",
+      "settings": {
+        "mobileHeight": {
+          "label": "Înălțime secțiune mobil",
+          "options": {
+            "fit": "Potrivită lățimii ecranului"
+          }
+        },
+        "textShadow": {
+          "label": "Umbră text"
+        },
+        "subheading--text-size": {
+          "label": "Dimensiune subtitlu"
+        }
+      },
+      "blocks": {
+      },
+      "presets": {
+        "name": "Video erou"
+      }
+    },
+    "video--video": {
+      "name": "Video",
+      "settings": {
+        "image": {
+          "info": "Nu se va afișa dacă este activată redarea automată."
+        }
+      },
+      "blocks": {
+      }
+    },
+    "visual-navigation-banner": {
+      "label": "Text",
+      "name": "Banner de navigare vizuală",
+      "blocks": {
+        "navigation_link": {
+          "name": "Element de navigare",
+          "settings": {
+            "link_image": {
+              "info": "Recomandat 100 x 100px"
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "Banner de navigare vizuală",
+        "blocks": {
+        }
+      }
+    },
+    "template--cart": {
+      "name": "Coș"
+    }
+  },
+  "all": {
+    "1": "1",
+    "2": "2",
+    "Color_scheme": "Scheme de culori",
+    "Caption_color_scheme": "Scheme de culori pentru legendă",
+    "Minimal": "Minimal",
+    "Light": "Luminos",
+    "Feature": "Caracteristică",
+    "Dark": "Întunecat",
+    "Heading": "Antet",
+    "Icon_style": "Stilul iconiței",
+    "Plus_minus": "Plus\/minus",
+    "Caret": "Săgeată",
+    "Text": "Text",
+    "Custom_HTML": "HTML personalizat",
+    "HTML": "HTML",
+    "Custom_Liquid": "Liquid personalizat",
+    "Content": "Conținut",
+    "Video": "Video",
+    "Image": "Imagine",
+    "Overlay_opacity": "Opacitate suprapunere",
+    "percentage": "%",
+    "Description": "Descriere",
+    "Overlay_text_color": "Culoarea textului suprapunerii",
+    "Button_label": "Eticheta butonului",
+    "Link": "Legătură",
+    "Video_URL": "URL video",
+    "Autoplay": "Redare automată",
+    "Video_will_be_muted_and_some_devices_may_prevent_autoplay_": "Video-ul va fi redat în mod silențios, iar unele dispozitive pot împiedica redarea automată.",
+    "Loop": "Buclează",
+    "Mute": "Silențios",
+    "Menu_item": "Element de meniu",
+    "Subheading": "Subtitlu",
+    "Featured_image": "Imagine recomandată",
+    "Small": "Mic",
+    "Medium": "Mediu",
+    "Large": "Mare",
+    "Extra_Large": "Extra mare",
+    "Link_to_any_collection_product_or_page": "Legătură către orice colecție, produs sau pagină",
+    "Desktop": "Desktop",
+    "Image_optional": "Imagine (opțional)",
+    "2000_x_900px_recommended": "Recomandat: 2000 x 900 pixeli",
+    "Section_height": "Înălțimea secțiunii",
+    "Fullscreen": "Pe tot ecranul",
+    "Original": "Original",
+    "Text_size": "Mărime text",
+    "px": "px",
+    "Text_position": "Poziția textului",
+    "Top_left": "Sus-stânga",
+    "Top_center": "Sus-centru",
+    "Top_right": "Sus-dreapta",
+    "Center_left": "Centru-stânga",
+    "Center": "Centru",
+    "Center_right": "Centru-dreapta",
+    "Bottom_left": "Jos-stânga",
+    "Bottom_center": "Jos-centru",
+    "Bottom_right": "Jos-dreapta",
+    "Mobile": "Mobil",
+    "Text_color": "Culoarea textului",
+    "If_a_color_is_selected_it_will_override_the_color_scheme": "Dacă se selectează o culoare, aceasta va suprascrie schema de culori",
+    "ms": "ms",
+    "Button": "Buton",
+    "Button_link": "Legătură buton",
+    "Button_text": "Text buton",
+    "Button_background": "Fundal buton",
+    "Button_text_hover": "Text buton la atingere",
+    "Button_background_hover": "Fundal buton la atingere",
+    "To_choose_which_icons_to_display_go_to_Theme_settings__Social_media_": "Pentru a alege ce iconițe să afișați, mergeți la „Setări temă > Social media”.",
+    "Color": "Culoare",
+    "Background": "Fundal",
+    "Caption_background": "Fundalul subtitrului",
+    "Optional": "Opțional",
+    "Show_dates": "Afișare date",
+    "Selected_blog_posts": "Articole de blog selectate",
+    "Selected_blog": "Blog selectat",
+    "Navigation": "Navigare",
+    "Background_color": "Culoarea fundalului",
+    "Left": "Stânga",
+    "Remove_spacing": "Eliminare spațiere",
+    "Full_width": "Lățime completă",
+    "Content_width": "Lățime conținut",
+    "1_2_width": "1\/2 lățime",
+    "1_3_width": "1\/3 lățime",
+    "2_3_width": "2\/3 lățime",
+    "1_4_width": "1\/4 lățime",
+    "3_4_width": "3\/4 lățime",
+    "Extra_small": "Extra mic",
+    "Extra_large": "Extra mare",
+    "Top": "Sus",
+    "Bottom": "Jos",
+    "Heading_size": "Mărime antet",
+    "Desktop_content_position": "Poziția conținutului pe desktop",
+    "Right": "Dreapta",
+    "Mobile_content_position": "Poziția conținutului pe mobil",
+    "Colors": "Culori",
+    "Overlay": "Suprapunere",
+    "A_Shopify_hosted_video": "Un videoclip găzduit pe Shopify",
+    "Embed_video_from_URL": "Înglobează videoclipul din URL",
+    "Accepts_YouTube_and_Vimeo__Video_will_be_muted_and_some_devices_may_prevent_autoplay__Learn_morehttps___support_eightthemes_com_hc_en_us_articles_360020109497_Product_Mediaheading_2": "Acceptă YouTube și Vimeo. Videoclipul va fi redat în mod silențios și unele dispozitive pot împiedica redarea automată. [Aflați mai mult](https:\/\/support.eightthemes.com\/hc\/en-us\/articles\/360020109497-Product-Media#heading-2)",
+    "Mobile_video": "Videoclip pe mobil",
+    "A_Shopify_hosted_video_optional": "Un videoclip găzduit pe Shopify (opțional)",
+    "Accepts_YouTube_and_Vimeo__Learn_morehttps___support_eightthemes_com_hc_en_us_articles_360020109497_Product_Mediaheading_2": "Acceptă YouTube și Vimeo. [Aflați mai mult](https:\/\/support.eightthemes.com\/hc\/en-us\/articles\/360020109497-Product-Media#heading-2)",
+    "Text_alignment": "Aliniere text",
+    "Countdown_timer": "Cronometru de numărare inversă",
+    "Countdown_end_date": "Dată de încheiere a numărării inverse",
+    "Use_the_format_mm_dd_yyyy_eg__01_31_2024": "Utilizați formatul lună-zi-an, de exemplu 01-31-2024",
+    "Countdown_end_time": "Ora de încheiere a numărării inverse",
+    "Use_the_format_hh_mm_ss_eg__23_59_59__Use_the_timezone_specified_in_your_Shopify_admin": "Utilizați formatul oră:minut:secundă, de exemplu 23:59:59. Utilizați fusul orar specificat în administrarea Shopify",
+    "Show_timer_labels": "Afișați etichetele cronometrului",
+    "Out_of_time_message": "Mesajul pentru terminarea timpului",
+    "md_min_align_center_md_min_justify_center": "md-min-aliniere-centru md-min-justificare-centru",
+    "md_max_align_center_md_max_justify_center": "md-max-aliniere-centru md-max-justificare-centru",
+    "Width": "Lățime",
+    "On_hover": "La atingere",
+    "Below_image": "Sub imagine",
+    "Collection": "Colecție",
+    "Image_Optional": "Imagine (Opțională)",
+    "Enable_overlay_gradient": "Activează gradientul suprapunerii",
+    "Overlay_color": "Culoarea suprapunerii",
+    "Grid_layout": "Aspect grilă",
+    "Rows_per_page_on_desktop": "Rânduri pe pagină pe desktop",
+    "Product_per_row_on_desktop": "Produs pe rând pe desktop",
+    "Product_per_row_on_mobile": "Produs pe rând pe mobil",
+    "Enable": "Activează",
+    "Product_image": "Imagine produs",
+    "Title": "Titlu",
+    "Font": "Font",
+    "Body": "Conținut",
+    "Price": "Preț",
+    "Layout_on_desktop": "Aspect pe desktop",
+    "text_position_on_desktop": "Poziția textului pe desktop",
+    "Content_on_left": "Conținut în stânga",
+    "Content_on_right": "Conținut în dreapta",
+    "Text_alignment_on_desktop": "Aliniere text pe desktop",
+    "Centered": "Centrat",
+    "Grid": "Grilă",
+    "This_applies_if_section_layout_is_set_to_Grid_": "Acest lucru se aplică dacă aspectul secțiunii este setat pe 'Grilă'.",
+    "Image_size": "Mărime imagine",
+    "Natural": "Natural",
+    "Square_1_1": "Pătrat (1:1)",
+    "Tall_2_3": "Înalt (2:3)",
+    "Wide_4_3": "Lățit (4:3)",
+    "Minimum_section_height": "Înălțime minimă a secțiunii",
+    "1400_x_1400px_recommended": "Recomandat: 1400 x 1400 pixeli",
+    "Menu": "Meniu",
+    "Footer_text": "Text subsol",
+    "Country_region_selector": "Selector țară\/regiune",
+    "To_add_a_country_region_go_to_your_market_settings__admin_settings_markets": "Pentru a adăuga o țară\/regiune, mergeți la setările pieței dvs.",
+    "Enable_country_region_selector": "Activează selector țară\/regiune",
+    "Language_selector": "Selector limbă",
+    "To_add_a_language_go_to_your_language_settings__admin_settings_languages": "Pentru a adăuga o limbă, mergeți la setările de limbă.",
+    "Enable_language_selector": "Activează selector limbă",
+    "Newsletter": "Buletin informativ",
+    "Header": "Antet",
+    "Logo_image": "Imagine logo",
+    "Preferred_width": "Lățime preferată",
+    "Logo": "Logo",
+    "Logo_width": "Lățime logo",
+    "Logo_width_on_desktop": "Lățimea logo-ului pe desktop",
+    "Logo_width_on_mobile": "Lățimea logo-ului pe mobil",
+    "Mobile_navigation": "Navigare mobilă",
+    "Show_social_media_icons": "Afișează iconițe de social media",
+    "Quantity": "Cantitate",
+    "None": "Niciunul",
+    "Image_aspect_ratio": "Raport aspect imagine",
+    "Overlay_text_on_image": "Suprapune text pe imagine",
+    "Show_in_mobile_drawer": "Afișează în sertarul mobil",
+    "Hide": "Ascunde",
+    "Background_image": "Imagine de fundal",
+    "Enable_parallax_effect": "Activează efect parallax",
+    "Full_screen": "Ecran complet",
+    "sec": "sec",
+    "Body_text": "Text corp",
+    "Body_text_size": "Mărime text corp",
+    "Make_a_great__first_impression": "Creează o primă impresie excelentă",
+    "Image_link": "Link imagine",
+    "Product": "Produs",
+    "Variant_style": "Stil variantă",
+    "You_may_need_to_upload_custom_swatch_images__Learn_morehttps___support_eightthemes_com_hc-en_us_articles_360020105257_How_to_Upload_Color_Swatches": "S-ar putea să fie necesar să încărcați imagini personalizate pentru eșantioane de culoare. [Aflați mai mult](https:\/\/support.eightthemes.com\/hc\/en-us\/articles\/360020105257-How-to-Upload-Color-Swatches)",
+    "Dropdowns": "Liste derulante",
+    "Swatches": "Eșantioane de culoare",
+    "Hide_out_of_stock_variants": "Ascunde variantele care nu sunt în stoc",
+    "Show_vendor": "Afișează furnizorul",
+    "Show_dynamic_checkout_button": "Afișează butonul de checkout dinamic",
+    "Lets_customers_check_out_directly_using_a_familiar_payment_method__Learn_morehttps___help_shopify_com_manual_using_themes_change_the_layout_dynamic_checkout": "Permite clienților să finalizeze comanda folosind o metodă de plată familiară. [Aflați mai mult](https:\/\/help.shopify.com\/manual\/using-themes\/change-the-layout\/dynamic-checkout)",
+    "Media": "Media",
+    "Learn_more_about_media_typeshttps___help_shopify_com_en_manual_products_product_media": "Aflați mai mult despre [tipurile de media](https:\/\/help.shopify.com\/en\/manual\/products\/product-media)",
+    "Enable_video_looping": "Activează bucla video",
+    "Product_rating": "Evaluare produs",
+    "Label": "Etichetă",
+    "Rating": "Evaluare",
+    "To_display_a_rating_add_a_product_rating_metafield_admin_metafields_product": "Pentru a afișa o evaluare, adăugați un [metafield de evaluare a produsului](\/admin\/metafields\/product)",
+    "Full_icon": "Icon complet",
+    "Empty_icon": "Icon gol",
+    "Maximum": "Maxim",
+    "Select_a_maximum_equal_to_the_rating_metafields_scale_maximum_admin_metafields_product": "Selectați un maxim egal cu [maximul de scară al metafield-ului de evaluare](\/admin\/metafields\/product)",
+    "Image_with_offers": "Imagine cu oferte",
+    "Link_hover_border_color": "Culoarea bordurii la survolarea linkului",
+    "Text_with_icon": "Text cu icon",
+    "Icon": "Icon",
+    "Home_with_smile": "Acasă cu zâmbet",
+    "Store": "Magazin",
+    "Flag": "Steag",
+    "Customer_service": "Serviciu pentru clienți",
+    "Chat_bubble": "Bule de chat",
+    "Chat_bubble_with_smile": "Bule de chat cu zâmbet",
+    "Question_and_answer": "Întrebare și răspuns",
+    "Wallet": "Portofel",
+    "Price_tag": "Etichetă preț",
+    "Crown": "Coroană",
+    "Exchange": "Schimb",
+    "Gift": "Cadou",
+    "Clock": "Ceas",
+    "Truck": "Camion",
+    "Measuring_tape": "Bandă de măsurare",
+    "Info": "Informații",
+    "Heart": "Inimă",
+    "Map_pin": "Marcator hartă",
+    "Car": "Mașină",
+    "Takeaway": "Takeaway",
+    "Restaurant": "Restaurant",
+    "Cup": "Ceșcuță",
+    "Star": "Steaua",
+    "Sun": "Soare",
+    "Moon": "Lună",
+    "Cake": "Tort",
+    "Handbag": "Geantă de mână",
+    "Umbrella": "Umbrelă",
+    "Recycle": "Reciclare",
+    "Stock_level_indicator": "Indicator nivel stoc",
+    "Product_inventory_must_be_tracked_to_use_this_functionality_": "Inventarul produsului trebuie să fie urmărit pentru a utiliza această funcționalitate.",
+    "Style": "Stil",
+    "Out_of_stock_products_show_Classic_count": "Produsele în afara stocului afișează 'Număr clasic'",
+    "Classic_count": "Număr clasic",
+    "Bar_count": "Număr bară",
+    "Bar_indicator_color": "Culoare indicator bară",
+    "Standard": "Standard",
+    "Enable_animation": "Activează animație",
+    "Show_low_stock_warning_at": "Afișează avertizare stoc scăzut la",
+    "Show_stock_level_count": "Afișează număr nivel stoc",
+    "Show_stock_level_notice": "Afișează notificare nivel stoc",
+    "Always": "Întotdeauna",
+    "When_stock_level_is_lower_than_low_stock_threshold": "Când nivelul stocului este mai mic decât pragul stoc scăzut",
+    "In_stock_message": "Mesaj în stoc",
+    "Low_stock_message": "Mesaj stoc scăzut",
+    "Out_of_stock_message": "Mesaj în afara stocului",
+    "Narrow": "Îngust",
+    "Required": "Necesar",
+    "Input_width": "Lățime intrare",
+    "Partial": "Parțial",
+    "Full": "Complet",
+    "partial": "parțial",
+    "full": "complet",
+    "Show_tags": "Afișează etichete",
+    "Sidebar": "Bară laterală",
+    "The_title_of_the_collection_": "Titlul colecției.",
+    "Desktop_position": "Poziția desktop",
+    "Top_bar": "Bara de sus",
+    "Enable_filtering": "Activează filtrarea",
+    "Customize_filters_admin_menus": "[Personalizați filtrele](\/admin\/menus)",
+    "Enable_sorting": "Activează sortarea",
+    "2000_x_800px_recommended": "Recomandat 2000 x 800px",
+    "Required_to_show_the_button": "Necesar pentru a afișa butonul",
+    "Or_embed_video_from_URL": "Sau înglobați un videoclip de la URL",
+    "Size": "Mărime",
+    "Bottom_margin": "Marginile de jos",
+    "Block_spacing": "Spațierea blocului",
+    "Grid_image_size": "Mărime imagine grilă",
+    "Products": "Produse",
+    "Enable_collapsible_tab": "Activează tab-urile extensibile",
+    "Collapsible_tab": "Tab extensibil",
+    "Custom_icon": "Icon personalizat",
+    "Aspect_ratio_of_1_1_recommended": "Raportul aspectului 1:1 recomandat",
+    "Open_Close_icon_style": "Stilul iconului Deschide\/Închide",
+    "Page_content": "Conținut pagină",
+    "Image_style": "Stil imagine",
+    "Circle": "Cerc",
+    "Square": "Pătrat",
+    "Testimonial": "Testimonial",
+    "Text_hover": "Text la hover",
+    "Borders": "Borduri",
+    "Buttons": "Butoane",
+    "Letter_spacing": "Spațiere litere",
+    "Normal_case": "Literă mare",
+    "Lowercase": "Minuscule",
+    "Uppercase": "Majuscule",
+    "Case": "Caz",
+    "Verification_question": "Întrebare de verificare",
+    "Settings": "Setări",
+    "Vendor": "Furnizor",
+    "Show_title": "Afișează titlul",
+    "Maximum_lines": "Linii maxime",
+    "Maximum_lines_info": "Setați la 0 pentru a nu trunchia niciodată.",
+    "Show_price": "Afișează prețul",
+    "Enable_desktop": "Activează (desktop)",
+    "Enable_mobile": "Activează (mobil)",
+    "Products_to_show": "Produse de afișat",
+    "Max_products_to_show": "Numărul maxim de produse de afișat",
+    "Product_per_row_desktop": "Produs pe rând (desktop)",
+    "Product_per_row_mobile": "Produs pe rând (mobil)",
+    "Layout": "Aspect",
+    "Slider": "Glisor",
+    "Filled": "Umplut",
+    "Outlined": "Conturat",
+    "Position": "Poziție",
+    "animation": "Animație",
+    "show_fade": "Afișează estompare",
+    "direction": "Direcție",
+    "speed": "Viteză",
+    "space_between_blocks_desktop": "Spațiu între blocuri (desktop)",
+    "space_between_blocks_mobile": "Spațiu între blocuri (mobil)",
+    "rotate": "Rotește",
+    "enable_borders": "Activează bordurile",
+    "fill": "Umple",
+    "outline": "Contur",
+    "font_size_desktop": "Dimensiunea fontului (desktop)",
+    "font_size_mobile": "Dimensiunea fontului (mobil)",
+    "height_desktop": "Înălțime (desktop)",
+    "height_mobile": "Înălțime (mobil)"
+  }
+}

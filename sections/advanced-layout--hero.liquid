@@ -1,0 +1,417 @@
+{{ 'section-video.min.css' | asset_url | stylesheet_tag: preload: true }}
+{{ 'section-advanced-layout-hero.min.css' | asset_url | stylesheet_tag: preload: true }}
+<noscript>{{ 'section-video.min.css' | asset_url | stylesheet_tag }}</noscript>
+<noscript>{{ 'section-advanced-layout-hero.min.css' | asset_url | stylesheet_tag }}</noscript>
+
+<div class="homepage-sections-wrapper" data-wetheme-section-type="advanced-layout--hero" data-wetheme-section-id="{{ section.id }}">
+	<div class="wrapper-padded">
+		<div class="homepage-indiv-section-wrapper grid--full homepage-hero-wrapper">
+
+        {% if section.blocks.size > 0 %}
+        <div class="grid__item large--two-thirds">
+        {% else %}
+        <div class="grid__item large--one-whole">
+        {% endif %}
+
+				<div class="{% if section.settings.homepage-hero-featured-content != 'homepage-hero-video-selection' %}homepage-hero-content-overlay-wrapper homepage-hero-content-overlay-wrapper-{{ section.id }}{% else %}homepage-hero-content-overlay-wrapper--video homepage-hero-content-overlay-wrapper-{{ section.id }}{% endif %}{% if section.settings.home-page-hero-image == blank %} onboarding{% endif %}">
+
+					{% if section.settings.homepage-hero-featured-content == 'homepage-hero-image-selection' %}
+
+						{% if section.settings.homepage-hero-featured-content.size > 0 %}
+
+							{% if section.settings.homepage-hero-image-link %}
+								<a href="{{ section.settings.homepage-hero-image-link }}" class="homepage-hero-image--link-wrapper">
+							{% endif %}
+
+							<div class="homepage-hero-content-link-wrapper">
+								<div class="advanced-layout--hero__text-block">
+									{% if section.settings.homepage-hero-image-heading != empty %}
+										<h2 class="hero-header homepage-sections--title">{{ section.settings.homepage-hero-image-heading | escape }}</h2>
+									{% endif %}
+
+									{% if section.settings.homepage-hero-image-description != empty %}
+										<p class="hero-paragraph">{{ section.settings.homepage-hero-image-description | escape }}</p>
+									{% endif %}
+
+									{% if section.settings.homepage-hero-image-button-label != empty %}
+									<a href="{{ section.settings.homepage-hero-image-link }}" class="btn">
+										{{ section.settings.homepage-hero-image-button-label | escape }}
+									</a>
+									{% endif %}
+								</div>
+							</div>
+
+							<div class="{% if settings.ken_burns_enabled %}kb-enabled{% endif %}">
+								{% if section.settings.home-page-hero-image == blank %}
+									<div class="onboarding">
+									{{ 'lifestyle-1' | placeholder_svg_tag: 'icon icon--placeholder' }}
+									</div>
+								{% else %}
+                  {% assign hero_alt = section.settings.home-page-hero-image.alt | default: shop.name %}
+									{% render 'responsive-image' with section.settings.home-page-hero-image, alt: hero_alt | escape %}
+								{% endif %}
+							</div>
+
+							{% if section.settings.homepage-hero-image-link %}
+								</a>
+							{% endif %}
+
+						{% endif %}
+
+					{% endif %}
+
+					{% for block in section.blocks %}
+						{% if block.settings.hero-menu-image != blank %}
+							{% capture id %}overlay-block-{{ block.id }}{% endcapture %}
+							{% capture selector %}#{{ id }}{% endcapture %}
+							<style>
+							{% render 'responsive-background-image' with block.settings.hero-menu-image, selector: selector %}
+							</style>
+
+              {% assign menu_item_alt = block.settings.hero-menu-image.alt | default: shop.name %}
+							<div class="homepage-hero-content-overlay homepage-hero-content-overlay-menu-item" id="{{ id }}" role="img" aria-label="{{ menu_item_alt | escape }}"></div>
+						{% endif %}
+					{% endfor %}
+
+					{% if section.settings.homepage-hero-featured-content == 'homepage-hero-video-selection' %}
+						<div class="embed-container">
+							<div class="homepage-hero-youtube-video" id="homepage-hero-youtube-video-{{ section.id }}">
+                <wetheme-video
+                section-id="{{ section.id }}"
+                v-bind:hero="false"
+                video-type="{{ section.settings.video_url.type }}"
+                url="{{ section.settings.video_url.id }}"
+                v-bind:autoplay="{% if section.settings.homepage-hero-video-autoplay %}true{% else %}false{% endif %}"
+                v-bind:loop="{% if section.settings.homepage-hero-video-loop %}true{% else %}false{% endif %}"
+                v-bind:mute="{% if section.settings.homepage-hero-video-mute %}true{% else %}false{% endif %}"
+                v-bind:overlay="true"
+                >
+                </wetheme-video>
+							</div>
+						</div>
+					{% endif %}
+				</div>
+
+				<div class="advanced-layout--hero__text-block advanced-layout--hero__text-block--mobile">
+					{% if section.settings.homepage-hero-image-heading != empty %}
+						<h2 class="hero-header-fit homepage-sections--title">{{ section.settings.homepage-hero-image-heading | escape }}</h2>
+					{% endif %}
+
+					{% if section.settings.homepage-hero-image-description != empty %}
+						<p>{{ section.settings.homepage-hero-image-description | escape }}</p>
+					{% endif %}
+
+					{% if section.settings.homepage-hero-image-button-label != empty %}
+					<a href="{{ section.settings.homepage-hero-image-link }}" class="btn">
+						{{ section.settings.homepage-hero-image-button-label | escape }}
+					</a>
+					{% endif %}
+				</div>
+
+			</div>
+
+			{% if section.blocks.size > 0 %}
+			<div class="grid__item large--one-third">
+				<div class="homepage-hero-menu-wrapper{% if section.blocks.size == 0 %} no-menu-mobile{% endif %}">
+          <div class="homepage-hero-menu">
+            <ul>
+              {% for block in section.blocks %}
+                <li data-overlay-id="overlay-block-{{ block.id }}" {% unless block.settings.hero-menu-link %}class="no-link"{% endunless %} {{ block.shopify_attributes }}>
+                    {% if block.settings.hero-menu-link %}
+                      <a href="{{ block.settings.hero-menu-link }}" class="homepage-hero-menu-link">
+                    {% endif %}
+
+                    {% if block.settings.featured_image %}
+                      {% case block.settings.featured_image_size %}
+                        {% when 'x-small' %}
+                            {% assign height = 50 %}
+                        {% when 'small' %}
+                            {% assign height = 100 %}
+                        {% when 'medium' %}
+                            {% assign height = 150 %}
+                        {% when 'large' %}
+                            {% assign height = 200 %}
+                        {% when 'x-large' %}
+                            {% assign height = 250 %}
+                        {% when 'original' %}
+                            {% assign height = block.settings.featured_image.height %}
+                      {% endcase %}
+
+                      <div class="homepage-hero-menu-indiv-image">
+                        {% capture styles %}max-height: {{ height }}px; max-width: {{ block.settings.featured_image.width }}px;{% endcapture %}
+                        {% assign menu_item_alt = block.settings.featured_image.alt | default: shop.name %}
+                        {% render 'responsive-image' with block.settings.featured_image, alt: menu_item_alt | escape, props: props, allow_stretch: true, styles: styles %}
+                      </div>
+                    {% endif %}
+                    <div class="homepage-hero-menu--indiv-text">
+                      <span class="h4">{{ block.settings.hero-menu-heading | escape }}</span>
+                      <p>{{ block.settings.hero-menu-subheading | escape }}</p>
+                    </div>
+
+                    {% if block.settings.hero-menu-link %}
+                      </a>
+                    {% endif %}
+                </li>
+              {% endfor %}
+            </ul>
+          </div>
+				</div>
+			</div>
+			{% endif %}
+
+		</div>
+	</div>
+</div>
+
+<style>
+  {% if section.settings.button_text_color != 'rgba(0,0,0,0)' %}
+    .homepage-hero-content-overlay-wrapper-{{ section.id }} .btn {
+      color: {{ section.settings.button_text_color }};
+    }
+  {% endif %}
+
+  {% if section.settings.button_background_color != 'rgba(0,0,0,0)' %}
+    .homepage-hero-content-overlay-wrapper-{{ section.id }} .btn {
+      background-color: {{ section.settings.button_background_color }};
+    }
+
+    .homepage-hero-content-overlay-wrapper-{{ section.id }} .btn:focus {
+      outline: 2px solid {{ section.settings.button_background_color }};
+    }
+  {% endif %}
+
+	{% if section.settings.homepage-hero-featured-content != 'homepage-hero-video-selection' %}
+		.homepage-hero-content-overlay-wrapper-{{ section.id }}:before {
+			opacity: 0.{{ section.settings.image_overlay_opacity }} !important;
+		}
+  {% else %}
+    .homepage-video-content-overlay-wrapper-{{ section.id }}:before {
+      opacity: 0 !important;
+    }
+	{% endif %}
+
+  .homepage-hero-content-overlay-wrapper-{{ section.id }} {
+    .advanced-layout--hero__text-block {
+      .hero-header,
+      .hero-paragraph {
+        color: {{ section.settings.text-color }};
+      }
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "t:sections.advanced-layout--hero.name",
+  "class": "hero-wrapper show-on-scroll",
+  "settings": [
+    {
+      "type": "header",
+      "content": "t:sections.advanced-layout--hero.settings.header-0.content"
+    },
+    {
+      "type": "select",
+      "id": "homepage-hero-featured-content",
+      "label": "t:all.Content",
+      "options": [
+        {
+          "value": "homepage-hero-video-selection",
+          "label": "t:all.Video"
+        },
+        {
+          "value": "homepage-hero-image-selection",
+          "label": "t:all.Image"
+        }
+      ],
+      "default": "homepage-hero-image-selection"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.advanced-layout--hero.settings.header-2.content"
+    },
+    {
+      "type": "image_picker",
+      "id": "home-page-hero-image",
+      "label": "t:all.Image"
+    },
+    {
+      "type": "range",
+      "id": "image_overlay_opacity",
+      "min": 0,
+      "max": 95,
+      "step": 5,
+      "unit": "t:all.percentage",
+      "label": "t:all.Overlay_opacity",
+      "default": 0
+    },
+    {
+      "type": "text",
+      "id": "homepage-hero-image-heading",
+      "label": "t:all.Heading"
+    },
+    {
+      "type": "text",
+      "id": "homepage-hero-image-description",
+      "label": "t:all.Description"
+    },
+    {
+      "type": "color",
+      "id": "text-color",
+      "label": "t:all.Overlay_text_color",
+      "default": "#fff"
+    },
+    {
+      "type": "text",
+      "id": "homepage-hero-image-button-label",
+      "label": "t:all.Button_label"
+    },
+    {
+      "type": "url",
+      "id": "homepage-hero-image-link",
+      "label": "t:all.Link"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.advanced-layout--hero.settings.header-10.content"
+    },
+    {
+      "id": "video_url",
+      "type": "video_url",
+      "label": "t:all.Video_URL",
+      "accept": [
+        "youtube",
+        "vimeo"
+      ],
+      "default": "https://www.youtube.com/watch?v=_9VUPq3SxOc"
+    },
+    {
+      "type": "checkbox",
+      "id": "homepage-hero-video-autoplay",
+      "label": "t:all.Autoplay",
+      "info": "t:all.Video_will_be_muted_and_some_devices_may_prevent_autoplay_",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "homepage-hero-video-loop",
+      "label": "t:all.Loop",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "homepage-hero-video-mute",
+      "label": "t:all.Mute",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "t:all.Color"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "t:all.Button_text",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "button_background_color",
+      "label": "t:all.Button_background",
+      "default": "#242424"
+    }
+  ],
+  "max_blocks": 5,
+  "blocks": [
+    {
+      "type": "text",
+      "name": "t:all.Menu_item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "hero-menu-heading",
+          "label": "t:all.Heading",
+          "default": "Highlight your best sellers"
+        },
+        {
+          "type": "text",
+          "id": "hero-menu-subheading",
+          "label": "t:all.Subheading",
+          "default": "Link to any collection, product or page"
+        },
+        {
+          "type": "url",
+          "id": "hero-menu-link",
+          "label": "t:all.Link"
+        },
+        {
+          "type": "image_picker",
+          "id": "featured_image",
+          "label": "t:all.Featured_image",
+          "info": "t:sections.advanced-layout--hero.blocks.text.settings.featured_image.info"
+        },
+        {
+          "type": "select",
+          "id": "featured_image_size",
+          "label": "t:sections.advanced-layout--hero.blocks.text.settings.featured_image_size.label",
+          "default": "original",
+          "options": [
+            {
+              "label": "t:all.Small",
+              "value": "small"
+            },
+            {
+              "label": "t:all.Medium",
+              "value": "medium"
+            },
+            {
+              "label": "t:all.Large",
+              "value": "large"
+            },
+            {
+              "label": "t:all.Extra_Large",
+              "value": "x-large"
+            },
+            {
+              "label": "t:sections.advanced-layout--hero.blocks.text.settings.featured_image_size.options.original",
+              "value": "original"
+            }
+          ]
+        },
+        {
+          "type": "image_picker",
+          "id": "hero-menu-image",
+          "label": "t:sections.advanced-layout--hero.blocks.text.settings.hero-menu-image.label",
+          "info": "t:sections.advanced-layout--hero.blocks.text.settings.hero-menu-image.info"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.advanced-layout--hero.presets.name",
+      "blocks": [
+        {
+          "type": "text",
+          "settings": {
+            "hero-menu-heading": "Highlight your best sellers",
+            "hero-menu-subheading": "Link to any collection, product or page"
+          }
+        },
+        {
+          "type": "text",
+          "settings": {
+            "hero-menu-heading": "Promote a new collection",
+            "hero-menu-subheading": "Link to any collection, product or page"
+          }
+        }
+      ]
+    }
+  ],
+  "disabled_on": {
+    "groups": [
+      "footer",
+      "header"
+    ]
+  }
+}
+{% endschema %}

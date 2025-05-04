@@ -1,0 +1,396 @@
+{{ 'section-countdown-timer.min.css' | asset_url | stylesheet_tag: preload: true }}
+<noscript>{{ 'section-countdown-timer.min.css' | asset_url | stylesheet_tag }}</noscript>
+
+{%- liquid
+  assign layout_class = 'countdown-timer--overlap'
+  case section.settings.text_alignment
+    when 'left'
+      assign flex_align_class = 'flex-start'
+    when 'center'
+      assign flex_align_class = 'center'
+    when 'right'
+      assign flex_align_class = 'flex-end'
+  endcase
+
+  assign overlay_opacity = section.settings.overlay_opacity | divided_by: 100.0
+-%}
+
+<style>
+  .countdown-timer--{{ section.id }} .countdown-timer__overlay { 
+    display: none;
+  }
+
+  {% if section.settings.image == blank %}
+    .countdown-timer--{{ section.id }} {
+      background-color: {{ section.settings.background_color }};
+      color: {{ section.settings.text_color }};
+    }
+
+    .countdown-timer--{{ section.id }} .countdown-timer__separator-dot {
+      background-color: {{ section.settings.text_color }} !important;
+    }
+
+    .countdown-timer--{{ section.id }} .countdown-timer__button {
+      color: {{ section.settings.button_text_color }} !important;
+      background-color: {{ section.settings.button_background_color }};
+    }
+
+    .countdown-timer--{{ section.id }} .countdown-timer__button:focus {
+      outline: 2px solid {{ section.settings.button_background_color }} !important;
+    }
+  {% else %}
+    .countdown-timer--{{ section.id }} {
+      background-color: var(--color-primary-background);
+      color: var(--text-color);
+    }
+
+    .countdown-timer--{{ section.id }} .countdown-timer__separator-dot {
+      background-color: var(--text-color) !important;
+    }
+
+    .countdown-timer--{{ section.id }} .countdown-timer__button {
+      color: var(--primary-btn-text-color) !important;
+      background-color: var(--primary-btn-bg-color);
+    }
+  {% endif %}
+
+  @media screen and (min-width: 768px) {
+    .countdown-timer--{{ section.id }},
+    .countdown-timer--{{ section.id }} h2 {
+      text-align: {{ section.settings.text_alignment }};
+    }
+
+    .countdown-timer--{{ section.id }} .countdown-timer__container {
+      justify-content: {{ flex_align_class }};
+    }
+
+    .countdown-timer--{{ section.id }} .countdown-timer__separator-dot {
+      background-color: {{ section.settings.text_color }} !important;
+    }
+
+    .countdown-timer--{{ section.id }} {
+      color: {{ section.settings.text_color }};
+    }
+
+    .countdown-timer--{{ section.id }} .countdown-timer__button {
+      color: {{ section.settings.button_text_color }} !important;
+      background-color: {{ section.settings.button_background_color }};
+    }
+
+    .countdown-timer--{{ section.id }} .countdown-timer__button:focus {
+      outline: 2px solid {{ section.settings.button_background_color }} !important;
+    }
+
+    {% if section.settings.image == blank %}
+      .countdown-timer--{{ section.id }} {
+        background-color: {{ section.settings.background_color }};
+      }
+    {% else %}
+      .countdown-timer--{{ section.id }} .countdown-timer__overlay {
+        background-color: {{ section.settings.overlay_color }};
+        opacity: {{ overlay_opacity }};
+        width: 100%;
+        height: 100%;
+        display: block;
+      }
+
+      .countdown-timer--{{ section.id }} {
+        background-color: unset;
+      }
+    {% endif %}
+  }
+</style>
+
+<section data-wetheme-section-type="countdown-timer" data-wetheme-section-id="{{ section.id }}" class="{{ layout_class }} countdown-timer--{{ section.id }}">
+
+  <div class="countdown-timer__image{% if settings.ken_burns_enabled %} kb-enabled{% endif %}">
+    {% if section.settings.image != blank %}
+      <div id="rellax--{{ section.id }}" class="img" data-rellax-percentage="0.5" data-rellax-speed="-6">
+        {% render 'responsive-image' with section.settings.image, alt: section.settings.image.alt, allow_stretch: true %}
+      </div>
+    {% endif %}
+  </div>
+
+  <div class="countdown-timer__overlay"></div>
+
+  <div class="countdown-timer__content-box-wrapper">
+    {% if section.blocks.size > 0 %}
+      <div class="countdown-timer__content-box">
+        <div class="countdown-timer__content-box-inner show-on-scroll">
+          {% for block in section.blocks %}
+            {% case block.type %}
+
+              {% when 'countdown_timer' %}
+
+                {% render 'countdown-timer' with
+                  timer_id: section.id,
+                  end_date_setting: block.settings.end_date,
+                  end_time_setting: block.settings.end_time,
+                  hide_when_complete: block.settings.hide_when_complete,
+                  time_labels: block.settings.time_labels,
+                  is_block: true,
+                  background_color_override: section.settings.text_color
+                %}
+
+              {% when 'subheading' %}
+
+                {% if block.settings.subheading != blank %}
+                  <h3 class="countdown-timer__subheading" {{ block.shopify_attributes }}>{{ block.settings.subheading }}</h3>
+                {% endif %}
+
+              {% when 'heading' %}
+
+                {% if block.settings.heading != blank %}
+                  <h2 class="homepage-sections--title countdown-timer__heading" {{ block.shopify_attributes }}>{{ block.settings.heading }}</h2>
+                {% endif %}
+
+              {% when 'text' %}
+
+                {% if block.settings.text != blank %}
+                  <p class="countdown-timer__text" {{ block.shopify_attributes }}>{{ block.settings.text }}</p>
+                {% endif %}
+
+              {% when 'button' %}
+
+                {% if block.settings.link != blank and block.settings.label != blank %}
+                  <a href="{{ block.settings.link }}" class="btn homepage-featured-box-btn countdown-timer__button" {{ block.shopify_attributes }}>
+                    {{ block.settings.label | escape }}
+                  </a>
+                {% endif %}
+
+              {% when 'timer_complete_message' %}
+
+                {% if block.settings.text != blank %}
+                  <p data-timer-complete-content data-timer-id={{ section.id }} class="countdown-timer__timer-complete-message hide" {{ block.shopify_attributes }}>{{ block.settings.text }}</p>
+                {% endif %}
+
+            {% endcase %}
+          {% endfor %}
+        </div>
+      </div>
+    {% endif %}
+  </div>
+</section>
+{% schema %}
+{
+  "name": "t:sections.countdown-timer.name",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "t:all.Image_optional",
+      "info": "t:sections.countdown-timer.settings.image.info"
+    },
+    {
+      "type": "radio",
+      "id": "text_alignment",
+      "label": "t:all.Text_alignment_on_desktop",
+      "options": [
+        {
+          "value": "left",
+          "label": "t:all.Left"
+        },
+        {
+          "value": "center",
+          "label": "t:all.Centered"
+        },
+        {
+          "value": "right",
+          "label": "t:all.Right"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "header",
+      "content": "t:all.Color"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "t:all.Caption_background",
+      "default": "#E6E5E7",
+      "info": "t:sections.countdown-timer.settings.background_color.info"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "t:all.Text",
+      "default": "#242424",
+      "info": "t:sections.countdown-timer.settings.text_color.info"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "t:all.Button_text",
+      "default": "#FFFFFF",
+      "info": "t:sections.countdown-timer.settings.text_color.info"
+    },
+    {
+      "type": "color",
+      "id": "button_background_color",
+      "label": "t:all.Button_background",
+      "default": "#242424",
+      "info": "t:sections.countdown-timer.settings.text_color.info"
+    },
+    {
+      "type": "color",
+      "id": "overlay_color",
+      "label": "t:sections.countdown-timer.settings.overlay_color.label",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "t:all.percentage",
+      "label": "t:all.Overlay_opacity",
+      "default": 0
+    }
+  ],
+  "blocks": [
+    {
+      "type": "countdown_timer",
+      "name": "t:all.Countdown_timer",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "end_date",
+          "label": "t:all.Countdown_end_date",
+          "info": "t:all.Use_the_format_mm_dd_yyyy_eg__01_31_2024"
+        },
+        {
+          "type": "text",
+          "id": "end_time",
+          "label": "t:all.Countdown_end_time",
+          "info": "t:all.Use_the_format_hh_mm_ss_eg__23_59_59__Use_the_timezone_specified_in_your_Shopify_admin"
+        },
+        {
+          "type": "checkbox",
+          "id": "hide_when_complete",
+          "label": "t:sections.countdown-timer.blocks.countdown_timer.settings.hide_when_complete.label",
+          "default": false
+        },
+        {
+          "type": "checkbox",
+          "id": "time_labels",
+          "default": true,
+          "label": "t:all.Show_timer_labels"
+        }
+      ]
+    },
+    {
+      "type": "subheading",
+      "name": "t:all.Subheading",
+      "settings": [
+        {
+          "type": "text",
+          "id": "subheading",
+          "label": "t:all.Subheading",
+          "default": "Subheading"
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "name": "t:all.Heading",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "t:all.Heading",
+          "default": "Heading"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "name": "t:all.Text",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "t:all.Text",
+          "default": "Grab the offer before it's gone"
+        }
+      ]
+    },
+    {
+      "type": "button",
+      "name": "t:all.Button",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "t:all.Button_label",
+          "default": "Shop now"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "t:all.Button_link",
+          "default": "/collections/all"
+        }
+      ]
+    },
+    {
+      "type": "timer_complete_message",
+      "name": "t:all.Out_of_time_message",
+      "settings": [
+        {
+          "type": "paragraph",
+          "content": "t:sections.countdown-timer.blocks.timer_complete_message.settings.paragraph-0.content"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "t:sections.countdown-timer.blocks.timer_complete_message.settings.text.label"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:all.Countdown_timer",
+      "blocks": [
+        {
+          "type": "timer_complete_message",
+          "settings": {
+            "text": "You've just missed this offer"
+          }
+        },
+        {
+          "type": "heading",
+          "settings": {
+            "heading": "Offer ends soon"
+          }
+        },
+        {
+          "type": "countdown_timer"
+        },
+        {
+          "type": "text",
+          "settings": {
+            "text": "Grab the offer before it's gone"
+          }
+        },
+        {
+          "type": "button",
+          "settings": {
+            "label": "Shop now"
+          }
+        }
+      ]
+    }
+  ],
+  "disabled_on": {
+    "groups": [
+      "header",
+      "footer"
+    ]
+  }
+}
+{% endschema %}

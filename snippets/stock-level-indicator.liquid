@@ -1,0 +1,110 @@
+{% comment %}
+    Renders a stock level indicator including a message and optional stock count. 
+
+    Accepts:
+    - block_attributes: {Object} block's shopify attributes,
+    - stock_product: {Object} product Liquid object
+    - stock_variant: {Object} variant Liquid object
+    - stock_scope_id: {String} limits variant change interaction to components with a matching scope id, eg. section.id (optional)
+    - stock_style: {String} Accepts 'classic' or 'bar'
+    - stock_bar_color: {String} Accepts 'text' or 'standard'
+    - stock_amt: {Number} the number at which to display a low stock warning
+    - stock_notice: {String} Accepts 'always' (to always display the element) or 'below-stock-range' (to display it only for out-of-stock and low-stock variants)
+    - show_stock_count: {Boolean} Display stock count or not
+    - in_stock_message: {String} Custom message displayed after 'In stock'
+    - low_stock_message: {String} Custom message displayed after 'Low stock'
+    - out_of_stock_message: {String} Custom message displayed after 'Out of stock'
+    - classes: {String} custom classes to be applied to the stock level indicator component (optional)
+
+    Usage:
+    {% render 'stock-level-indicator' with block_attributes: block.shopify_attributes, stock_variant: current_variant, stock_amt: block.settings.stock_range %}
+{% endcomment %}
+
+{%- liquid
+  assign low_stock_string = 'products.product.low_stock' | t
+  assign in_stock_string = 'products.product.in_stock' | t
+  assign out_of_stock_string = 'products.product.out_of_stock' | t
+  assign variant_count = 0
+
+  assign animate_pulsing_dot = false
+  if stock_style == 'classic'
+    assign animate_pulsing_dot = true
+  endif
+
+  assign bar_color = 'var(--text-color)'
+
+  if stock_indicator_animation
+    assign classes = classes | prepend: 'stock-indicator-animations '
+  endif
+-%}
+
+<stock-level-indicator
+  {{ block_attributes }} 
+  data-flow-product-id="{{ stock_product.id }}"
+  data-flow-variant-id="{{ stock_variant.id }}"
+  {% if stock_scope_id %}data-flow-scope-id="{{ stock_scope_id }}"{% endif %}
+  {% if classes %}class="{{ classes }}"{% endif %}
+>
+  {% for inventory_variant in stock_product.variants %}
+    {% if inventory_variant.inventory_management != blank and inventory_variant.inventory_policy != 'continue' %}
+      {% assign variant_count = variant_count | plus: 1 %}
+      {% if stock_notice != 'always' and inventory_variant.inventory_quantity > stock_amt %}
+        {% continue %}
+      {% else %}
+        <div
+          class="stock-indicator-wrapper {% unless inventory_variant.id == stock_variant.id %} hidden{% endunless %}"
+          data-flow-selector="stock-level-indicator" data-variant-id="{{ inventory_variant.id }}"
+        >
+          {% if inventory_variant.inventory_quantity > stock_amt %}
+            <span class="stock-level-message">
+              {% render 'icon-dot' with class: 'success', dot_pulsing: animate_pulsing_dot %}
+              {% assign stock_count = '' %}
+              {% if show_stock_count %}
+                {% capture stock_count %}
+                  <span>&nbsp;-&nbsp;</span> <span data-flow-stock-count="variant_stock_count">{{ inventory_variant.inventory_quantity }}</span>&nbsp;{{ 'products.product.stock_left' | t }}
+                {% endcapture %}
+              {% endif %}
+              <p class="level-indicator-message">{{ in_stock_message | default: in_stock_string | append: stock_count }}</p>
+            </span>
+            {% liquid
+              if stock_style == 'bar'
+                if stock_bar_color != 'text'
+                  assign bar_color = 'var(--success-color)'
+                endif
+                render 'stock-indicator-bar' with expand: '75%', bar_color: bar_color
+              endif 
+            %}
+
+          {% elsif inventory_variant.available == false %}
+            <span class="stock-level-message">
+              {% render 'icon-dot' with class: 'error', dot_pulsing: animate_pulsing_dot %}
+              <p class="level-indicator-message">{{ out_of_stock_message | default: out_of_stock_string }}</p>
+            </span>
+
+          {% else %}
+            <span class="stock-level-message">
+              {% render 'icon-dot' with class: 'warning', dot_pulsing: animate_pulsing_dot %}
+              {% assign stock_count = '' %}
+              {% if show_stock_count %}
+                {% capture stock_count %}
+                  <span>&nbsp;-&nbsp;</span><span data-flow-stock-count="variant_stock_count">{{ inventory_variant.inventory_quantity }}</span>&nbsp;{{ 'products.product.stock_left' | t }}
+                {% endcapture %}
+              {% endif %}
+              <p class="level-indicator-message">{{ low_stock_message | default: low_stock_string | append: stock_count }}</p>
+            </span>
+            {% liquid
+              if stock_style == 'bar'
+                if stock_bar_color != 'text'
+                  assign bar_color = 'var(--warning-color)'
+                endif
+                render 'stock-indicator-bar' with expand: '50%', bar_color: bar_color
+              endif 
+            %}
+          {% endif %}
+        </div>
+      {% endif %}
+    {% endif %}
+  {% endfor %}
+
+  <script src="{{ 'component-stock-level-indicator.js' | asset_url }}" defer="defer" type="module" data-internal-script data-flow-load-key="component-stock-level-indicator"></script>
+</stock-level-indicator>

@@ -1,0 +1,35 @@
+{% if paginate.pages > 1 %}
+<div class="pagination">
+
+  <ul>
+    {% if paginate.previous %}
+      <li class="pagination-arrow"><a class="standalone-icon--wrapper" aria-label="{{ 'general.accessibility.pagination.previous' | t }}" href="{{ paginate.previous.url }}">
+        {% render 'theme-icon', icon: 'chevron_left', iconSize: 20 %}
+      </a></li>      
+    {% else %}
+      <li class="prev disabled"><a href="#" onclick="return false;">&laquo;</a></li>
+    {% endif %}
+    
+    {% for part in paginate.parts %}
+      {% if part.is_link %}
+        <li class="pagination-number">{{ part.title | link_to: part.url }}</li>
+      {% else %}
+        {% if part.title == '&hellip;' %}
+        <li class="ellipsis">{{ part.title }}</li>
+        {% else %}
+        <li class="active pagination-number">{{ part.title | link_to: part.url }}</li>
+        {% endif %}
+      {% endif %}
+    {% endfor %}     
+
+    {% if paginate.next %}
+      <li class="pagination-arrow"><a class="standalone-icon--wrapper" aria-label="{{ 'general.accessibility.pagination.next' | t }}" href="{{ paginate.next.url }}">
+        {% render 'theme-icon', icon: 'chevron_right', iconSize: 20 %}
+      </a></li>
+    {% else %}
+      <li class="next disabled"><a href="#" onclick="return false;">&raquo;</a></li>
+    {% endif %}    
+  </ul>
+
+</div>
+{% endif %}

@@ -1,0 +1,454 @@
+{{ 'section-product-info-columns.min.css' | asset_url | stylesheet_tag }}
+
+<section
+	data-wetheme-section-type="template--product--info-columns"
+	data-wetheme-section-id="{{ section.id }}"
+	data-slides-per-row="{{ section.settings.columns_per_row }}"
+	class="homepage-sections-wrapper homepage-sections-wrapper--{{ section.settings.colors }} info-cols"
+>
+	<div class="wrapper-padded">
+
+		{% if section.settings.heading != blank or section.settings.description != blank %}
+			<div class="info-cols__header">
+			  {% if section.settings.heading != blank %}
+				<h2 class="homepage-sections--title">{{ section.settings.heading | escape }}</h2>
+			  {% endif %}
+			  {% if section.settings.description != blank %}
+				<div class="rte homepage-sections--description text-link-animated">{{ section.settings.description }}</div>
+			  {% endif %}
+			</div>
+    {% endif %}
+
+		<div class="swiper text-{{ section.settings.text_alignment }}" data-number-of-slides="{{ section.blocks.size }}">
+			<div class="swiper-wrapper vertical-align--{{ section.settings.vertical_alignment }}">
+				{% for block in section.blocks %}
+
+					<div class="info-cols--{{ block.type }}-column grid__item swiper-slide" {{ block.shopify_attributes }} data-swiper-slide-index="{{ forloop.index0 }}">
+						{% case block.type %}
+							{% when 'image_and_text' %}
+
+								{%- liquid 
+									if block.settings.image.alt != blank 
+										assign alt = block.settings.image.alt
+									elsif block.settings.heading != blank 
+										assign alt = block.settings.heading
+									else
+										assign alt = shop.name
+									endif
+								-%}
+							
+								{% if block.settings.button_link != blank %}
+									<a aria-label="{{ alt }}" href="{{ block.settings.button_link }}" class="info-cols--image-is-link"><span class="sr-only">{{ alt }}</span>
+								{% endif %}
+
+								<div class="info-cols--image{% if block.settings.grid_image_size != 'natural' %} info-cols--media__aspect-ratio--{{ block.settings.grid_image_size }}{% endif %}" aria-hidden="true">
+									{% if block.settings.image == blank %}
+										{{ 'image' | placeholder_svg_tag: 'icon icon--placeholder' }}
+									{% else %}
+										{% render 'responsive-image' with block.settings.image, alt: alt, allow_stretch: true %}
+									{% endif %}
+								</div>
+
+								{% if block.settings.button_link != blank %}
+									</a>
+								{% endif %}
+
+								{% if block.settings.heading != '' %}
+									<h3 class="info-cols--title">{{ block.settings.heading }}</h3>
+								{% endif %}
+
+								{% if block.settings.text != '' %}
+									<div class="info-cols--text text-link-animated">{{ block.settings.text }}</div>
+								{% endif %}
+
+								{% if block.settings.button_text != '' and block.settings.button_link != blank %}
+									<div class="info-cols--link--wrapper text-link-animated">
+										<a href="{{ block.settings.button_link }}" class="info-cols--link_text">{{ block.settings.button_text }}</a>
+									</div>
+								{% endif %}
+
+							{% when 'video_and_text' %}
+
+								{% assign type = 'mp4' %}
+								{% unless block.settings.video %}
+									{% assign type = block.settings.video_url.type %}
+								{% endunless %}
+							
+								{% if block.settings.button_link != blank %}
+									<a aria-label="{{ alt }}" href="{{ block.settings.button_link }}" class="info-cols--image-is-link"><span class="sr-only">{{ alt }}</span>
+								{% endif %}
+
+								<div class="info-cols--video-wrapper info-cols--media__aspect-ratio--{{ block.settings.grid_video_size }}">
+									<div class="info-cols--video type-{{ type }}">
+										{% if block.settings.video %}
+											{% render 'native-video' with video: block.settings.video, autoplay: true, loop: true, muted: true, overlay: true, overlay_button: false, controls: false %}
+										{% elsif block.settings.video_url %}
+											<wetheme-video
+											section-id="{{ block.id }}"
+											v-bind:hero="false"
+											video-type="{{ type }}"
+											url="{{ block.settings.video_url }}"
+											v-bind:autoplay="true"
+											v-bind:loop="true"
+											v-bind:mute="true"
+											v-bind:hide-controls="true"
+											v-bind:overlay="true"
+										>
+										</wetheme-video>
+									{% endif %}
+									</div>
+								</div>
+
+								{% if block.settings.button_link != blank %}
+									</a>
+								{% endif %}
+
+								{% if block.settings.heading != '' %}
+									<h3 class="info-cols--title">{{ block.settings.heading }}</h3>
+								{% endif %}
+
+								{% if block.settings.text != '' %}
+									<div class="info-cols--text text-link-animated">{{ block.settings.text }}</div>
+								{% endif %}
+
+								{% if block.settings.button_text != '' and block.settings.button_link != blank %}
+									<div class="info-cols--link--wrapper text-link-animated">
+										<a href="{{ block.settings.button_link }}" class="info-cols--link_text">{{ block.settings.button_text }}</a>
+									</div>
+								{% endif %}
+
+							{% when 'text' %}
+							
+								{% if block.settings.button_text == '' and block.settings.button_link != blank %}
+									<a href="{{ block.settings.button_link }}">
+								{% endif %}
+
+								{% if block.settings.heading != '' %}
+									<h3 class="info-cols--title">{{ block.settings.heading }}</h3>
+								{% endif %}
+
+								{% if block.settings.text != '' %}
+									<div class="info-cols--text text-link-animated">{{ block.settings.text }}</div>
+								{% endif %}
+
+								{% if block.settings.button_text == '' and block.settings.button_link != blank %}
+									</a>
+								{% endif %}
+
+								{% if block.settings.button_text != '' and block.settings.button_link != blank %}
+									<div class="info-cols--link--wrapper text-link-animated">
+										<a href="{{ block.settings.button_link }}" class="info-cols--link_text">{{ block.settings.button_text }}</a>
+									</div>
+								{% endif %}
+
+						{% endcase %}
+					</div>
+
+				{% endfor %}
+			</div>
+
+			{% if section.blocks.size > 1 %}
+				<div class="swiper-pagination"></div>
+			{% endif %}
+
+			{% if section.blocks.size == 0 %}
+				<div class="placeholder-noblocks">
+					{{ 'general.onboarding.no_content' | t }}
+				</div>
+			{% endif %}
+
+		</div>
+
+		{% if section.blocks.size > section.settings.columns_per_row %}
+			<div class="btn swiper-navigation swiper-button--prev">
+				{% render 'theme-icon', icon: 'chevron_left' %}
+			</div>
+			<div class="btn swiper-navigation swiper-button--next">
+				{% render 'theme-icon', icon: 'chevron_right' %}
+			</div>
+		{% endif %}
+	</div>
+</section>
+
+{% schema %}
+{
+  "name": "t:sections.template--product--info-columns.name",
+  "class": "product-section--info-columns show-on-scroll",
+  "settings": [
+    {
+      "type": "select",
+      "id": "colors",
+      "label": "t:all.Color_scheme",
+      "default": "white",
+      "options": [
+        {
+          "value": "white",
+          "label": "t:all.Minimal"
+        },
+        {
+          "value": "light",
+          "label": "t:all.Light"
+        },
+        {
+          "value": "accent",
+          "label": "t:all.Feature"
+        },
+        {
+          "value": "dark",
+          "label": "t:all.Dark"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "t:all.Heading",
+      "default": "Info columns"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "t:all.Description",
+      "default": "<p>Emphasise your messaging</p>"
+    },
+    {
+      "type": "range",
+      "id": "columns_per_row",
+      "min": 1,
+      "max": 4,
+      "step": 1,
+      "label": "t:sections.template--product--info-columns.settings.columns_per_row.label",
+      "default": 3
+    },
+    {
+      "type": "radio",
+      "id": "text_alignment",
+      "label": "t:all.Text_alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "t:all.Left"
+        },
+        {
+          "value": "center",
+          "label": "t:all.Center"
+        },
+        {
+          "value": "right",
+          "label": "t:all.Right"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "radio",
+      "id": "vertical_alignment",
+      "label": "t:sections.template--product--info-columns.settings.vertical_alignment.label",
+      "options": [
+        {
+          "value": "top",
+          "label": "t:all.Top"
+        },
+        {
+          "value": "center",
+          "label": "t:all.Center"
+        },
+        {
+          "value": "bottom",
+          "label": "t:all.Bottom"
+        }
+      ],
+      "default": "top"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "image_and_text",
+      "name": "t:sections.template--product--info-columns.blocks.image_and_text.name",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "t:all.Image"
+        },
+        {
+          "type": "select",
+          "id": "grid_image_size",
+          "label": "t:all.Image_size",
+          "default": "square",
+          "options": [
+            {
+              "value": "natural",
+              "label": "t:all.Original"
+            },
+            {
+              "value": "square",
+              "label": "t:all.Square_1_1"
+            },
+            {
+              "value": "tall",
+              "label": "t:all.Tall_2_3"
+            },
+            {
+              "value": "wide",
+              "label": "t:all.Wide_4_3"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "t:all.Heading",
+          "default": "Heading"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "t:all.Text",
+          "default": "<p>Use text paired with images to create a captivating brand story, explain details of your products, or highlight store promotions.</p>"
+        },
+        {
+          "type": "text",
+          "id": "button_text",
+          "label": "t:all.Button_text",
+          "info": "t:all.Required_to_show_the_button",
+          "default": "Learn more"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "t:all.Button_link",
+          "default": "/collections/all"
+        }
+      ]
+    },
+    {
+      "type": "video_and_text",
+      "name": "t:sections.template--product--info-columns.blocks.video_and_text.name",
+      "settings": [
+        {
+          "type": "header",
+          "content": "t:all.A_Shopify_hosted_video"
+        },
+        {
+          "type": "video",
+          "id": "video",
+          "label": "t:all.Video"
+        },
+        {
+          "type": "header",
+          "content": "t:all.Or_embed_video_from_URL"
+        },
+        {
+          "type": "video_url",
+          "id": "video_url",
+          "label": "t:all.Video",
+          "info": "t:all.Accepts_YouTube_and_Vimeo__Video_will_be_muted_and_some_devices_may_prevent_autoplay__Learn_morehttps___support_eightthemes_com_hc_en_us_articles_360020109497_Product_Mediaheading_2",
+          "default": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+          "accept": [
+            "youtube",
+            "vimeo"
+          ]
+        },
+        {
+          "type": "select",
+          "id": "grid_video_size",
+          "label": "t:sections.template--product--info-columns.blocks.video_and_text.settings.grid_video_size.label",
+          "default": "wide",
+          "options": [
+            {
+              "value": "square",
+              "label": "t:all.Square_1_1"
+            },
+            {
+              "value": "tall",
+              "label": "t:sections.template--product--info-columns.blocks.video_and_text.settings.grid_video_size.options.tall"
+            },
+            {
+              "value": "wide",
+              "label": "t:sections.template--product--info-columns.blocks.video_and_text.settings.grid_video_size.options.wide"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "t:all.Heading",
+          "default": "Heading"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "t:all.Text",
+          "default": "<p>Use text paired with images to create a captivating brand story, explain details of your products, or highlight store promotions.</p>"
+        },
+        {
+          "type": "text",
+          "id": "button_text",
+          "label": "t:all.Button_text",
+          "info": "t:all.Required_to_show_the_button",
+          "default": "Learn more"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "t:all.Button_link",
+          "default": "/collections/all"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "name": "t:all.Text",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "t:all.Heading",
+          "default": "Heading"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "t:all.Text",
+          "default": "<p>Use text paired with images to create a captivating brand story, explain details of your products, or highlight store promotions.</p>"
+        },
+        {
+          "type": "text",
+          "id": "button_text",
+          "label": "t:all.Button_text",
+          "info": "t:all.Required_to_show_the_button",
+          "default": "Learn more"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "t:all.Button_link",
+          "default": "/collections/all"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.template--product--info-columns.presets.name",
+      "blocks": [
+        {
+          "type": "image_and_text"
+        },
+        {
+          "type": "image_and_text"
+        },
+        {
+          "type": "video_and_text"
+        }
+      ]
+    }
+  ],
+  "disabled_on": {
+    "groups": [
+      "header"
+    ]
+  }
+}
+{% endschema %}

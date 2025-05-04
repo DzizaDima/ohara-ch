@@ -1,0 +1,232 @@
+{{ 'section-map.min.css' | asset_url | stylesheet_tag: preload: true }}
+<noscript>{{ 'section-map.min.css' | asset_url | stylesheet_tag }}</noscript>
+
+<div
+  class="homepage-sections-wrapper--{{ section.settings.colors }}"
+  data-wetheme-section-type="store-information--map"
+  data-wetheme-section-id="{{ section.id }}"
+  data-maps-apikey="{{ section.settings.api_key | escape }}"
+  data-maps-address="{{ section.settings.map_address | escape }}"
+  data-maps-alignment="{% if section.settings.layout == 'left' %}right{% else %}left{% endif %}"
+>
+
+{%- if section.settings.background_image != blank -%}
+    <style>
+        {% capture selector %}.homepage-content--{{ section.id }} .img{% endcapture %}
+        {% render 'responsive-background-image' with section.settings.background_image, selector: selector %}
+        .homepage-content--{{ section.id }} .img {
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+    </style>
+{%- endif -%}
+
+<script>
+
+var theme = {
+    strings: {
+      addressError: {{ 'sections.map.address_error' | t | json }},
+      addressNoResults: {{ 'sections.map.address_no_results' | t | json }},
+      addressQueryLimit: {{ 'sections.map.address_query_limit_html' | t | json }},
+      authError: {{ 'sections.map.auth_error_html' | t | json }}
+    }
+}
+</script>
+
+<script type="application/json" id="homepage-map--theme--{{ section.id }}" class="map-theme">
+{% case section.settings.colors %}
+  {% when 'white' %}
+    []
+  {% when 'light' %}
+    []
+  {% when 'accent' %}
+    []
+  {% when 'dark' %}
+    []
+  {% endcase %}
+</script>
+
+<div class="homepage-indiv-section-wrapper grid--full homepage-map-wrapper map__text--{{ section.settings.layout }}">
+
+    {% capture image_layout %}
+        {% if section.settings.api_key != blank and section.settings.map_address != blank %}
+          {% assign map_visible = true %}
+        {% else %}
+          {% assign map_visible = false %}
+        {% endif %}
+
+        <div class="homepage-map--image homepage-content--{{ section.id }}">
+
+          <div class="map-wrapper" data-id="{{ section.id }}" data-colors="{{ section.settings.colors }}">
+            {% if section.settings.map_address != blank %}
+              <a href="https://www.google.com/maps/place/{{ section.settings.map_address | escape }}" class="map-section__place-link" target="_blank" aria-label="{{ section.settings.map_address }}">
+            {% endif %}
+
+              {% if map_visible %}
+                  <div id="map-container-{{ section.id }}"
+                      class="map-section__container"
+                      data-map
+                      >
+                  </div>
+                  <div class="map-section__overlay" data-map-overlay></div>
+              {% endif %}
+              <div class="homepage-map--fallback-wrap">
+                {% if section.settings.background_image != blank %}
+                  {% assign map_alt = section.settings.background_image.alt | default: shop.name %}
+                  <div class="homepage-map--image-container img homepage-map--fallback{% if map_visible %} hide{% endif %}{% if settings.ken_burns_enabled %} kb-enabled{% endif %}" role="img" aria-label="{{ map_alt | escape }}"></div>
+                {% else %}
+                  <div class="homepage-map--placeholder-container img placeholder-background homepage-map--fallback{% if map_visible %} hide{% endif %}{% if settings.ken_burns_enabled %} kb-enabled{% endif %}">
+                    {{ 'lifestyle-1' | placeholder_svg_tag: 'icon icon--placeholder' }}
+                  </div>
+                {% endif %}
+              </div>
+            {% if section.settings.map_address != blank %}
+              </a>
+            {% endif %}
+          </div>
+        </div>
+
+    {% endcapture %}
+
+    {% if section.settings.layout == 'left' %}
+  	  {{ image_layout }}
+  	{% endif %}
+
+    {% if section.settings.heading != blank or section.settings.address != blank or section.settings.button_text != blank %}
+    	<div class="grid__item homepage-map-content-box">
+				<div class="homepage-map-content-box-inner show-on-scroll">
+
+					{% if section.settings.heading != blank %}
+						<div class="sitewide--title-wrapper">
+							<h2 class="homepage-sections--title">{{ section.settings.heading | escape }}</h2>
+						</div>
+					{% endif %}
+
+					{% if section.settings.address != blank %}
+						<div class="rte featured-row__subtext textarea text-link-animated">{{ section.settings.address }}</div>
+					{% endif %}
+
+					{% if section.settings.button_text != blank %}
+						<div>
+							<a href="https://maps.google.com?daddr={{ section.settings.map_address | escape }}"
+								class="btn homepage-featured-box-btn map_section__directions-btn"
+								target="_blank"
+							>
+								{{ section.settings.button_text | escape }}
+							</a>
+						</div>
+					{% endif %}
+
+				</div>
+			</div>
+    {% endif %}
+
+    {% if section.settings.layout == 'right' %}
+      {{ image_layout }}
+    {% endif %}
+
+</div>
+
+
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.store-information--map.name",
+  "class": "map-section-wrapper show-on-scroll",
+  "settings": [
+    {
+      "id": "heading",
+      "type": "text",
+      "label": "t:all.Heading",
+      "default": "Our store"
+    },
+    {
+      "id": "address",
+      "type": "richtext",
+      "label": "t:sections.store-information--map.settings.address.label",
+      "default": "<p>123 Fake St.<br>Toronto, Canada</p><p>Mon - Fri, 10am - 9pm<br>Saturday, 11am - 9pm<br>Sunday, 11am - 5pm</p>"
+    },
+    {
+      "id": "map_address",
+      "type": "text",
+      "label": "t:sections.store-information--map.settings.map_address.label",
+      "info": "t:sections.store-information--map.settings.map_address.info",
+      "default": "80 Spadina Ave, Toronto"
+    },
+    {
+      "id": "api_key",
+      "type": "text",
+      "label": "t:sections.store-information--map.settings.api_key.label",
+      "info": "t:sections.store-information--map.settings.api_key.info"
+    },
+    {
+      "id": "button_text",
+      "type": "text",
+      "label": "t:sections.store-information--map.settings.button_text.label",
+      "default": "Get directions"
+    },
+    {
+      "type": "select",
+      "id": "layout",
+      "label": "t:all.text_position_on_desktop",
+      "default": "left",
+      "options": [
+        {
+          "value": "left",
+          "label": "t:sections.store-information--map.settings.layout.options.left"
+        },
+        {
+          "value": "right",
+          "label": "t:sections.store-information--map.settings.layout.options.right"
+        }
+      ]
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "t:all.Image",
+      "info": "t:sections.store-information--map.settings.background_image.info"
+    },
+    {
+      "type": "header",
+      "content": "t:all.Color"
+    },
+    {
+      "type": "select",
+      "id": "colors",
+      "label": "t:all.Color_scheme",
+      "default": "light",
+      "options": [
+        {
+          "value": "white",
+          "label": "t:all.Minimal"
+        },
+        {
+          "value": "light",
+          "label": "t:all.Light"
+        },
+        {
+          "value": "accent",
+          "label": "t:all.Feature"
+        },
+        {
+          "value": "dark",
+          "label": "t:all.Dark"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.store-information--map.presets.name"
+    }
+  ],
+  "disabled_on": {
+    "groups": [
+      "header"
+    ]
+  }
+}
+{% endschema %}

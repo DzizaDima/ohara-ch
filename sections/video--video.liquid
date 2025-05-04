@@ -1,0 +1,193 @@
+{{ 'section-video.min.css' | asset_url | stylesheet_tag: preload: true }}
+<noscript>{{ 'section-video.min.css' | asset_url | stylesheet_tag }}</noscript>
+
+<div
+  class="homepage-sections-wrapper homepage-sections-wrapper--{{ section.settings.colors }}"
+  data-wetheme-section-type="video--video" data-wetheme-section-id="{{ section.id }}"
+>
+
+  {% assign has_text = false %}
+  <div class="grid--center">
+    {% if section.settings.title != blank or section.settings.richtext != '' %}
+      <div class="homepage-hero-content--text-block large--three-quarters">
+        {% if section.settings.title != blank %}
+          <h2 class="homepage-sections--title">{{ section.settings.title | escape }}</h2>
+        {% endif %}
+
+        {% if section.settings.richtext != '' %}
+          {{ section.settings.richtext }}
+        {% endif %}
+      </div>
+      {% assign has_text = true %}
+    {% endif %}
+  </div>
+
+  <div class="grid grid--center">
+    {% assign type = 'mp4' %}
+    {% unless section.settings.video %}
+        {% assign type = section.settings.url.type %}
+    {% endunless %}
+
+    <div class="homepage-hero-content--video {% case section.settings.width_classes %}{% when 50 %}grid__item large--one-half{% when 75 %}grid__item large--three-quarters{% when 100 %}grid__item large--one-whole{% endcase %}{% if has_text %} has-text{% else %} no-text{% endif %}  type-{{ type }}">
+      <div>
+        {% if section.settings.video %}
+            {% unless section.settings.autoplay %}
+                {% assign show_overlay_button = true %}
+                {% assign show_overlay = true %}
+            {% else %}
+                {% assign show_overlay_button = false %}
+                {% assign show_overlay = false %}
+            {% endunless %}
+            {% render 'native-video' with video: section.settings.video, autoplay: section.settings.autoplay, loop: section.settings.loop, muted: section.settings.mute, overlay: show_overlay, overlay_button: show_overlay_button, controls: true, scope_id: section.id %}
+        {% elsif section.settings.url %}
+            <wetheme-video
+            section-id="{{ section.id }}"
+            v-bind:hero="false"
+            video-type="{{ type }}"
+            url="{{ section.settings.url }}"
+            v-bind:autoplay="{% if section.settings.autoplay %}true{% else %}false{% endif %}"
+            v-bind:loop="{% if section.settings.loop %}true{% else %}false{% endif %}"
+            v-bind:mute="{% if section.settings.mute %}true{% else %}false{% endif %}"
+            v-bind:overlay="true"
+            >
+            </wetheme-video>
+        {% endif %}
+      </div>
+
+      <style>
+        .homepage-video-content-overlay-wrapper-{{ section.id }}::before {
+            opacity: 0.{{ section.settings.video_overlay_opacity }} !important;
+        }
+
+        {% if section.settings.image %}
+          {% capture selector %}.homepage-video-content-overlay-wrapper-{{ section.id }} .video--video__static-image{% endcapture %}
+          {% render 'responsive-background-image' with section.settings.image, selector: selector %}
+        {% endif %}
+      </style>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.video--video.name",
+  "class": "homepage-section--video-wrapper show-on-scroll",
+  "settings": [
+    {
+      "type": "select",
+      "id": "colors",
+      "label": "t:all.Color_scheme",
+      "default": "white",
+      "options": [
+        {
+          "value": "white",
+          "label": "t:all.Minimal"
+        },
+        {
+          "value": "light",
+          "label": "t:all.Light"
+        },
+        {
+          "value": "accent",
+          "label": "t:all.Feature"
+        },
+        {
+          "value": "dark",
+          "label": "t:all.Dark"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "t:all.Heading"
+    },
+    {
+      "type": "richtext",
+      "id": "richtext",
+      "label": "t:all.Description",
+      "info": "t:all.Optional"
+    },
+    {
+      "type": "range",
+      "id": "width_classes",
+      "min": 50,
+      "max": 100,
+      "step": 25,
+      "unit": "t:all.percentage",
+      "label": "t:all.Width",
+      "default": 75
+    },
+    {
+      "type": "header",
+      "content": "t:all.A_Shopify_hosted_video"
+    },
+    {
+      "type": "video",
+      "id": "video",
+      "label": "t:all.Video"
+    },
+    {
+      "type": "header",
+      "content": "t:all.Or_embed_video_from_URL"
+    },
+    {
+      "id": "url",
+      "type": "video_url",
+      "label": "t:all.Video_URL",
+      "info": "t:all.Accepts_YouTube_and_Vimeo__Video_will_be_muted_and_some_devices_may_prevent_autoplay__Learn_morehttps___support_eightthemes_com_hc_en_us_articles_360020109497_Product_Mediaheading_2",
+      "default": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+      "accept": [
+        "youtube",
+        "vimeo"
+      ]
+    },
+    {
+      "type": "checkbox",
+      "id": "autoplay",
+      "label": "t:all.Autoplay",
+      "info": "t:all.Video_will_be_muted_and_some_devices_may_prevent_autoplay_",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "loop",
+      "label": "t:all.Loop",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "mute",
+      "label": "t:all.Mute",
+      "default": false
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "t:all.Image",
+      "info": "t:sections.video--video.settings.image.info"
+    },
+    {
+      "type": "range",
+      "id": "video_overlay_opacity",
+      "min": 0,
+      "max": 95,
+      "step": 5,
+      "unit": "t:all.percentage",
+      "label": "t:all.Overlay_opacity",
+      "default": 50
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:all.Video"
+    }
+  ],
+  "disabled_on": {
+    "groups": [
+      "header",
+      "footer"
+    ]
+  }
+}
+{% endschema %}

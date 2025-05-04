@@ -1,0 +1,393 @@
+{{ 'section-image-with-text-overlay.min.css' | asset_url | stylesheet_tag: preload: true }}
+<noscript>{{ 'section-image-with-text-overlay.min.css' | asset_url | stylesheet_tag }}</noscript>
+
+<div class="
+    homepage-sections-wrapper homepage-content--{{ section.id }}
+    image-with-text-overlay-wrapper
+
+    {%- case section.settings.colors -%}
+    {%- when 'light' %} image-with-text-overlay-wrapper--light
+    {%- when 'accent' %} image-with-text-overlay-wrapper--accent
+    {%- when 'dark' %} image-with-text-overlay-wrapper--dark
+    {%- endcase -%}
+
+    {%- case section.settings.textPosition -%}
+    {%- when 'left' %} image-with-text-overlay-wrapper--textPosition-left
+    {%- when 'center' %} image-with-text-overlay-wrapper--textPosition-center
+    {%- when 'right' %} image-with-text-overlay-wrapper--textPosition-right
+    {%- endcase -%}
+
+    {%- case section.settings.textAlignment -%}
+    {%- when 'left' %} image-with-text-overlay-wrapper--textAlignment-left
+    {%- when 'center' %} image-with-text-overlay-wrapper--textAlignment-center
+    {%- when 'right' %} image-with-text-overlay-wrapper--textAlignment-right
+    {%- endcase -%}
+
+    {%- case section.settings.image_height -%}
+    {%- when '30vw' %} size-small
+    {%- when '40vw' %} size-medium
+    {%- when '50vw' %} size-large
+    {%- when 'original' %} size-original
+    {%- endcase -%}
+
+    {% if section.settings.link != blank and section.settings.button_label == blank %} is-link{% endif %}
+    "
+    data-wetheme-section-type="image--image-with-text-overlay"
+    data-wetheme-section-id="{{ section.id }}"
+>
+    {% assign img_alt = section.settings.image.alt | default: shop.name %}
+
+    {% assign buttonHidden = false %}
+    {% if section.settings.link != blank and section.settings.button_label == blank %}
+        {% assign buttonHidden = true %}
+    {% endif %}
+
+    {% if section.settings.image_height == 'original' %}
+        <div class="homepage-indiv-section-wrapper grid--full homepage-featured-content-wrapper">
+            <div class="large--one-whole homepage-content--image text-center homepage-content--{{ section.id }}{% if settings.ken_burns_enabled %} kb-enabled{% endif %}">
+                {% if section.settings.image %}
+                    {% render 'responsive-image' with section.settings.image, alt: img_alt | escape %}
+                {% else %}
+                    {{ 'lifestyle-1' | placeholder_svg_tag: 'icon icon--placeholder' }}
+                {% endif %}
+            </div>
+
+            {% if section.settings.title != blank or section.settings.text != blank or section.settings.button_label != blank %}
+                <div class="grid__item homepage-featured-content-box image-with-text-overlay__content-box">
+                    <div class="homepage-featured-content-box-inner show-on-scroll">
+                        {% if section.settings.title != blank %}
+                            <div class="sitewide--title-wrapper">
+                                <h2 class="homepage-sections--title homepage-section-title" id="{{ section.id }}_title">
+                                    {% if buttonHidden == true %}<a href="{{ section.settings.link }}">{% endif %}{{ section.settings.title | escape }}{% if buttonHidden == true %}</a>{% endif %}
+                                </h2>
+                            </div>
+                        {% endif %}
+
+                        {% if section.settings.text != blank %}
+                            <div class="rte featured-row__subtext textarea">{{ section.settings.text }}</div>
+                        {% endif %}
+
+                        {% render 'home-section-button', link: section.settings.link, label: section.settings.button_label %}
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+
+    {% else %}
+
+        <style>
+        {% if section.settings.image != blank %}
+          {% capture selector %}.homepage-content--{{ section.id }} .img{% endcapture %}
+          {% render 'responsive-background-image' with section.settings.image, selector: selector %}
+
+          {% comment %}This is here to show dominant color while the background image is loading{% endcomment %}
+          .homepage-content--{{ section.id }} {
+            background-image: url('{{ section.settings.image | image_url: width: 10, height: 10 }}');
+            background-size: 1px 1px;
+          }
+
+          .homepage-content--{{ section.id }} .img {
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+          }
+        {% endif %}
+
+        .homepage-content--{{ section.id }} .img {
+          height: {{ section.settings.image_height }};
+        }
+
+        @media only screen and (max-width: 577px) {
+          #shopify-section-text-with-image-overlay .homepage-sections--title,
+          #shopify-section-text-with-image-overlay .featured-row__subtext {
+            color: {{ settings.color_body_text }};
+          }
+        }
+
+        @media only screen and (min-width: 768px) {
+          .homepage-content--{{ section.id }} #rellax--{{ section.id }}.rellax.img {
+            height: calc(100% * 1.5);
+            margin-top: {{ section.settings.image_height | remove: 'vw' | times: -0.25 | append: 'vw' }};
+          }
+        }
+
+        .parallax.parallax--{{ section.id }} {
+          height: {{ section.settings.image_height }};
+        }
+
+        </style>
+
+        <div>
+            <div class="homepage-indiv-section-wrapper grid--full homepage-featured-content-wrapper">
+
+                {% capture image_layout %}
+                    <div class="large--one-whole homepage-content--image homepage-content--{{ section.id }}{% if settings.ken_burns_enabled %} kb-enabled{% endif %}">
+                        <div class="{% if section.settings.parallax %} parallax parallax--{{ section.id }}{% endif %}">
+                        {% if section.settings.image != blank %}
+                            <div id="rellax--{{ section.id }}" class="img{% if section.settings.parallax %} rellax{% endif %}" data-rellax-percentage="0.5" data-rellax-desktop-speed="-4" data-rellax-tablet-speed="-2" role="img" aria-label="{{ img_alt | escape }}"></div>
+                        {% else %}
+                            <div id="rellax--{{ section.id }}" class="placeholder-background img{% if section.settings.parallax %} rellax{% endif %}" data-rellax-percentage="0.5" data-rellax-speed="-4">
+                                    {{ 'lifestyle-1' | placeholder_svg_tag: 'icon icon--placeholder' }}
+                            </div>
+                        {% endif %}
+                        </div>
+                    </div>
+                {% endcapture %}
+
+                {{ image_layout }}
+
+                {% if section.settings.title != blank or section.settings.text != blank or section.settings.button_label != blank %}
+                    <div class="grid__item homepage-featured-content-box image-with-text-overlay__content-box">
+                        <div class="homepage-featured-content-box-inner show-on-scroll">
+                            {% if section.settings.title != blank %}
+                                <div class="sitewide--title-wrapper">
+                                  <h2 class="homepage-sections--title homepage-section-title">
+                                    {% if buttonHidden == true %}<a href="{{ section.settings.link }}">{% endif %}{{ section.settings.title | escape }}{% if buttonHidden == true %}</a>{% endif %}
+                                  </h2>
+                                </div>
+                            {% endif %}
+
+                            {% if section.settings.text != blank %}
+                                <div class="rte featured-row__subtext textarea">{{ section.settings.text }}</div>
+                            {% endif %}
+
+                            {% render 'home-section-button', link: section.settings.link, label: section.settings.button_label %}
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+
+    {% endif %}
+</div>
+
+<style>
+  .homepage-content--{{ section.id }} .homepage-section-btn {
+    color: {{ section.settings.button-text }};
+    background-color: {{ section.settings.button-background }};
+  }
+
+  .homepage-content--{{ section.id }} .homepage-section-btn:focus {
+    outline: 2px solid {{ section.settings.button-background }};
+  }
+
+  .homepage-content--{{ section.id }} h2.homepage-sections--title {
+    font-size: {{ section.settings.heading--text-size }}px;
+    line-height: {{ section.settings.heading--text-size | plus: 5 }}px;
+  }
+
+  .homepage-content--{{ section.id }} .featured-row__subtext {
+    font-size: {{ section.settings.text--text-size }}px;
+    line-height: {{ section.settings.text--text-size | plus: 5 }}px;
+  }
+
+  @media only screen and (max-width: 767px) {
+    .homepage-content--{{ section.id }} h2.homepage-sections--title {
+      font-size: {{ section.settings.heading--text-size | times: 0.8 }}px;
+      line-height: {{ section.settings.heading--text-size | times: 0.8 | plus: 5 }}px;
+    }
+
+    .homepage-content--{{ section.id }} .featured-row__subtext {
+      font-size: {{ section.settings.text--text-size | times: 0.8 }}px;
+      line-height: {{ section.settings.text--text-size | times: 0.8 | plus: 5 }}px;
+    }
+  }
+
+  {% if section.settings.bg_image_overlay_opacity != 0 %}
+    .image-with-text-overlay-wrapper .homepage-content--{{ section.id }}.homepage-content--image::before {
+      opacity: 0.{{ section.settings.bg_image_overlay_opacity | prepend: '00' | slice: -2, 2 }};
+    }
+  {% endif %}
+</style>
+
+{% schema %}
+{
+  "name": "t:sections.image--image-with-text-overlay.name",
+  "class": "image-with-text-overlay-wrapper show-on-scroll",
+  "settings": [
+    {
+      "type": "header",
+      "content": "t:all.Background_image"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "t:all.Image"
+    },
+    {
+      "type": "select",
+      "id": "image_height",
+      "label": "t:all.Minimum_section_height",
+      "default": "40vw",
+      "options": [
+        {
+          "value": "30vw",
+          "label": "t:all.Small"
+        },
+        {
+          "value": "40vw",
+          "label": "t:all.Medium"
+        },
+        {
+          "value": "50vw",
+          "label": "t:all.Large"
+        },
+        {
+          "value": "original",
+          "label": "t:all.Original"
+        }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "bg_image_overlay_opacity",
+      "min": 0,
+      "max": 95,
+      "step": 5,
+      "unit": "t:all.percentage",
+      "label": "t:all.Overlay_opacity",
+      "default": 0
+    },
+    {
+      "type": "checkbox",
+      "id": "parallax",
+      "label": "t:all.Enable_parallax_effect",
+      "default": true,
+      "info": "t:sections.image--image-with-text-overlay.settings.parallax.info"
+    },
+    {
+      "type": "header",
+      "content": "t:all.Text"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "t:all.Heading",
+      "default": "Share your story"
+    },
+    {
+      "type": "text",
+      "id": "text",
+      "label": "t:all.Text",
+      "default": "Add a large image with text overlay to give focus to your chosen product, collection, or blog post"
+    },
+    {
+      "type": "select",
+      "id": "colors",
+      "label": "t:all.Text_color",
+      "default": "dark",
+      "options": [
+        {
+          "value": "light",
+          "label": "t:all.Light"
+        },
+        {
+          "value": "accent",
+          "label": "t:all.Feature"
+        },
+        {
+          "value": "dark",
+          "label": "t:all.Dark"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "textPosition",
+      "label": "t:all.Text_position",
+      "default": "center",
+      "options": [
+        {
+          "value": "left",
+          "label": "t:all.Left"
+        },
+        {
+          "value": "center",
+          "label": "t:all.Center"
+        },
+        {
+          "value": "right",
+          "label": "t:all.Right"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "textAlignment",
+      "label": "t:all.Text_alignment",
+      "default": "center",
+      "options": [
+        {
+          "value": "left",
+          "label": "t:all.Left"
+        },
+        {
+          "value": "center",
+          "label": "t:all.Center"
+        },
+        {
+          "value": "right",
+          "label": "t:all.Right"
+        }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "heading--text-size",
+      "min": 12,
+      "max": 50,
+      "step": 2,
+      "unit": "t:all.px",
+      "label": "t:all.Heading_size",
+      "default": 26
+    },
+    {
+      "type": "range",
+      "id": "text--text-size",
+      "min": 12,
+      "max": 50,
+      "step": 2,
+      "unit": "t:all.px",
+      "label": "t:all.Text_size",
+      "default": 18
+    },
+    {
+      "type": "url",
+      "id": "link",
+      "label": "t:all.Link"
+    },
+    {
+      "type": "header",
+      "content": "t:all.Button"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "t:all.Text"
+    },
+    {
+      "type": "color",
+      "id": "button-text",
+      "label": "t:all.Button_text",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "button-background",
+      "label": "t:all.Button_background",
+      "default": "#242424"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.image--image-with-text-overlay.presets.name"
+    }
+  ],
+  "disabled_on": {
+    "groups": [
+      "header",
+      "footer"
+    ]
+  }
+}
+{% endschema %}

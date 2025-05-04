@@ -1,0 +1,23 @@
+
+<div class="rte text-link-animated" data-wetheme-section-id="{{ section.id }}">
+  {{ section.settings.custom_liquid }}
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.advanced-layout--custom-liquid.name",
+  "settings": [
+    {
+      "type": "liquid",
+      "id": "custom_liquid",
+      "label": "t:all.Custom_Liquid",
+      "default": "<div style='text-align:center; padding: 30px 0;'><div class=\"wrapper-padded\"><h2 class=\"homepage-sections--title\">Custom Liquid</h2><p>Add app snippets or other Liquid code to create advanced customizations.</p></div></div>"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:all.Custom_Liquid"
+    }
+  ]
+}
+{% endschema %}

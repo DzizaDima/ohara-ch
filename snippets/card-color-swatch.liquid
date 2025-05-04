@@ -1,0 +1,180 @@
+{% comment %}
+  Renders color swatches for a product, either an image or a color swatch.
+
+  Accepts the following parameters:
+    - show_color_label: {Boolean} Whether to show the color label
+    - swatch_product: {Object} The product to render swatches for
+    - hide_out_of_stock_variants: {Boolean} Whether to hide out of stock variants
+
+  Usage:
+{% endcomment %}
+
+{% liquid 
+  assign swatch_product = swatch_product | default: product
+  assign current_variant = swatch_product.selected_or_first_available_variant
+  assign color_langs = 'color,colour,couleur,colore,farbe,색,色,färg,farve' | split: ','
+  assign show_color_label = show_color_label | default: false
+  assign hide_out_of_stock_variants = hide_out_of_stock_variants | default: false
+  assign file_extension = 'png'
+  assign option_index = 0
+
+  assign has_color_option = false
+  for option in swatch_product.options 
+    assign option_downcase = option | downcase
+
+    if color_langs contains option_downcase
+      assign option_index = forloop.index0
+      assign has_color_option = true
+    endif
+  endfor
+%}
+
+{% style %}
+  .card-color-swatch--wrapper.swatch-no-slider {
+    {% if settings.product_card_text_alignment == 'center' %}
+      justify-content: center;
+    {% elsif settings.product_card_text_alignment == 'right' %}
+      justify-content: flex-end;
+    {% endif %}
+  }
+{% endstyle %}
+
+{% if has_color_option %}
+  <div class="color-swatch--block">
+
+    {% if show_color_label %}
+      <div 
+        data-product-card-swatch-color-name
+        style="text-align:{{ settings.product_card_text_alignment }};"
+      >
+        {{ current_variant.options[option_index] | truncate: 22 }}
+      </div>
+    {% endif %}
+
+    <div class="card-color-swatch--wrapper swiper">
+      {% assign unique_colors = '' %}
+      {% assign in_stock_options = '' %}
+
+      <div class="swiper-wrapper">
+        {% for option in swatch_product.options %}
+          {% assign option_downcase = option | downcase %}
+
+          {% if color_langs contains option_downcase %}
+            {% for variant in swatch_product.variants %}
+              {% assign color_values = variant.options[option_index] | append: ',' | split: ',' %}
+
+              {% for v in swatch_product.variants %}
+                {% if v.options[option_index] == variant.options[option_index] %}
+                  {% if v.available == true %}
+                    {% assign v_option = v.options[option_index] %}
+                    {% unless in_stock_options contains v_option %}
+                      {% assign in_stock_options = in_stock_options | append: ',' | append: v_option %}
+                    {% endunless %}
+                  {% endif %}
+                {% endif %}
+              {% endfor %}
+
+              {% unless unique_colors contains color_values %}
+                {% assign unique_colors = unique_colors | append: ',' | append: color_values %}
+                
+                {% for color in color_values %}
+                  {% liquid 
+                    assign color_asset_url = color | handle | append: '.' | append: file_extension | asset_url
+
+                    assign has_swatch_image = false
+                    if color_asset_url contains 'v='
+                      assign has_swatch_image = true
+                    endif
+                  %}
+
+                  <div 
+                    data-variant="{{ variant | json | escape }}" 
+                    data-variant-url="{{ variant.url }}"
+                    data-variant-price-value="{{ variant.price }}"
+                    data-variant-price="{{ variant.price | money }}"
+                    data-variant-compare-at-price-value="{{ variant.compare_at_price }}"
+                    data-variant-compare-at-price="{{ variant.compare_at_price | money }}"
+                    data-color-value="{{ color | escape | truncate: 22 }}"
+                    data-product-title="{{ swatch_product.title | escape }}"
+                    data-product-id="{{ swatch_product.id }}"
+                    data-color-selected-string="{{ 'sections.collection_template.new_color_selected' | t }}"
+                    class="card-color-swatch--inner swiper-slide {% if current_variant.options[option_index] == color %} active{% endif %}{% unless in_stock_options contains color %} non-focusable{% endunless %}"
+                  >
+                    {% if show_color_label %}
+                      <div class="card-color-swatch-color-label"></div>
+                    {% endif %}
+              
+                    <div class="card-color-swatch-input--wrapper">
+                      <button
+                        data-product-card-swatch-button
+                        {% unless in_stock_options contains color %} tabindex="-1"{% endunless %}
+                        id="{{ section.id }}-swatch-{{ variant.id }}-{{ color | escape }}"
+                        class="card-color-swatch-input{% if current_variant.options[option_index] == color %} swatch-selected{% endif %}{% unless in_stock_options contains color %} sold-out{% endunless %}"
+                        aria-label="{{ swatch_product.title | escape | replace: "|", "" }} | {{ color | escape }}"
+                        aria-selected="{% if current_variant.options[option_index] == color %}true{% else %}false{% endif %}"
+                        style="{% if has_swatch_image %}background-image: url({{ color_asset_url }});{% else %}background-color: {{ color }};{% endif %}"
+                      >
+                        <span class="swatch-sold-out swatch-sold-out-background"></span>
+                        <span class="swatch-sold-out swach-sold-out-foreground"></span>
+                      </button>
+                    </div>
+                  </div>
+                {% endfor %}
+              {% endunless %}
+            {% endfor %}
+          {% endif %}
+        {% endfor %}
+      </div>
+      <div class="swatch-swiper-button--next">
+        {% render 'theme-icon', icon: 'chevron_right' %}
+      </div>
+    </div>
+  </div>
+
+  <div id="aria-swatch-live-region-{{ swatch_product.id }}" class="visually-hidden" aria-live="polite"></div>
+{% else %}
+  {% unless swatch_product %}
+    {% assign color_label = 'sections.collection_template.color_label' | t %}
+    <div class="color-swatch--block">
+      {% if show_color_label %}
+        <div 
+          data-product-card-swatch-color-name
+          style="text-align:{{ settings.product_card_text_alignment }};"
+        >
+          {{ color_label }} {{ 'general.numbers.number_1' | t | downcase }}
+        </div>
+      {% endif %}
+  
+      <div class="card-color-swatch--wrapper swiper">
+        <div class="swiper-wrapper">
+          {% for i in (1..12) %}
+            {% # theme-check-disable TranslationKeyExists %}
+            {% assign number_label = 'general.numbers.number_' | append: forloop.index | t | downcase %}
+            {% # theme-check-enable TranslationKeyExists %}
+            {% assign numbered_color_label = color_label | append: ' ' | append: number_label %}
+            <div 
+              class="card-color-swatch--inner swiper-slide {% if forloop.first %} active{% endif %}"
+              data-color-value="{{ numbered_color_label }}"
+            >
+              {% if show_color_label %}
+                <div class="card-color-swatch-color-label"></div>
+              {% endif %}
+        
+              <div class="card-color-swatch-input--wrapper">
+                <button
+                  data-product-card-swatch-button
+                  id="{{ section.id }}-swatch-{{ variant.id }}-{{ color | escape }}"
+                  class="card-color-swatch-input{% if forloop.first %} swatch-selected{% endif %} card-color-swatch-input--placeholder"
+                >
+                </button>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+        <div class="swatch-swiper-button--next">
+          {% render 'theme-icon', icon: 'chevron_right' %}
+        </div>
+      </div>
+    </div>
+  {% endunless %}
+{% endif %}

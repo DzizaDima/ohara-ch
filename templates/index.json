@@ -1,0 +1,142 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "af3e824e-6ca9-4ac4-9510-a07cb14e4a66": {
+      "type": "animated-text",
+      "blocks": {
+        "template--15051013783622__af3e824e-6ca9-4ac4-9510-a07cb14e4a66-text_static-1": {
+          "type": "text_static",
+          "settings": {
+            "text_static": "<p>Send your</p>",
+            "max_width_desktop": 100,
+            "max_width_mobile": 100,
+            "text_color": "#000000"
+          }
+        },
+        "template--15051013783622__af3e824e-6ca9-4ac4-9510-a07cb14e4a66-text_dynamic-1": {
+          "type": "text_dynamic",
+          "settings": {
+            "text_dynamic": "love,feelings",
+            "animation_timing": 500,
+            "rotation_interval": 5000,
+            "text_color": "#000000"
+          }
+        },
+        "template--15051013783622__af3e824e-6ca9-4ac4-9510-a07cb14e4a66-button-1": {
+          "type": "button",
+          "settings": {
+            "button_url": "shopify://collections/all",
+            "button_text": "Shop now",
+            "color_button_text": "#000000",
+            "color_button_background": "#f1efeb"
+          }
+        }
+      },
+      "block_order": [
+        "template--15051013783622__af3e824e-6ca9-4ac4-9510-a07cb14e4a66-text_static-1",
+        "template--15051013783622__af3e824e-6ca9-4ac4-9510-a07cb14e4a66-text_dynamic-1",
+        "template--15051013783622__af3e824e-6ca9-4ac4-9510-a07cb14e4a66-button-1"
+      ],
+      "settings": {
+        "colors": "accent",
+        "image_desktop": "shopify://shop_images/IMG_2243.jpg",
+        "height_desktop": "l",
+        "text_size_desktop": 48,
+        "text_position_desktop": "bottom_left",
+        "image_mobile": "shopify://shop_images/IMG_0243.jpg",
+        "height_mobile": "full",
+        "text_size_mobile": 28,
+        "text_position_mobile": "left"
+      }
+    },
+    "3643d38b-24f2-4040-ab67-4b4b44a63aab": {
+      "type": "collection--featured-collection",
+      "settings": {
+        "title": "Mother's Day",
+        "richtext": "<p>Flowers</p>",
+        "collection": "spring-collection",
+        "show_view_all": false,
+        "layout_style": "slider",
+        "products_to_show": 8,
+        "grid-desktop": 3,
+        "grid-mobile": "2",
+        "colors": "white"
+      }
+    },
+    "image_image_with_text_dztUGM": {
+      "type": "image--image-with-text",
+      "settings": {
+        "image": "shopify://shop_images/IMG_1462-scaled.jpg",
+        "text_overlapping_image": false,
+        "section-width": "content",
+        "layout": "left",
+        "text_alignment": "left",
+        "title": "Flowers By Subscription",
+        "text": "<p>Beautify your home with fresh flowers delivered directly to your door. We offer a hassle-free subscription program to help you elevate your space. Every week or every month, we’ll delight you with our timely delivery and beautiful blooms.<br/><br/><br/><br/><a href=\"/pages/flowers-by-subscription\" title=\"Flowers by subscription\">FIND OUT MORE</a></p>",
+        "button_label": "",
+        "button_link": "#",
+        "colors": "white"
+      }
+    },
+    "collection_featured_collection_ENEArU": {
+      "type": "collection--featured-collection",
+      "settings": {
+        "title": "{{ section.settings.collection.title }}",
+        "richtext": "<p>Furnish your beautiful bouquet with a vases from our handpicked edit.</p>",
+        "collection": "vases",
+        "show_view_all": true,
+        "layout_style": "slider",
+        "products_to_show": 8,
+        "grid-desktop": 3,
+        "grid-mobile": "2",
+        "colors": "white"
+      }
+    },
+    "image_image_with_text_tBnK4R": {
+      "type": "image--image-with-text",
+      "settings": {
+        "image": "shopify://shop_images/IMG_1252.jpg",
+        "text_overlapping_image": false,
+        "section-width": "content",
+        "layout": "left",
+        "text_alignment": "left",
+        "title": "Weddings",
+        "text": "<p>Our talented wedding team is dedicated to telling your unique story through extraordinary and memorable floral designs.\t\t\t\t\t\t<br/><br/><br/><br/><a href=\"/pages/weddings\" title=\"Weddings\">FIND OUT MORE</a></p>",
+        "button_label": "",
+        "button_link": "#",
+        "colors": "white"
+      }
+    },
+    "image_image_with_text_jMmNMQ": {
+      "type": "image--image-with-text",
+      "settings": {
+        "image": "shopify://shop_images/7CC7B4EA-1B88-47D2-9C82-BA2B8CC7E195.jpg",
+        "text_overlapping_image": false,
+        "section-width": "content",
+        "layout": "right",
+        "text_alignment": "left",
+        "title": "Private Events",
+        "text": "<p>We are on hand to speak with you to create the most beautiful flowers and plants for your event.\t\t\t\t\t\t<br/><br/><br/><br/><a href=\"/pages/private-events\" title=\"Private events\">FIND OUT MORE</a></p>",
+        "button_label": "",
+        "button_link": "#",
+        "colors": "white"
+      }
+    }
+  },
+  "order": [
+    "af3e824e-6ca9-4ac4-9510-a07cb14e4a66",
+    "3643d38b-24f2-4040-ab67-4b4b44a63aab",
+    "image_image_with_text_dztUGM",
+    "collection_featured_collection_ENEArU",
+    "image_image_with_text_tBnK4R",
+    "image_image_with_text_jMmNMQ"
+  ]
+}

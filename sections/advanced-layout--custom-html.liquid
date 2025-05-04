@@ -1,0 +1,91 @@
+<div data-wetheme-section-type="advanced-layout--custom-html" data-wetheme-section-id="{{ section.id }}">
+    {% for block in section.blocks %}
+        {% case block.settings.width %}
+            {% when '25%' %}
+                {%- assign block_width = 'small--one-whole one-quarter' -%}
+            {% when '33%' %}
+                {%- assign block_width = 'small--one-whole one-third' -%}
+            {% when '50%' %}
+                {%- assign block_width = 'small--one-whole one-half' -%}
+            {% when '66%' %}
+                {%- assign block_width = 'small--one-whole two-thirds' -%}
+            {% when '75%' %}
+                {%- assign block_width = 'small--one-whole three-quarters' -%}
+            {% when '100%' %}
+                {%- assign block_width = 'one-whole' -%}
+        {% endcase %}
+
+        <div class="centered {{ block_width }}" {{ block.shopify_attributes }}>
+            <div class="grid__item-inner grid__item-inner--{{ block.type }} text-link-animated">
+                {{ block.settings.code }}
+            </div>
+        </div>
+    {% endfor %}
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.advanced-layout--custom-html.name",
+  "class": "index-section",
+  "max_blocks": 4,
+  "settings": [
+
+  ],
+  "blocks": [
+    {
+      "type": "html",
+      "name": "t:all.Custom_HTML",
+      "settings": [
+        {
+          "type": "html",
+          "id": "code",
+          "label": "t:all.HTML",
+          "default": "<div style='text-align:center; padding: 30px 0;'><div class=\"wrapper-padded\"><h2 class=\"homepage-sections--title\">Use HTML to format your text so it can be easily read.</h2>This text can be used to share information about your brand with customers.</div></div>"
+        },
+        {
+          "type": "select",
+          "id": "width",
+          "label": "t:sections.advanced-layout--custom-html.blocks.html.settings.width.label",
+          "default": "100%",
+          "options": [
+            {
+              "value": "25%",
+              "label": "t:sections.advanced-layout--custom-html.blocks.html.settings.width.options.25_percentage"
+            },
+            {
+              "value": "33%",
+              "label": "t:sections.advanced-layout--custom-html.blocks.html.settings.width.options.33_percentage"
+            },
+            {
+              "value": "50%",
+              "label": "t:sections.advanced-layout--custom-html.blocks.html.settings.width.options.50_percentage"
+            },
+            {
+              "value": "66%",
+              "label": "t:sections.advanced-layout--custom-html.blocks.html.settings.width.options.66_percentage"
+            },
+            {
+              "value": "75%",
+              "label": "t:sections.advanced-layout--custom-html.blocks.html.settings.width.options.75_percentage"
+            },
+            {
+              "value": "100%",
+              "label": "t:sections.advanced-layout--custom-html.blocks.html.settings.width.options.100_percentage"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:all.Custom_HTML",
+      "blocks": [
+        {
+          "type": "html"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

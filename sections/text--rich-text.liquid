@@ -1,0 +1,249 @@
+{{ 'section-rich-text.min.css' | asset_url | stylesheet_tag: preload: true }}
+<noscript>{{ 'section-rich-text.min.css' | asset_url | stylesheet_tag }}</noscript>
+
+{% case section.settings.section_width %}
+    {% when 'full-width' %}
+        {%- assign section_width = 'large--one whole' -%}
+    {% when 'narrow' %}
+        {%- assign section_width = 'large--two-thirds push--large--one-sixth' -%}
+{% endcase %}
+
+<div
+  class="homepage-sections-wrapper homepage-sections-wrapper--{{ section.settings.colors }} "
+    data-wetheme-section-type="text--rich-text" data-wetheme-section-id="{{ section.id }}"
+>
+
+<div class="wrapper-padded show-on-scroll">
+
+	<div class="homepage-indiv-section-wrapper grid--full homepage-featured-content-wrapper">
+
+		<div class="homepage-featured-rich-text {{ section_width }} homepage-featured-rich-text__text-alignment-desktop--{{ section.settings.text_alignment_desktop }} homepage-featured-rich-text__text-alignment-mobile--{{ section.settings.text_alignment_mobile }}">
+
+            {% for block in section.blocks %}
+                {% case block.type %}
+
+                    {% when 'heading' %}
+                        {% if block.settings.heading != blank %}
+                            <div class="sitewide--title-wrapper featured-row__subtext">
+        
+                                <h2 class="rte homepage-sections--title">{{ block.settings.heading | escape }}</h2>
+                            </div>
+                        {% endif %}
+
+                    {% when 'richtext' %}
+                        {% if block.settings.text != blank %}
+                            <div class="rte featured-row__subtext textarea text-link-animated" style="font-size: {{ block.settings.text_size }}px;">{{ block.settings.text }}</div>
+                        {% endif %}
+
+                    {% when 'button' %}
+                        {% if block.settings.button_text != blank and block.settings.button_link != blank %}
+                            <div class="rte featured-row__subtext">
+                                <a href="{{ block.settings.button_link }}" class="btn homepage-featured-box-btn">
+                                    {{ block.settings.button_text }}
+                                </a>
+                            </div>
+                        {% endif %}
+
+                    {% when 'page' %}
+                        {% if block.settings.page.content %}
+                            <div class="rte featured-row__subtext text-link-animated" style="font-size: {{ block.settings.text_size }}px;">{{ block.settings.page.content }}</div>
+                        {% endif %}
+
+                {% endcase %}
+
+            {% endfor %}
+
+		</div>
+
+	</div>
+
+</div>
+
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.text--rich-text.name",
+  "class": "rich-text",
+  "settings": [
+    {
+      "type": "select",
+      "id": "section_width",
+      "label": "t:all.Width",
+      "options": [
+        {
+          "value": "full-width",
+          "label": "t:all.Full_width"
+        },
+        {
+          "value": "narrow",
+          "label": "t:all.Narrow"
+        }
+      ],
+      "default": "narrow"
+    },
+    {
+      "type": "select",
+      "id": "text_alignment_desktop",
+      "label": "t:all.Text_alignment_on_desktop",
+      "options": [
+        {
+          "value": "left",
+          "label": "t:all.Left"
+        },
+        {
+          "value": "center",
+          "label": "t:all.Center"
+        },
+        {
+          "value": "right",
+          "label": "t:all.Right"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "select",
+      "id": "text_alignment_mobile",
+      "label": "t:sections.text--rich-text.settings.text_alignment_mobile.label",
+      "options": [
+        {
+          "value": "left",
+          "label": "t:all.Left"
+        },
+        {
+          "value": "center",
+          "label": "t:all.Center"
+        },
+        {
+          "value": "right",
+          "label": "t:all.Right"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "header",
+      "content": "t:all.Color"
+    },
+    {
+      "type": "select",
+      "id": "colors",
+      "label": "t:all.Color_scheme",
+      "default": "white",
+      "options": [
+        {
+          "value": "white",
+          "label": "t:all.Minimal"
+        },
+        {
+          "value": "light",
+          "label": "t:all.Light"
+        },
+        {
+          "value": "accent",
+          "label": "t:all.Feature"
+        },
+        {
+          "value": "dark",
+          "label": "t:all.Dark"
+        }
+      ]
+    }
+  ],
+  "blocks": [
+    {
+      "type": "heading",
+      "name": "t:all.Heading",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "t:all.Heading",
+          "default": "Heading"
+        }
+      ]
+    },
+    {
+      "type": "richtext",
+      "name": "t:all.Text",
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "t:all.Text",
+          "default": "<p>Use this text block to show store announcements, advertise products and collections, or simply welcome visitors to your store.</p>"
+        },
+        {
+          "type": "range",
+          "id": "text_size",
+          "min": 12,
+          "max": 24,
+          "step": 2,
+          "unit": "t:all.px",
+          "label": "t:all.Text_size",
+          "default": 14
+        }
+      ]
+    },
+    {
+      "type": "button",
+      "name": "t:all.Button",
+      "settings": [
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "t:all.Button_link",
+          "default": "/collections/all"
+        },
+        {
+          "type": "text",
+          "id": "button_text",
+          "label": "t:all.Button_text",
+          "info": "t:all.Required_to_show_the_button",
+          "default": "Button"
+        }
+      ]
+    },
+    {
+      "type": "page",
+      "name": "t:sections.text--rich-text.blocks.page.name",
+      "settings": [
+        {
+          "type": "page",
+          "id": "page",
+          "label": "t:all.Page_content"
+        },
+        {
+          "type": "range",
+          "id": "text_size",
+          "min": 12,
+          "max": 24,
+          "step": 2,
+          "unit": "t:all.px",
+          "label": "t:all.Text_size",
+          "default": 14
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.text--rich-text.presets.name",
+      "blocks": [
+        {
+          "type": "heading"
+        },
+        {
+          "type": "richtext"
+        }
+      ]
+    }
+  ],
+  "disabled_on": {
+    "groups": [
+      "header"
+    ]
+  }
+}
+{% endschema %}

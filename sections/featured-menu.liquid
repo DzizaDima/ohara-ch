@@ -1,0 +1,332 @@
+{{ 'section-featured-menu.min.css' | asset_url | stylesheet_tag: preload: true }}
+<noscript>{{ 'section-featured-menu.min.css' | asset_url | stylesheet_tag }}</noscript>
+
+<style>
+  /* overrides global font-sizes with section font-sizes */
+  [data-wetheme-section-id="{{ section.id }}"].featured-menu-wrapper * {
+    font-size: {{ section.settings.menu_item_size }}px !important;
+    line-height: normal;
+  }
+
+  {% if section.settings.menu_items_color != "rgba(0,0,0,0)" %}
+    .featured-menu-wrapper featured-menu .custom-cursor {
+      background-color: {{ section.settings.menu_items_color }};
+    }
+    
+    .featured-menu-wrapper .placeholder-noblocks,
+    .featured-menu-wrapper featured-menu {
+      color: {{ section.settings.menu_items_color }} !important;
+    }
+  {% endif %}
+</style>
+
+{% liquid
+  assign section_height = 'featured-menu-section-height--' | append: section.settings.min_height
+
+  assign menu_position = 'menu-position--' | append: section.settings.menu_position 
+  
+  assign menu_aligment = 'menu-aligment-mobile--' | append: section.settings.alignment_mobile | append: ' menu-aligment-desktop--' | append: section.settings.alignment_desktop
+
+  assign menu_items_color = 'inherit'
+  if section.settings.menu_items_color != "rgba(0,0,0,0)"
+    assign menu_items_color = section.settings.menu_items_color
+  endif
+
+%}
+
+<section class="featured-menu-wrapper homepage-sections-wrapper--{{ section.settings.colors }} {{ section_height }} show-on-scroll" data-wetheme-section-type="featured-menu" data-wetheme-section-id="{{ section.id }}">
+
+  {% if section.blocks.size == 0 and section.settings.image_desktop_default == blank %}
+    <div class="placeholder-noblocks">
+      {{ 'homepage.onboarding.no_content' | t }}
+    </div>
+
+  {% else %}
+
+    <featured-menu>
+
+      {% if section.settings.image_desktop_default or section.settings.image_mobile %}
+        <div class="default--imgs" data-default-imgs-wrapper>
+          {% liquid
+    
+            if section.settings.image_mobile
+              assign bg_img_mobile = section.settings.image_mobile
+              assign bg_img_mobile_alt = bg_img_mobile.alt | default: shop.name | escape
+              assign bg_img_mobile_classes = ' featured-menu--bg-img-mobile'
+              
+              render 'responsive-image' with bg_img_mobile, alt: bg_img_mobile_alt, wrapper_class: bg_img_mobile_classes, allow_stretch: true
+            endif
+    
+            if section.settings.image_desktop_default
+              assign bg_img_desktop = section.settings.image_desktop_default
+              assign bg_img_desktop_alt = bg_img_desktop.alt | default: shop.name | escape
+              assign bg_img_desktop_classes = ' featured-menu--bg-img-desktop ' | append: section_height
+              assign bg_img_desktop_fit_container = true
+              if section.settings.min_height == 'original'
+                assign bg_img_desktop_fit_container = false
+              endif
+              
+              render 'responsive-image' with bg_img_desktop, alt: bg_img_desktop_alt, wrapper_class: bg_img_desktop_classes, allow_stretch: bg_img_desktop_fit_container
+            endif
+          %}
+        </div>
+      {% endif %}
+
+      {% if section.blocks.size > 0 %}
+        <ul class="featured-menu--images">
+          {% for block in section.blocks %}
+            <li data-menu-image-block="{{ block.id }}" class="featured-menu--image-wrapper{% if block.settings.menu_item_image == blank %} featured-menu--block-bg-img-placeholder{% endif %}" {{ block.shopify_attributes }}>
+              {% if block.settings.menu_item_image != blank %}
+                {% liquid
+                  assign block_bg_img = block.settings.menu_item_image
+                  assign block_bg_img_alt = block_bg_img.alt | default: shop.name | escape
+                  assign block_bg_img_classes = ' featured-menu--block-bg-img ' | append: section_height
+                  assign block_bg_img_fit_container = true
+                  if section.settings.min_height == 'original'
+                    assign block_bg_img_fit_container = false
+                  endif
+                  
+                  render 'responsive-image' with block_bg_img, alt: block_bg_img_alt, wrapper_class: block_bg_img_classes, allow_stretch: block_bg_img_fit_container
+                %}
+              {% else %}
+                {% capture current %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}
+                {% assign placeholder_classes = 'icon icon--placeholder ' | append: section_height %}
+                <div class="featured-menu--placeholder-wrapper">
+                  {{ 'collection-' | append: current | placeholder_svg_tag: placeholder_classes }}
+                </div>
+              {% endif %}
+            </li>
+          {% endfor %}
+        </ul>
+
+        <ul class="featured-menu--items nav-link-animated--custom {{ menu_position }} {{ menu_aligment }}" style="color: {{ menu_items_color }}">
+          {% for block in section.blocks %}
+            {% liquid
+              assign tabindex = 'tabindex="0"'
+              if block.settings.menu_item_link
+                assign tabindex = 'tabindex="-1"'
+              endif 
+            %}
+            {% capture menu_item_data %}
+              data-menu-item data-menu-item-block="{{ block.id }}" data-menu-item-color="{{ block.settings.menu_item_color }}"
+            {% endcapture %}
+          
+            <li class="h2 featured-menu--item{% unless block.settings.menu_item_link %} animated-link--item--nested{% endunless %}" {{ tabindex }}{% unless block.settings.menu_item_link %} {{ menu_item_data }}{% endunless %} {{ block.shopify_attributes }}>
+              {% if block.settings.menu_item_link %}
+                <a href="{{ block.settings.menu_item_link }}" {{ menu_item_data }} class="animated-link--item--nested">
+              {% endif %}
+                <span class="animated-underline">{{ block.settings.menu_item_text }}</span>
+              {% if block.settings.menu_item_link %}
+                </a>
+              {% endif %}
+            </li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+
+      <div data-custom-cursor class="custom-cursor"></div>
+      
+    </featured-menu>
+
+    <safe-load-scripts class="hidden">
+      <script src="{{ 'component-featured-menu.js' | asset_url }}" type="module" defer="defer" data-flow-load-key="component-featured-menu"></script>
+    </safe-load-scripts>
+  {% endif %}
+
+</section>
+
+{% schema %}
+{
+  "name": "t:sections.featured-menu.name",
+  "settings": [
+    {
+      "type": "select",
+      "id": "colors",
+      "label": "t:all.Color_scheme",
+      "default": "light",
+      "options": [
+        {
+          "value": "white",
+          "label": "t:all.Minimal"
+        },
+        {
+          "value": "light",
+          "label": "t:all.Light"
+        },
+        {
+          "value": "accent",
+          "label": "t:all.Feature"
+        },
+        {
+          "value": "dark",
+          "label": "t:all.Dark"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "min_height",
+      "label": "t:all.Minimum_section_height",
+      "default": "40vw",
+      "options": [
+        {
+          "value": "30vw",
+          "label": "t:all.Small"
+        },
+        {
+          "value": "40vw",
+          "label": "t:all.Medium"
+        },
+        {
+          "value": "50vw",
+          "label": "t:all.Large"
+        },
+        {
+          "value": "original",
+          "label": "t:all.Original"
+        }
+      ]
+    },
+    {
+      "type": "image_picker",
+      "id": "image_desktop_default",
+      "label": "t:sections.featured-menu.settings.image_desktop_default.label",
+      "info": "t:all.2000_x_900px_recommended"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_mobile",
+      "label": "t:sections.featured-menu.settings.image_mobile.label",
+      "info": "t:all.1400_x_1400px_recommended"
+    },
+    {
+      "type": "header",
+      "content": "t:all.Menu"
+    },
+    {
+      "type": "select",
+      "id": "menu_position",
+      "label": "t:sections.featured-menu.settings.menu_position.label",
+      "options": [
+        {
+          "value": "left",
+          "label": "t:all.Left"
+        },
+        {
+          "value": "center",
+          "label": "t:all.Center"
+        },
+        {
+          "value": "right",
+          "label": "t:all.Right"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "select",
+      "id": "alignment_desktop",
+      "label": "t:sections.featured-menu.settings.alignment_desktop.label",
+      "options": [
+        {
+          "value": "left",
+          "label": "t:all.Left"
+        },
+        {
+          "value": "center",
+          "label": "t:all.Center"
+        },
+        {
+          "value": "right",
+          "label": "t:all.Right"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "select",
+      "id": "alignment_mobile",
+      "label": "t:sections.featured-menu.settings.alignment_mobile.label",
+      "options": [
+        {
+          "value": "left",
+          "label": "t:all.Left"
+        },
+        {
+          "value": "center",
+          "label": "t:all.Center"
+        },
+        {
+          "value": "right",
+          "label": "t:all.Right"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "color",
+      "id": "menu_items_color",
+      "label": "t:sections.featured-menu.settings.menu_items_color.label",
+      "default": "rgba(0,0,0,0)"
+    },
+    {
+      "type": "range",
+      "id": "menu_item_size",
+      "min": 15,
+      "max": 50,
+      "step": 1,
+      "unit": "t:all.px",
+      "label": "t:sections.featured-menu.settings.menu_item_size.label",
+      "default": 18
+    }
+  ],
+  "max_blocks": 8,
+  "blocks": [
+    {
+      "type": "menu_item",
+      "name": "t:all.Menu_item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "menu_item_text",
+          "label": "t:all.Text",
+          "default": "Menu item"
+        },
+        {
+          "type": "color",
+          "id": "menu_item_color",
+          "label": "t:all.Text_color",
+          "default": "#323131"
+        },
+        {
+          "type": "url",
+          "id": "menu_item_link",
+          "label": "t:all.Link"
+        },
+        {
+          "type": "image_picker",
+          "id": "menu_item_image",
+          "label": "t:sections.featured-menu.blocks.menu_item.settings.menu_item_image.label",
+          "info": "t:all.2000_x_900px_recommended"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.featured-menu.presets.name",
+      "blocks": [
+        {
+          "type": "menu_item"
+        },
+        {
+          "type": "menu_item"
+        },
+        {
+          "type": "menu_item"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

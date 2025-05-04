@@ -1,0 +1,53 @@
+{% comment %}
+  Renders a native video player with a play button overlay.
+
+  Accepts:
+    - autoplay: Whether the video should autoplay
+    - loop: Whether the video should loop
+    - muted: Whether the video should be muted
+    - controls: Whether the video should have controls
+    - video: The video to play
+    - overlay: The video has an overlay with a play button on load
+    - scope_id: The section or block id of the video
+    - overlay_button: Should the overlay have a play button
+
+  Usage:
+    {% render 'native-video' with autoplay: true, loop: true, muted: true, controls: false, video: block.settings.video, overlay: false %}
+{% endcomment %}
+
+{% liquid
+  assign autoplay = autoplay | default: false
+  assign loop = loop | default: false
+  assign muted = muted | default: false
+  assign controls = controls | default: false
+  assign overlay = overlay | default: false
+  assign scope_id = scope_id | default: ''
+  unless overlay_button == false
+    assign overlay_button = true
+  endunless
+%}
+
+<native-video>
+  <div class="{% if overlay %}homepage-hero-content-overlay-wrapper homepage-video-content-overlay-wrapper-{{ scope_id }}{% else %}overlay-hidden{% endif %}">
+    {% if overlay %}
+      <div class="video--video__static-image"><!-- Image filled using CSS background-image --></div>
+      <div class="video--video__text-block" data-selector="native-video-overlay">
+        {% if overlay_button %}
+          <div class="homepage-video-play-button color-scheme-btn" tabindex="0" data-selector="native-video-play-button">
+            <div class="homepage-video-play-button-inner"></div>
+          </div>
+        {% endif %}
+      </div>
+    {% endif %}
+
+    <div class="native-video-wrapper">
+      <div class="video">
+        {{ video | video_tag: autoplay: autoplay, loop: loop, muted: muted, controls: controls, data-selector: "native-video", class: 'hero-video-mp4', image_size: '1100x' }}
+      </div>
+    </div>
+  </div>
+</native-video>
+
+<safe-load-scripts class="hidden">
+  <script src="{{ 'component-native-video.js' | asset_url }}" type="module" defer="defer" data-flow-load-key="component-native-video"></script>
+</safe-load-scripts>

@@ -1,0 +1,68 @@
+{{ 'section-newsletter.min.css' | asset_url | stylesheet_tag: preload: true }}
+<noscript>{{ 'section-newsletter.min.css' | asset_url | stylesheet_tag }}</noscript>
+
+<div
+    class="homepage-sections-wrapper homepage-sections-wrapper--{{ section.settings.colors }} newsletter--section"
+    data-wetheme-section-type="newsletter--newsletter"
+    data-wetheme-section-id="{{ section.id }}"
+>
+  {% render 'newsletter-form', form_id: 'newsletter_section_form' %}
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.newsletter--newsletter.name",
+  "class": "homepage-section--newsletter-wrapper",
+  "settings": [
+    {
+      "id": "newsletter_heading",
+      "type": "text",
+      "label": "t:all.Heading",
+      "default": "Join our Mailing List"
+    },
+    {
+      "type": "richtext",
+      "id": "newsletter_description",
+      "label": "t:all.Description"
+    },
+    {
+      "type": "header",
+      "content": "t:all.Color"
+    },
+    {
+      "type": "select",
+      "id": "colors",
+      "label": "t:all.Color_scheme",
+      "default": "white",
+      "options": [
+        {
+          "value": "white",
+          "label": "t:all.Minimal"
+        },
+        {
+          "value": "light",
+          "label": "t:all.Light"
+        },
+        {
+          "value": "accent",
+          "label": "t:all.Feature"
+        },
+        {
+          "value": "dark",
+          "label": "t:all.Dark"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:all.Newsletter"
+    }
+  ],
+  "disabled_on": {
+    "groups": [
+      "header"
+    ]
+  }
+}
+{% endschema %}

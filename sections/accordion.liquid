@@ -1,0 +1,121 @@
+{{ 'section-accordion.min.css' | asset_url | stylesheet_tag: preload: true }}
+<noscript>{{ 'section-accordion.min.css' | asset_url | stylesheet_tag }}</noscript>
+
+<section
+  class="homepage-sections-wrapper accordion--faq-wrapper accordion-faq--{{ section.id }} homepage-sections-wrapper--{{ section.settings.colors }}"
+  data-wetheme-section-type="accordion--faq"
+  data-wetheme-section-id="{{ section.id }}"
+>
+    <div class="accordion-container wrapper-padded">
+      {% unless section.settings.title == blank %}
+        <div class="title-bar custom-font">
+          <h2 class="homepage-sections--title">{{ section.settings.title }}</h2>
+        </div>
+      {% endunless %}
+      
+      {% for block in section.blocks %}
+        {% unless block.settings.text == blank and block.settings.question == blank %}
+          <div class="accordion-content" {{ block.shopify_attributes }}>
+            {% render 'collapsible-tab', icon: 'none', custom_icon: false, heading: block.settings.question, content: block.settings.text, open_close_icon: section.settings.faq_icon, open_by_default: false %}
+          </div>
+        {% endunless %}
+      {% endfor %}
+    </div>
+
+</section>
+
+{% schema %}
+{
+  "name": "t:sections.accordion.name",
+  "class": "main-accordion--wrapper",
+  "settings": [
+    {
+      "type": "select",
+      "id": "colors",
+      "label": "t:all.Color_scheme",
+      "default": "white",
+      "options": [
+        {
+          "value": "white",
+          "label": "t:all.Minimal"
+        },
+        {
+          "value": "light",
+          "label": "t:all.Light"
+        },
+        {
+          "value": "accent",
+          "label": "t:all.Feature"
+        },
+        {
+          "value": "dark",
+          "label": "t:all.Dark"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "t:all.Heading",
+      "default": "Frequently asked questions"
+    },
+    {
+      "type": "radio",
+      "id": "faq_icon",
+      "label": "t:all.Icon_style",
+      "options": [
+        {
+          "value": "plus_minus",
+          "label": "t:all.Plus_minus"
+        },
+        {
+          "value": "caret",
+          "label": "t:all.Caret"
+        }
+      ],
+      "default": "plus_minus"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "tab_content",
+      "name": "t:sections.accordion.blocks.tab_content.name",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "t:all.Heading",
+          "default": "Place your question or heading here"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "t:all.Text",
+          "default": "<p>Here you can place an explanation or answer to the question.</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.accordion.presets.name",
+      "blocks": [
+        {
+          "type": "tab_content"
+        },
+        {
+          "type": "tab_content"
+        },
+        {
+          "type": "tab_content"
+        }
+      ]
+    }
+  ],
+  "disabled_on": {
+    "groups": [
+      "header"
+    ]
+  }
+}
+{% endschema %}

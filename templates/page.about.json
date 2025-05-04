@@ -1,0 +1,213 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "template--page",
+      "disabled": true,
+      "settings": {
+        "page_title_enabled": true,
+        "page_width": "narrow"
+      }
+    },
+    "94a50e02-c7cb-4f8e-8809-f281c98044d2": {
+      "type": "image--image-with-text-overlay",
+      "settings": {
+        "image": "shopify://shop_images/IMG_5690-min-scaled.jpg",
+        "image_height": "40vw",
+        "bg_image_overlay_opacity": 0,
+        "parallax": false,
+        "title": "",
+        "text": "",
+        "colors": "dark",
+        "textPosition": "center",
+        "textAlignment": "center",
+        "heading--text-size": 50,
+        "text--text-size": 24,
+        "link": "",
+        "button_label": "",
+        "button-text": "#ffffff",
+        "button-background": "#242424"
+      }
+    },
+    "63d055aa-9706-43b0-b3c8-49b4a2e53ef9": {
+      "type": "text--rich-text",
+      "blocks": {
+        "heading_qAzfMx": {
+          "type": "heading",
+          "settings": {
+            "heading": "Our Story"
+          }
+        },
+        "a52c67a4-24a0-4020-93a2-4b06cdc1c155": {
+          "type": "richtext",
+          "settings": {
+            "text": "<p>O`HARA Flowers has been telling stories with flowers since 2019, building a reputation around the world for creating beautiful and memorable floral creations perfectly matched to every occasion and setting.</p>",
+            "text_size": 20
+          }
+        }
+      },
+      "block_order": [
+        "heading_qAzfMx",
+        "a52c67a4-24a0-4020-93a2-4b06cdc1c155"
+      ],
+      "settings": {
+        "section_width": "narrow",
+        "text_alignment_desktop": "center",
+        "text_alignment_mobile": "left",
+        "colors": "white"
+      }
+    },
+    "image_gallery_QYqVtL": {
+      "type": "image--gallery",
+      "blocks": {
+        "image_98fHHa": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/IMG_3776.jpg",
+            "link": "",
+            "title": "",
+            "subheading": "",
+            "overlay-btn-text": "",
+            "show-gradient-overlay": false,
+            "overlay_font_color": "#262428",
+            "button_text_color": "#ffffff",
+            "button_background_color": "#242424",
+            "overlay_color": "#ffffff"
+          }
+        },
+        "image_NNWjUk": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/photo_2024-08-28_11-35-07.jpg",
+            "link": "",
+            "title": "",
+            "subheading": "",
+            "overlay-btn-text": "",
+            "show-gradient-overlay": false,
+            "overlay_font_color": "#262428",
+            "button_text_color": "#ffffff",
+            "button_background_color": "#242424",
+            "overlay_color": "#ffffff"
+          }
+        },
+        "image_AjDFhy": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/IMG_3782.jpg",
+            "link": "",
+            "title": "",
+            "subheading": "",
+            "overlay-btn-text": "",
+            "show-gradient-overlay": false,
+            "overlay_font_color": "#262428",
+            "button_text_color": "#ffffff",
+            "button_background_color": "#242424",
+            "overlay_color": "#ffffff"
+          }
+        }
+      },
+      "block_order": [
+        "image_98fHHa",
+        "image_NNWjUk",
+        "image_AjDFhy"
+      ],
+      "settings": {
+        "colors": "white",
+        "title": "",
+        "richtext": "",
+        "remove-spacing": false,
+        "full-width": false,
+        "section-width": "full",
+        "content-position": "hide"
+      }
+    },
+    "text_rich_text_JajaX4": {
+      "type": "text--rich-text",
+      "blocks": {
+        "heading_fY8tUr": {
+          "type": "heading",
+          "settings": {
+            "heading": "Our Philosophy"
+          }
+        },
+        "richtext_nVBewY": {
+          "type": "richtext",
+          "settings": {
+            "text": "<p>We are dedicated to curating the most exquisite floral arrangements that transcend the ordinary and inspire awe. At O’Hara Flowers & Decor, we believe that flowers are more than just a gift; they are an expression of love, joy, and beauty. Our skilled florists blend creativity with meticulous craftsmanship to create stunning arrangements that capture the essence of each occasion.</p>",
+            "text_size": 14
+          }
+        }
+      },
+      "block_order": [
+        "heading_fY8tUr",
+        "richtext_nVBewY"
+      ],
+      "settings": {
+        "section_width": "narrow",
+        "text_alignment_desktop": "center",
+        "text_alignment_mobile": "center",
+        "colors": "white"
+      }
+    },
+    "image_image_with_text_hYkDMF": {
+      "type": "image--image-with-text",
+      "settings": {
+        "image": "shopify://shop_images/IMG_3767.jpg",
+        "text_overlapping_image": false,
+        "section-width": "full",
+        "layout": "left",
+        "text_alignment": "left",
+        "title": "Our Approach",
+        "text": "<p>We source the finest blooms from around the world, ensuring that every petal is vibrant and every scent is enchanting. Our commitment to quality and attention to detail is unmatched, making us the preferred choice for those who seek the extraordinary.</p>",
+        "button_label": "",
+        "button_link": "",
+        "colors": "white"
+      }
+    },
+    "text_rich_text_BHEAVH": {
+      "type": "text--rich-text",
+      "blocks": {
+        "heading_hY7HaV": {
+          "type": "heading",
+          "settings": {
+            "heading": "O`HARA specialises in producing truly original, innovative floral designs for events, shoots, workplaces and weddings."
+          }
+        },
+        "button_MDCWQk": {
+          "type": "button",
+          "settings": {
+            "button_link": "shopify://collections/all",
+            "button_text": "SHOP OUR FLOWERS"
+          }
+        }
+      },
+      "block_order": [
+        "heading_hY7HaV",
+        "button_MDCWQk"
+      ],
+      "settings": {
+        "section_width": "narrow",
+        "text_alignment_desktop": "center",
+        "text_alignment_mobile": "center",
+        "colors": "white"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "94a50e02-c7cb-4f8e-8809-f281c98044d2",
+    "63d055aa-9706-43b0-b3c8-49b4a2e53ef9",
+    "image_gallery_QYqVtL",
+    "text_rich_text_JajaX4",
+    "image_image_with_text_hYkDMF",
+    "text_rich_text_BHEAVH"
+  ]
+}

@@ -1,0 +1,37 @@
+<div data-value="{{ value | truncate: 22 }}" class="swatch-element image-swatch swatch-element-{{ size }} {{ aspect_ratio }} {{ value | handle }} {% if checked == true %}active{% endif %} {% if available %}available{% else %}soldout{% endif %}">
+  <input
+    id="{{ section.id }}-swatch-{{ option_index }}-{{ value }}"
+    class="visually-hidden"
+    type="radio"
+    value="{{ value }}"
+    {% if checked == true %}
+      checked
+    {% endif %}
+    {% if product_swatch %}
+      name="option-{{ option_index | plus: 1 }}"
+      v-model="option{{ option_index | plus: 1 }}"
+    {% endif %}
+    {% if variation_redirect != blank %}
+      onclick="window.location='{{ variation_redirect }}'; return false;"
+    {% endif %}
+  />
+  {% if image_url != blank %}
+    <label
+      class="image-swatch-{{ size }}"
+      for="{{ section.id }}-swatch-{{ option_index }}-{{ value }}"
+    >
+      <div 
+        class="image-swatch__image aspect-ratio--{{ aspect_ratio }}"
+        style="background-image: url({{ image_url }});{% if aspect_ratio == "original" %} --ar: {{ img_aspect_ratio }};{% endif %}"
+      ></div>
+    </label>
+  {% else %}
+    <label
+      class="no-image image-swatch-{{ size }} aspect-ratio--{{ aspect_ratio }}"
+      for="{{ section.id }}-swatch-{{ option_index }}-{{ value }}"
+      {% if aspect_ratio == "original" %}style="--ar: 1;"{% endif %}
+    >
+      {{ 'product-1' | placeholder_svg_tag: 'icon icon--placeholder' }}
+    </label>
+  {% endif %}
+</div>

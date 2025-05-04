@@ -1,0 +1,490 @@
+{{ 'section-scrolling-banner.min.css' | asset_url | stylesheet_tag }}
+
+{%- if section.blocks.size > 0 -%}
+  <div class="homepage-sections-wrapper--{{ section.settings.color_scheme }} homepage-sections-wrapper{% if section.settings.show_fade %} show-fade{% endif %}" data-wetheme-section-type="scrolling-banner" data-wetheme-section-id="{{ section.id }}">
+
+    <scrolling-banner
+      class="animation-direction-{{ section.settings.animation_direction }}"
+      style="
+      --scrolling-banner-gutter-desktop: {{ section.settings.space_between_blocks_desktop | divided_by: 2 }}px; 
+      --scrolling-banner-gutter-mobile: {{ section.settings.space_between_blocks_mobile | divided_by: 2 }}px; 
+      --scrolling-banner-animation-speed: {{ section.settings.animation_speed | times: 0.1 | times: section.blocks.size }}s;
+      --scrolling-banner-rotate: {{ section.settings.rotate | times: 1.0 }}deg;"
+    >
+      {%- for content in (1..10) -%}
+        <ol class="banner"{% if forloop.index > 1 %} data-duplicated aria-hidden="true"{% endif %}>
+          {%- for block in section.blocks -%}
+            <li class="banner-item {{ block.id }}" {{ block.shopify_attributes }}>
+              {%- case block.type -%}
+                {%- when 'text' -%}
+                  <style>
+                    .{{ block.id }} .font-heading {
+                      font-family: var(--header-font-stack);
+                    }
+    
+                    .{{ block.id }} .outline {
+                      -webkit-text-stroke: 1px var(--color-scheme-text-color);
+                      -webkit-text-fill-color: var(--color-scheme-background-color);
+                    }
+    
+                    .{{ block.id }} .text-content {
+                      font-size: {{ block.settings.font_size_mobile }}px;
+                    }
+                  
+                    @media (min-width: 768px) {
+                      .{{ block.id }} .text-content {
+                        font-size: {{ block.settings.font_size_desktop }}px;
+                      }
+                    }
+                  </style>
+                  <span class="text-content {% if block.settings.font == 'heading' %} font-heading{% endif %}{% if block.settings.style == 'outline' %} outline{% endif %}">{{ block.settings.text }}</span>
+    
+                {%- when 'image' -%}
+                  {% if block.settings.link %}
+                    <a href="{{ block.settings.link }}">
+                  {% endif %}
+                    <style>
+                      .{{ block.id }} .icon--placeholder,
+                      .{{ block.id }} .content-image {
+                        height: {{ block.settings.height_mobile }}px;
+                      }
+    
+                      @media (min-width: 768px) {
+                        .{{ block.id }} .icon--placeholder,
+                        .{{ block.id }} .content-image {
+                          height: {{ block.settings.height_desktop }}px;
+                        }
+                      }
+                    </style>
+    
+                    {% if block.settings.image == blank %}
+                      {% capture current %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}
+                      {{ 'product-' | append: current | placeholder_svg_tag: 'icon icon--placeholder' }}
+                    {% else %}
+                      {% render 'responsive-image' with block.settings.image, default_size: block.settings.height_mobile, class: 'content-image' | append: 'x', blur: false %}
+                    {% endif %}
+                  {% if block.settings.link %}
+                    </a>
+                  {% endif %}
+    
+                {%- when 'icon' -%}
+                  <style>
+                    .{{ block.id }} .icon-content {
+                      height: {{ block.settings.icon_height_mobile }}px;
+                    }
+    
+                    @media (min-width: 768px) {
+                      .{{ block.id }} .icon-content {
+                        height: {{ block.settings.icon_height_desktop }}px;
+                      }
+                    }
+                  </style>
+                  {% render 'theme-icon', icon: block.settings.icon, widthUnset: true, iconClasses: 'icon-content' %}
+    
+              {%- endcase -%}
+            </li>
+            {% if section.settings.borders %}
+              <li class="divider"></li> {% comment %}The divider is in a <li> so it takes the height of the <ol>, making all dividers even in size (even if each block (<li>) has different text sizes).{% endcomment %}
+            {% endif %}
+          {%- endfor -%}
+        </ol>
+      {%- endfor -%}
+    </scrolling-banner>
+    
+    <safe-load-scripts class="hidden">
+      <script src="{{ 'component-scrolling-banner.js' | asset_url }}" type="module" defer="defer" data-flow-load-key="component-scrolling-banner"></script>
+    </safe-load-scripts>
+
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "t:sections.scrolling-banner.name",
+  "tag": "section",
+  "class": "scrolling-banner",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_fade",
+      "label": "t:all.show_fade",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "borders",
+      "label": "t:all.enable_borders",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "t:all.animation"
+    },
+    {
+      "type": "radio",
+      "id": "animation_direction",
+      "label": "t:all.direction",
+      "default": "normal",
+      "options": [
+        {
+          "value": "normal",
+          "label": "t:all.Left"
+        },
+        {
+          "value": "reverse",
+          "label": "t:all.Right"
+        }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "animation_speed",
+      "label": "t:all.speed",
+      "min": 15,
+      "max": 80,
+      "step": 1,
+      "unit": "s",
+      "default": 60
+    },
+    {
+      "type": "header",
+      "content": "t:all.Layout"
+    },
+    {
+      "type": "range",
+      "id": "space_between_blocks_desktop",
+      "label": "t:all.space_between_blocks_desktop",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "space_between_blocks_mobile",
+      "label": "t:all.space_between_blocks_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "select",
+      "id": "rotate",
+      "label": "t:all.rotate",
+      "default": "0",
+      "options": [
+        {
+          "value": "-5",
+          "label": "-5"
+        },
+        {
+          "value": "0",
+          "label": "0"
+        },
+        {
+          "value": "+5",
+          "label": "+5"
+        }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "t:all.Color"
+    },
+    {
+      "type": "select",
+      "id": "color_scheme",
+      "label": "t:all.Color_scheme",
+      "default": "white",
+      "options": [
+        {
+          "value": "white",
+          "label": "t:all.Minimal"
+        },
+        {
+          "value": "light",
+          "label": "t:all.Light"
+        },
+        {
+          "value": "accent",
+          "label": "t:all.Feature"
+        },
+        {
+          "value": "dark",
+          "label": "t:all.Dark"
+        }
+      ]
+    }
+  ],
+  "blocks": [
+    {
+      "type": "text",
+      "name": "t:all.Text",
+      "settings": [
+        {
+          "type": "inline_richtext",
+          "id": "text",
+          "label": "t:all.Text",
+          "default": "Welcome to our store"
+        },
+        {
+          "type": "radio",
+          "id": "font",
+          "label": "t:all.Font",
+          "default": "heading",
+          "options": [
+            {
+              "value": "heading",
+              "label": "t:all.Heading"
+            },
+            {
+              "value": "body",
+              "label": "t:all.Body"
+            }
+          ]
+        },
+        {
+          "type": "radio",
+          "id": "style",
+          "label": "t:all.Style",
+          "default": "fill",
+          "options": [
+            {
+              "value": "fill",
+              "label": "t:all.fill"
+            },
+            {
+              "value": "outline",
+              "label": "t:all.outline"
+            }
+          ]
+        },
+        {
+          "type": "range",
+          "id": "font_size_desktop",
+          "label": "t:all.font_size_desktop",
+          "min": 12,
+          "max": 180,
+          "step": 2,
+          "unit": "px",
+          "default": 48
+        },
+        {
+          "type": "range",
+          "id": "font_size_mobile",
+          "label": "t:all.font_size_mobile",
+          "min": 12,
+          "max": 180,
+          "step": 2,
+          "unit": "px",
+          "default": 28
+        }
+      ]
+    },
+    {
+      "type": "image",
+      "name": "t:all.Image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "t:all.Image"
+        },
+        {
+          "type": "range",
+          "id": "height_desktop",
+          "label": "t:all.height_desktop",
+          "min": 16,
+          "max": 200,
+          "step": 4,
+          "unit": "px",
+          "default": 60
+        },
+        {
+          "type": "range",
+          "id": "height_mobile",
+          "label": "t:all.height_mobile",
+          "min": 16,
+          "max": 200,
+          "step": 4,
+          "unit": "px",
+          "default": 60
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "t:all.Link"
+        }
+      ]
+    },
+    {
+      "type": "icon",
+      "name": "t:all.Icon",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "t:all.Icon",
+          "default": "star",
+          "options": [
+            {
+              "value": "home-smile",
+              "label": "t:all.Home_with_smile"
+            },
+            {
+              "value": "store",
+              "label": "t:all.Store"
+            },
+            {
+              "value": "flag",
+              "label": "t:all.Flag"
+            },
+            {
+              "value": "service",
+              "label": "t:all.Customer_service"
+            },
+            {
+              "value": "chat",
+              "label": "t:all.Chat_bubble"
+            },
+            {
+              "value": "chat-smile",
+              "label": "t:all.Chat_bubble_with_smile"
+            },
+            {
+              "value": "question-answer",
+              "label": "t:all.Question_and_answer"
+            },
+            {
+              "value": "wallet",
+              "label": "t:all.Wallet"
+            },
+            {
+              "value": "price-tag",
+              "label": "t:all.Price_tag"
+            },
+            {
+              "value": "crown",
+              "label": "t:all.Crown"
+            },
+            {
+              "value": "exchange",
+              "label": "t:all.Exchange"
+            },
+            {
+              "value": "gift",
+              "label": "t:all.Gift"
+            },
+            {
+              "value": "clock",
+              "label": "t:all.Clock"
+            },
+            {
+              "value": "truck",
+              "label": "t:all.Truck"
+            },
+            {
+              "value": "measuring_tape",
+              "label": "t:all.Measuring_tape"
+            },
+            {
+              "value": "info",
+              "label": "t:all.Info"
+            },
+            {
+              "value": "heart",
+              "label": "t:all.Heart"
+            },
+            {
+              "value": "map-pin",
+              "label": "t:all.Map_pin"
+            },
+            {
+              "value": "car",
+              "label": "t:all.Car"
+            },
+            {
+              "value": "takeaway",
+              "label": "t:all.Takeaway"
+            },
+            {
+              "value": "restaurant",
+              "label": "t:all.Restaurant"
+            },
+            {
+              "value": "cup",
+              "label": "t:all.Cup"
+            },
+            {
+              "value": "star",
+              "label": "t:all.Star"
+            },
+            {
+              "value": "sun",
+              "label": "t:all.Sun"
+            },
+            {
+              "value": "moon",
+              "label": "t:all.Moon"
+            },
+            {
+              "value": "cake",
+              "label": "t:all.Cake"
+            },
+            {
+              "value": "handbag",
+              "label": "t:all.Handbag"
+            },
+            {
+              "value": "umbrella",
+              "label": "t:all.Umbrella"
+            },
+            {
+              "value": "recycle",
+              "label": "t:all.Recycle"
+            }
+          ]
+        },
+        {
+          "type": "range",
+          "id": "icon_height_desktop",
+          "label": "t:all.height_desktop",
+          "default": 30,
+          "min": 15,
+          "max": 200,
+          "step": 5,
+          "unit": "px"
+        },
+        {
+          "type": "range",
+          "id": "icon_height_mobile",
+          "label": "t:all.height_mobile",
+          "default": 30,
+          "min": 15,
+          "max": 200,
+          "step": 5,
+          "unit": "px"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.scrolling-banner.name",
+      "settings": {
+      },
+      "blocks": [
+        {
+          "type": "text"
+        },
+        {
+          "type": "image"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

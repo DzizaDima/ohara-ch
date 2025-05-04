@@ -1,0 +1,47 @@
+{% assign permalinkURL = '' %}
+{% assign shareTitle = '' %}
+{% assign shareImage = '' %}
+{% if template contains 'article' %}
+
+    {% capture permalinkURL %}{{ shop.url }}{{ article.url }}{% endcapture %}
+    {% capture shareTitle %}{{ article.title }}{% endcapture %}
+    {% if article.featured_image %}
+      {% capture shareImage %}{{ article.featured_image | image_url: width: 1200 }}{% endcapture %}
+    {% elsif settings.share_image %}
+      {% capture shareImage %}{{ settings.share_image | image_url: width: 1200 }}{% endcapture %}
+    {% endif %}
+
+{% elsif template contains 'product' %}
+
+    {% capture permalinkURL %}{{ shop.url }}{{ product.url }}{% endcapture %}
+    {% capture shareTitle %}{{ product.title }}{% endcapture %}
+    {% if product.media.size > 0 %}
+      {% capture shareImage %}{{ product.media[0].preview_image | image_url: width: 1200 }}{% endcapture %}
+    {% elsif settings.share_image %}
+      {% capture shareImage %}{{ settings.share_image | image_url: width: 1200 }}{% endcapture %}
+    {% endif %}
+
+{% endif %}
+
+<div id="sharing" class="social-sharing" data-permalink="{{ permalinkURL }}">
+
+  <div class="label-font">{{ settings.social_sharing_title }}</div>
+
+  {% if settings.share_facebook %}
+  <a class="standalone-icon--wrapper" href="//www.facebook.com/sharer.php?u={{ permalinkURL }}" target="_blank" rel="noopener" aria-label="Share on Facebook">
+    {% render 'theme-icon' with icon: 'facebook' %}
+  </a>
+  {% endif %}
+
+  {% if settings.share_x %}
+  <a class="standalone-icon--wrapper" href="//x.com/share?url={{ permalinkURL }}&amp;text={{ shareTitle | escape }}" target="_blank" rel="noopener" aria-label="Share on X">
+    {% render 'theme-icon' with icon: 'x' %}
+  </a>
+  {% endif %}
+
+  {% if settings.share_pinterest and shareImage %}
+  <a class="standalone-icon--wrapper" href="//pinterest.com/pin/create/button/?url={{ permalinkURL }}&amp;media={{ shareImage | escape }}&amp;description={{ product.title | escape }}" target="_blank" rel="noopener" aria-label="Share on Pinterest">
+    {% render 'theme-icon' with icon: 'pinterest' %}
+  </a>
+  {% endif %}
+</div>

@@ -1,0 +1,378 @@
+{{ 'section-collection-list.min.css' | asset_url | stylesheet_tag: preload: true }}
+<noscript>{{ 'section-collection-list.min.css' | asset_url | stylesheet_tag }}</noscript>
+
+{% unless section.settings.content-position == 'below-image' %}
+    {% assign stretch_img = true %}
+    <style>
+        .section--{{ section.id }} .homepage-collection-grid-inner {
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-rows: 1fr;
+        }
+
+        .section--{{ section.id }} .homepage-collection-grid-inner .grid-image,
+        .section--{{ section.id }} .homepage-collection-grid-inner .grid-item-details--hover,
+        .section--{{ section.id }} .homepage-collection-grid-inner .grid-item-details--overlay {
+            grid-column: 1 / 2;
+            grid-row: 1 / 2;
+        }
+
+        .section--{{ section.id }} .homepage-collection-grid-inner .responsive-image-wrapper,
+        .section--{{ section.id }} .homepage-collection-grid-inner .responsive-image-wrapper img {
+            height: 100%;
+        }
+    </style>
+{% else %}
+    {% assign stretch_img = false %}
+{% endunless %}
+
+{% if section.settings.remove-spacing %}
+    {% assign no-spacing = ' no-spacing' %}
+{% else %}
+    {% assign no-spacing = '' %}
+{% endif %}
+
+<div
+  class="homepage-sections-wrapper homepage-sections-wrapper--{{ section.settings.colors }}{{ no-spacing }}"
+  data-wetheme-section-type="collection--collection-list" data-wetheme-section-id="{{ section.id }}"
+>
+
+	{%- assign items-per-row = section.settings.items-per-row -%}
+
+	<div class="homepage-collections-background{% if section.settings.section-width == 'content' %} content-width{% endif %}">
+
+    <div class="show-on-scroll section--{{ section.id }}">
+			{% if section.settings.title != blank %}
+				<div class="sitewide--title-wrapper">
+					<h2 class="homepage-sections--title">{{ section.settings.title | escape }}</h2>
+				</div>
+			{% endif %}
+
+			{% if section.settings.richtext != '' %}
+				<div class="grid">
+					<div class="grid__item large--one-half push--large--one-quarter">
+						<div class="homepage-sections--description text-link-animated">{{ section.settings.richtext }}</div>
+					</div>
+				</div>
+			{% endif %}
+
+			{% if section.settings.section-width == 'content' %}
+			<div class="wrapper-padded">
+					<div class="grid--full">
+							<div class="grid__item">
+			{% endif %}
+
+				<div class="collection-grid collection-grid--items-{{ items-per-row }}{% if section.settings.fill-the-area %} expand-grid{% endif %}{% if section.settings.remove-spacing %} remove-spacing{% else %} keep-spacing{% endif %}">
+
+					{% for block in section.blocks %}
+						<style>
+							.section--{{ section.id }} .block-section--{{ block.id }} .grid-item-details--background-gradient,
+							.section--{{ section.id }} .block-section--{{ block.id }} .hover-outer .hover-inner::before {
+								background: -webkit-linear-gradient(top, {{ block.settings.overlay_color | color_modify: 'alpha', 0.3 }} 0%, {{ block.settings.overlay_color | color_modify: 'alpha', 0.8 }} 75%);
+								background: linear-gradient(to bottom, {{ block.settings.overlay_color | color_modify: 'alpha', 0.3 }} 0%, {{ block.settings.overlay_color | color_modify: 'alpha', 0.8 }} 75%);
+							}
+
+							{% unless section.settings.content-position == 'below-image' %}
+							.section--{{ section.id }} .block-section--{{ block.id }} .grid-item__subheading,
+							.section--{{ section.id }} .block-section--{{ block.id }} .grid-item__title {
+								color: {{ block.settings.overlay_font_color }}
+							}
+							{% endunless %}
+						</style>
+
+						{%- assign collection = collections[block.settings.collection] -%}
+						{% capture collection_title %}{{ collection.title | escape }}{% endcapture %}
+
+						{% if collection == empty %}
+							{% comment %}add default state for collection block in storefront editor{% endcomment %}
+							{% capture collection_title %}{{ 'homepage.onboarding.collection_title' | t }}{% endcapture %}
+						{% else %}
+							{% capture collection_title %}{{ collection.title }}{% endcapture %}
+						{% endif %}
+
+						<div class="homepage-collection-grid-item homepage-collection-grid-item--{{ section.settings.content-position }} block-section--{{ block.id }}" {{ block.shopify_attributes }}>
+
+								<div class="homepage-collection-grid-inner">
+
+									<div class="grid-image">
+										{% if block.settings.collection != blank and section.settings.content-position == 'below-image' %}
+										<a href="{{ collection.url }}" class="grid-image--centered" tabindex="-1" title="">
+										{% endif %}
+
+											{% if image.alt != blank %}
+												{% assign alt_text = image.alt %}
+											{% else %}
+												{% assign alt_text = collection_title %}
+											{% endif %}
+
+											{% if collection == empty %}
+												{% if block.settings.collection_img %}
+													{% render 'responsive-image' with block.settings.collection_img, alt: alt_text, class: class, allow_stretch: stretch_img %}
+												{% else %}
+													{% capture current %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}
+													{{ 'collection-' | append: current | placeholder_svg_tag: 'icon icon--placeholder' }}
+												{% endif %}
+											{% else %}
+												{% if block.settings.collection_img %}
+													{% assign image = block.settings.collection_img %}
+												{% elsif collection.image %}
+													{% assign image = collection.image %}
+												{% elsif collection.products.size > 0 %}
+													{% assign product = collection.products | first %}
+													{% assign image = product.media[0].preview_image %}
+												{% else %}
+													{% assign image = nil %}
+												{% endif %}
+
+												{% if section.blocks.size == 1 %}
+													{% assign class = 'homepage-collection-grid-image-single' %}
+												{% else %}
+													{% assign class = '' %}
+												{% endif %}
+
+												{% render 'responsive-image' with image, alt: alt_text, class: class, allow_stretch: stretch_img %}
+											{% endif %}
+
+										{% if block.settings.collection != blank and section.settings.content-position == 'below-image' %}
+										</a>
+										{% endif %}
+									</div>
+
+									<div class="grid-item-details--{{ section.settings.content-position }}{% if block.settings.show-gradient-overlay and section.settings.content-position != 'below-image' %} grid-item-details--background-gradient{% endif %}"
+                                    {% unless section.settings.content-position == 'below-image' %}style="position:relative;"{% endunless %}>
+										{% if section.settings.content-position != 'below-image' and block.settings.overlay-btn-text == blank and block.settings.collection != blank %}
+											<a href="{{ collection.url }}" class="" tabindex="-1" style="width: 100%;">
+										{% endif %}
+
+											<div class="grid-item__content">
+												{% if block.settings.subheading != blank %}
+													{% if section.settings.content-position == 'below-image' and block.settings.collection != blank %}
+														<a href="{{ collection.url }}" class="grid-item__subheading" tabindex="-1">
+													{% endif %}
+														<div class="grid-item__subheading">{{ block.settings.subheading }}</div>
+													{% if section.settings.content-position == 'below-image' and block.settings.collection != blank %}
+														</a>
+													{% endif %}
+												{% endif %}
+
+												{% if section.settings.content-position == 'below-image' and block.settings.collection != blank %}
+													<a href="{{ collection.url }}" tabindex="-1">
+												{% endif %}
+													<h2 class="grid-item__title">{{ collection_title }}</h2>
+												{% if section.settings.content-position == 'below-image' and block.settings.collection != blank %}
+													</a>
+												{% endif %}
+
+												{% if block.settings.overlay-btn-text != blank and block.settings.collection != blank %}
+													<a href="{{ collection.url }}" class="btn homepage-featured-box-btn">{{ block.settings.overlay-btn-text }}</a>
+												{% endif %}
+											</div>
+
+										{% if section.settings.content-position != 'below-image' and block.settings.overlay-btn-text == blank and block.settings.collection != blank %}
+											</a>
+										{% endif %}
+									</div>
+
+								</div>
+
+						</div>
+					{% endfor %}
+					{% if section.blocks.size == 0 %}
+						<div class="placeholder-noblocks">
+							{{ 'homepage.onboarding.no_content' | t }}
+						</div>
+					{% endif %}
+
+				</div>
+
+			{% if section.settings.section-width == 'content' %}
+							</div>
+					</div>
+			</div>
+			{% endif %}
+    </div>
+
+  </div>
+
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.collection--collection-list.name",
+  "class": "featured-collections-wrapper",
+  "max_blocks": 9,
+  "settings": [
+    {
+      "type": "select",
+      "id": "colors",
+      "label": "t:all.Color_scheme",
+      "default": "light",
+      "options": [
+        {
+          "value": "white",
+          "label": "t:all.Minimal"
+        },
+        {
+          "value": "light",
+          "label": "t:all.Light"
+        },
+        {
+          "value": "accent",
+          "label": "t:all.Feature"
+        },
+        {
+          "value": "dark",
+          "label": "t:all.Dark"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "t:all.Heading",
+      "default": "Featured Collections"
+    },
+    {
+      "type": "richtext",
+      "id": "richtext",
+      "label": "t:all.Description"
+    },
+    {
+      "type": "range",
+      "id": "items-per-row",
+      "min": 1,
+      "max": 4,
+      "step": 1,
+      "label": "t:sections.collection--collection-list.settings.items-per-row.label",
+      "default": 3
+    },
+    {
+      "type": "checkbox",
+      "id": "fill-the-area",
+      "default": true,
+      "label": "t:sections.collection--collection-list.settings.fill-the-area.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "remove-spacing",
+      "default": false,
+      "label": "t:all.Remove_spacing"
+    },
+    {
+      "type": "select",
+      "id": "section-width",
+      "label": "t:all.Width",
+      "default": "full",
+      "options": [
+        {
+          "value": "full",
+          "label": "t:all.Full_width"
+        },
+        {
+          "value": "content",
+          "label": "t:all.Content_width"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "content-position",
+      "label": "t:sections.collection--collection-list.settings.content-position.label",
+      "default": "overlay",
+      "options": [
+        {
+          "value": "hover",
+          "label": "t:all.On_hover"
+        },
+        {
+          "value": "overlay",
+          "label": "t:all.Overlay"
+        },
+        {
+          "value": "below-image",
+          "label": "t:all.Below_image"
+        }
+      ]
+    }
+  ],
+  "blocks": [
+    {
+      "type": "featured_collection",
+      "name": "t:all.Collection",
+      "settings": [
+        {
+          "label": "t:all.Collection",
+          "id": "collection",
+          "type": "collection"
+        },
+        {
+          "id": "collection_img",
+          "type": "image_picker",
+          "label": "t:all.Image_Optional",
+          "info": "t:sections.collection--collection-list.blocks.featured_collection.settings.collection_img.info"
+        },
+        {
+          "type": "text",
+          "id": "subheading",
+          "label": "t:all.Subheading",
+          "default": "Subheading"
+        },
+        {
+          "type": "text",
+          "id": "overlay-btn-text",
+          "label": "t:all.Button_text",
+          "default": "Shop now"
+        },
+        {
+          "type": "checkbox",
+          "id": "show-gradient-overlay",
+          "default": false,
+          "label": "t:all.Enable_overlay_gradient"
+        },
+        {
+          "type": "color",
+          "id": "overlay_font_color",
+          "label": "t:all.Overlay_text_color",
+          "default": "#262428"
+        },
+        {
+          "type": "color",
+          "id": "overlay_color",
+          "label": "t:all.Overlay_color",
+          "default": "#ffffff"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.collection--collection-list.presets.name",
+      "blocks": [
+        {
+          "type": "featured_collection"
+        },
+        {
+          "type": "featured_collection"
+        },
+        {
+          "type": "featured_collection"
+        }
+      ]
+    }
+  ],
+  "enabled_on": {
+    "templates": [
+      "404",
+      "article",
+      "blog",
+      "cart",
+      "collection",
+      "index",
+      "page",
+      "password",
+      "product",
+      "search"
+    ]
+  }
+}
+{% endschema %}

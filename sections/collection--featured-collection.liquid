@@ -1,0 +1,288 @@
+{{ 'section-featured-collection.min.css' | asset_url | stylesheet_tag: preload: true }}
+<noscript>{{ 'section-featured-collection.min.css' | asset_url | stylesheet_tag }}</noscript>
+
+{% liquid 
+  assign remove_title_padding = false
+  assign remove_description_padding = false
+
+  if section.settings.layout_style == 'slider' and settings.hover_navigation_desktop == 'above'
+    if section.settings.title != blank and section.settings.richtext == blank
+      assign remove_title_padding = true
+    endif
+
+    if section.settings.richtext != blank
+      assign remove_description_padding = true
+    endif
+  endif
+%}
+
+<div
+  class="homepage-sections-wrapper homepage-sections-wrapper--{{ section.settings.colors }}{% if section.settings.layout_style == 'slider' %} slider-nav--{{ settings.hover_navigation_desktop }}{% endif %}"
+  data-wetheme-section-type="collection--featured-collection" data-wetheme-section-id="{{ section.id }}"
+>
+
+<div class="wrapper-padded">
+
+  <div class="homepage-indiv-section-wrapper grid--full homepage-featured-content-wrapper">
+
+  {% if section.settings.title != blank or section.settings.richtext != blank %}
+    <div class="homepage-featured-rich-text">
+      <div class="page-width featured-products-wrapper">
+        {% if section.settings.title != blank %}
+            <div class="sitewide--title-wrapper">
+
+              <h2 class="homepage-sections--title{% if remove_title_padding %} remove--spacing{% endif %}">{{ section.settings.title | escape }}</h2>
+            </div>
+        {% endif %}
+
+        {% if section.settings.richtext != blank %}
+          <div class="rte featured-row__subtext textarea text-link-animated{% if remove_description_padding %} remove--spacing{% endif %}">{{ section.settings.richtext }}</div>
+        {% endif %}
+      </div>
+    </div>
+  {% endif %}
+
+  {% liquid 
+    assign collection = collections[section.settings.collection]
+    assign tablet_item_width = 'medium--one-third'
+
+    case section.settings.grid-desktop
+      when 2
+        assign desktop_item_width = 'large--one-half'
+        assign tablet_item_width = 'medium--one-half'
+      when 3
+        assign desktop_item_width = 'large--one-third'
+      when 4
+        assign desktop_item_width = 'large--one-quarter'
+      when 5
+        assign desktop_item_width = 'large--one-fifth'
+      when 6
+        assign desktop_item_width = 'large--one-sixth'
+    endcase
+
+    case section.settings.grid-mobile
+      when "1"
+       assign mobile_item_width = 'small--one-whole'
+      when "2"
+        assign mobile_item_width = 'small--one-half'
+    endcase
+
+    assign grid_item_width = desktop_item_width | append: ' ' | append: tablet_item_width | append: ' ' | append: mobile_item_width
+    assign product_limit = section.settings.products_to_show
+  %}
+
+  <div 
+    class="grid-uniform product-grid--wrapper{% if section.settings.layout_style == 'slider' %} product-grid--slider-enabled{% endif %}"
+    {%- if section.settings.layout_style == 'slider' -%} data-grid-slider-wrapper{%- endif -%}
+  >
+    {%- if section.settings.layout_style == 'slider' -%}
+      <safe-load-scripts class="hidden">
+        <script src="{{ 'component-grid-slider.js' | asset_url }}" defer="defer" type="module" data-flow-load-key="grid-slider"></script>
+      </safe-load-scripts>
+
+      <!-- navigation -->
+      <div class="swiper-btn--wrapper small-hide swiper-btn-layout__{{ settings.hover_navigation_desktop }}">
+        <div class="swiper-button--prev btn">
+          {% render 'theme-icon', icon: 'chevron_left' %}
+        </div>
+        <div class="swiper-button--next btn">
+          {% render 'theme-icon', icon: 'chevron_right' %}
+        </div>
+      </div>
+
+      <grid-slider 
+        class="swiper"
+        data-slides-per-view-desktop="{{ section.settings.grid-desktop }}"
+        data-slides-per-view-mobile="{{ section.settings.grid-mobile }}"
+        data-product-limit="{{ product_limit }}"
+      >
+        <div class="swiper-wrapper">
+    {%- endif -%}
+        {% for product in collection.products limit: product_limit %}
+          
+          {% comment %}
+            Set the default grid_item_width if no variable is set
+          {% endcomment %}
+          {% unless grid_item_width %}
+            {% assign grid_item_width = 'large--one-third medium--one-half' %}
+          {% endunless %}
+
+          {% if section.settings.layout_style == 'slider' %}
+            <div class="grid__item {{ grid_item_width }} swiper-slide">
+          {% else %}
+            <div class="grid__item {{ grid_item_width }} featured-product--grid-item">
+          {% endif %}
+              {% render 'grid-view-item', product: product, collection: collection, enable_badges: settings.show_badges, grid_count_desktop: section.settings.grid-desktop, grid_count_mobile: section.settings.grid-mobile, section_color_scheme: section.settings.colors %}
+          </div>
+
+        {% else %}
+          {% for i in (1..product_limit) %}
+            {% capture svg_index %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}
+            {% capture svg_index_reversed %}{% cycle 6, 5, 4, 3, 2, 1 %}{% endcapture %}
+            {% if section.settings.layout_style == 'slider' %}
+              <div class="grid__item {{ grid_item_width }} swiper-slide">
+            {% else %}
+              <div class="grid__item {{ grid_item_width }} featured-product--grid-item">
+            {% endif %}
+                {% render 'grid-view-item-placeholder', svg_index: svg_index, svg_index_reversed: svg_index_reversed, section_color_scheme: section.settings.colors %}
+            </div>
+          {% endfor %}
+        {% endfor %}
+    {%- if section.settings.layout_style == 'slider' -%}
+        </div>
+      </grid-slider>
+
+       <!-- pagination -->
+       <div class="swiper-pagination"></div>
+
+       <!-- scrollbar -->
+       <div class="swiper-scrollbar large-hide"></div>
+    {%- endif -%}
+  </div>
+
+  {% if section.settings.show_view_all %}
+    <div class="text-center show-view-all--button">
+      <a href="{{ collection.url }}" class="btn" aria-label="{{ 'collections.general.view_all_label' | t: collection_name: collection.title }}">
+        {{ 'collections.general.view_all' | t }}
+      </a>
+    </div>
+  {% endif %}
+
+</div>
+
+</div>
+
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.collection--featured-collection.name",
+  "class": "featured-products-wrapper show-on-scroll",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "t:all.Heading"
+    },
+    {
+      "type": "richtext",
+      "id": "richtext",
+      "label": "t:all.Description"
+    },
+    {
+      "id": "collection",
+      "type": "collection",
+      "label": "t:all.Collection"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_view_all",
+      "label": "t:sections.collection--featured-collection.settings.show_view_all.label",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "t:all.Layout"
+    },
+    {
+      "type": "radio",
+      "id": "layout_style",
+      "label": "t:all.Style",
+      "options": [
+        {
+          "value": "grid",
+          "label": "t:all.Grid"
+        },
+        {
+          "value": "slider",
+          "label": "t:all.Slider"
+        }
+      ],
+      "default": "slider"
+    },
+    {
+      "type": "range",
+      "id": "products_to_show",
+      "min": 2,
+      "max": 30,
+      "step": 1,
+      "label": "t:all.Products_to_show",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "grid-desktop",
+      "min": 2,
+      "max": 5,
+      "step": 1,
+      "label": "t:all.Product_per_row_desktop",
+      "default": 4
+    },
+    {
+      "type": "radio",
+      "id": "grid-mobile",
+      "label": "t:all.Product_per_row_mobile",
+      "options": [
+        {
+          "value": "1",
+          "label": "t:all.1"
+        },
+        {
+          "value": "2",
+          "label": "t:all.2"
+        }
+      ],
+      "default": "2"
+    },
+    {
+      "type": "header",
+      "content": "t:all.Color"
+    },
+    {
+      "type": "select",
+      "id": "colors",
+      "label": "t:all.Color_scheme",
+      "default": "white",
+      "options": [
+        {
+          "value": "white",
+          "label": "t:all.Minimal"
+        },
+        {
+          "value": "light",
+          "label": "t:all.Light"
+        },
+        {
+          "value": "accent",
+          "label": "t:all.Feature"
+        },
+        {
+          "value": "dark",
+          "label": "t:all.Dark"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.collection--featured-collection.presets.name",
+      "category": {
+        "en": "Collection",
+        "de": "Kollektion",
+        "es": "Colección",
+        "fr": "Collection",
+        "pt-PT": "Coleção"
+      }
+    }
+  ],
+  "disabled_on": {
+    "templates": [
+      "collection"
+    ],
+    "groups": [
+      "header",
+      "footer"
+    ]
+  }
+}
+{% endschema %}

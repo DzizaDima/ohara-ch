@@ -1,0 +1,332 @@
+{{ 'section-gallery.min.css' | asset_url | stylesheet_tag: preload: true }}
+<noscript>{{ 'section-gallery.min.css' | asset_url | stylesheet_tag }}</noscript>
+
+{% if section.settings.remove-spacing %}
+  {% assign no-spacing = ' no-spacing' %}
+{% else %}
+  {% assign no-spacing = '' %}
+{% endif %}
+
+<div
+  class="homepage-sections-wrapper homepage-sections-wrapper--{{ section.settings.colors }}{{ no-spacing }}"
+  data-wetheme-section-type="image--gallery" data-wetheme-section-id="{{ section.id }}"
+>
+  {% assign no_images = true %}
+  {% for block in section.blocks %}
+    {% if block.settings.image != blank %}
+      {% assign no_images = false %}
+    {% endif %}
+  {% endfor %}
+  {% if section.settings.remove-spacing == false %}
+    <div class="wrapper-padded">
+  {% endif %}
+      <div class="homepage-gallery-background{% if section.settings.section-width == 'content' %} content-width{% endif %}">
+        {% if section.settings.title != blank or section.settings.richtext != blank %}
+          <div class="wrapper-padded">
+            {% if section.settings.title != blank %}
+              <div class="sitewide--title-wrapper">
+                <h2 class="homepage-sections--title">{{ section.settings.title | escape }}</h2>
+              </div>
+            {% endif %}
+
+            {% if section.settings.richtext != blank %}
+              <div class="grid">
+                <div class="grid__item large--one-half push--large--one-quarter">
+                  <div class="homepage-sections--description text-link-animated">{{ section.settings.richtext }}</div>
+                </div>
+              </div>
+            {% endif %}
+          </div>
+        {% endif %}
+
+        {% if section.settings.section-width == 'content' %}
+          <div class="wrapper content-width"><div class="grid--full"><div class="grid__item">
+        {% endif %}
+          <div class="gallery-grid gallery-grid--items-{{ section.blocks.size }} expand-grid{% if section.settings.remove-spacing %} remove-spacing{% else %} keep-spacing{% endif %}{% if no_images %} no-user-images{% endif %} content-position-{{ section.settings.content-position }}{% if section.settings.full-width %} gallery-full-width{% endif %}">
+            {% for block in section.blocks %}
+
+              <div class="homepage-gallery-grid-item homepage-gallery-grid-item--{{ section.settings.content-position }} block-section--{{ block.id }}" {{ block.shopify_attributes }}>
+                <style>
+                  [data-wetheme-section-id="{{ section.id }}"] .block-section--{{ block.id }} .grid-item-details--background-gradient,
+                  [data-wetheme-section-id="{{ section.id }}"] .block-section--{{ block.id }} .hover-outer .hover-inner::before {
+                    background: -webkit-linear-gradient(top, {{ block.settings.overlay_color | color_modify: 'alpha', 0.3 }} 0%, {{ block.settings.overlay_color | color_modify: 'alpha', 0.8 }} 75%);
+                    background: linear-gradient(to bottom, {{ block.settings.overlay_color | color_modify: 'alpha', 0.3 }} 0%, {{ block.settings.overlay_color | color_modify: 'alpha', 0.8 }} 75%);
+                  }
+
+                  {% unless section.settings.content-position == 'below-image' %}
+                    [data-wetheme-section-id="{{ section.id }}"] .block-section--{{ block.id }} .grid-item__subheading,
+                    [data-wetheme-section-id="{{ section.id }}"] .block-section--{{ block.id }} .grid-item__title {
+                      color: {{ block.settings.overlay_font_color }};
+                    }
+
+                    [data-wetheme-section-id="{{ section.id }}"] .block-section--{{ block.id }} .homepage-featured-box-btn {
+                      color: {{ block.settings.button_text_color }} !important;
+                      background: {{ block.settings.button_background_color }} !important;
+                    }
+
+                    [data-wetheme-section-id="{{ section.id }}"] .block-section--{{ block.id }} .homepage-featured-box-btn:focus {
+                      outline: 2px solid {{ block.settings.button_background_color }};
+                    }
+                  {% endunless %}
+                </style>
+
+                <div class="homepage-gallery-grid-inner{% if section.settings.content-position == 'below-image' %} info-below-image{% endif %}">
+                  <div class="overflow">
+                    <div class="grid-image{% if settings.ken_burns_enabled %} kb-enabled{% endif %}">
+                      {% if block.settings.link != blank and block.settings.overlay-btn-text == blank %}
+                        <a href="{{ block.settings.link }}" class="grid-image--centered">
+                      {% endif %}
+
+                        {% if block.settings.image == blank %}
+                          <div class="grid-image--placeholder-wrapper">
+                            {{ 'image' | placeholder_svg_tag: 'icon icon--placeholder' }}
+                          </div>
+                        {% else %}
+                          {% render 'responsive-image' with block.settings.image, alt: block.settings.image.alt, allow_stretch: true %}
+                        {% endif %}
+
+                      {% if block.settings.link != blank and block.settings.overlay-btn-text == blank %}
+                        </a>
+                      {% endif %}
+                    </div>
+                  </div>
+
+                  {% unless section.settings.content-position == 'hide' %}
+                    <div class="grid-item-details--{{ section.settings.content-position }}{% if block.settings.show-gradient-overlay and section.settings.content-position != 'below-image' %} grid-item-details--background-gradient{% endif %} full-height">
+                      {% assign is_link = false %}
+                      {% if block.settings.link != blank %}
+                        {% if block.settings.overlay-btn-text == blank %}
+                          <a href="{{ block.settings.link }}" class="grid-item__content">
+                        {% endif %}
+                        {% assign is_link = true %}
+                      {% endif %}
+
+                      {% if block.settings.subheading != blank or block.settings.overlay-btn-text != blank or block.settings.title != blank %}
+                        <div class="grid-item__content">
+                          <h2 class="grid-item__title">{{ block.settings.title }}</h2>
+
+                          {% if block.settings.subheading != blank %}
+                            <div class="grid-item__subheading">{{ block.settings.subheading }}</div>
+                          {% endif %}
+
+                          {% if block.settings.overlay-btn-text != blank and is_link == true %}
+                            <a href="{{ block.settings.link }}" class="btn homepage-featured-box-btn">{{ block.settings.overlay-btn-text }}</a>
+                          {% elsif block.settings.overlay-btn-text != blank %}
+                            <div class="btn homepage-featured-box-btn">{{ block.settings.overlay-btn-text }}</div>
+                          {% endif %}
+                        </div>
+                      {% endif %}
+
+                      {% if block.settings.link != blank and block.settings.overlay-btn-text == blank %}
+                        </a>
+                      {% endif %}
+                    </div>
+                  {% endunless %}
+                </div>
+              </div>
+            {% endfor %}
+
+            {% if section.blocks.size == 0 %}
+              <div class="placeholder-noblocks">
+                {{ 'homepage.onboarding.no_content' | t }}
+              </div>
+            {% endif %}
+          </div>
+
+        {% if section.settings.section-width == 'content' %}
+          </div></div></div>
+        {% endif %}
+      </div>
+  {% if section.settings.remove-spacing == false %}
+    </div>
+  {% endif %}
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.image--gallery.name",
+  "class": "image-gallery-wrapper show-on-scroll",
+  "max_blocks": 4,
+  "settings": [
+    {
+      "type": "select",
+      "id": "colors",
+      "label": "t:all.Color_scheme",
+      "default": "white",
+      "options": [
+        {
+          "value": "white",
+          "label": "t:all.Minimal"
+        },
+        {
+          "value": "light",
+          "label": "t:all.Light"
+        },
+        {
+          "value": "accent",
+          "label": "t:all.Feature"
+        },
+        {
+          "value": "dark",
+          "label": "t:all.Dark"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "t:all.Heading"
+    },
+    {
+      "type": "richtext",
+      "id": "richtext",
+      "label": "t:all.Description"
+    },
+    {
+      "type": "checkbox",
+      "id": "remove-spacing",
+      "default": true,
+      "label": "t:all.Remove_spacing"
+    },
+    {
+      "type": "checkbox",
+      "id": "full-width",
+      "default": false,
+      "label": "t:sections.image--gallery.settings.full-width.label"
+    },
+    {
+      "type": "select",
+      "id": "section-width",
+      "label": "t:all.Width",
+      "default": "full",
+      "options": [
+        {
+          "value": "full",
+          "label": "t:all.Full_width"
+        },
+        {
+          "value": "content",
+          "label": "t:all.Content_width"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "content-position",
+      "label": "t:sections.image--gallery.settings.content-position.label",
+      "default": "hide",
+      "options": [
+        {
+          "value": "hover",
+          "label": "t:all.On_hover"
+        },
+        {
+          "value": "overlay",
+          "label": "t:all.Overlay"
+        },
+        {
+          "value": "below-image",
+          "label": "t:all.Below_image"
+        },
+        {
+          "value": "hide",
+          "label": "t:all.Hide"
+        }
+      ]
+    }
+  ],
+  "blocks": [
+    {
+      "type": "image",
+      "name": "t:all.Image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "t:all.Image",
+          "info": "t:sections.image--gallery.blocks.image.settings.image.info"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "t:all.Link"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "t:all.Heading"
+        },
+        {
+          "type": "text",
+          "id": "subheading",
+          "label": "t:all.Subheading"
+        },
+        {
+          "type": "text",
+          "id": "overlay-btn-text",
+          "label": "t:all.Button_text"
+        },
+        {
+          "type": "header",
+          "content": "t:all.Color"
+        },
+        {
+          "type": "paragraph",
+          "content": "t:sections.image--gallery.blocks.image.settings.color.info"
+        },
+        {
+          "type": "checkbox",
+          "id": "show-gradient-overlay",
+          "default": false,
+          "label": "t:all.Enable_overlay_gradient"
+        },
+        {
+          "type": "color",
+          "id": "overlay_font_color",
+          "label": "t:all.Overlay_text_color",
+          "default": "#262428"
+        },
+        {
+          "type": "color",
+          "id": "button_text_color",
+          "label": "t:all.Button_text",
+          "default": "#FFFFFF"
+        },
+        {
+          "type": "color",
+          "id": "button_background_color",
+          "label": "t:all.Button_background",
+          "default": "#242424"
+        },
+        {
+          "type": "color",
+          "id": "overlay_color",
+          "label": "t:all.Overlay_color",
+          "default": "#ffffff"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.image--gallery.presets.name",
+      "blocks": [
+        {
+          "type": "image"
+        },
+        {
+          "type": "image"
+        },
+        {
+          "type": "image"
+        }
+      ]
+    }
+  ],
+  "disabled_on": {
+    "groups": [
+      "header"
+    ]
+  }
+}
+{% endschema %}

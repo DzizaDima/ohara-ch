@@ -1,0 +1,197 @@
+
+{% comment %}
+Media for product page and featured product sections
+Parameters:
+* style: 'full_width' | 'left' | 'right' | 'bottom'
+{% endcomment %}
+
+{{ 'plyr.min.css' | asset_url | stylesheet_tag }}
+{{ 'shopify-model-viewer-ui.min.css' | asset_url | stylesheet_tag }}
+
+{% assign crop_setting = settings.product-grid %}
+{% assign image_crop = nil %}
+{% if crop_setting == "square" %}
+    {% assign image_crop = "aspect-ratio--square" %}
+{% elsif crop_setting == "tall" %}
+    {% assign image_crop = "aspect-ratio--tall" %}
+{% elsif crop_setting == "wide" %}
+    {% assign image_crop = "aspect-ratio--wide" %}
+{% endif %}
+
+<div class="product-images-container">
+  <div class="product-medias{% if style != 'full_width' %} product-medias__with-thumbnails product-medias__with-thumbnails--{{ style }}{% else %} product-medias__fullsize{% endif %}">
+    <div class="product-medias__main">
+
+      {% comment %}Full size medias will go here{% endcomment %}
+      {% if product.media.size > 0 %}
+        <div class="swiper">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide" v-for="media in product.media" ref="mediaTargets" {% if style != 'full_width' %}v-bind:class="{ 'product-medias__primary': media === activeMedia }"{% endif %}>
+              <div{% if image_crop %} class="aspect-ratio quick-view-media {{ image_crop }}"{% endif %} v-if="media.media_type !== 'image'" style="position: relative">
+                <img
+                  src="#"
+                  v-responsive="media.preview_image.src"
+                  v-bind:alt="media.alt"
+                  v-cloak
+                  loading="lazy"
+                />
+                <button
+                  type="button"
+                  class="round-icon-btn-lg btn-colors-primary btn-hover-default icon-btn-focus"
+                  tabindex="0"
+                  v-if="media.media_type === 'video' || media.media_type === 'external_video'"
+                  v-on:click="onMediaActivate"
+                  v-bind:data-media-id="media.id"
+                  aria-label="{{ 'general.accessibility.play_icon.play_media' | t }}"
+                  v-cloak
+                >
+                  {% render 'theme-icon' with icon: 'play', iconSize: 20 %}
+                </button>
+                <button
+                  type="button"
+                  class="round-icon-btn-lg btn-colors-primary btn-hover-default icon-btn-focus"
+                  tabindex="0"
+                  v-if="media.media_type === 'model'"
+                  v-on:click="onMediaActivate"
+                  v-bind:data-media-id="media.id"
+                  aria-label="{{ 'general.accessibility.3d_model.load_3d_model' | t }}"
+                  v-cloak
+                >
+                  {% render 'theme-icon' with icon: 'cube', iconSize: 20 %}
+                </button>
+              </div>
+
+              <div{% if image_crop %} class="aspect-ratio quick-view-media {{ image_crop }}"{% endif %} v-if="media.media_type === 'image'">
+                <div
+                  class="product-medias__media"
+                  data-media-type="image"
+                  v-bind:data-media-id="media.id"
+                >
+                  <a
+                    v-bind:href="media.src"
+                    v-bind:data-pswp-width="media.width"
+                    v-bind:data-pswp-height="media.height"
+                    target="_blank"
+                  >
+                    <img
+                      v-bind:src="media.src"
+                      v-bind:alt="media.alt ? media.alt : product.title"
+                      v-bind:width="media.width"
+                      v-bind:height="media.height"
+                      sizes="(min-width: 1200px) calc((1200px - 10rem) / 2), (min-width: 750px) calc((100vw - 11.5rem) / 2), calc(100vw - 4rem)"
+                      v-cloak
+                      loading="eager"
+                    />
+                  </a>
+                </div>
+              </div>
+
+              <div class="button-wrap" v-if="firstOrActiveModel">
+                <button
+                  type="button"
+                  aria-label="{{ 'products.product.view_in_space_label' | t }}"
+                  class="btn product-medias__view-in-space"
+                  data-shopify-xr
+                  v-bind:data-shopify-model3d-id="firstOrActiveModel ? firstOrActiveModel.id : ''"
+                  data-shopify-title="{{ product.title | escape }}"
+                  data-shopify-xr-hidden
+                >
+                  {% comment %} {% render 'theme-icon' with icon: 'cube', iconAttributes: 'aria-hidden="true"', iconSize: settings.typography-body-font-size %} {% endcomment %}
+                  {{ 'products.product.view_in_space' | t }}
+                </button>
+            </div>
+            </div>
+          </div>
+          <div class="swiper-pagination{% if product.media.size == 1 %} hidden{% endif %}"></div>
+        </div>
+      {% else %}
+        {{ 'product-1' | placeholder_svg_tag: 'icon icon--placeholder' }}
+      {% endif %}
+
+      <noscript>
+        {% comment %}Big image when JS is not there to show media{% endcomment %}
+        {% if product.media.size > 0 %}
+          <img src="{{ product.media[0].preview_image | image_url: width: 1000 }}" alt="{{ product.media[0].alt }}" loading="lazy" />
+        {% else %}
+          {{ 'product-1' | placeholder_svg_tag: 'icon icon--placeholder' }}
+        {% endif %}
+      </noscript>
+    </div>
+
+    {% if product.media.size > 1 %}
+
+      <div
+        v-show="!isMobile"
+        class="product-medias__thumbnails"
+      >
+        {% for media in product.media %}
+
+            {% comment %}
+            If this media is assigned to any variant that is available, keep showing the thumbnail.
+            EVERY variant with this media needs to be unavailable for it to be hidden.
+            {% endcomment %}
+            {% assign hideThumb = false %}
+            {% assign mediaHasVariant = false %}
+
+            {% if hide_out_of_stock_variants %}
+              {% assign hideThumb = true %}
+              {% for variant in product.variants %}
+                {% if variant.featured_media.id == media.id %}
+                  {% assign mediaHasVariant = true %}
+                  {% if variant.available %}
+                    {% assign hideThumb = false %}
+                  {% endif %}
+                {% endif %}
+              {% endfor %}
+            {% endif %}
+
+            {% unless hideThumb and mediaHasVariant %}
+              <a
+                href="#"
+                v-on:click="onMediaActivate"
+                v-on:keydown="onMediaActivate"
+                class="product-medias__thumbnail"
+                data-media-id="{{ media.id }}"
+                {%- assign found = false -%}
+                {%- for variant in product.variants -%}
+                  {%- if found == false and variant.featured_media.id == media.id -%}
+                    data-variant-id="{{ variant.id }}"
+                    {%- assign found = true -%}
+                  {%- endif -%}
+                {%- endfor -%}
+              >
+                {% if media.media_type == 'model' %}
+                  <div class="product-medias__emblem">
+                    {% comment %} {% render 'theme-icon' with icon: 'cube', iconSize: 20 %} {% endcomment %}
+                  </div>
+                {% elsif media.media_type == 'video' or media.media_type == 'external_video' %}
+                  <div class="product-medias__emblem">
+                    {% render 'theme-icon' with icon: 'play', iconSize: 20 %}
+                  </div>
+                {% endif %}
+
+                {% capture props %}
+                  data-image-id="{{ media.id }}"
+                  data-max-width="{{ media.preview_image.width }}"
+                {% endcapture %}
+                {% capture styles %}max-width: {{ media.preview_image.width }}px;{% endcapture %}
+                {% capture class %}
+                  product-medias__thumbnail__image product-medias__thumbnail--{{ media.media_type }} fadeIn wow
+                {% endcapture %}
+                {% capture thumbalt %}
+                  {% if media.media_type == 'video' or media.media_type == 'external_video' %}
+                    {{ 'products.product.video_thumbnail_alt' | t: imageAlt: media.alt | escape }}
+                  {% elsif media.media_type == 'model' %}
+                    {{ 'products.product.model_thumbnail_alt' | t: imageAlt: media.alt | escape }}
+                  {% else %}
+                    {{ media.alt }}
+                  {% endif %}
+                {% endcapture %}
+                {% render 'responsive-image' with media.preview_image, class: class, alt: thumbalt | escape, default_size: '300x', props: props, blur: false, styles: styles %}
+              </a>
+            {% endunless %}
+        {% endfor %}
+      </div>
+    {% endif %}
+  </div>
+</div>

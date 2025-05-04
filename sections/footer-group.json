@@ -1,0 +1,65 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "type": "footer",
+  "name": "Footer",
+  "sections": {
+    "footer-main": {
+      "type": "footer-main",
+      "blocks": {
+        "image_RCh9Tz": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/011.png",
+            "link": "#",
+            "title": ""
+          }
+        },
+        "menu": {
+          "type": "menu",
+          "settings": {
+            "menu_title": "",
+            "footer_linklist": "footer"
+          }
+        },
+        "social": {
+          "type": "social",
+          "settings": {
+            "social_title": "Follow us"
+          }
+        }
+      },
+      "block_order": [
+        "image_RCh9Tz",
+        "menu",
+        "social"
+      ],
+      "settings": {
+        "alignment": "left",
+        "color_scheme": "white"
+      }
+    },
+    "footer-bottom": {
+      "type": "footer-bottom",
+      "settings": {
+        "show_methods_of_payment": false,
+        "center_content_on_desktop": false,
+        "footer_text": "<p><a href=\"mailto:ohara.zurich@gmail.com\" title=\"mailto:ohara.zurich@gmail.com\">ohara.zurich@gmail.com</a></p>",
+        "show_currency_selector": false,
+        "show_locale_selector": false,
+        "color_scheme": "white"
+      }
+    }
+  },
+  "order": [
+    "footer-main",
+    "footer-bottom"
+  ]
+}

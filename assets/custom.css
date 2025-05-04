@@ -1,0 +1,16 @@
+/* Place any CSS overrides in this file. */
+
+.product-form-block .paymentButtonsWrapper {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+
+.swym-button-bar{
+  margin: 0!important;
+}
+
+.swym-button-bar .swym-button{
+  height: 44px!important;
+  line-height: 44px!important;
+}

@@ -1,0 +1,91 @@
+{% comment %}
+    Use this snippet to add a responsive image to page.
+
+    Specify Shopify image you want to make responsive in the "with" parameter (see examples below).
+
+    You can use following variables to customize the image
+    * default_size: size of placeholder image until full image is loaded (default: '150x')
+    * sizes: string of media queries and image size definitions
+    * class: additional classes to be applied to an image
+    * alt: alt text for the image
+    * props: additional properties for the <img /> tag (data-, id, etc.)
+    * styles: additional styles (will go into `style="..."` property)
+    * crop: use crop to specify how the image should be cropped when it's too big
+    * force_height: number of pixels the image should have vertically, without stretching
+    * allow_stretch: allow upscaling the image to fit container (disabled by default)
+    * loading: lazy loading of the image (enabled by default)
+
+    Usage:
+    {% render 'responsive-image' with product.image, class: 'product-image', alt: 'A simple product', default_size: '300x', props: 'data-id="1"' %}
+{% endcomment %}
+
+{% if default_size == blank %}
+  {% assign default_size = '550x' %}
+{% endif %}
+
+{% if sizes == blank %}
+  {% assign sizes = '(min-width: 2000px) 1000px, (min-width: 1445px) calc(100vw / 2), (min-width: 1200px) calc(100vw / 1.75), (min-width: 1000px) calc(100vw / 1.5), (min-width: 750px) calc(100vw / 3), 100vw' %}
+{% endif %}
+
+{% if loading == blank %}
+  {% assign loading = 'lazy' %}
+{% endif %}
+
+{%- capture divStyle -%}
+  {%- if force_height %}height: {{ force_height }}px; {% endif -%}
+{%- endcapture -%}
+
+{% assign focal_point = responsive-image.presentation.focal_point %}
+
+{% if focal_point %}
+  {% capture focal_point_styles %}object-fit:cover;object-position:{{ focal_point }}!important;{% endcapture %}
+{% endif %}
+
+<div class="responsive-image-wrapper{% if wrapper_class %} {{ wrapper_class }}{% endif %}" style="{{ divStyle }}">
+
+<noscript aria-hidden="true">
+  <img
+    {% if image_block_attributes %} {{ image_block_attributes }}{% endif %}
+    class="{{ class }}"
+    {% if crop == blank %}
+      src="{{ responsive-image | image_url: width: 1000, height: 1000 }}"
+    {% else %}
+      src="{{ responsive-image | image_url: width: 1000, height: 1000, crop: crop }}"
+    {% endif %}
+    {% if alt %}
+      alt="{{ alt | escape }}"
+    {% else %}
+      alt="{{ responsive-image.alt | escape }}"
+    {% endif %}
+    {{ props }}
+    {% if focal_point_styles %}style="{{ focal_point_styles }}"{% endif %}
+    loading="{{ loading }}"
+  />
+</noscript>
+
+<img
+  loading="{{ loading }}"
+  class="{{ class }} js"
+  style="{% unless allow_stretch %}max-width: {{ responsive-image.width }}px; max-height: {{ responsive-image.height }}px; {% endunless %}{{ styles }} {{ focal_point_styles }}"
+  {% if alt %}
+    alt="{{ alt | escape }}"
+  {% else %}
+    alt="{{ responsive-image.alt | escape }}"
+  {% endif %}
+  {{ props }}
+  width="{{ responsive-image.width }}"
+  height="{{ responsive-image.height }}"
+  srcset="{%- if responsive-image.width >= 550 -%}{{ responsive-image | image_url: width: 550 }} 550w,{%- endif -%}
+          {%- if responsive-image.width >= 750 -%}{{ responsive-image | image_url: width: 750 }} 750w,{%- endif -%}
+          {%- if responsive-image.width >= 1100 -%}{{ responsive-image | image_url: width: 1100 }} 1100w,{%- endif -%}
+          {%- if responsive-image.width >= 1445 -%}{{ responsive-image | image_url: width: 1445 }} 1445w,{%- endif -%}
+          {%- if responsive-image.width >= 1680 -%}{{ responsive-image | image_url: width: 1680 }} 1680w,{%- endif -%}
+          {%- if responsive-image.width >= 2048 -%}{{ responsive-image | image_url: width: 2048 }} 2048w,{%- endif -%}
+          {%- if responsive-image.width >= 2200 -%}{{ responsive-image | image_url: width: 2200 }} 2200w,{%- endif -%}
+          {%- if responsive-image.width >= 2890 -%}{{ responsive-image | image_url: width: 2890 }} 2890w,{%- endif -%}
+          {{ responsive-image | image_url: width: responsive-image.width }} {{ responsive-image.width }}w"
+  sizes="{{ sizes }}"
+  src="{{ responsive-image | image_url: width: 1445 }}"
+/>
+
+</div>

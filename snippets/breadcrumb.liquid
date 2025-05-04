@@ -1,0 +1,70 @@
+<!-- /snippets/breadcrumb.liquid -->
+{% comment %}
+  Documentation - http://docs.shopify.com/support/your-website/navigation/creating-a-breadcrumb-navigation
+{% endcomment %}
+
+<nav class="breadcrumb nav-link-animated--custom" aria-label="breadcrumbs">
+  <span class="breadcrumb-item">
+    <a class="animated-link--item" href="{{ routes.root_url }}" title="{{ 'general.breadcrumbs.home_link_title' | t }}">
+      <span class="label-font">{{ 'general.breadcrumbs.home' | t }}</span>
+    </a>
+  </span>
+
+  {% if template contains 'product' %}
+
+    {% if collection.url %}
+      <span class="breadcrumb-divider" aria-hidden="true">/</span>
+      <span class="breadcrumb-item">
+        <a class="animated-link--item" href="{{ collection.url }}" title="{{ collection.title }}">
+          <span class="label-font">{{ collection.title }}</span>
+        </a>
+      </span>
+    {% endif %}
+    <span class="breadcrumb-divider" aria-hidden="true">/</span>
+
+  {% elsif template contains 'collection' and collection.handle %}
+
+    <span class="breadcrumb-divider" aria-hidden="true">/</span>
+    {% if current_tags %}
+      <span class="breadcrumb-item">
+        <a class="animated-link--item" href="{{ collection.url }}" title="{{ collection.title }}">
+          <span class="label-font">{{ collection.title }}</span>
+        </a>
+      </span>
+      <span class="breadcrumb-divider" aria-hidden="true">/</span>
+      <span class="breadcrumb-item">{{ current_tags | join: " + " }}</span>
+    {% endif %}
+
+  {% elsif template.name == 'blog' %}
+
+    <span class="breadcrumb-divider" aria-hidden="true">/</span>
+    {% if current_tags %}
+      <span class="breadcrumb-item">
+        <a class="animated-link--item" href="{{ blog.url }}" title="{{ blog.title }}">
+          <span class="label-font">{{ blog.title }}</span>
+        </a>
+      </span>
+      <span class="breadcrumb-divider" aria-hidden="true">/</span>
+      <span>{{ current_tags | join: " + " }}</span>
+    {% endif %}
+
+  {% elsif template.name == 'article' %}
+
+    <span class="breadcrumb-divider" aria-hidden="true">/</span>
+    <span class="breadcrumb-item">
+      <a class="animated-link--item" href="{{ blog.url }}" title="{{ blog.title }}">
+        <span class="label-font">{{ blog.title }}</span>
+      </a>
+    </span>
+    <span class="breadcrumb-divider" aria-hidden="true">/</span>
+
+  {% elsif template contains 'page' %}
+
+    <span class="breadcrumb-divider" aria-hidden="true">/</span>
+
+  {% else %}
+
+    <span class="breadcrumb-divider" aria-hidden="true">/</span>
+
+  {% endif %}
+</nav>

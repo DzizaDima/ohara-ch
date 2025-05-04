@@ -1,0 +1,155 @@
+{%-liquid 
+  assign filtering_enabled = true
+  if section.settings.enable_filtering == false and section.settings.enable_sorting == false
+    assign filtering_enabled = false
+  endif 
+
+  assign header_enabled = true
+  if section.settings.enable_collection_title == false and section.settings.enable_collection_description == false
+    assign header_enabled = false
+  endif
+-%}
+
+<section class="shopify-section main-page-container wrapper-padded">
+  <div class="collection_grid{% if filtering_enabled %} filtering_enabled--{{ section.settings.desktop_position }}{% endif %}">
+
+    {% unless filtering_enabled == false and header_enabled == false %}
+      {% render 'main-collection-filtering-sorting' with 
+        collection: collection, 
+        classes: "grid-area--filtering",
+        desktop_position: section.settings.desktop_position,
+        enable_collection_title: section.settings.enable_collection_title,
+        enable_collection_description: section.settings.enable_collection_description,
+        enable_filtering: section.settings.enable_filtering,
+        enable_sorting: section.settings.enable_sorting
+      %}
+    {% endunless %}
+
+    {% render 'main-collection-grid' with 
+      classes: "grid-area--collection",
+      blocks: section.blocks,
+      desktop_products_per_row: section.settings.desktop-products-per-row,
+      mobile_products_per_row: section.settings.mobile-products-per-row,
+      products_per_page: section.settings.products-per-page,
+      pagination_options: section.settings.pagination_options
+    %}
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "t:sections.template--collection.name",
+  "settings": [
+    {
+      "type": "header",
+      "content": "t:all.Grid_layout"
+    },
+    {
+      "type": "range",
+      "id": "products-per-page",
+      "min": 3,
+      "max": 20,
+      "step": 1,
+      "label": "t:all.Rows_per_page_on_desktop",
+      "default": 7
+    },
+    {
+      "type": "range",
+      "id": "desktop-products-per-row",
+      "min": 2,
+      "max": 5,
+      "step": 1,
+      "label": "t:all.Product_per_row_on_desktop",
+      "default": 4
+    },
+    {
+      "type": "select",
+      "id": "mobile-products-per-row",
+      "label": "t:all.Product_per_row_on_mobile",
+      "options": [
+        {
+          "value": "1",
+          "label": "t:all.1"
+        },
+        {
+          "value": "2",
+          "label": "t:all.2"
+        }
+      ],
+      "default": "2"
+    },
+    {
+      "type": "select",
+      "id": "pagination_options",
+      "label": "t:sections.template--collection.settings.pagination_options.label",
+      "options": [
+        {
+          "value": "pagination_default",
+          "label": "t:sections.template--collection.settings.pagination_options.options.pagination_default"
+        },
+        {
+          "value": "pagination_infinite_scrolling",
+          "label": "t:sections.template--collection.settings.pagination_options.options.pagination_infinite_scrolling"
+        },
+        {
+          "value": "pagination_load_more",
+          "label": "t:sections.template--collection.settings.pagination_options.options.pagination_load_more"
+        }
+      ],
+      "default": "pagination_default"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.template--collection.settings.header-5.content"
+    },
+    {
+      "type": "select",
+      "id": "desktop_position",
+      "options": [
+        {
+          "value": "topbar",
+          "label": "t:all.Top_bar"
+        },
+        {
+          "value": "sidebar",
+          "label": "t:all.Sidebar"
+        }
+      ],
+      "default": "topbar",
+      "label": "t:all.Desktop_position"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_collection_title",
+      "default": true,
+      "label": "t:sections.template--collection.settings.enable_collection_title.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_collection_description",
+      "default": true,
+      "label": "t:sections.template--collection.settings.enable_collection_description.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_filtering",
+      "default": true,
+      "label": "t:all.Enable_filtering",
+      "info": "t:all.Customize_filters_admin_menus"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_swatch_filter_labels",
+      "default": true,
+      "label": "t:sections.template--collection.settings.show_swatch_filter_labels.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_sorting",
+      "default": true,
+      "label": "t:all.Enable_sorting"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,68 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "template--article",
+      "settings": {
+        "article-sidebar-description": "",
+        "blog-sidebar-link": "",
+        "show_blog_tags": false,
+        "show_recent_posts": true,
+        "blog_show_date": true
+      }
+    },
+    "9d393ac7-9597-4549-8ebb-968e14caed7a": {
+      "type": "text--rich-text",
+      "blocks": {
+        "28ddc8d0-6e32-4aa9-944c-e146a5d279fe": {
+          "type": "button",
+          "settings": {
+            "button_link": "shopify://collections",
+            "button_text": "Back to the blog"
+          }
+        }
+      },
+      "block_order": [
+        "28ddc8d0-6e32-4aa9-944c-e146a5d279fe"
+      ],
+      "settings": {
+        "section_width": "narrow",
+        "text_alignment_desktop": "center",
+        "text_alignment_mobile": "center",
+        "colors": "light"
+      }
+    },
+    "e2dfdb67-5375-4fe3-a635-d480f7c4340c": {
+      "type": "blog--blog-posts",
+      "blocks": {
+        "template--14795084857414__e2dfdb67-5375-4fe3-a635-d480f7c4340c-1688743276c47a2ce9-0": {
+          "type": "article",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "template--14795084857414__e2dfdb67-5375-4fe3-a635-d480f7c4340c-1688743276c47a2ce9-0"
+      ],
+      "settings": {
+        "colors": "white",
+        "title": "Featured articles",
+        "richtext": "",
+        "blog_show_date": true,
+        "post_limit": 3
+      }
+    }
+  },
+  "order": [
+    "main",
+    "9d393ac7-9597-4549-8ebb-968e14caed7a",
+    "e2dfdb67-5375-4fe3-a635-d480f7c4340c"
+  ]
+}

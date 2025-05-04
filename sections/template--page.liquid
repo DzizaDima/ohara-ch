@@ -1,0 +1,191 @@
+<!-- /sections/page-template.liquid -->
+{% case section.settings.page_width %}
+  {% when 'full-width' %}
+    {%- assign page_width = 'large--one whole' -%}
+  {% when 'narrow' %}
+    {%- assign page_width = 'large--two-thirds push--large--one-sixth' -%}
+{% endcase %}
+
+<div class="wrapper-padded main-page-container">
+  <div class="grid clearfix">
+    <div class="grid__item {{ page_width }}">
+      {% if section.settings.page_title_enabled %}
+        <div class="sitewide--title-wrapper">
+          <h1 class="page--title">{{ page.title }}</h1>
+        </div>
+      {% endif %}
+
+      <div class="grid">
+        <div class="rte text-link-animated grid__item{% if section.blocks.size > 0 %} large--two-thirds{% endif %}">
+          {{ page.content }}
+        </div>
+
+        <div class="page-sidebar grid__item large--one-third">
+
+            {% for block in section.blocks %}
+              {% case block.type %}
+
+                  {% when 'text' %}
+                  <div class="sidebar-section" {{ block.shopify_attributes }}>
+                    <h4>{{ block.settings.title }}</h4>
+                  </div>
+
+                  {% when 'richtext' %}
+                  <div class="sidebar-section sidebar-text text-link-animated" {{ block.shopify_attributes }}>
+                    {{ block.settings.text }}
+                  </div>
+
+                  {% when 'menu' %}
+                  {% assign menu = linklists[block.settings.menu] %}
+                  <div class="sidebar-section page--sidebar-menu nav-link-animated--custom" {{ block.shopify_attributes }}>
+                    {% for link in menu.links %}
+                      {% if link.links != blank %}
+                        <li>
+                          <a href="{{ link.url }}" class="sidebar-menu--has-dropdown-title animated-link--item">{{ link.title }}</a>
+                          <ul class="sidebar-menu--level-2">
+                            {% for sub_link in link.links %}
+                                <li>- <a class="animated-link--item" href="{{ sub_link.url }}">{{ sub_link.title | escape }}</a></li>
+                                  <ul class="sidebar-menu--level-3">
+                                  {% for sub_sub_link in sub_link.links %}
+                                      <li>- <a class="animated-link--item" href="{{ sub_sub_link.url }}">{{ sub_sub_link.title | escape }}</a></li>
+                                  {% endfor %}
+                                </ul>
+                            {% endfor %}
+                          </ul>
+                        </li>
+                      {% else %}
+                        <li>
+                          <a class="animated-link--item" href="{{ link.url }}">{{ link.title }}</a>
+                        </li>
+                      {% endif %}
+                    {% endfor %}
+
+                  </div>
+
+                  {% when 'image_picker' %}
+                  <div class="sidebar-section sidebar-image" {{ block.shopify_attributes }}>
+                    {% if block.settings.image_link != blank %}
+                      <a href="{{ block.settings.image_link }}">
+                    {% endif %}
+
+                    {% if block.settings.sidebar_image == blank %}
+                      {{ 'image' | placeholder_svg_tag: 'icon icon--placeholder' }}
+                    {% else %}
+
+                      {% if block.settings.sidebar_image.alt != blank %}
+                        {% assign side_alt = block.settings.sidebar_image.alt | escape %}
+                      {% elsif block.settings.image_title != blank %}
+                        {% assign side_alt = block.settings.image_title | escape %}
+                      {% else %}
+                        {% assign side_alt = shop.name | escape %}
+                      {% endif %}
+
+                      {% render 'responsive-image' with block.settings.sidebar_image, alt: side_alt %}
+                    {% endif %}
+
+                    {% if block.settings.image_title != blank %}
+                      <h4>{{ block.settings.image_title }}</h4>
+                    {% endif %}
+
+                    {% if block.settings.image_link != blank %}
+                  </a>
+                    {% endif %}
+                  </div>
+
+              {% endcase %}
+            {% endfor %}
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.template--page.name",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "page_title_enabled",
+      "label": "t:sections.template--page.settings.page_title_enabled.label",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "page_width",
+      "label": "t:all.Width",
+      "options": [
+        {
+          "value": "full-width",
+          "label": "t:all.Full_width"
+        },
+        {
+          "value": "narrow",
+          "label": "t:all.Narrow"
+        }
+      ],
+      "default": "full-width"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "text",
+      "name": "t:sections.template--page.blocks.text.name",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "t:all.Title",
+          "default": "Title"
+        }
+      ]
+    },
+    {
+      "type": "richtext",
+      "name": "t:sections.template--page.blocks.richtext.name",
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "t:all.Text",
+          "default": "<p>Add any additional content you want across your stores content pages</p>"
+        }
+      ]
+    },
+    {
+      "type": "menu",
+      "name": "t:sections.template--page.blocks.menu.name",
+      "settings": [
+        {
+          "type": "link_list",
+          "id": "menu",
+          "label": "t:all.Menu"
+        }
+      ]
+    },
+    {
+      "type": "image_picker",
+      "name": "t:sections.template--page.blocks.image_picker.name",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "sidebar_image",
+          "label": "t:all.Image"
+        },
+        {
+          "type": "text",
+          "id": "image_title",
+          "label": "t:sections.template--page.blocks.image_picker.settings.image_title.label",
+          "placeholder": "Title"
+        },
+        {
+          "type": "url",
+          "id": "image_link",
+          "label": "t:all.Image_link"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

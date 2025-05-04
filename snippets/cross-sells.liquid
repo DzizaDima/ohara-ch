@@ -1,0 +1,41 @@
+{% comment %}
+  Renders a "cross-sells" component that displays a list of products
+
+  Accepts:
+  - title: {String} heading of the block eg. block.settings.title
+  - cross_sells_products: {Array} an array of product handles to display
+
+  Usage:
+    {% render 'cross-sells' with title: block.settings.title, cross_sells_products: cross_sells_products %}
+{% endcomment %}
+
+{%- unless cross_sells_products == blank -%}
+  <div class="cross-sells-wrapper" id="cross-sells-{{ id }}">
+    {% if title != blank %}
+      <div class="header label-font">{{ title }}</div>
+    {% endif %}
+
+    {%- if cross_sells_products != blank -%}
+      <div class="cross-sells-products{% if cross_sells_products.size > 3 %} scrollable{% endif %}">
+        {% if cross_sells_products.size > 3 %}<scrollable-container class="top">{% endif %}
+          {%- for cross_sells_product in cross_sells_products -%}
+            {% assign product_price = cross_sells_products_prices[forloop.index0] | times: 100 %}
+            {%- unless cross_sells_product == blank or product_price < product.price-%}
+              {% render 'product-cross-sell', product_id: cross_sells_product, index: forloop.index0 %}
+            {%- endunless -%}
+          {%- endfor -%}
+        {% if cross_sells_products.size > 3 %}</scrollable-container>{% endif %}
+      </div>
+    {%- endif -%}
+  </div>
+
+  <safe-load-scripts class="hidden">
+    <script src="{{ 'component-product-cross-sell.js' | asset_url }}" type="module" defer="defer" data-flow-load-key="component-product-cross-sell"></script>
+  </safe-load-scripts>
+
+  {% if cross_sells_products.size > 3 %}
+    <safe-load-scripts class="hidden">
+      <script src="{{ 'component-scrollable-container.js' | asset_url }}" type="module" defer="defer" data-flow-load-key="component-scrollable-container"></script>
+    </safe-load-scripts>
+  {% endif %}
+{%- endunless -%}

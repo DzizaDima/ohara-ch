@@ -1,0 +1,15 @@
+{% if label != blank %}
+    <div class="homepage-section-btn-container">
+        <a
+            class="btn homepage-section-btn"
+            href="{% if link != blank %}{{ link }}{% else %}#{% endif %}"
+            data-section-main-link
+            {% if label == blank %}
+                aria-hidden="true"
+            {% endif %}
+            {% if custom_attributes %}{{ custom_attributes }}{% endif %}
+        >
+        {{ label }}
+        </a>
+    </div>
+{% endif %}

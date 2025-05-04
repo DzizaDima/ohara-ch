@@ -1,0 +1,172 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "template--page",
+      "disabled": true,
+      "settings": {
+        "page_title_enabled": true,
+        "page_width": "full-width"
+      }
+    },
+    "16457242689a58d7f3": {
+      "type": "accordion",
+      "blocks": {
+        "164572426857089649-0": {
+          "type": "tab_content",
+          "settings": {
+            "question": "What services do you offer?",
+            "text": "<p>No matter the message or occasion, O'Hara Flowers & Decor can help you find beautiful bouquets to surprise someone special in your life. Browse our selection of bouquets and order flowers online today! For any questions about our flowers you can contact us at any time!</p>"
+          }
+        },
+        "164572426857089649-1": {
+          "type": "tab_content",
+          "settings": {
+            "question": "Do you do weddings?",
+            "text": "<p>We recommend reaching out no earlier than 9-12 months prior to your wedding date. In order to begin the process, there must be a confirmed date, secured venue and approximate guest count. While there is no limit to how late you can reach out about wedding flowers, keep in mind that our availability is first come, first serve, and all proposals must be finalized at least two weeks prior to the wedding date. </p><p>After sending your custom estimate, we offer a free sample appointment so that you can view your dining table centerpiece in person.</p>"
+          }
+        },
+        "164572426857089649-2": {
+          "type": "tab_content",
+          "settings": {
+            "question": "Do you do small events/parties?",
+            "text": "<p>Yes! We are happy to provide flowers for dinner parties, birthday get togethers, bridal showers, baby showers, etc. We primarily work off of what’s currently available on our website, but are happy to discuss details with you.</p>"
+          }
+        },
+        "tab_content_mCy6nQ": {
+          "type": "tab_content",
+          "settings": {
+            "question": "Do you offer holiday decor services?",
+            "text": "<p>Every year we design the most gorgeous holiday events with all of our loyal corporate clients. Like so many of you, we prefer to plan our fourth quarter as far in advance as possible.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "164572426857089649-0",
+        "164572426857089649-1",
+        "164572426857089649-2",
+        "tab_content_mCy6nQ"
+      ],
+      "settings": {
+        "colors": "white",
+        "title": "Services",
+        "faq_icon": "plus_minus"
+      }
+    },
+    "164572438470d85add": {
+      "type": "accordion",
+      "blocks": {
+        "164572438495310fd3-0": {
+          "type": "tab_content",
+          "settings": {
+            "question": "Do you offer same day delivery?",
+            "text": "<p>Our products are available for same day delivery. For same day delivery your order must be placed before 1:00 pm except on Saturdays where orders need to be placed before Friday 4:00 pm. Our delivery service is available on Saturdays and Sundays. Before major holidays, we recommend that you place your orders at least five days in advance.</p><p></p>"
+          }
+        },
+        "164572438495310fd3-1": {
+          "type": "tab_content",
+          "settings": {
+            "question": "How much is your delivery fee?",
+            "text": "<p>Delivery fee vary depending on the destination.</p>"
+          }
+        },
+        "164572438495310fd3-2": {
+          "type": "tab_content",
+          "settings": {
+            "question": "Do you have a minimum for delivery?",
+            "text": "<p>Yes, our minimum amount for delivery for a floral arrangement is CHF100.</p>"
+          }
+        },
+        "tab_content_pnHQ9C": {
+          "type": "tab_content",
+          "settings": {
+            "question": "When will my flowers be delivered?",
+            "text": "<p>Our #1 goal is to have your flowers delivered as quickly as possible. Regretfully, we are unable to guarantee time of delivery. To request a specific delivery time, please type it into the Special Instructions field during checkout. We will do our best to accommodate your preferences. You acknowledge that requested delivery dates are non-binding estimates only and that you have no claim against us for any delays or early deliveries. </p>"
+          }
+        },
+        "tab_content_eMRP9z": {
+          "type": "tab_content",
+          "settings": {
+            "question": "Will you let me know when the flowers are delivered?",
+            "text": "<p>Yes! You will receive an email confirmation sent to your email address when the flowers have been delivered.</p>"
+          }
+        },
+        "tab_content_xtNzNe": {
+          "type": "tab_content",
+          "settings": {
+            "question": "What about plants & orchids?",
+            "text": "<p>For plants or orchids, please contact us via email ohara.zurich@gmail.com</p>"
+          }
+        }
+      },
+      "block_order": [
+        "164572438495310fd3-0",
+        "164572438495310fd3-1",
+        "164572438495310fd3-2",
+        "tab_content_pnHQ9C",
+        "tab_content_eMRP9z",
+        "tab_content_xtNzNe"
+      ],
+      "settings": {
+        "colors": "white",
+        "title": "Delivery",
+        "faq_icon": "plus_minus"
+      }
+    },
+    "1645724424d6db0e5a": {
+      "type": "accordion",
+      "blocks": {
+        "164572442464b4aa49-0": {
+          "type": "tab_content",
+          "settings": {
+            "question": "What forms of payment do you accept?",
+            "text": "<p>We currently accept payment from all major credit card companies, including American Express. In addition, we accept payment from Paypal, Shopify Pay, and Google Pay.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "164572442464b4aa49-0"
+      ],
+      "settings": {
+        "colors": "white",
+        "title": "Payment",
+        "faq_icon": "plus_minus"
+      }
+    },
+    "accordion_KTHXWY": {
+      "type": "accordion",
+      "blocks": {
+        "tab_content_XVbXiV": {
+          "type": "tab_content",
+          "settings": {
+            "question": "Size Chart",
+            "text": ""
+          }
+        }
+      },
+      "block_order": [
+        "tab_content_XVbXiV"
+      ],
+      "settings": {
+        "colors": "white",
+        "title": "Size Guide",
+        "faq_icon": "plus_minus"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "16457242689a58d7f3",
+    "164572438470d85add",
+    "1645724424d6db0e5a",
+    "accordion_KTHXWY"
+  ]
+}

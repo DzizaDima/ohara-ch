@@ -1,0 +1,54 @@
+{%- if product_id -%}
+  {% assign product = all_products[product_id] %}
+  {% assign placeholder_index = index | modulo: 6 | plus: 1 %}
+  {% assign product_image_placeholder = 'product-' | append: placeholder_index | placeholder_svg_tag: 'icon icon--placeholder' %}
+  {%- if product.available -%}
+    <product-cross-sell
+      v-pre
+      product="{{ product | json | escape }}"
+      product-image-placeholder='{{ product_image_placeholder }}'
+      image-aspect-ratio="{{ settings.product-grid }}"
+      money-format="{{ shop.money_format }}" 
+      data-add-to-cart='{{ 'products.product.add_to_cart' | t }}'
+      data-sold-out="{{ 'products.product.sold_out' | t }}"
+      data-choose-option="{{ 'products.product.choose_option' | t }}"
+      data-from="{{ 'products.general.from_text' | t }}"
+      data-not-available="{{ 'products.product.is_not_available' | t }}" 
+      data-loading="{{ 'products.product.loading' | t }}" 
+      data-added="{{ 'products.product.added' | t }}"
+      data-products-regular-price="{{ 'products.general.regular_price' | t }}"
+      data-shopping-bag-icon='{% render 'theme-icon' with icon: 'shopping-bag', iconSize: 16 %}' 
+      data-dropdown-chevron='{% render 'theme-icon' with icon: 'chevron_down', iconClasses: 'chevron' %}'
+    >
+      <noscript>
+        {% comment %} Fallback html when JS is disabled. {% endcomment %}
+        <div>
+          {%- assign variant = product.selected_or_first_available_variant -%}
+
+          <div class="thumbnail">
+            <a href="{{ product.url }}" target="_blank">
+              {% if product.featured_image %}
+                <img src="{{ product.featured_image | image_url: width: 400, height: 400 }}" loading="lazy" alt="{{ product.featured_image.alt }}" width="200" height="{{ 200 | divided_by: product.featured_image.aspect_ratio | round: 2 }}">
+              {% else %}
+                {% capture current %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}
+                {{ 'product-' | append: current | placeholder_svg_tag: 'icon icon--placeholder' }}
+              {% endif %}
+            </a>
+          </div>
+          <div class="title">
+            <a href="{{ product.url }}" target="_blank">{{ product.title }}</a>
+          </div>
+          <div class="price">
+            <ul class="product-page--pricing">
+              <a href="{{ product.url }}" target="_blank">
+                {% render 'product-pricing', current_variant: variant %}
+                {% render 'unit-price-measurement-variant', current_variant: variant %}
+              </a>
+            </ul>
+          </div>
+        </div>
+      </noscript>
+    </product-cross-sell>
+
+  {%- endif -%}
+{%- endif -%}

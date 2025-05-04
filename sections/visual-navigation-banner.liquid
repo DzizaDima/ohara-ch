@@ -1,0 +1,143 @@
+{{ 'section-visual-navigation-banner.min.css' | asset_url | stylesheet_tag: preload: true }}
+<noscript>{{ 'section-visual-navigation-banner.min.css' | asset_url | stylesheet_tag }}</noscript>
+
+<div class="visual-navigation__wrapper wow fadeInUp">
+  {% if section.settings.title != blank %}
+    <div class="sitewide--title-wrapper">
+      <h2 class="homepage-sections--title">{{ section.settings.title | escape }}</h2>
+    </div>
+  {% endif %}
+  {% if section.blocks.size > 0 %}
+    <ul class="visual-navigation__list">
+      {% for block in section.blocks %}
+        <li 
+          class="visual-navigation__list-item{% if section.settings.image_style == 'circle' %} visual-navigation__list-item--circle{% endif %}" 
+          {{ block.shopify_attributes }}
+        >
+          {% if block.settings.link_url != blank %}
+            <a 
+              href="{{ block.settings.link_url }}" 
+              class="visual-navigation__image-link"
+              aria-label="{% if block.settings.link_text != blank %}{{ block.settings.link_text }}{% else %}{{ block.settings.link_url | split: '/' | last | replace: '-', ' ' | capitalize }}{% endif %}"
+            >
+          {% endif %}
+
+          {% if block.settings.link_image.alt != blank %}
+            {% assign img_alt = block.settings.link_image.alt %}
+          {% else %}
+            {% assign img_alt = block.settings.link_text %}
+          {% endif %}
+
+          {% if block.settings.link_image != blank %}
+            {{ block.settings.link_image | image_url: width: 2000 | image_tag: alt: img_alt, class: 'visual-nav-img' }}
+          {% else %}
+            {% capture current %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}
+            {{ 'collection-' | append: current | placeholder_svg_tag: 'icon icon--placeholder' }}
+          {% endif %}
+
+          {% if block.settings.link_url != blank %}
+            </a>
+          {% endif %}
+
+          {% if block.settings.link_text != blank %}
+            <div class="visual-navigation__text">
+              {% if block.settings.link_url != blank %}
+                <p class="nav-link-animated--custom">
+                  <a class="visual-navigation__text-link animated-link--item" href="{{ block.settings.link_url }}" aria-label="{% if block.settings.link_text != blank %}{{ block.settings.link_text }}{% else %}{{ block.settings.link_url | split: '/' | last | replace: '-', ' ' | capitalize }}{% endif %}">
+                    {{ block.settings.link_text }}
+                  </a>
+                </p>
+              {% else %}
+                <p>{{ block.settings.link_text }}</p>
+              {% endif %}
+            </div>
+          {% endif %}
+
+        </li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.visual-navigation-banner.name",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "t:all.Heading"
+    },
+    {
+      "type": "select",
+      "id": "image_style",
+      "label": "t:all.Image_style",
+      "options": [
+        {
+          "value": "circle",
+          "label": "t:all.Circle"
+        },
+        {
+          "value": "square",
+          "label": "t:all.Square"
+        }
+      ]
+    }
+  ],
+  "blocks": [
+    {
+      "type": "navigation_link",
+      "name": "t:sections.visual-navigation-banner.blocks.navigation_link.name",
+      "limit": 6,
+      "settings": [
+        {
+          "type": "url",
+          "id": "link_url",
+          "label": "t:all.Link"
+        },
+        {
+          "type": "image_picker",
+          "id": "link_image",
+          "label": "t:all.Image",
+          "info": "t:sections.visual-navigation-banner.blocks.navigation_link.settings.link_image.info"
+        },
+        {
+          "type": "text",
+          "id": "link_text",
+          "label": "t:all.Text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.visual-navigation-banner.presets.name",
+      "blocks": [
+        {
+          "type": "navigation_link"
+        },
+        {
+          "type": "navigation_link"
+        },
+        {
+          "type": "navigation_link"
+        },
+        {
+          "type": "navigation_link"
+        },
+        {
+          "type": "navigation_link"
+        },
+        {
+          "type": "navigation_link"
+        }
+      ]
+    }
+  ],
+  "disabled_on": {
+    "groups": [
+      "header"
+    ]
+  }
+}
+{% endschema %}

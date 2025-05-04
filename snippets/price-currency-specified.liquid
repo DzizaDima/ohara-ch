@@ -1,0 +1,45 @@
+{% comment %}
+  
+  Renders either one price (amount) for all localization currencies OR one price/amount for each specified currency.
+
+  For one price, use with any numerical value. E.g. '10'.
+  For multiple currencies, it must use the following format: 'USD:10, EUR:9, GBP:8'
+  
+  Accepts:
+  - price: {Str} a single price or prices with correspondent country currency code (see "format" above).
+  - add_divider: {Bool} whether to prepend a vertical bar to the output value or not.
+
+{% endcomment %}
+
+{%- liquid
+
+  assign prices = price | remove: ' ' | split: ','
+  assign matching_currency =  false
+
+  if prices.size > 1
+    for price in prices
+      assign price_parts = price | split: ':'
+      assign price_code = price_parts | first | upcase 
+
+      if price_code == localization.country.currency.iso_code
+        assign price_amount = price_parts | last
+        assign matching_currency = true
+        break
+      endif
+    endfor
+
+  else
+    assign price_amount = price
+    assign matching_currency = true
+
+  endif
+
+  assign currency_price = price_amount | times: 100 | money_without_currency | prepend: localization.country.currency.symbol
+
+-%}
+
+{% if matching_currency and price_amount != '0' %}
+  {% if add_divider == false %}<span class="event-item--subheading">{% else %} | {% endif %}
+    {{ currency_price }}
+  {% if add_divider == false %}</span>{% endif %}
+{% endif %}

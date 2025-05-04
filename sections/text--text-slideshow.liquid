@@ -1,0 +1,174 @@
+{{ 'section-text-slideshow.min.css' | asset_url | stylesheet_tag }}
+
+{% if section.blocks.size > 1 %}
+  <style>
+    .text-slideshow__wrapper.text-slideshow--{{ section.id }} {
+      margin-bottom: 30px;
+    }
+  </style>
+  <text-slideshow>
+{% endif %}
+    <div class="homepage-sections-wrapper homepage-sections-wrapper--{{ section.settings.colors }}">
+      <div class="text-slideshow__wrapper text-slideshow--{{ section.id }} wrapper-padded show-on-scroll">
+        <ul class="text-slideshow__slide-container" data-text-slide-container>
+        {% for block in section.blocks %}
+          {% capture index %}{% cycle 'slideIndex': 0, 1, 2, 3, 4, 5 %}{% endcapture %}
+          <li 
+            data-text-slide={{ index }} 
+            class="text-slideshow__slide{% if forloop.first == true %} active{% endif %}"
+            {{ block.shopify_attributes }}
+          >
+            <div class="text-slideshow__slide-content">
+              {% if block.settings.title != blank %}
+                <div class="sitewide--title-wrapper">
+                  <h2 class="homepage-sections--title">{{ block.settings.title | escape }}</h2>
+                </div>
+              {% endif %}
+              <div>
+                {% if block.settings.text != blank %}
+                  <div class="rte featured-row__subtext text-link-animated">{{ block.settings.text }}</div>
+                {% endif %}
+                {% if block.settings.button_label != blank and block.settings.button_link != blank %}
+                  <div>
+                    <a 
+                      href="{{ block.settings.button_link }}"
+                      class="homepage-featured-box-btn"
+                      tabindex="0"
+                    >
+                      {{ block.settings.button_label }}
+                    </a>
+                  </div>
+                {% endif %}
+              </div>
+            </div>
+          </li>
+        {% endfor %}
+        </ul>
+        {% if section.blocks.size > 1 %}
+          <button 
+            class="text-slideshow__navigation standalone-icon--wrapper alt-focus"
+            type="button"
+            name="previous"
+            aria-label="Previous slide"
+            aria-hidden="true"
+            tabindex="-1"
+            disabled
+          >
+            {% render 'theme-icon', icon: 'chevron_left' %}
+          </button>
+          <button 
+            class="text-slideshow__navigation standalone-icon--wrapper alt-focus"
+            type="button"
+            name="next"
+            aria-label="Next slide"
+            aria-hidden="false"
+            tabindex="0"
+          >
+            {% render 'theme-icon', icon: 'chevron_right' %}
+          </button>
+          <ul class="text-slideshow__pagination" data-text-slide-pagination>
+            {% for block in section.blocks %}
+              {% capture index %}{% cycle 'paginationIndex': 0, 1, 2, 3, 4, 5 %}{% endcapture %}
+              <li>
+                <button
+                  class="text-slideshow__pagination-btn alt-focus{% if forloop.first == true %} active{% endif %}"
+                  data-pagination-btn={{ index }}
+                  type="button"
+                  aria-label="Go to slide {{ index | plus: 1 }}"
+                >
+                  <span></span>
+                </button>
+              </li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      </div>
+    </div>
+{% if section.blocks.size > 1 %}
+  </text-slideshow>
+{% endif %}
+
+{% schema %}
+{
+  "name": "t:sections.text--text-slideshow.name",
+  "settings": [
+    {
+      "type": "select",
+      "id": "colors",
+      "label": "t:all.Color_scheme",
+      "default": "white",
+      "options": [
+        {
+          "value": "white",
+          "label": "t:all.Minimal"
+        },
+        {
+          "value": "light",
+          "label": "t:all.Light"
+        },
+        {
+          "value": "accent",
+          "label": "t:all.Feature"
+        },
+        {
+          "value": "dark",
+          "label": "t:all.Dark"
+        }
+      ]
+    }
+  ],
+  "blocks": [
+    {
+      "type": "text",
+      "name": "t:all.Text",
+      "limit": 3,
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "t:all.Heading",
+          "default": "Heading"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "t:all.Text",
+          "default": "<p>Share store details, promotions, or brand content with your customers.</p>"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "t:all.Button_link",
+          "info": "t:all.Required_to_show_the_button"
+        },
+        {
+          "type": "text",
+          "id": "button_label",
+          "label": "t:all.Button_label"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.text--text-slideshow.presets.name",
+      "blocks": [
+        {
+          "type": "text"
+        },
+        {
+          "type": "text"
+        },
+        {
+          "type": "text"
+        }
+      ]
+    }
+  ],
+  "enabled_on": {
+    "templates": [
+      "article"
+    ]
+  }
+}
+{% endschema %}

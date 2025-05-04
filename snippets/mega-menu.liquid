@@ -1,0 +1,99 @@
+{% liquid 
+  assign block = mega-menu
+
+  assign block_grid_cols = '1fr'
+  assign links_grid_cols = 'repeat(5, 1fr)'
+  if link.links.size > 0 and block.settings.mega_image_1 != blank and block.settings.mega_image_2 != blank
+    assign block_grid_cols = '2fr 1fr 1fr'
+    assign links_grid_cols = 'repeat(3, 1fr)'
+  elsif link.links.size > 0 and block.settings.mega_image_1 != blank or block.settings.mega_image_2 != blank
+    assign block_grid_cols = '2fr 1fr'
+    assign links_grid_cols = 'repeat(4, 1fr)'
+  elsif link.links.size == 0 and block.settings.mega_image_1 != blank or block.settings.mega_image_2 != blank
+    assign block_grid_cols = 'repeat(5, 1fr)'
+  endif
+%}
+
+{% style %}
+  [data-mega-menu-block-id="{{ block.id }}"] {
+    grid-template-columns: {{ block_grid_cols }};
+  }
+
+  [data-mega-menu-block-id="{{ block.id }}"] .mega-menu--links {
+    grid-template-columns: {{ links_grid_cols }};
+  }
+
+  .mega-menu-block .block-id-{{ block.id }} .overlay-text-on-image-promo-1,
+  .mega-menu-block .block-id-{{ block.id }} .overlay-text-on-image-promo-1 a:hover {
+    color: {{ block.settings.overlay_text_color_promo_1 }} !important;
+  }
+
+  .mega-menu-block .block-id-{{ block.id }} .overlay-text-on-image-promo-2,
+  .mega-menu-block .block-id-{{ block.id }} .overlay-text-on-image-promo-2 a:hover {
+    color: {{ block.settings.overlay_text_color_promo_2 }} !important;
+  }
+{% endstyle %}
+
+<div class="mega-menu-block{% if link.links.size == 0 and block.settings.mega_image_1 == blank and block.settings.mega_image_2 == blank %} no--content{% endif %}" data-mega-menu-block-id="{{ block.id }}" {{ block.shopify_attributes }}>
+  {% if link.links.size == 0 %}
+    {% if block.settings.mega_image_1 == blank and block.settings.mega_image_2 == blank %}
+      <p class="mega-menu--empty" {% unless request.design_mode %}style="visibility:hidden;"{% endunless %}>
+        This megamenu doesn't currently have any content. Add content to the megamenu in the Shopify admin at: Online store > Menu.
+      </p>
+    {% endif %}
+  {% endif %}
+
+  {% if link.links.size > 0 %}
+    <div class="mega-menu--links">
+      {% for sub_link in link.links %}
+        <li class="dropdown-submenu nav-link-animated--custom" aria-haspopup="true">
+          <div class="inner">
+            <p class="h4 mega-menu-link--title"><a class="animated-link--item" href="{{ sub_link.url }}">{{ sub_link.title | escape }}</a></p>
+            <ul class="menu-link">
+              {% for sub_sub_link in sub_link.links %}
+                <li>
+                  <a class="animated-link--item" href="{{ sub_sub_link.url }}">{{ sub_sub_link.title | escape }}</a>
+                </li>
+              {% endfor %}
+            </ul>
+          </div>
+        </li>
+      {% endfor %}
+    </div>
+  {% endif %}
+
+  {% if block.settings.mega_image_1 %}
+    <div>
+      {% render 'mega-menu-promo-card' with 
+        promo_wrapper_classes: "dropdown-submenu",
+        promo_block_id: block.id,
+        promo_wrapper_attr: "aria-haspopup='true'",
+        promo_img: block.settings.mega_image_1,
+        promo_img_crop: block.settings.image_1_aspect_ratio,
+        promo_text_overlay: block.settings.overlay_text_on_image_promo_1,
+        promo_text_heading: block.settings.mega_image_header_1,
+        promo_text_subheading: block.settings.mega_image_subheader_1,
+        promo_text_color: block.settings.overlay_text_color_promo_1,
+        promo_link: block.settings.mega_image_link_1
+      %}
+    </div>
+  {% endif %}
+
+  {% if block.settings.mega_image_2 %}
+    <div>
+      {% render 'mega-menu-promo-card' with 
+        promo_wrapper_classes: "dropdown-submenu",
+        promo_block_id: block.id,
+        promo_wrapper_attr: "aria-haspopup='true'",
+        promo_img: block.settings.mega_image_2,
+        promo_img_crop: block.settings.image_2_aspect_ratio,
+        promo_text_overlay: block.settings.overlay_text_on_image_promo_2,
+        promo_text_heading: block.settings.mega_image_header_2,
+        promo_text_subheading: block.settings.mega_image_subheader_2,
+        promo_text_color: block.settings.overlay_text_color_promo_2,
+        promo_link: block.settings.mega_image_link_2
+      %}
+    </div>
+  {% endif %}
+
+</div>

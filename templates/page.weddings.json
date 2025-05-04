@@ -1,0 +1,184 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "template--page",
+      "disabled": true,
+      "settings": {
+        "page_title_enabled": true,
+        "page_width": "narrow"
+      }
+    },
+    "image_image_with_text_overlay_FFnYaQ": {
+      "type": "image--image-with-text-overlay",
+      "settings": {
+        "image": "shopify://shop_images/0042.jpg",
+        "image_height": "40vw",
+        "bg_image_overlay_opacity": 0,
+        "parallax": true,
+        "title": "",
+        "text": "",
+        "colors": "dark",
+        "textPosition": "center",
+        "textAlignment": "center",
+        "heading--text-size": 26,
+        "text--text-size": 18,
+        "link": "",
+        "button_label": "",
+        "button-text": "#ffffff",
+        "button-background": "#242424"
+      }
+    },
+    "text_rich_text_F6rQrN": {
+      "type": "text--rich-text",
+      "blocks": {
+        "heading_TrxAHU": {
+          "type": "heading",
+          "settings": {
+            "heading": "Weddings"
+          }
+        },
+        "richtext_n4nqdA": {
+          "type": "richtext",
+          "settings": {
+            "text": "<p>Our talented wedding team is dedicated to telling your unique story through extraordinary and memorable floral designs. From an understated wedding bouquet to a luxurious ballroom transformation, wedding flowers play a significant part in creating the atmosphere on the day. Whether you prefer simple, relaxed styles or dream of jaw-dropping floral installations, O'Hara Flowers & Decor will make it a celebration to remember.</p>",
+            "text_size": 14
+          }
+        }
+      },
+      "block_order": [
+        "heading_TrxAHU",
+        "richtext_n4nqdA"
+      ],
+      "settings": {
+        "section_width": "narrow",
+        "text_alignment_desktop": "center",
+        "text_alignment_mobile": "center",
+        "colors": "white"
+      }
+    },
+    "image_image_with_text_h86WpD": {
+      "type": "image--image-with-text",
+      "settings": {
+        "image": "shopify://shop_images/0027.jpg",
+        "text_overlapping_image": false,
+        "section-width": "content",
+        "layout": "left",
+        "text_alignment": "left",
+        "title": "The magic floral journey begins here at O'Hara Flowers & Decor",
+        "text": "<p><br/>We are dedicated to making your wedding day a perfect vision of who you are as a couple, by not only designing gorgeous wedding flowers, but by capturing the mood and tone of your entire day. We work closely with you on creating an environment that reflects who you are, your story, and your personalities, while presenting the floral elements in a way that is both timeless and elegant.<br/>Whether you are planning an intimate wedding with a sophisticated ambiance or an extravagant celebration bursting with color, we will make sure your floral vision and wedding bouquets are everything you dreamed it would be! Our team will create floral magic like never seen before! Our wedding and event services are available all along our glorious Switzerland.</p>",
+        "button_label": "SPEAK TO OUR WEDDING EXPERTS",
+        "button_link": "https://wa.me/41783330147",
+        "colors": "white"
+      }
+    },
+    "text_rich_text_kKYQ7x": {
+      "type": "text--rich-text",
+      "blocks": {
+        "heading_kCEUWR": {
+          "type": "heading",
+          "settings": {
+            "heading": "Our Process"
+          }
+        },
+        "richtext_RaQ47z": {
+          "type": "richtext",
+          "settings": {
+            "text": "<p>We exchange photographs of inspiration with our lovebirds to better understand their vision and invite them to our studio to discuss the nuances of the wedding day. Samples are crafted, and once approved, we will prepare the lush floral creations. We promise you a most spectacular wedding day, down to the last stem.</p>",
+            "text_size": 14
+          }
+        }
+      },
+      "block_order": [
+        "heading_kCEUWR",
+        "richtext_RaQ47z"
+      ],
+      "settings": {
+        "section_width": "narrow",
+        "text_alignment_desktop": "center",
+        "text_alignment_mobile": "center",
+        "colors": "white"
+      }
+    },
+    "image_gallery_GzdyBn": {
+      "type": "image--gallery",
+      "blocks": {
+        "image_PjNJzy": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/0009.jpg",
+            "link": "",
+            "title": "",
+            "subheading": "",
+            "overlay-btn-text": "",
+            "show-gradient-overlay": false,
+            "overlay_font_color": "#262428",
+            "button_text_color": "#ffffff",
+            "button_background_color": "#242424",
+            "overlay_color": "#ffffff"
+          }
+        },
+        "image_xRbeew": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/0072.jpg",
+            "link": "",
+            "title": "",
+            "subheading": "",
+            "overlay-btn-text": "",
+            "show-gradient-overlay": false,
+            "overlay_font_color": "#262428",
+            "button_text_color": "#ffffff",
+            "button_background_color": "#242424",
+            "overlay_color": "#ffffff"
+          }
+        },
+        "image_RMtNJN": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/0092.jpg",
+            "link": "",
+            "title": "",
+            "subheading": "",
+            "overlay-btn-text": "",
+            "show-gradient-overlay": false,
+            "overlay_font_color": "#262428",
+            "button_text_color": "#ffffff",
+            "button_background_color": "#242424",
+            "overlay_color": "#ffffff"
+          }
+        }
+      },
+      "block_order": [
+        "image_PjNJzy",
+        "image_xRbeew",
+        "image_RMtNJN"
+      ],
+      "settings": {
+        "colors": "white",
+        "title": "Selected from our gallery",
+        "richtext": "",
+        "remove-spacing": false,
+        "full-width": false,
+        "section-width": "full",
+        "content-position": "hide"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "image_image_with_text_overlay_FFnYaQ",
+    "text_rich_text_F6rQrN",
+    "image_image_with_text_h86WpD",
+    "text_rich_text_kKYQ7x",
+    "image_gallery_GzdyBn"
+  ]
+}

@@ -1,0 +1,250 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "template--page",
+      "disabled": true,
+      "settings": {
+        "page_title_enabled": true,
+        "page_width": "narrow"
+      }
+    },
+    "image_image_with_text_overlay_44MewL": {
+      "type": "image--image-with-text-overlay",
+      "disabled": true,
+      "settings": {
+        "image_height": "40vw",
+        "bg_image_overlay_opacity": 0,
+        "parallax": true,
+        "title": "",
+        "text": "",
+        "colors": "dark",
+        "textPosition": "center",
+        "textAlignment": "center",
+        "heading--text-size": 26,
+        "text--text-size": 18,
+        "link": "",
+        "button_label": "",
+        "button-text": "#ffffff",
+        "button-background": "#242424"
+      }
+    },
+    "text_rich_text_YtreAC": {
+      "type": "text--rich-text",
+      "blocks": {
+        "heading_EYPiGT": {
+          "type": "heading",
+          "settings": {
+            "heading": "Flowers By Subscription"
+          }
+        },
+        "richtext_ckAqwi": {
+          "type": "richtext",
+          "settings": {
+            "text": "<p>Beautify your home with fresh flowers delivered directly to your door. We offer a hassle-free subscription program to help you elevate your space. Every week or every month, we’ll delight you with our timely delivery and beautiful blooms.</p>",
+            "text_size": 14
+          }
+        }
+      },
+      "block_order": [
+        "heading_EYPiGT",
+        "richtext_ckAqwi"
+      ],
+      "settings": {
+        "section_width": "narrow",
+        "text_alignment_desktop": "center",
+        "text_alignment_mobile": "center",
+        "colors": "white"
+      }
+    },
+    "collage_builder_FXKAhA": {
+      "type": "collage-builder",
+      "blocks": {
+        "text_kB4TFY": {
+          "type": "text",
+          "settings": {
+            "heading": "01.Choose size",
+            "heading_size": 34,
+            "text": "Standard or Deluxe, your blooms will look great in any room!",
+            "text_alignment": "center",
+            "button_label": "",
+            "url": "",
+            "desktop_position": "md-min-align-center md-min-justify-center",
+            "background_color": "#ffffff",
+            "text_color": "#262428",
+            "button_color": "#e6e5e7",
+            "button_background_color": "#242424"
+          }
+        },
+        "text_VgdAaQ": {
+          "type": "text",
+          "settings": {
+            "heading": "02.Choose frequency",
+            "heading_size": 30,
+            "text": "Select between every two weeks or every month; we’ll always send you the freshest arrangements.",
+            "text_alignment": "center",
+            "button_label": "",
+            "url": "",
+            "desktop_position": "md-min-align-center md-min-justify-center",
+            "background_color": "#ffffff",
+            "text_color": "#262428",
+            "button_color": "#e6e5e7",
+            "button_background_color": "#242424"
+          }
+        },
+        "text_jcKTLx": {
+          "type": "text",
+          "settings": {
+            "heading": "03.Enjoy your flowers",
+            "heading_size": 30,
+            "text": "Arrangements will be carefully delivered in a vase, right to your door!",
+            "text_alignment": "center",
+            "button_label": "",
+            "url": "",
+            "desktop_position": "md-min-align-center md-min-justify-center",
+            "background_color": "#ffffff",
+            "text_color": "#262428",
+            "button_color": "#e6e5e7",
+            "button_background_color": "#242424"
+          }
+        }
+      },
+      "block_order": [
+        "text_kB4TFY",
+        "text_VgdAaQ",
+        "text_jcKTLx"
+      ],
+      "settings": {
+        "color_scheme": "white",
+        "title": "",
+        "description": "",
+        "remove_spacing": false,
+        "section_width": "content",
+        "width_1": "3",
+        "height_1": "3",
+        "width_2": "3",
+        "height_2": "3",
+        "width_3": "3",
+        "height_3": "3",
+        "width_4": "2",
+        "height_4": "2",
+        "width_5": "2",
+        "height_5": "2",
+        "width_6": "1",
+        "height_6": "4",
+        "block_alignment": "center"
+      }
+    },
+    "image_image_with_text_EmDma7": {
+      "type": "image--image-with-text",
+      "settings": {
+        "image": "shopify://shop_images/IMG_7005.jpg",
+        "text_overlapping_image": false,
+        "section-width": "content",
+        "layout": "left",
+        "text_alignment": "left",
+        "title": "Designer’s choice of the Month",
+        "text": "<p>A stunning mix of blush, pink with touches of white novelty flowers. Types of flowers used will vary based on the seasons. Let our designers create a special and unique arrangement that goes above and beyond!</p>",
+        "button_label": "SUBSCRIBE NOW",
+        "button_link": "https://wa.me/message/Q4BVQMNBCLB7L1",
+        "colors": "white"
+      }
+    },
+    "image_image_with_text_DWDPk4": {
+      "type": "image--image-with-text",
+      "settings": {
+        "image": "shopify://shop_images/IMG_3787.jpg",
+        "text_overlapping_image": false,
+        "section-width": "content",
+        "layout": "right",
+        "text_alignment": "left",
+        "title": "Why Subscribe?",
+        "text": "<h4>Reduced Pricing</h4><p>Stem prices are discounted for all arrangements.<br/></p><h4>No Contract</h4><p>You can cancel your subscription program at any time.<br/></p><h4>Dedicated Support</h4><p>You’ll be assigned a specific team member to assist you with your program.</p>",
+        "button_label": "",
+        "button_link": "",
+        "colors": "white"
+      }
+    },
+    "image_gallery_fELc8c": {
+      "type": "image--gallery",
+      "blocks": {
+        "image_W8TA9m": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/photo_2024-08-28_11-39-37.jpg",
+            "link": "",
+            "title": "",
+            "subheading": "",
+            "overlay-btn-text": "",
+            "show-gradient-overlay": false,
+            "overlay_font_color": "#262428",
+            "button_text_color": "#ffffff",
+            "button_background_color": "#242424",
+            "overlay_color": "#ffffff"
+          }
+        },
+        "image_f4RXDX": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/IMG_3772.jpg",
+            "link": "",
+            "title": "",
+            "subheading": "",
+            "overlay-btn-text": "",
+            "show-gradient-overlay": false,
+            "overlay_font_color": "#262428",
+            "button_text_color": "#ffffff",
+            "button_background_color": "#242424",
+            "overlay_color": "#ffffff"
+          }
+        },
+        "image_hLnGtn": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/photo_2024-08-28_11-40-26.jpg",
+            "link": "",
+            "title": "",
+            "subheading": "",
+            "overlay-btn-text": "",
+            "show-gradient-overlay": false,
+            "overlay_font_color": "#262428",
+            "button_text_color": "#ffffff",
+            "button_background_color": "#242424",
+            "overlay_color": "#ffffff"
+          }
+        }
+      },
+      "block_order": [
+        "image_W8TA9m",
+        "image_f4RXDX",
+        "image_hLnGtn"
+      ],
+      "settings": {
+        "colors": "white",
+        "title": "Beautify your home with our Designer’s choice selection",
+        "richtext": "",
+        "remove-spacing": false,
+        "full-width": false,
+        "section-width": "full",
+        "content-position": "hide"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "image_image_with_text_overlay_44MewL",
+    "text_rich_text_YtreAC",
+    "collage_builder_FXKAhA",
+    "image_image_with_text_EmDma7",
+    "image_image_with_text_DWDPk4",
+    "image_gallery_fELc8c"
+  ]
+}
