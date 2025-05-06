@@ -195,17 +195,6 @@
                     {%- endcapture -%}
                     <p class="text-center">{{ taxes_shipping_checkout }} {{ 'cart.general.pickup' | t }}</p>
                   </div>
-
-                  {% liquid 
-                    assign cart_has_pickup = false
-                    for item in cart.items
-                      for property in item.properties
-                        if item.properties['Method'] == 'Store pickup'
-                          assign cart_has_pickup = true
-                        endif
-                      endfor
-                    endfor
-                  %}
                   
                   <div class="cart-attributes">
                     <label for="attr_sender_phone">Buyer phone<span style="color: red;">*</span></label>

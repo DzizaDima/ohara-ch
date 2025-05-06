@@ -267,7 +267,7 @@ Add the page template as a class for easy page or template specific styling.
         document.documentElement.addEventListener('wetheme-cart-update', (e) => {
           let cart_has_shipping = false;
           for (let item of e.detail.cart.items) {
-            if (item.properties['Method'] == 'Shipping') {
+            if (item.properties['Method'] == 'Shipping' || item.properties['Methode'] == 'Versand') {
               cart_has_shipping = true;
             }
           }
