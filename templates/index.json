@@ -51,10 +51,10 @@
         "height_desktop": "l",
         "text_size_desktop": 48,
         "text_position_desktop": "bottom_left",
-        "image_mobile": "shopify://shop_images/IMG_0243.jpg",
+        "image_mobile": "shopify://shop_images/IMG_9070.png",
         "height_mobile": "full",
         "text_size_mobile": 28,
-        "text_position_mobile": "left"
+        "text_position_mobile": "top_left"
       }
     },
     "3643d38b-24f2-4040-ab67-4b4b44a63aab": {
