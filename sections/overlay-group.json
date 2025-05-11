@@ -1,0 +1,40 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "type": "custom.overlay",
+  "name": "Overlay",
+  "sections": {
+    "popup_section_WCtYBm": {
+      "type": "popup-section",
+      "name": "Products Popup",
+      "settings": {
+        "popup_title": "Discover our discounted products",
+        "popup_subtitle": "Hurry up, the discounts will be over soon!",
+        "product_collection": "special-offer",
+        "products_limit": 4,
+        "button_text": "View All Products",
+        "button_link": "shopify://collections/special-offer",
+        "popup_delay": 15,
+        "show_on_scroll": true,
+        "scroll_percentage": 30,
+        "enable_cookie": false,
+        "cookie_days": 7,
+        "popup_bg_color": "#f8f5f1",
+        "title_color": "#4e1d1d",
+        "text_color": "#333333",
+        "button_bg_color": "#f9dad5",
+        "button_text_color": "#4e1d1d"
+      }
+    }
+  },
+  "order": [
+    "popup_section_WCtYBm"
+  ]
+}

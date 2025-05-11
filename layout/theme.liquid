@@ -212,6 +212,10 @@ Add the page template as a class for easy page or template specific styling.
         {% sections 'footer-group' %}
       </div>
 
+      <div class="overlay-wrapper">
+        {% sections 'overlay-group' %}
+      </div>
+
       <script defer type="module" src="{{ 'theme.min.js' | asset_url }}"></script>
       <script defer src="{{ 'SafeLoadScripts.js' | asset_url }}"></script>
       <script defer nomodule src="{{ 'theme.legacy.min.js' | asset_url }}"></script>

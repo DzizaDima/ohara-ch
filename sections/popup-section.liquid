@@ -1,0 +1,502 @@
+{% if section.settings.product_collection != blank and section.settings.product_collection.products.size > 0 %}
+  <div id="products-popup-overlay" class="products-popup-overlay">
+    <div id="products-popup" class="products-popup" style="background-color: {{ section.settings.popup_bg_color }};">
+      <button id="popup-close" class="popup-close">×</button>
+
+      <div class="popup-content">
+        {% if section.settings.popup_title != blank %}
+          <h2 class="popup-title" style="color: {{ section.settings.title_color }};">
+            {{ section.settings.popup_title }}
+          </h2>
+        {% endif %}
+
+        {% if section.settings.popup_subtitle != blank %}
+          <p class="popup-subtitle" style="color: {{ section.settings.text_color }};">
+            {{ section.settings.popup_subtitle }}
+          </p>
+        {% endif %}
+
+        <div class="products-grid">
+          {% if section.settings.product_collection != blank %}
+            {% assign collection = collections[section.settings.product_collection] %}
+            {% assign products_limit = section.settings.products_limit | default: 3 %}
+            {% assign products_to_show = products_limit | at_most: collection.products.size %}
+
+            {% for product in collection.products limit: products_to_show %}
+              {% render 'grid-view-item',
+                product: product,
+                collection: collection,
+                section_color_scheme: section.settings.colors
+              %}
+            {% endfor %}
+          {% else %}
+            {% for i in (1..3) %}
+              <div class="product-item">
+                <div class="product-image">
+                  {{ 'product-' | append: i | placeholder_svg_tag: 'placeholder-svg' }}
+                </div>
+                <div class="product-info" style="color: {{ section.settings.text_color }};">
+                  <h3 class="product-title">Product {{ i }}</h3>
+                  <p class="product-price">{{ 10 | times: i | plus: 20 | money }}</p>
+                </div>
+              </div>
+            {% endfor %}
+          {% endif %}
+        </div>
+
+        {% if section.settings.button_text != blank %}
+          <a
+            href="{{ section.settings.button_link | default: collection.url | default: '#' }}"
+            class="popup-button"
+            style="background-color: {{ section.settings.button_bg_color }}; color: {{ section.settings.button_text_color }};"
+          >
+            {{ section.settings.button_text }}
+          </a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+
+  <style>
+    #products-popup-overlay.products-popup-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+      animation: fadeIn 0.3s ease-out;
+    }
+
+    #products-popup-overlay .products-popup {
+      position: relative;
+      width: 90%;
+      max-width: 900px;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 5px 30px rgba(0, 0, 0, 0.15);
+      animation: scaleIn 0.3s ease-out;
+    }
+
+    #products-popup-overlay .products-popup .grid-view-item{
+      max-width: 200px;
+      width: 100%;
+    }
+
+    #products-popup-overlay .popup-close {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      font-size: 24px;
+      border: none;
+      background: transparent;
+      cursor: pointer;
+      padding: 0;
+      width: 30px;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #666;
+      transition: transform 0.2s;
+    }
+
+    #products-popup-overlay .popup-close:hover {
+      transform: scale(1.2);
+    }
+
+    #products-popup-overlay .popup-content {
+      text-align: center;
+    }
+
+    #products-popup-overlay .popup-title {
+      font-size: 28px;
+      margin-bottom: 10px;
+      font-weight: 600;
+    }
+
+    #products-popup-overlay .popup-subtitle {
+      font-size: 16px;
+      margin-bottom: 25px;
+      line-height: 1.4;
+    }
+
+    #products-popup-overlay .products-grid {
+      display: grid;
+      grid-template-columns: repeat({{ products_to_show }}, 1fr);
+      gap: 15px;
+      margin-bottom: 25px;
+      justify-items: center;
+    }
+
+    #products-popup-overlay .product-item {
+      border-radius: 8px;
+      padding: 15px;
+      transition: transform 0.2s;
+    }
+
+    #products-popup-overlay .product-item:hover {
+      transform: translateY(-5px);
+    }
+
+    #products-popup-overlay .product-image {
+      margin-bottom: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 120px;
+    }
+
+    #products-popup-overlay .product-image img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+
+    #products-popup-overlay .placeholder-svg {
+      width: 80px;
+      height: 80px;
+    }
+
+    #products-popup-overlay .product-info {
+      text-align: center;
+    }
+
+    #products-popup-overlay .product-title {
+      font-size: 16px;
+      margin-bottom: 5px;
+      font-weight: 500;
+    }
+
+    #products-popup-overlay .product-price {
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    #products-popup-overlay .popup-button {
+      display: inline-block;
+      padding: 12px 30px;
+      border-radius: 30px;
+      font-size: 16px;
+      font-weight: 500;
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+
+    #products-popup-overlay .popup-button:hover {
+      opacity: 0.9;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes scaleIn {
+      from {
+        transform: scale(0.9);
+      }
+      to {
+        transform: scale(1);
+      }
+    }
+
+    @media screen and (max-width: 767px) {
+      #products-popup-overlay .products-grid {
+        grid-template-columns: repeat({{ products_to_show | at_most: 2 }}, 1fr);
+        gap: 20px;
+      }
+
+      #products-popup-overlay .products-popup {
+        width: 90%;
+        padding: 20px;
+      }
+
+      #products-popup-overlay .popup-title {
+        font-size: 22px;
+      }
+
+      #products-popup-overlay .popup-subtitle {
+        font-size: 12px;
+      }
+
+      #products-popup-overlay .product-item {
+        display: flex;
+        align-items: center;
+        text-align: left;
+        padding: 10px;
+      }
+
+      #products-popup-overlay .product-image {
+        margin-bottom: 0;
+        margin-right: 15px;
+        width: 80px;
+        height: 80px;
+        flex-shrink: 0;
+      }
+
+      #products-popup-overlay .product-info {
+        text-align: left;
+      }
+    }
+  </style>
+
+  <script>
+    (function() {
+      // Configuration from section settings
+      const popupConfig = {
+        delay: {{ section.settings.popup_delay | times: 1000 }},
+        showOnScroll: {{ section.settings.show_on_scroll | json }},
+        scrollPercentage: {{ section.settings.scroll_percentage }},
+        enableCookie: {{ section.settings.enable_cookie | json }},
+        cookieDays: {{ section.settings.cookie_days }}
+      };
+
+      // Elements
+      const popupOverlay = document.getElementById('products-popup-overlay');
+      const popup = document.getElementById('products-popup');
+      const closeButton = document.getElementById('popup-close');
+
+      // Function to show popup
+      function showPopup() {
+        if (shouldShowPopup()) {
+          popupOverlay.style.display = 'flex';
+          document.body.style.setProperty('overflow', 'hidden', 'important'); // Prevent scrolling behind popup
+        }
+      }
+
+      // Function to hide popup
+      function hidePopup() {
+        popupOverlay.style.display = 'none';
+        document.body.style.setProperty('overflow', '');
+
+        if (popupConfig.enableCookie) {
+          setPopupCookie();
+        }
+      }
+
+      // Check if popup should be shown (based on cookies)
+      function shouldShowPopup() {
+        if (!popupConfig.enableCookie) {
+          return true;
+        }
+
+        return !getPopupCookie();
+      }
+
+      // Set cookie when popup is closed
+      function setPopupCookie() {
+        const date = new Date();
+        date.setTime(date.getTime() + (popupConfig.cookieDays * 24 * 60 * 60 * 1000));
+        const expires = "expires=" + date.toUTCString();
+        document.cookie = "productPopupClosed=true;" + expires + ";path=/";
+      }
+
+      // Check if popup has been closed before
+      function getPopupCookie() {
+        const name = "productPopupClosed=";
+        const decodedCookie = decodeURIComponent(document.cookie);
+        const cookieArray = decodedCookie.split(';');
+
+        for (let i = 0; i < cookieArray.length; i++) {
+          let cookie = cookieArray[i];
+          while (cookie.charAt(0) === ' ') {
+            cookie = cookie.substring(1);
+          }
+          if (cookie.indexOf(name) === 0) {
+            return true;
+          }
+        }
+        return false;
+      }
+
+      // Show popup after delay
+      let popupTimer = setTimeout(showPopup, popupConfig.delay);
+
+      // Show popup on scroll if enabled
+      if (popupConfig.showOnScroll) {
+        let hasScrolled = false;
+        window.addEventListener('scroll', function() {
+          if (!hasScrolled) {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const scrollPercentage = (scrollTop / totalHeight) * 100;
+
+            if (scrollPercentage >= popupConfig.scrollPercentage) {
+              hasScrolled = true;
+              clearTimeout(popupTimer);
+              showPopup();
+            }
+          }
+        });
+      }
+
+      // Close popup when clicking close button
+      closeButton.addEventListener('click', hidePopup);
+
+      // Close popup when clicking outside
+      popupOverlay.addEventListener('click', function(event) {
+        if (event.target === popupOverlay) {
+          hidePopup();
+        }
+      });
+
+      // Close popup with Escape key
+      document.addEventListener('keydown', function(event) {
+        if (event.key === 'Escape') {
+          hidePopup();
+        }
+      });
+
+      // Prevent clicking inside popup from closing it
+      popup.addEventListener('click', function(event) {
+        event.stopPropagation();
+      });
+    })();
+  </script>
+{% endif %}
+{% schema %}
+{
+  "name": "Products Popup",
+  "enabled_on": {
+    "groups": ["custom.overlay"]
+  },
+  "settings": [
+    {
+      "type": "header",
+      "content": "Popup Content"
+    },
+    {
+      "type": "text",
+      "id": "popup_title",
+      "label": "Popup Title",
+      "default": "Discover Our Latest Products"
+    },
+    {
+      "type": "textarea",
+      "id": "popup_subtitle",
+      "label": "Popup Subtitle",
+      "default": "Check out our new arrivals and find your next favorite item."
+    },
+    {
+      "type": "collection",
+      "id": "product_collection",
+      "label": "Product Collection"
+    },
+    {
+      "type": "range",
+      "id": "products_limit",
+      "min": 3,
+      "max": 6,
+      "step": 1,
+      "label": "Number of Products to Display",
+      "default": 3,
+      "info": "The popup will always show at least 3 products"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "View Collection"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    },
+    {
+      "type": "header",
+      "content": "Popup Behavior"
+    },
+    {
+      "type": "range",
+      "id": "popup_delay",
+      "min": 10,
+      "max": 20,
+      "step": 1,
+      "default": 15,
+      "label": "Popup Delay (seconds)"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_on_scroll",
+      "label": "Show on Scroll",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "scroll_percentage",
+      "min": 10,
+      "max": 80,
+      "step": 10,
+      "default": 30,
+      "label": "Scroll Percentage to Trigger",
+      "info": "Popup will appear after user scrolls this percentage of the page"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_cookie",
+      "label": "Don't Show Again After Closing",
+      "default": true,
+      "info": "If enabled, popup won't show again for 7 days after user closes it"
+    },
+    {
+      "type": "range",
+      "id": "cookie_days",
+      "min": 1,
+      "max": 30,
+      "step": 1,
+      "default": 7,
+      "label": "Days Until Popup Shows Again"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "popup_bg_color",
+      "label": "Popup Background Color",
+      "default": "#f8f5f1"
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Title Color",
+      "default": "#4e1d1d"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#333333"
+    },
+    {
+      "type": "color",
+      "id": "button_bg_color",
+      "label": "Button Background Color",
+      "default": "#f9dad5"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Button Text Color",
+      "default": "#4e1d1d"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Products Popup",
+      "category": "Promotional"
+    }
+  ]
+}
+{% endschema %}
