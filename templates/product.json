@@ -90,10 +90,6 @@
         },
         "selleasy_lb_upsell_widget_bl_M9fRW8": {
           "type": "shopify://apps/selleasy/blocks/lb-upsell-widget-bl/790c1a03-a71f-4bc1-9869-00dad526d3c2",
-          "settings": {}
-        },
-        "selleasy_lb_upsell_widget_ba_xmmrrV": {
-          "type": "shopify://apps/selleasy/blocks/lb-upsell-widget-ba/790c1a03-a71f-4bc1-9869-00dad526d3c2",
           "disabled": true,
           "settings": {}
         },
@@ -120,7 +116,6 @@
         "buy_buttons",
         "cross_sells_HPat9b",
         "selleasy_lb_upsell_widget_bl_M9fRW8",
-        "selleasy_lb_upsell_widget_ba_xmmrrV",
         "9c341458-2d2c-4317-a2cc-346e220f53e0"
       ],
       "custom_css": [
