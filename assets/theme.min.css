@@ -28,3 +28,25 @@ label[for="attr_recipient_phone"].hidden{
 #dynamic-checkout-cart{
   width: 150px;
 }
+
+.lb-flat-card{
+  background-color: transparent;
+}
+
+.lb-bundle-products .lb-bundle-offers{
+  background-color: transparent;
+  border: 0.5px solid #080a0c;
+}
+
+lb-quantity-picker .lb-qty-count{
+  margin: 0;
+}
+
+lb-quantity-picker .lb-qty-picker{
+  border: 0.5px solid #080a0c;
+}
+
+.lb-variant-picker{
+  border: 0.5px solid #080a0c;
+  margin: 0;
+}

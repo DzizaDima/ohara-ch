@@ -13,6 +13,7 @@
   "sections": {
     "popup_section_WCtYBm": {
       "type": "popup-section",
+      "disabled": true,
       "name": "Products Popup",
       "settings": {
         "popup_title": "Discover our discounted products",
@@ -24,8 +25,8 @@
         "popup_delay": 15,
         "show_on_scroll": true,
         "scroll_percentage": 30,
-        "enable_cookie": false,
-        "cookie_days": 7,
+        "enable_cookie": true,
+        "cookie_days": 2,
         "popup_bg_color": "#f8f5f1",
         "title_color": "#4e1d1d",
         "text_color": "#333333",
