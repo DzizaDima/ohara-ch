@@ -146,17 +146,20 @@
 
                         {% if block.settings.cross_sell_product_1.available or block.settings.cross_sell_product_2.available or block.settings.cross_sell_product_3.available %}
                           <div class="cross-sell {{ spacing_classes }}{% if block.settings.collapsible_tab %} collapsible{% if block.settings.margin_bottom == 0 %} no_margin_bottom{% endif %}{% endif %}" style="--custom-margin-bottom: {{ block.settings.margin_bottom }}px" {{ block.shopify_attributes }}>
-                            {%- assign cross_sells_products = block.settings.cross_sell_product_1 | append: ',' | append: block.settings.cross_sell_product_2 | append: ',' | append: block.settings.cross_sell_product_3 | split: ',' | compact -%}
-                            {%- assign cross_sells_products_prices = block.settings.price_display_1 | append: ',' | append: block.settings.price_display_2 | append: ',' | append: block.settings.price_display_3 | split: ',' | compact -%}
+                            {%- assign cross_sells_products = block.settings.cross_sell_product_1 | append: ',' | append: block.settings.cross_sell_product_2 | append: ',' | append: block.settings.cross_sell_product_3 | append: ',' | append: block.settings.cross_sell_product_4 | split: ',' | compact -%}
+                            {%- assign cross_sells_products_prices = block.settings.price_display_1 | append: ',' | append: block.settings.price_display_2 | append: ',' | append: block.settings.price_display_3 | append: ',' | append: block.settings.price_display_4 | split: ',' | compact -%}
                             {% assign price_display_1 = block.settings.price_display_1 |  times: 100 %}
                             {% assign price_display_2 = block.settings.price_display_2 |  times: 100 %}
                             {% assign price_display_3 = block.settings.price_display_3 |  times: 100 %}
+                            {% assign price_display_4 = block.settings.price_display_4 |  times: 100 %}
                             {% assign show_cross_sells_products = false %}
                             {% if block.settings.cross_sell_product_1 != blank and price_display_1 > product.price %}
                               {% assign show_cross_sells_products = true %}
                             {% elsif block.settings.cross_sell_product_2 != blank and price_display_2 > product.price %}
                                 {% assign show_cross_sells_products = true %}
                             {% elsif block.settings.cross_sell_product_3 != blank and price_display_3 > product.price %}
+                              {% assign show_cross_sells_products = true %}
+                            {% elsif block.settings.cross_sell_product_4 != blank and price_display_4 > product.price %}
                               {% assign show_cross_sells_products = true %}
                             {% endif %}
                             {% if show_cross_sells_products == true %}
@@ -2010,6 +2013,17 @@
           "type": "product",
           "id": "cross_sell_product_3",
           "label": "t:sections.template--product.blocks.cross-sells.settings.cross_sell_product_3.label"
+        },
+        {
+          "type": "number",
+          "id": "price_display_4",
+          "label": "Maximum price to display 4",
+          "default": 1000
+        },
+        {
+          "type": "product",
+          "id": "cross_sell_product_4",
+          "label": "t:sections.template--product.blocks.cross-sells.settings.cross_sell_product_4.label"
         },
         {
           "type": "header",
