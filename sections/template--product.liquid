@@ -716,6 +716,7 @@
 
   {%- endcase -%}
 {%- endfor -%}
+{% comment %}
 {% if product.tags contains "Flowers" %}
 <script src="https://cdn.jsdelivr.net/npm/air-datepicker@3.3.4/air-datepicker.js"></script>
 <script>
@@ -794,6 +795,7 @@
 });
 </script>
 {% endif %}
+ {% endcomment %}
 {% schema %}
 {
   "name": "t:sections.template--product.name",

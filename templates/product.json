@@ -57,6 +57,7 @@
         },
         "text_with_icon_FpgGjJ": {
           "type": "text-with-icon",
+          "disabled": true,
           "settings": {
             "icon": "none",
             "text": "Pick ups on Saturdays until 9 am",

@@ -47,23 +47,23 @@
       ],
       "settings": {
         "colors": "accent",
-        "image_desktop": "shopify://shop_images/IMG_2243.jpg",
+        "image_desktop": "shopify://shop_images/DSCF3395.jpg",
         "height_desktop": "l",
         "text_size_desktop": 48,
-        "text_position_desktop": "bottom_left",
-        "image_mobile": "shopify://shop_images/IMG_9070.png",
+        "text_position_desktop": "top_left",
+        "image_mobile": "shopify://shop_images/DSCF3479.jpg",
         "height_mobile": "full",
         "text_size_mobile": 28,
-        "text_position_mobile": "top_left"
+        "text_position_mobile": "left"
       }
     },
     "3643d38b-24f2-4040-ab67-4b4b44a63aab": {
       "type": "collection--featured-collection",
       "settings": {
-        "title": "Mother's Day",
-        "richtext": "<p>Flowers</p>",
-        "collection": "spring-collection",
-        "show_view_all": false,
+        "title": "Gift Collection",
+        "richtext": "",
+        "collection": "gift-sets",
+        "show_view_all": true,
         "layout_style": "slider",
         "products_to_show": 8,
         "grid-desktop": 3,
