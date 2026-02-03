@@ -98,6 +98,96 @@
         "name": "list.metaobject_reference",
         "category": "REFERENCE"
       }
+    },
+    {
+      "key": "plant-class",
+      "namespace": "shopify",
+      "name": "Plant class",
+      "description": "Classifies plants into specific taxonomic groups, e.g. liliopsida, brassicales",
+      "type": {
+        "name": "list.metaobject_reference",
+        "category": "REFERENCE"
+      }
+    },
+    {
+      "key": "accessory-size",
+      "namespace": "shopify",
+      "name": "Accessory size",
+      "description": "Defines the size of an accessory product, such as one size or compact",
+      "type": {
+        "name": "list.metaobject_reference",
+        "category": "REFERENCE"
+      }
+    },
+    {
+      "key": "suitable-space",
+      "namespace": "shopify",
+      "name": "Suitable space",
+      "description": "Defines the ideal location for product use, e.g. indoors, above ground",
+      "type": {
+        "name": "list.metaobject_reference",
+        "category": "REFERENCE"
+      }
+    },
+    {
+      "key": "product-certifications-standards",
+      "namespace": "shopify",
+      "name": "Product certifications & standards",
+      "description": "Indicates the certifications or standards a product meets, such as organic or cruelty free",
+      "type": {
+        "name": "list.metaobject_reference",
+        "category": "REFERENCE"
+      }
+    },
+    {
+      "key": "constitutive-ingredients",
+      "namespace": "shopify",
+      "name": "Constitutive ingredients",
+      "description": "Specifies the main components used in a product's formulation, e.g. beeswax, rosehip oil",
+      "type": {
+        "name": "list.metaobject_reference",
+        "category": "REFERENCE"
+      }
+    },
+    {
+      "key": "flavor",
+      "namespace": "shopify",
+      "name": "Flavor",
+      "description": "Specifies the taste or flavor of a product, e.g. vanilla, mint",
+      "type": {
+        "name": "list.metaobject_reference",
+        "category": "REFERENCE"
+      }
+    },
+    {
+      "key": "decoration-material",
+      "namespace": "shopify",
+      "name": "Decoration material",
+      "description": "Identifies the material used for decoration, such as sequins or feathers",
+      "type": {
+        "name": "list.metaobject_reference",
+        "category": "REFERENCE"
+      }
+    },
+    {
+      "key": "allergen-information",
+      "namespace": "shopify",
+      "name": "Allergen information",
+      "description": "Indicates potential allergens present in food or beverages, such as wheat or peanuts",
+      "type": {
+        "name": "list.metaobject_reference",
+        "category": "REFERENCE"
+      }
+    },
+    {
+      "key": "flour-grain-type",
+      "namespace": "shopify",
+      "name": "Flour/Grain type",
+      "description": "Specifies the type of grain or flour in a product, e.g. corn, wheat",
+      "type": {
+        "name": "list.metaobject_reference",
+        "category": "REFERENCE"
+      }
     }
   ],
   "variant": [

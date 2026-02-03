@@ -208,6 +208,20 @@
                           </div>
                         {%- endif -%}
 
+                      {%- when 'custom-cross-sells' -%}
+                        {% assign has_metafield_products = false %}
+                        {% if product.metafields.custom.don_t_forget_to_add_products != blank %}
+                          {% assign has_metafield_products = true %}
+                        {% endif %}
+
+                        {% if has_metafield_products or block.settings.product_list != blank %}
+                          <div class="cross-sell {{ spacing_classes }}" style="--custom-margin-bottom: {{ block.settings.margin_bottom }}px" {{ block.shopify_attributes }}>
+                            <div class="cross-sell-block">
+                              {% render 'cross-sells-custom' with title: block.settings.title, product_list: block.settings.product_list, id: block.id %}
+                            </div>
+                          </div>
+                        {% endif %}
+
                       {%- when 'title' -%}
                         
                         <div class="{{ spacing_classes }}" style="--custom-margin-bottom: {{ block.settings.margin_bottom }}px" {{ block.shopify_attributes }}>
@@ -2184,6 +2198,39 @@
             }
           ],
           "default": "plus_minus"
+        },
+        {
+          "type": "header",
+          "content": "t:all.Block_spacing"
+        },
+        {
+          "type": "range",
+          "id": "margin_bottom",
+          "label": "t:all.Bottom_margin",
+          "min": 0,
+          "max": 40,
+          "step": 1,
+          "unit": "t:all.px",
+          "default": 20
+        }
+      ]
+    },
+    {
+      "name": "t:sections.template--product.blocks.custom-cross-sells.name",
+      "type": "custom-cross-sells",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "t:all.Label",
+          "default": "Don't forget these..."
+        },
+        {
+          "type": "product_list",
+          "id": "product_list",
+          "label": "t:sections.template--product.blocks.custom-cross-sells.settings.product_list.label",
+          "limit": 10
         },
         {
           "type": "header",

@@ -75,6 +75,7 @@
         },
         "cross_sells_HPat9b": {
           "type": "cross-sells",
+          "disabled": true,
           "settings": {
             "title": "Don't forget to add",
             "price_display_1": 1000000,
@@ -88,6 +89,19 @@
             "collapsible_tab": false,
             "icon": "none",
             "open_close_icon": "plus_minus",
+            "margin_bottom": 20
+          }
+        },
+        "custom_cross_sells_hWiULn": {
+          "type": "custom-cross-sells",
+          "settings": {
+            "title": "Don't forget to add",
+            "product_list": [
+              "valentine-s-gift-card",
+              "valentine-s-glazed-curd-hearts",
+              "flower-room",
+              "tenfold-bubble"
+            ],
             "margin_bottom": 20
           }
         },
@@ -118,6 +132,7 @@
         "text_with_icon_FpgGjJ",
         "buy_buttons",
         "cross_sells_HPat9b",
+        "custom_cross_sells_hWiULn",
         "selleasy_lb_upsell_widget_bl_M9fRW8",
         "9c341458-2d2c-4317-a2cc-346e220f53e0"
       ],

@@ -1801,6 +1801,14 @@
             }
           }
         },
+        "custom-cross-sells": {
+          "name": "Custom cross sells",
+          "settings": {
+            "product_list": {
+              "label": "Products"
+            }
+          }
+        },
         "social_sharing": {
           "name": "Social media"
         },

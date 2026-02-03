@@ -1,0 +1,51 @@
+{% comment %}
+  Renders a "custom cross-sells" component that displays a list of products
+  without price conditions.
+
+  Accepts:
+  - title: {String} heading of the block eg. block.settings.title
+  - product_list: {Array} an array of products from block settings
+  - id: {String} the id of the block eg. block.id
+
+  Usage:
+    {% render 'cross-sells-custom' with title: block.settings.title, product_list: block.settings.product_list, id: block.id %}
+{% endcomment %}
+
+{% liquid
+  # Check if metafield has products, otherwise use block settings
+  if product.metafields.custom.don_t_forget_to_add_products != blank
+    assign cross_sells_products = product.metafields.custom.don_t_forget_to_add_products.value
+  else
+    assign cross_sells_products = product_list
+  endif
+%}
+
+{%- unless cross_sells_products == blank -%}
+  <div class="cross-sells-wrapper" id="cross-sells-custom-{{ id }}">
+    {% if title != blank %}
+      <div class="header label-font">{{ title }}</div>
+    {% endif %}
+
+    {%- if cross_sells_products != blank -%}
+      <div class="cross-sells-products{% if cross_sells_products.size > 3 %} scrollable{% endif %}">
+        {% if cross_sells_products.size > 3 %}<scrollable-container class="top">{% endif %}
+          {%- for cross_sells_product in cross_sells_products -%}
+            {%- unless cross_sells_product == blank -%}
+              {% render 'product-cross-sell', product_id: cross_sells_product.handle, index: forloop.index0 %}
+            {%- endunless -%}
+          {%- endfor -%}
+        {% if cross_sells_products.size > 3 %}</scrollable-container>{% endif %}
+      </div>
+    {%- endif -%}
+  </div>
+
+  <safe-load-scripts class="hidden">
+    <script src="{{ 'component-product-cross-sell.js' | asset_url }}" type="module" defer="defer" data-flow-load-key="component-product-cross-sell"></script>
+  </safe-load-scripts>
+
+  {% if cross_sells_products.size > 3 %}
+    <safe-load-scripts class="hidden">
+      <script src="{{ 'component-scrollable-container.js' | asset_url }}" type="module" defer="defer" data-flow-load-key="component-scrollable-container"></script>
+    </safe-load-scripts>
+  {% endif %}
+{%- endunless -%}
