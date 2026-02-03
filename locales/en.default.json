@@ -55,11 +55,11 @@
     },
     "onboarding": {
       "modal_title": "Almost there...",
-      "no_products_html": "You have no products in your home page collection. This placeholder will appear until you <a href=\"\/admin\/collections?tutorial=Frontpage\">add a product to this collection<\/a>.",
+      "no_products_html": "You have no products in your home page collection. This placeholder will appear until you <a href=\"/admin/collections?tutorial=Frontpage\">add a product to this collection</a>.",
       "add_product": "Add a product",
       "product_title": "Product title",
       "product_description": "This area is used to describe your product’s details. Tell customers about the look, feel, and style of your product. Add details on color, materials used, sizing, and where it was made.",
-      "no_collections_html": "You don't have any collections to show here. <a href=\"\/admin\/custom_collections\">Add some collections<\/a> to go along with the default home page.",
+      "no_collections_html": "You don't have any collections to show here. <a href=\"/admin/custom_collections\">Add some collections</a> to go along with the default home page.",
       "add_collection": "Add a collection",
       "collection_title": "Collection title",
       "blog_title": "Your post's title",
@@ -70,10 +70,10 @@
       "return_text": "Back"
     },
     "localization": {
-      "country_label": "Country\/region",
+      "country_label": "Country/region",
       "language_label": "Language",
       "update_language": "Update language",
-      "update_country": "Update country\/region"
+      "update_country": "Update country/region"
     },
     "accessibility": {
       "back_to_top": {
@@ -174,10 +174,10 @@
       "see_more": "See more",
       "subtotal": "Subtotal",
       "taxes_and_shipping_at_checkout": "Taxes and shipping calculated at checkout",
-      "pickup": "Pick up available 11:00 - 16:00",
-      "taxes_and_shipping_policy_at_checkout_html": "Taxes and <a href=\"{{ link }}\">shipping<\/a> calculated at checkout",
+      "pickup": "Pick up available 10:30 - 18:30",
+      "taxes_and_shipping_policy_at_checkout_html": "Taxes and <a href=\"{{ link }}\">shipping</a> calculated at checkout",
       "taxes_included_but_shipping_at_checkout": "Tax included and shipping calculated at checkout",
-      "taxes_included_and_shipping_policy_html": "Tax included. <a href=\"{{ link }}\">Shipping<\/a> calculated at checkout.",
+      "taxes_included_and_shipping_policy_html": "Tax included. <a href=\"{{ link }}\">Shipping</a> calculated at checkout.",
       "update": "Update cart",
       "checkout": "Check out",
       "empty": "Your cart is currently empty.",
@@ -263,7 +263,7 @@
       "sort_by_label": "Sort by",
       "title": "Collection",
       "to": "To",
-      "use_fewer_filters_html": "Use fewer filters or <a class=\"{{ class }}\" href=\"{{ link }}\">clear all<\/a>"
+      "use_fewer_filters_html": "Use fewer filters or <a class=\"{{ class }}\" href=\"{{ link }}\">clear all</a>"
     },
     "events_calendar": {
       "tbc_text": "TBC"
@@ -271,7 +271,7 @@
     "map": {
       "address_error": "Error looking up that address",
       "address_no_results": "No results for that address",
-      "address_query_limit_html": "You have exceeded the Google API usage limit. Consider upgrading to a <a href=\"https:\/\/developers.google.com\/maps\/premium\/usage-limits\">Premium Plan<\/a>.",
+      "address_query_limit_html": "You have exceeded the Google API usage limit. Consider upgrading to a <a href=\"https://developers.google.com/maps/premium/usage-limits\">Premium Plan</a>.",
       "auth_error_html": "There was a problem authenticating your Google Maps API Key."
     },
     "shop_the_look": {
@@ -320,7 +320,7 @@
       "city": "City",
       "country": "Country",
       "province": "Province",
-      "zip": "Postal\/Zip code",
+      "zip": "Postal/Zip code",
       "phone": "Phone",
       "set_default": "Set as default address",
       "add": "Add address",
@@ -405,7 +405,7 @@
       "add_product": "Add a product",
       "product_title": "Product title",
       "product_vendor": "Vendor",
-      "no_collections_html": "You don't have any collections to show here. <a href=\"\/admin\/custom_collections\">Add some collections<\/a> to go along with the default Frontpage.",
+      "no_collections_html": "You don't have any collections to show here. <a href=\"/admin/custom_collections\">Add some collections</a> to go along with the default Frontpage.",
       "add_collection": "Add a collection",
       "collection_title": "Collection title",
       "no_content": "This section doesn’t currently include any content. Add content to this section using the sidebar."
@@ -477,13 +477,13 @@
       "category": "Category",
       "type": "Type",
       "include_taxes": "Tax included.",
-      "shipping_policy_html": "<a href=\"{{ link }}\">Shipping<\/a> calculated at checkout.",
+      "shipping_policy_html": "<a href=\"{{ link }}\">Shipping</a> calculated at checkout.",
       "quote": "Quote",
       "in_stock": "In stock",
       "low_stock": "Low stock",
       "out_of_stock": "Out of stock",
       "stock_left": "left",
-      "out_of_stock_html": "Click <a href=\"#\"><strong>here<\/strong><\/a> to be notified by email when {{ product }} becomes available.",
+      "out_of_stock_html": "Click <a href=\"#\"><strong>here</strong></a> to be notified by email when {{ product }} becomes available.",
       "wrong_email": "Please provide a valid email address.",
       "out_of_stock_success": "Thanks! We will notify you when this product becomes available!",
       "read_more_html": "Read more",
@@ -537,9 +537,16 @@
       "find_out": "Find out when we open",
       "password": "Enter store using password",
       "store_owner": "Are you the store owner?",
-      "store_owner_html": "<a href=\"\/admin\">Log in here<\/a>",
+      "store_owner_html": "<a href=\"/admin\">Log in here</a>",
       "continue": "Continue",
-      "powered_by_html": "This store will be powered by <a href=\"http:\/\/www.shopify.com\">Shopify<\/a>"
+      "powered_by_html": "This store will be powered by <a href=\"http://www.shopify.com\">Shopify</a>"
+    }
+  },
+  "shopify": {
+    "checkout": {
+      "delivery_options": {
+        "ship": "Courier delivery"
+      }
     }
   }
 }

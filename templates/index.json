@@ -18,7 +18,7 @@
             "text_static": "<p>Send your</p>",
             "max_width_desktop": 100,
             "max_width_mobile": 100,
-            "text_color": "#000000"
+            "text_color": "#ffffff"
           }
         },
         "template--15051013783622__af3e824e-6ca9-4ac4-9510-a07cb14e4a66-text_dynamic-1": {
@@ -27,13 +27,13 @@
             "text_dynamic": "love,feelings",
             "animation_timing": 500,
             "rotation_interval": 5000,
-            "text_color": "#000000"
+            "text_color": "#ffffff"
           }
         },
         "template--15051013783622__af3e824e-6ca9-4ac4-9510-a07cb14e4a66-button-1": {
           "type": "button",
           "settings": {
-            "button_url": "shopify://collections/all",
+            "button_url": "shopify://collections/valentines-day",
             "button_text": "Shop now",
             "color_button_text": "#000000",
             "color_button_background": "#f1efeb"
@@ -51,10 +51,10 @@
         "height_desktop": "l",
         "text_size_desktop": 48,
         "text_position_desktop": "top_left",
-        "image_mobile": "shopify://shop_images/DSCF3479.jpg",
+        "image_mobile": "shopify://shop_images/IMG_7864-min-scaled.jpg",
         "height_mobile": "full",
         "text_size_mobile": 28,
-        "text_position_mobile": "left"
+        "text_position_mobile": "top_center"
       }
     },
     "3643d38b-24f2-4040-ab67-4b4b44a63aab": {
