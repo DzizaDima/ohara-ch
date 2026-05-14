@@ -715,6 +715,8 @@
       {{ product | json }}
     </script>
   {% endunless %}
+
+  {{ 'buunto-add-to-cart.js' | asset_url | script_tag }}
 </div>
 
 {%- for block in section.blocks -%}

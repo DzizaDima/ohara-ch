@@ -14,3 +14,10 @@
   height: 44px!important;
   line-height: 44px!important;
 }
+
+/* Buunto date picker — lock ATC until date + time slot are selected */
+#AddToCart[aria-disabled="true"] {
+  pointer-events: none;
+  opacity: 0.55;
+  cursor: not-allowed;
+}
