@@ -84,6 +84,12 @@
       try {
         widget.scrollIntoView({ behavior: 'smooth', block: 'center' });
       } catch (_) {}
+
+      // Trigger attention glow. Force reflow between remove/add so the animation
+      // restarts correctly even on repeated blocked submit attempts.
+      widget.classList.remove('buunto-attention');
+      void widget.offsetWidth;
+      widget.classList.add('buunto-attention');
     }, true);
 
     // Poll until window.Buunto API is ready. Fail-open after timeout so a CDN

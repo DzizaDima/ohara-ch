@@ -15,9 +15,36 @@
   line-height: 44px!important;
 }
 
-/* Buunto date picker — lock ATC until date + time slot are selected */
+/* Buunto date picker — lock ATC until date + time slot are selected.
+   pointer-events intentionally kept ON so clicks reach the form submit handler,
+   which intercepts them in capture phase, blocks the cart add, and triggers the
+   attention glow on the widget. opacity + cursor give the visual "disabled" cue. */
 #AddToCart[aria-disabled="true"] {
-  pointer-events: none;
   opacity: 0.55;
   cursor: not-allowed;
+}
+
+/* Buunto date picker — attention glow when ATC is blocked */
+@keyframes buuntoAttentionGlow {
+  0% {
+    box-shadow: 0 0 0 0 rgba(208, 46, 46, 0), 0 0 0 0 rgba(208, 46, 46, 0);
+  }
+  15% {
+    box-shadow: 0 0 0 3px rgba(208, 46, 46, 0.55), 0 0 0 10px rgba(208, 46, 46, 0.18);
+  }
+  100% {
+    box-shadow: 0 0 0 3px rgba(208, 46, 46, 0), 0 0 0 10px rgba(208, 46, 46, 0);
+  }
+}
+
+#buunto-date-picker.buunto-attention {
+  animation: buuntoAttentionGlow 2s ease-out;
+  border-radius: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #buunto-date-picker.buunto-attention {
+    animation: none;
+    box-shadow: 0 0 0 3px rgba(208, 46, 46, 0.55);
+  }
 }
