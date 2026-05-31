@@ -1,0 +1,97 @@
+.homepage-sections-wrapper.fake-testimonials-slider-section {
+  padding-top: var(--fake-testimonials-pad-top, 50px);
+  padding-bottom: var(--fake-testimonials-pad-bottom, 50px);
+}
+
+@media screen and (min-width: 768px) {
+  .homepage-sections-wrapper.fake-testimonials-slider-section {
+    padding-top: var(--fake-testimonials-pad-top-desktop, var(--fake-testimonials-pad-top, 50px));
+    padding-bottom: var(--fake-testimonials-pad-bottom-desktop, var(--fake-testimonials-pad-bottom, 50px));
+  }
+}
+
+.fake-testimonials-slider-section .sitewide--title-wrapper {
+  text-align: center;
+}
+
+.fake-testimonials-slider-section .homepage-sections--title {
+  text-align: center;
+}
+
+.fake-testimonials-slider__wrapper {
+  position: relative;
+}
+
+.fake-testimonials-slider__wrapper .swiper-btn--wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.fake-testimonials-slider__wrapper .swiper-button--prev,
+.fake-testimonials-slider__wrapper .swiper-button--next {
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fake-testimonials-slider__wrapper .swiper-pagination {
+  position: static;
+  width: auto;
+  margin-top: 20px;
+}
+
+.fake-testimonials-slider__card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  height: 100%;
+  padding: 8px 4px;
+}
+
+.fake-testimonials-slider__image {
+  width: 100%;
+  max-width: 200px;
+  margin: 0 auto 20px;
+}
+
+.fake-testimonials-slider__image img,
+.fake-testimonials-slider__image .responsive-image-wrapper img {
+  width: 200px;
+  height: 200px;
+  max-width: 100%;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 50%;
+  display: block;
+  margin: 0 auto;
+}
+
+.fake-testimonials-slider__text {
+  margin-bottom: 16px;
+  flex: 1;
+  font-size: var(--body-font-size-14-to-em);
+}
+
+.fake-testimonials-slider__text p {
+  margin: 0;
+}
+
+.fake-testimonials-slider__author {
+  font-size: var(--body-font-size-14-to-em);
+  font-weight: 600;
+}
+
+.fake-testimonials-slider__wrapper.swiper-initialized .swiper-slide {
+  height: auto;
+}
+
+@media screen and (max-width: 767px) {
+  .fake-testimonials-slider__wrapper .swiper-btn--wrapper {
+    margin-top: 16px;
+  }
+}
