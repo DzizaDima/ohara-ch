@@ -77,8 +77,8 @@
           "type": "announcement",
           "settings": {
             "announcement_text": "Personal floral assistance! We help you choose the perfect bouquet and handle the order for you",
-            "announcement_bg_color": "#000000",
-            "announcement_text_color": "#ffffff"
+            "announcement_bg_color": "#ded7d7",
+            "announcement_text_color": "#242424"
           }
         }
       },
