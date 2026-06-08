@@ -100,6 +100,62 @@
         "colors": "white"
       }
     },
+    "text_fake_testimonials_slider_EYamVD": {
+      "type": "text--fake-testimonials-slider",
+      "blocks": {
+        "testimonial_mP4tp7": {
+          "type": "testimonial",
+          "settings": {
+            "testimonial_text": "<p>Beautiful flowers and exceptional service. The bouquet arrived fresh, elegant, and exactly as pictured☺️</p>",
+            "author_name": "Monika Weber"
+          }
+        },
+        "testimonial_aPCicE": {
+          "type": "testimonial",
+          "settings": {
+            "testimonial_text": "<p>The entire experience was amazing. Excellent communication, timely delivery, and a stunning arrangement</p>",
+            "author_name": "Lukas Meier"
+          }
+        },
+        "testimonial_qhWnLN": {
+          "type": "testimonial",
+          "settings": {
+            "testimonial_text": "<p>I ordered flowers for a special occasion, and they exceeded my expectations. The quality was outstanding and arrived very quick</p>",
+            "author_name": "Daniel Baumann"
+          }
+        },
+        "testimonial_c9AThe": {
+          "type": "testimonial",
+          "settings": {
+            "testimonial_text": "<p>The bouquet was absolutely beautiful and lasted for many days. You can truly see the attention to detail</p>",
+            "author_name": "Sandra Keller"
+          }
+        },
+        "testimonial_FWAzAU": {
+          "type": "testimonial",
+          "settings": {
+            "testimonial_text": "<p>A premium floral experience from start to finish<br/>Thanks to outstanding customer service and fast delivery 🫶🏻</p>",
+            "author_name": "Natali Kahala"
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_mP4tp7",
+        "testimonial_aPCicE",
+        "testimonial_qhWnLN",
+        "testimonial_c9AThe",
+        "testimonial_FWAzAU"
+      ],
+      "name": "Fake testimonials slider",
+      "settings": {
+        "title": "What our customers say",
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 40,
+        "padding_top_desktop": 40,
+        "padding_bottom_desktop": 40,
+        "colors": "white"
+      }
+    },
     "image_image_with_text_tBnK4R": {
       "type": "image--image-with-text",
       "settings": {
@@ -127,70 +183,6 @@
         "text": "<p>We are on hand to speak with you to create the most beautiful flowers and plants for your event.\t\t\t\t\t\t<br/><br/><br/><br/><a href=\"/pages/private-events\" title=\"Private events\">FIND OUT MORE</a></p>",
         "button_label": "",
         "button_link": "#",
-        "colors": "white"
-      }
-    },
-    "text_fake_testimonials_slider_EYamVD": {
-      "type": "text--fake-testimonials-slider",
-      "blocks": {
-        "testimonial_mP4tp7": {
-          "type": "testimonial",
-          "settings": {
-            "testimonial_text": "<p>\"Amazing quality and fast delivery. I will definitely order again!\"</p>",
-            "author_name": "Anna M."
-          }
-        },
-        "testimonial_aPCicE": {
-          "type": "testimonial",
-          "settings": {
-            "testimonial_text": "<p>\"Beautiful design and excellent customer service. Highly recommended.\"</p>",
-            "author_name": "James K."
-          }
-        },
-        "testimonial_qhWnLN": {
-          "type": "testimonial",
-          "settings": {
-            "testimonial_text": "<p>\"Exactly what I was looking for. The product exceeded my expectations.\"</p>",
-            "author_name": "Sofia L."
-          }
-        },
-        "testimonial_c9AThe": {
-          "type": "testimonial",
-          "settings": {
-            "testimonial_text": "<p>\"Great value for money. Packaging was perfect and arrival was on time.\"</p>",
-            "author_name": "Michael R."
-          }
-        },
-        "testimonial_FWAzAU": {
-          "type": "testimonial",
-          "settings": {
-            "testimonial_text": "<p>\"A wonderful shopping experience from start to finish. Five stars!\"</p>",
-            "author_name": "Elena P."
-          }
-        },
-        "testimonial_pXDFrm": {
-          "type": "testimonial",
-          "settings": {
-            "testimonial_text": "<p>\"I have already recommended this store to all my friends and family.\"</p>",
-            "author_name": "David W."
-          }
-        }
-      },
-      "block_order": [
-        "testimonial_mP4tp7",
-        "testimonial_aPCicE",
-        "testimonial_qhWnLN",
-        "testimonial_c9AThe",
-        "testimonial_FWAzAU",
-        "testimonial_pXDFrm"
-      ],
-      "name": "Fake testimonials slider",
-      "settings": {
-        "title": "What our customers say",
-        "padding_top_mobile": 40,
-        "padding_bottom_mobile": 40,
-        "padding_top_desktop": 40,
-        "padding_bottom_desktop": 40,
         "colors": "white"
       }
     }
