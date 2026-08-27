@@ -15,13 +15,33 @@
   line-height: 44px!important;
 }
 
-/* Buunto date picker — lock ATC until date + time slot are selected.
-   pointer-events intentionally kept ON so clicks reach the form submit handler,
-   which intercepts them in capture phase, blocks the cart add, and triggers the
-   attention glow on the widget. opacity + cursor give the visual "disabled" cue. */
-#AddToCart[aria-disabled="true"] {
+/* Gift cards are digital and have no delivery date. Hide the Buunto widget its
+   app embed still injects here (the guard script is not loaded on this template;
+   gift cards should also be excluded in the Buunto admin). */
+.template-gift-card #buunto-date-picker,
+.template-gift-card .buunto-date-picker {
+  display: none !important;
+}
+
+/* Buunto date picker — lock every add-to-cart control until a date + time slot
+   are selected. pointer-events intentionally kept ON so clicks reach the
+   document-level capture handler in buunto-add-to-cart.js, which blocks the
+   cart add and triggers the attention glow on the widget. opacity + cursor give
+   the visual "disabled" cue. */
+#AddToCart[aria-disabled="true"],
+form[action*="/cart/add"].buunto-locked button[name="add"],
+form[action*="/cart/add"].buunto-locked input[type="submit"][name="add"] {
   opacity: 0.55;
   cursor: not-allowed;
+}
+
+/* Dynamic checkout (Buy It Now / Shop Pay) never fires a submit event on the
+   host form, so it has to be neutralised in CSS. The click still lands on the
+   wrapper, where the capture handler picks it up and shows the glow. */
+form[action*="/cart/add"].buunto-locked .shopify-payment-button,
+form[action*="/cart/add"].buunto-locked [data-shopify="payment-button"] {
+  opacity: 0.55;
+  pointer-events: none;
 }
 
 /* Buunto date picker — attention glow when ATC is blocked */
