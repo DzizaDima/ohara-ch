@@ -159,6 +159,17 @@
 
   <script>document.documentElement.className = document.documentElement.className.replace('no-js', 'js');</script>
 
+  {%- comment -%}
+    Buunto delivery-date guard. Loaded synchronously and before theme.min.js so
+    its fetch/XHR patches and capture-phase listeners are in place before the
+    theme, the cross-sell components or any app script can add a line item.
+    Skipped on gift-card products: they are digital and carry no delivery date
+    (also exclude gift cards in the Buunto admin so the widget is not injected).
+  {%- endcomment -%}
+  {%- unless product.gift_card? -%}
+    <script src="{{ 'buunto-add-to-cart.js' | asset_url }}"></script>
+  {%- endunless -%}
+
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/air-datepicker@3.3.4/air-datepicker.css">
 <meta name="google-site-verification" content="DApi7JJ0_BDRqqkDW-DPQtonYQvG2CFx6YW1c2BG7Ls" />
 </head>
@@ -168,7 +179,7 @@ Add the page template as a class for easy page or template specific styling.
 {% endcomment %}
 
 <body id="{{ page_title | handle }}"
-  class="{% if template == 'page.contact' %}contact-page {% endif %}{% if customer %}customer-logged-in {% endif %}template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }}{% unless settings.animations_enabled %} animations-disabled{% endunless %}{% if settings.page_fade_enabled %} page-fade{% endif %}{% if settings.color_body_bg == settings.header-bg-color %} white--match{% endif %}{% if settings.product-grid != 'natural' %} images-aspect-ratio{% endif %} ">
+  class="{% if template == 'page.contact' %}contact-page {% endif %}{% if customer %}customer-logged-in {% endif %}{% if product.gift_card? %}template-gift-card {% endif %}template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }}{% unless settings.animations_enabled %} animations-disabled{% endunless %}{% if settings.page_fade_enabled %} page-fade{% endif %}{% if settings.color_body_bg == settings.header-bg-color %} white--match{% endif %}{% if settings.product-grid != 'natural' %} images-aspect-ratio{% endif %} ">
 
   <noscript>{{ 'swiper-bundle.min.css' | asset_url | stylesheet_tag }}</noscript>
   <noscript>{{ 'photoswipe.min.css' | asset_url | stylesheet_tag }}</noscript>

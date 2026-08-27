@@ -716,7 +716,10 @@
     </script>
   {% endunless %}
 
-  {{ 'buunto-add-to-cart.js' | asset_url | script_tag }}
+  {%- comment -%}
+    buunto-add-to-cart.js is loaded from layout/theme.liquid — it has to run
+    before theme.min.js and on every template, not just the product page.
+  {%- endcomment -%}
 </div>
 
 {%- for block in section.blocks -%}
