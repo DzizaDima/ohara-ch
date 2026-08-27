@@ -1,0 +1,250 @@
+{{ 'section-fake-testimonials-slider.css' | asset_url | stylesheet_tag: preload: true }}
+<noscript>{{ 'section-fake-testimonials-slider.css' | asset_url | stylesheet_tag }}</noscript>
+
+{% case section.settings.colors %}
+  {% when 'white' %}
+    {%- assign color_scheme = 'homepage-sections-wrapper--white' -%}
+  {% when 'light' %}
+    {%- assign color_scheme = 'homepage-sections-wrapper--light' -%}
+  {% when 'accent' %}
+    {%- assign color_scheme = 'homepage-sections-wrapper--accent' -%}
+  {% when 'dark' %}
+    {%- assign color_scheme = 'homepage-sections-wrapper--dark' -%}
+{% endcase %}
+
+<div
+  class="homepage-sections-wrapper {{ color_scheme }} fake-testimonials-slider-section fake-testimonials-slider-section--{{ section.id }}{% if request.visual_preview_mode %} animated fadeInUp{% else %} show-on-scroll{% endif %}"
+  data-wetheme-section-type="text--fake-testimonials-slider"
+  data-wetheme-section-id="{{ section.id }}"
+  style="
+    --fake-testimonials-pad-top: {{ section.settings.padding_top_mobile }}px;
+    --fake-testimonials-pad-bottom: {{ section.settings.padding_bottom_mobile }}px;
+    --fake-testimonials-pad-top-desktop: {{ section.settings.padding_top_desktop }}px;
+    --fake-testimonials-pad-bottom-desktop: {{ section.settings.padding_bottom_desktop }}px;
+  "
+>
+  <div class="wrapper-padded">
+    {% if section.settings.title != blank %}
+      <div class="sitewide--title-wrapper">
+        <h2 class="homepage-sections--title">{{ section.settings.title | escape }}</h2>
+      </div>
+    {% endif %}
+
+    {% if section.blocks.size > 0 %}
+      <div class="fake-testimonials-slider__wrapper" data-fake-testimonials-slider-wrapper>
+        <safe-load-scripts class="hidden">
+          <script src="{{ 'component-fake-testimonials-slider.js' | asset_url }}" defer="defer" type="module" data-flow-load-key="component-fake-testimonials-slider"></script>
+        </safe-load-scripts>
+
+        <fake-testimonials-slider class="swiper">
+          <div class="swiper-wrapper">
+            {% for block in section.blocks %}
+              <div class="swiper-slide" {{ block.shopify_attributes }}>
+                <article class="fake-testimonials-slider__card">
+                  {% if block.settings.image != blank %}
+                    <div class="fake-testimonials-slider__image">
+                      {% assign img_alt = block.settings.image.alt | escape | default: block.settings.author_name %}
+                      {% render 'responsive-image' with block.settings.image, alt: img_alt, crop: 'center', default_size: '200x200', force_height: 200, force_aspect: 1, allow_stretch: true %}
+                    </div>
+                  {% endif %}
+
+                  {% if block.settings.testimonial_text != blank %}
+                    <div class="fake-testimonials-slider__text rte text-inline-link-animated">
+                      {{ block.settings.testimonial_text }}
+                    </div>
+                  {% endif %}
+
+                  {% if block.settings.author_name != blank %}
+                    <p class="fake-testimonials-slider__author">{{ block.settings.author_name | escape }}</p>
+                  {% endif %}
+                </article>
+              </div>
+            {% endfor %}
+          </div>
+        </fake-testimonials-slider>
+
+        <div class="swiper-btn--wrapper">
+          <div class="swiper-button--prev btn" aria-label="{{ 'general.accessibility.pagination.previous' | t }}">
+            {% render 'theme-icon', icon: 'chevron_left' %}
+          </div>
+          <div class="swiper-pagination"></div>
+          <div class="swiper-button--next btn" aria-label="{{ 'general.accessibility.pagination.next' | t }}">
+            {% render 'theme-icon', icon: 'chevron_right' %}
+          </div>
+        </div>
+      </div>
+    {% else %}
+      <div class="placeholder-noblocks">
+        {{ 'general.onboarding.no_content' | t }}
+      </div>
+    {% endif %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Fake testimonials slider",
+  "class": "homepage-section--fake-testimonials-slider-wrapper",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "What our customers say"
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Top padding (mobile)",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom padding (mobile)",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_top_desktop",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Top padding (desktop)",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desktop",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom padding (desktop)",
+      "default": 40
+    },
+    {
+      "type": "header",
+      "content": "Color"
+    },
+    {
+      "type": "select",
+      "id": "colors",
+      "label": "Color scheme",
+      "default": "white",
+      "options": [
+        {
+          "value": "white",
+          "label": "Minimal"
+        },
+        {
+          "value": "light",
+          "label": "Light"
+        },
+        {
+          "value": "accent",
+          "label": "Feature"
+        },
+        {
+          "value": "dark",
+          "label": "Dark"
+        }
+      ]
+    }
+  ],
+  "blocks": [
+    {
+      "type": "testimonial",
+      "name": "Testimonial",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "richtext",
+          "id": "testimonial_text",
+          "label": "Review text",
+          "default": "<p>\"Show off incredible feedback from your customers\"</p>"
+        },
+        {
+          "type": "text",
+          "id": "author_name",
+          "label": "Author name",
+          "default": "John Smith"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 12,
+  "presets": [
+    {
+      "name": "Fake testimonials slider",
+      "blocks": [
+        {
+          "type": "testimonial",
+          "settings": {
+            "testimonial_text": "<p>\"Amazing quality and fast delivery. I will definitely order again!\"</p>",
+            "author_name": "Anna M."
+          }
+        },
+        {
+          "type": "testimonial",
+          "settings": {
+            "testimonial_text": "<p>\"Beautiful design and excellent customer service. Highly recommended.\"</p>",
+            "author_name": "James K."
+          }
+        },
+        {
+          "type": "testimonial",
+          "settings": {
+            "testimonial_text": "<p>\"Exactly what I was looking for. The product exceeded my expectations.\"</p>",
+            "author_name": "Sofia L."
+          }
+        },
+        {
+          "type": "testimonial",
+          "settings": {
+            "testimonial_text": "<p>\"Great value for money. Packaging was perfect and arrival was on time.\"</p>",
+            "author_name": "Michael R."
+          }
+        },
+        {
+          "type": "testimonial",
+          "settings": {
+            "testimonial_text": "<p>\"A wonderful shopping experience from start to finish. Five stars!\"</p>",
+            "author_name": "Elena P."
+          }
+        },
+        {
+          "type": "testimonial",
+          "settings": {
+            "testimonial_text": "<p>\"I have already recommended this store to all my friends and family.\"</p>",
+            "author_name": "David W."
+          }
+        }
+      ]
+    }
+  ],
+  "disabled_on": {
+    "groups": [
+      "header",
+      "footer"
+    ]
+  }
+}
+{% endschema %}

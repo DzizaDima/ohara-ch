@@ -11,44 +11,6 @@
   "type": "header",
   "name": "Header",
   "sections": {
-    "announcement-bar": {
-      "type": "announcement-bar",
-      "blocks": {
-        "announcement": {
-          "type": "announcement",
-          "settings": {
-            "announcement_text": "Announce something here",
-            "announcement_bg_color": "#494949",
-            "announcement_text_color": "#ffffff"
-          }
-        },
-        "aebe68ef-8489-4ee8-86e6-12dc826943f1": {
-          "type": "announcement",
-          "settings": {
-            "announcement_text": "Highlight promotions",
-            "announcement_bg_color": "#000000",
-            "announcement_text_color": "#ffffff"
-          }
-        },
-        "860cfd32-0dce-4889-8012-b7d936e80788": {
-          "type": "announcement",
-          "settings": {
-            "announcement_text": "Advertise special deals",
-            "announcement_bg_color": "#242424",
-            "announcement_text_color": "#ffffff"
-          }
-        }
-      },
-      "block_order": [
-        "announcement",
-        "aebe68ef-8489-4ee8-86e6-12dc826943f1",
-        "860cfd32-0dce-4889-8012-b7d936e80788"
-      ],
-      "disabled": true,
-      "settings": {
-        "desktop_social_icons": true
-      }
-    },
     "header": {
       "type": "header",
       "blocks": {
@@ -99,10 +61,38 @@
         "main_linklist": "main-menu",
         "dropdown_alignment": "left"
       }
+    },
+    "announcement-bar": {
+      "type": "announcement-bar",
+      "blocks": {
+        "announcement": {
+          "type": "announcement",
+          "settings": {
+            "announcement_text": "Same-day delivery across Switzerland",
+            "announcement_bg_color": "#ded7d7",
+            "announcement_text_color": "#242424"
+          }
+        },
+        "aebe68ef-8489-4ee8-86e6-12dc826943f1": {
+          "type": "announcement",
+          "settings": {
+            "announcement_text": "Personal floral assistance! We help you choose the perfect bouquet and handle the order for you",
+            "announcement_bg_color": "#ded7d7",
+            "announcement_text_color": "#242424"
+          }
+        }
+      },
+      "block_order": [
+        "announcement",
+        "aebe68ef-8489-4ee8-86e6-12dc826943f1"
+      ],
+      "settings": {
+        "desktop_social_icons": false
+      }
     }
   },
   "order": [
-    "announcement-bar",
-    "header"
+    "header",
+    "announcement-bar"
   ]
 }
