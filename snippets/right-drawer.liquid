@@ -12,7 +12,7 @@
           <div class="drawer__close js-drawer-close">
             <button type="button" class="icon-fallback-text standalone-icon--wrapper" aria-label="{{ 'general.accessibility.dismiss.close' | t }}" ref="drawerClose" v-on:click="close">
               <span class="fallback-text">{{ 'general.accessibility.dismiss.close' | t }}</span>
-              {% render 'theme-icon' with icon: 'close', iconSize: 20 %}
+              {% render 'theme-icon', icon: 'close', iconSize: 20 %}
             </button>
           </div>
           <input ref="drawerFocus" tabindex="-1" aria-hidden="true" class="sr-only" />
@@ -102,7 +102,7 @@
                               v-on:click="setQuantity(index + 1, item.quantity - 1); setSubtotal();"
                               v-if="!isGiftwrapProduct(item)"
                             >
-                              {% render 'theme-icon' with icon: 'minus', iconClasses: 'flex-full', iconAttributes: 'aria-hidden="true"' %}
+                              {% render 'theme-icon', icon: 'minus', iconClasses: 'flex-full', iconAttributes: 'aria-hidden="true"' %}
                               <span class="fallback-text">&minus;</span>
                             </button>
                             <input
@@ -123,7 +123,7 @@
                               v-on:click="setQuantity(index + 1, item.quantity + 1); setSubtotal();"
                               v-if="!isGiftwrapProduct(item)"
                             >
-                              {% render 'theme-icon' with icon: 'plus', iconClasses: 'flex-full', iconAttributes: 'aria-hidden="true"' %}
+                              {% render 'theme-icon', icon: 'plus', iconClasses: 'flex-full', iconAttributes: 'aria-hidden="true"' %}
                               <span class="fallback-text">+</span>
                             </button>
                           </div>
@@ -242,7 +242,7 @@
             <div class="input-group">
               <span class="input-group-btn">
                 <button aria-label="{{ 'general.search.submit' | t }}" type="submit" class="search-input--btn icon-fallback-text standalone-icon--wrapper" v-on:click="onSearchSubmit" tabindex="0">
-                  {% render 'theme-icon' with icon: 'search', iconSize: 20 %}
+                  {% render 'theme-icon', icon: 'search', iconSize: 20 %}
                   <span class="fallback-text">{{ 'general.search.submit' | t }}</span>
                 </button>
               </span>
@@ -254,14 +254,14 @@
                 />
                 <button type="button" aria-label="{{ 'general.search.clear' | t }}" class="search-drawer--clear icon-fallback-text standalone-icon--wrapper" v-if="searchQuery.length > 0" v-on:click="clearSearchInput">
                   <span class="fallback-text">{{ 'general.search.clear' | t }}</span>
-                  {% render 'theme-icon' with icon: 'close', iconSize: 20 %}
+                  {% render 'theme-icon', icon: 'close', iconSize: 20 %}
                 </button>
               </div>
             </div>
             <div class="wrapper-padded">
               <div id="search-results" class="grid-uniform">
                 <div v-if="searching" class="search-loading standalone-icon--wrapper loading-state-icon">
-                  {% render 'theme-icon' with icon: 'circle-notch', iconClasses: 'spin flex-full', icon_fill: settings.color_primary_button_text %}<span class="sr-only">{{ 'collections.paginate.loading' | t }}</span>
+                  {% render 'theme-icon', icon: 'circle-notch', iconClasses: 'spin flex-full', icon_fill: settings.color_primary_button_text %}<span class="sr-only">{{ 'collections.paginate.loading' | t }}</span>
                 </div>
                 <div v-text="searchSummary" v-if="!searching"></div>
                 <div class="search-results__meta top" v-if="searchHasResults">
