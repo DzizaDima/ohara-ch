@@ -148,7 +148,7 @@
                 {% if settings.giftwrap_gift_note %}
                   <div class="ajax-cart--gift-note">
                     <label for="CartGiftNote" class="ajaxcart__gift-note label-font">{{ 'products.general.giftwrap_note' | t }}</label>
-                    <textarea id="CartGiftNote" class="input-full" v-model="giftNote" :disabled="updatingGiftNote" placeholder="{{ 'products.general.giftwrap_note_placeholder' | t }}" maxlength="200"></textarea>
+                    <textarea id="CartGiftNote" class="input-full" name="attributes[gift_note]" v-model="giftNote" placeholder="{{ 'products.general.giftwrap_note_placeholder' | t }}" maxlength="200"></textarea>
                   </div>
                 {% endif %}
                 {% if settings.cart_notes_enable %}
