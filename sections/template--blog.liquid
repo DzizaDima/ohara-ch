@@ -25,7 +25,7 @@
         <h1 class="page--title">
           <span class="blog-main--title">{{ blog.title }}</span>
           <a href="{{ shop.url }}{{ blog.url }}.atom" class="blog-main--title-icon standalone-icon--wrapper">
-            {% render 'theme-icon' with icon: 'rss', iconSize: 16, iconAttributes: 'aria-hidden="true"', iconClasses: 'fa-rss' %}
+            {% render 'theme-icon' with icon, icon: 'rss', iconSize: 16, iconAttributes: 'aria-hidden="true"', iconClasses: 'fa-rss' %}
           </a>
         </h1>
       {% endif %}
@@ -81,7 +81,7 @@
             <div class="article__featured-image-wrap">
               <a class="article__featured-image{% if settings.ken_burns_enabled %} kb-enabled{% endif %}" href="{{ article.url }}">
                 {% capture article_alt %}{{ article.image.alt | default: article.title }}{% endcapture %}
-                {% render 'responsive-image' with article.image, alt: article_alt | escape %}
+                {% render 'responsive-image' with article.image, alt: article_alt %}
               </a>
             </div>
             {% endif %}
@@ -100,7 +100,7 @@
 
             <p class="blog-main--article-read-more-link nav-link-animated--custom">
               <a class="animated-link--item" href="{{ article.url }}">{{ 'blogs.article.read_more' | t }}</a>
-              {% render 'theme-icon' with icon: 'chevron_right', iconSize: 16 %}
+              {% render 'theme-icon' with icon, icon: 'chevron_right', iconSize: 16 %}
             </p>
 
       </div>
@@ -121,7 +121,7 @@
         {% endif %}
 
         {% capture blog_sidebar_alt %}{{ section.settings.blog-sidebar-image.alt | default: shop.name }}{% endcapture %}
-        {% render 'responsive-image' with section.settings.blog-sidebar-image, alt: article.title, class: 'blog-sidebar-image', alt: blog_sidebar_alt | escape %}
+        {% render 'responsive-image' with section.settings.blog-sidebar-image, alt: blog_sidebar_alt, class: 'blog-sidebar-image' %}
 
         {% if section.settings.blog-sidebar-link %}
           </a>
@@ -258,3 +258,27 @@
   ]
 }
 {% endschema %}
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: '{% render ''theme-icon'' with icon: ''rss'', iconSize: 16, iconAttributes:
+    ''aria-hidden="true"'', iconClasses: ''fa-rss'' %}'
+  to: '{% render ''theme-icon'' with icon, icon: ''rss'', iconSize: 16, iconAttributes:
+    ''aria-hidden="true"'', iconClasses: ''fa-rss'' %}'
+  position: 902..1025
+- from: "{% render 'responsive-image' with article.image, alt: article_alt | escape
+    %}"
+  to: "{% render 'responsive-image' with article.image, alt: article_alt %}"
+  position: 3056..3124
+- from: "{% render 'theme-icon' with icon: 'chevron_right', iconSize: 16 %}"
+  to: "{% render 'theme-icon' with icon, icon: 'chevron_right', iconSize: 16 %}"
+  position: 3942..4014
+- from: "{% render 'responsive-image' with section.settings.blog-sidebar-image, alt:
+    article.title, class: 'blog-sidebar-image', alt: blog_sidebar_alt | escape %}"
+  to: "{% render 'responsive-image' with section.settings.blog-sidebar-image, alt:
+    blog_sidebar_alt, class: 'blog-sidebar-image' %}"
+  position: 4528..4652
+{% endcomment %}

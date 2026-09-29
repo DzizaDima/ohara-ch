@@ -57,7 +57,7 @@
         >
           {% if inventory_variant.inventory_quantity > stock_amt %}
             <span class="stock-level-message">
-              {% render 'icon-dot' with class: 'success', dot_pulsing: animate_pulsing_dot %}
+              {% render 'icon-dot' with class, class: 'success', dot_pulsing: animate_pulsing_dot %}
               {% assign stock_count = '' %}
               {% if show_stock_count %}
                 {% capture stock_count %}
@@ -71,19 +71,19 @@
                 if stock_bar_color != 'text'
                   assign bar_color = 'var(--success-color)'
                 endif
-                render 'stock-indicator-bar' with expand: '75%', bar_color: bar_color
+                render 'stock-indicator-bar' with expand, expand: '75%', bar_color: bar_color
               endif 
             %}
 
           {% elsif inventory_variant.available == false %}
             <span class="stock-level-message">
-              {% render 'icon-dot' with class: 'error', dot_pulsing: animate_pulsing_dot %}
+              {% render 'icon-dot' with class, class: 'error', dot_pulsing: animate_pulsing_dot %}
               <p class="level-indicator-message">{{ out_of_stock_message | default: out_of_stock_string }}</p>
             </span>
 
           {% else %}
             <span class="stock-level-message">
-              {% render 'icon-dot' with class: 'warning', dot_pulsing: animate_pulsing_dot %}
+              {% render 'icon-dot' with class, class: 'warning', dot_pulsing: animate_pulsing_dot %}
               {% assign stock_count = '' %}
               {% if show_stock_count %}
                 {% capture stock_count %}
@@ -97,7 +97,7 @@
                 if stock_bar_color != 'text'
                   assign bar_color = 'var(--warning-color)'
                 endif
-                render 'stock-indicator-bar' with expand: '50%', bar_color: bar_color
+                render 'stock-indicator-bar' with expand, expand: '50%', bar_color: bar_color
               endif 
             %}
           {% endif %}
@@ -108,3 +108,35 @@
 
   <script src="{{ 'component-stock-level-indicator.js' | asset_url }}" defer="defer" type="module" data-internal-script data-flow-load-key="component-stock-level-indicator"></script>
 </stock-level-indicator>
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{% render 'icon-dot' with class: 'success', dot_pulsing: animate_pulsing_dot
+    %}"
+  to: "{% render 'icon-dot' with class, class: 'success', dot_pulsing: animate_pulsing_dot
+    %}"
+  position: 2853..2939
+- from: "                render 'stock-indicator-bar' with expand: '75%', bar_color:
+    bar_color"
+  to: "                render 'stock-indicator-bar' with expand, expand: '75%', bar_color:
+    bar_color"
+  position: 3647..3740
+- from: "{% render 'icon-dot' with class: 'error', dot_pulsing: animate_pulsing_dot
+    %}"
+  to: "{% render 'icon-dot' with class, class: 'error', dot_pulsing: animate_pulsing_dot
+    %}"
+  position: 3898..3982
+- from: "{% render 'icon-dot' with class: 'warning', dot_pulsing: animate_pulsing_dot
+    %}"
+  to: "{% render 'icon-dot' with class, class: 'warning', dot_pulsing: animate_pulsing_dot
+    %}"
+  position: 4197..4283
+- from: "                render 'stock-indicator-bar' with expand: '50%', bar_color:
+    bar_color"
+  to: "                render 'stock-indicator-bar' with expand, expand: '50%', bar_color:
+    bar_color"
+  position: 4992..5085
+{% endcomment %}

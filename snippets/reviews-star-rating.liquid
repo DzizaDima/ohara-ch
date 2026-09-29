@@ -44,7 +44,7 @@
     <div class="reviews-star-rating no-rating{% if classes %} {{ classes }}{% endif %}">
       <div class="reviews-star-rating__stars" role="img" aria-label="{{ 'products.product.no_reviews' | t }}">
         {% for i in (1..5) %}
-          {% render 'theme-icon' with icon: 'star-filled', iconColor: empty_star_color, iconSize: star_size %}
+          {% render 'theme-icon' with icon, icon: 'star-filled', iconColor: empty_star_color, iconSize: star_size %}
         {% endfor %}
       </div>
       <span>
@@ -57,17 +57,17 @@
     <div class="reviews-star-rating__stars" role="img" aria-label="{{ 'products.product.reviews_rating' | t: value: rating_value_rounded, max: rating_max }}">
       {% if full_stars > 0 %}
         {% for i in (1..full_stars) %}
-          {% render 'theme-icon' with icon: 'star-filled', iconColor: star_rating_color, iconSize: star_size %}
+          {% render 'theme-icon' with icon, icon: 'star-filled', iconColor: star_rating_color, iconSize: star_size %}
         {% endfor %}
       {% endif %}
 
       {% if rating_decimal == 0.5 %}
-        {% render 'theme-icon' with icon: 'star-half-filled', iconColor: star_rating_color, iconSize: star_size %}
+        {% render 'theme-icon' with icon, icon: 'star-half-filled', iconColor: star_rating_color, iconSize: star_size %}
       {% endif %}
 
       {% if empty_stars > 0 %}
         {% for i in (1..empty_stars) %}
-          {% render 'theme-icon' with icon: 'star-filled', iconColor: empty_star_color, iconSize: star_size %}
+          {% render 'theme-icon' with icon, icon: 'star-filled', iconColor: empty_star_color, iconSize: star_size %}
         {% endfor %}
       {% endif %}
     </div>
@@ -85,3 +85,30 @@
     </span>
   </div>
 {% endif %}
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{% render 'theme-icon' with icon: 'star-filled', iconColor: empty_star_color,
+    iconSize: star_size %}"
+  to: "{% render 'theme-icon' with icon, icon: 'star-filled', iconColor: empty_star_color,
+    iconSize: star_size %}"
+  position: 1749..1855
+- from: "{% render 'theme-icon' with icon: 'star-filled', iconColor: star_rating_color,
+    iconSize: star_size %}"
+  to: "{% render 'theme-icon' with icon, icon: 'star-filled', iconColor: star_rating_color,
+    iconSize: star_size %}"
+  position: 2314..2421
+- from: "{% render 'theme-icon' with icon: 'star-half-filled', iconColor: star_rating_color,
+    iconSize: star_size %}"
+  to: "{% render 'theme-icon' with icon, icon: 'star-half-filled', iconColor: star_rating_color,
+    iconSize: star_size %}"
+  position: 2507..2619
+- from: "{% render 'theme-icon' with icon: 'star-filled', iconColor: empty_star_color,
+    iconSize: star_size %}"
+  to: "{% render 'theme-icon' with icon, icon: 'star-filled', iconColor: empty_star_color,
+    iconSize: star_size %}"
+  position: 2720..2826
+{% endcomment %}

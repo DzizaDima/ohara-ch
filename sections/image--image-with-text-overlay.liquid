@@ -46,7 +46,7 @@
         <div class="homepage-indiv-section-wrapper grid--full homepage-featured-content-wrapper">
             <div class="large--one-whole homepage-content--image text-center homepage-content--{{ section.id }}{% if settings.ken_burns_enabled %} kb-enabled{% endif %}">
                 {% if section.settings.image %}
-                    {% render 'responsive-image' with section.settings.image, alt: img_alt | escape %}
+                    {% render 'responsive-image' with section.settings.image, alt: img_alt %}
                 {% else %}
                     {{ 'lifestyle-1' | placeholder_svg_tag: 'icon icon--placeholder' }}
                 {% endif %}
@@ -391,3 +391,14 @@
   }
 }
 {% endschema %}
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{% render 'responsive-image' with section.settings.image, alt: img_alt |
+    escape %}"
+  to: "{% render 'responsive-image' with section.settings.image, alt: img_alt %}"
+  position: 2242..2315
+{% endcomment %}

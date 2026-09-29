@@ -179,7 +179,7 @@
         {% comment %} Mobile modal close (X) button {% endcomment %}
         <button type="button" data-close-modal-btn class="shop-the-look__modal-close icon-fallback-text standalone-icon--wrapper" aria-label="{{ 'general.accessibility.dismiss.close' | t }}">
           <span class="fallback-text">{{ 'general.accessibility.dismiss.close' | t }}</span>
-          {% render 'theme-icon' with icon: 'close', iconSize: 20 %}
+          {% render 'theme-icon' with icon, icon: 'close', iconSize: 20 %}
         </button>
       </div>
     </shop-the-look>
@@ -423,3 +423,13 @@
   }
 }
 {% endschema %}
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{% render 'theme-icon' with icon: 'close', iconSize: 20 %}"
+  to: "{% render 'theme-icon' with icon, icon: 'close', iconSize: 20 %}"
+  position: 9578..9642
+{% endcomment %}

@@ -59,7 +59,7 @@
           <div class="testimonials--star-wrapper inline-icon--wrapper">
             {% assign star_total = block.settings.stars %}
             {% for i in (1..star_total) %}
-              {% render 'theme-icon' with icon: 'star-filled', iconAttributes: 'aria-hidden="true"', iconSize: 20 %}
+              {% render 'theme-icon' with icon, icon: 'star-filled', iconAttributes: 'aria-hidden="true"', iconSize: 20 %}
             {% endfor %}
           </div>
 
@@ -199,3 +199,15 @@
   }
 }
 {% endschema %}
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: '{% render ''theme-icon'' with icon: ''star-filled'', iconAttributes: ''aria-hidden="true"'',
+    iconSize: 20 %}'
+  to: '{% render ''theme-icon'' with icon, icon: ''star-filled'', iconAttributes:
+    ''aria-hidden="true"'', iconSize: 20 %}'
+  position: 2303..2411
+{% endcomment %}

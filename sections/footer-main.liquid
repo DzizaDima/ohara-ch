@@ -110,7 +110,7 @@
 				      {% if img_url == blank %}
 				          {{ 'image' | placeholder_svg_tag: 'icon icon--placeholder' }}
 				      {% else %}
-						{% render 'responsive-image' with block.settings.image, alt: footer_alt | escape %}
+						{% render 'responsive-image' with block.settings.image, alt: footer_alt %}
 				      {% endif %}
 				    </div>
 				    {% if block.settings.link != blank and img_url != blank %}
@@ -322,3 +322,14 @@
   ]
 }
 {% endschema %}
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{% render 'responsive-image' with block.settings.image, alt: footer_alt |
+    escape %}"
+  to: "{% render 'responsive-image' with block.settings.image, alt: footer_alt %}"
+  position: 5764..5838
+{% endcomment %}

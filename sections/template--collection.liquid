@@ -14,25 +14,10 @@
   <div class="collection_grid{% if filtering_enabled %} filtering_enabled--{{ section.settings.desktop_position }}{% endif %}">
 
     {% unless filtering_enabled == false and header_enabled == false %}
-      {% render 'main-collection-filtering-sorting' with 
-        collection: collection, 
-        classes: "grid-area--filtering",
-        desktop_position: section.settings.desktop_position,
-        enable_collection_title: section.settings.enable_collection_title,
-        enable_collection_description: section.settings.enable_collection_description,
-        enable_filtering: section.settings.enable_filtering,
-        enable_sorting: section.settings.enable_sorting
-      %}
+      {% render 'main-collection-filtering-sorting' with collection, collection: collection, classes: "grid-area--filtering", desktop_position: section.settings.desktop_position, enable_collection_title: section.settings.enable_collection_title, enable_collection_description: section.settings.enable_collection_description, enable_filtering: section.settings.enable_filtering, enable_sorting: section.settings.enable_sorting %}
     {% endunless %}
 
-    {% render 'main-collection-grid' with 
-      classes: "grid-area--collection",
-      blocks: section.blocks,
-      desktop_products_per_row: section.settings.desktop-products-per-row,
-      mobile_products_per_row: section.settings.mobile-products-per-row,
-      products_per_page: section.settings.products-per-page,
-      pagination_options: section.settings.pagination_options
-    %}
+    {% render 'main-collection-grid' with classes, classes: "grid-area--collection", blocks: section.blocks, desktop_products_per_row: section.settings.desktop-products-per-row, mobile_products_per_row: section.settings.mobile-products-per-row, products_per_page: section.settings.products-per-page, pagination_options: section.settings.pagination_options %}
 
   </div>
 </section>
@@ -153,3 +138,33 @@
   ]
 }
 {% endschema %}
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{% render 'main-collection-filtering-sorting' with \n        collection:
+    collection, \n        classes: \"grid-area--filtering\",\n        desktop_position:
+    section.settings.desktop_position,\n        enable_collection_title: section.settings.enable_collection_title,\n
+    \       enable_collection_description: section.settings.enable_collection_description,\n
+    \       enable_filtering: section.settings.enable_filtering,\n        enable_sorting:
+    section.settings.enable_sorting\n      %}"
+  to: '{% render ''main-collection-filtering-sorting'' with collection, collection:
+    collection, classes: "grid-area--filtering", desktop_position: section.settings.desktop_position,
+    enable_collection_title: section.settings.enable_collection_title, enable_collection_description:
+    section.settings.enable_collection_description, enable_filtering: section.settings.enable_filtering,
+    enable_sorting: section.settings.enable_sorting %}'
+  position: 654..1076
+- from: "{% render 'main-collection-grid' with \n      classes: \"grid-area--collection\",\n
+    \     blocks: section.blocks,\n      desktop_products_per_row: section.settings.desktop-products-per-row,\n
+    \     mobile_products_per_row: section.settings.mobile-products-per-row,\n      products_per_page:
+    section.settings.products-per-page,\n      pagination_options: section.settings.pagination_options\n
+    \   %}"
+  to: '{% render ''main-collection-grid'' with classes, classes: "grid-area--collection",
+    blocks: section.blocks, desktop_products_per_row: section.settings.desktop-products-per-row,
+    mobile_products_per_row: section.settings.mobile-products-per-row, products_per_page:
+    section.settings.products-per-page, pagination_options: section.settings.pagination_options
+    %}'
+  position: 1102..1456
+{% endcomment %}

@@ -17,8 +17,8 @@
       data-loading="{{ 'products.product.loading' | t }}" 
       data-added="{{ 'products.product.added' | t }}"
       data-products-regular-price="{{ 'products.general.regular_price' | t }}"
-      data-shopping-bag-icon='{% render 'theme-icon' with icon: 'shopping-bag', iconSize: 16 %}' 
-      data-dropdown-chevron='{% render 'theme-icon' with icon: 'chevron_down', iconClasses: 'chevron' %}'
+      data-shopping-bag-icon='{% render 'theme-icon' with icon, icon: 'shopping-bag', iconSize: 16 %}' 
+      data-dropdown-chevron='{% render 'theme-icon' with icon, icon: 'chevron_down', iconClasses: 'chevron' %}'
     >
       <noscript>
         {% comment %} Fallback html when JS is disabled. {% endcomment %}
@@ -51,4 +51,18 @@
     </product-cross-sell>
 
   {%- endif -%}
-{%- endif -%}
+{%- endif -%}{%- comment -%}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{% render 'theme-icon' with icon: 'shopping-bag', iconSize: 16 %}"
+  to: "{% render 'theme-icon' with icon, icon: 'shopping-bag', iconSize: 16 %}"
+  position: 1094..1165
+- from: "{% render 'theme-icon' with icon: 'chevron_down', iconClasses: 'chevron'
+    %}"
+  to: "{% render 'theme-icon' with icon, icon: 'chevron_down', iconClasses: 'chevron'
+    %}"
+  position: 1197..1278
+{%- endcomment -%}

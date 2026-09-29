@@ -21,7 +21,7 @@
         {% if collection.image != blank %}
           {% capture collection_alt %}{{ collection.image.alt | default: collection.title }}{% endcapture %}
           {% if image_block.settings.collection-image-size == 'original' %}
-            {% render 'responsive-image' with collection.image, alt: collection_alt | escape, class: 'collection-page--feature-image', image_block_attributes: block.shopify_attributes %}
+            {% render 'responsive-image' with collection.image, alt: collection_alt, class: 'collection-page--feature-image', image_block_attributes: block.shopify_attributes %}
           {% else %}
             <style>
               {% capture selector %}.collection-image .img{% endcapture %}
@@ -128,3 +128,17 @@
   ]
 }
 {% endschema %}
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{% render 'responsive-image' with collection.image, alt: collection_alt |
+    escape, class: 'collection-page--feature-image', image_block_attributes: block.shopify_attributes
+    %}"
+  to: "{% render 'responsive-image' with collection.image, alt: collection_alt, class:
+    'collection-page--feature-image', image_block_attributes: block.shopify_attributes
+    %}"
+  position: 1088..1253
+{% endcomment %}

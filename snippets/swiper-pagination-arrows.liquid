@@ -1,11 +1,27 @@
 <div class="swiper-pagination-arrows">
   <a href="#" class="swiper-pagination-arrows__prev standalone-icon--wrapper">
-    {% render 'theme-icon' with icon: 'chevron_left', iconWidth: 24, iconHeight: 24, iconColor: 'currentColor' %}
+    {% render 'theme-icon' with icon, icon: 'chevron_left', iconWidth: 24, iconHeight: 24, iconColor: 'currentColor' %}
   </a>
 
   <div class="swiper-pagination-arrows__pagination"></div>
 
   <a href="#" class="swiper-pagination-arrows__next standalone-icon--wrapper">
-    {% render 'theme-icon' with icon: 'chevron_right', iconWidth: 24, iconHeight: 24, iconColor: 'currentColor' %}
+    {% render 'theme-icon' with icon, icon: 'chevron_right', iconWidth: 24, iconHeight: 24, iconColor: 'currentColor' %}
   </a>
-</div>
+</div>{%- comment -%}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{% render 'theme-icon' with icon: 'chevron_left', iconWidth: 24, iconHeight:
+    24, iconColor: 'currentColor' %}"
+  to: "{% render 'theme-icon' with icon, icon: 'chevron_left', iconWidth: 24, iconHeight:
+    24, iconColor: 'currentColor' %}"
+  position: 122..237
+- from: "{% render 'theme-icon' with icon: 'chevron_right', iconWidth: 24, iconHeight:
+    24, iconColor: 'currentColor' %}"
+  to: "{% render 'theme-icon' with icon, icon: 'chevron_right', iconWidth: 24, iconHeight:
+    24, iconColor: 'currentColor' %}"
+  position: 389..505
+{%- endcomment -%}

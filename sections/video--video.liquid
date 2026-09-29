@@ -38,7 +38,7 @@
                 {% assign show_overlay_button = false %}
                 {% assign show_overlay = false %}
             {% endunless %}
-            {% render 'native-video' with video: section.settings.video, autoplay: section.settings.autoplay, loop: section.settings.loop, muted: section.settings.mute, overlay: show_overlay, overlay_button: show_overlay_button, controls: true, scope_id: section.id %}
+            {% render 'native-video' with video, video: section.settings.video, autoplay: section.settings.autoplay, loop: section.settings.loop, muted: section.settings.mute, overlay: show_overlay, overlay_button: show_overlay_button, controls: true, scope_id: section.id %}
         {% elsif section.settings.url %}
             <wetheme-video
             section-id="{{ section.id }}"
@@ -191,3 +191,18 @@
   }
 }
 {% endschema %}
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{% render 'native-video' with video: section.settings.video, autoplay: section.settings.autoplay,
+    loop: section.settings.loop, muted: section.settings.mute, overlay: show_overlay,
+    overlay_button: show_overlay_button, controls: true, scope_id: section.id %}"
+  to: "{% render 'native-video' with video, video: section.settings.video, autoplay:
+    section.settings.autoplay, loop: section.settings.loop, muted: section.settings.mute,
+    overlay: show_overlay, overlay_button: show_overlay_button, controls: true, scope_id:
+    section.id %}"
+  position: 1760..2023
+{% endcomment %}

@@ -64,36 +64,51 @@
 
   {% if block.settings.mega_image_1 %}
     <div>
-      {% render 'mega-menu-promo-card' with 
-        promo_wrapper_classes: "dropdown-submenu",
-        promo_block_id: block.id,
-        promo_wrapper_attr: "aria-haspopup='true'",
-        promo_img: block.settings.mega_image_1,
-        promo_img_crop: block.settings.image_1_aspect_ratio,
-        promo_text_overlay: block.settings.overlay_text_on_image_promo_1,
-        promo_text_heading: block.settings.mega_image_header_1,
-        promo_text_subheading: block.settings.mega_image_subheader_1,
-        promo_text_color: block.settings.overlay_text_color_promo_1,
-        promo_link: block.settings.mega_image_link_1
-      %}
+      {% render 'mega-menu-promo-card' with promo_wrapper_classes, promo_wrapper_classes: "dropdown-submenu", promo_block_id: block.id, promo_wrapper_attr: "aria-haspopup='true'", promo_img: block.settings.mega_image_1, promo_img_crop: block.settings.image_1_aspect_ratio, promo_text_overlay: block.settings.overlay_text_on_image_promo_1, promo_text_heading: block.settings.mega_image_header_1, promo_text_subheading: block.settings.mega_image_subheader_1, promo_text_color: block.settings.overlay_text_color_promo_1, promo_link: block.settings.mega_image_link_1 %}
     </div>
   {% endif %}
 
   {% if block.settings.mega_image_2 %}
     <div>
-      {% render 'mega-menu-promo-card' with 
-        promo_wrapper_classes: "dropdown-submenu",
-        promo_block_id: block.id,
-        promo_wrapper_attr: "aria-haspopup='true'",
-        promo_img: block.settings.mega_image_2,
-        promo_img_crop: block.settings.image_2_aspect_ratio,
-        promo_text_overlay: block.settings.overlay_text_on_image_promo_2,
-        promo_text_heading: block.settings.mega_image_header_2,
-        promo_text_subheading: block.settings.mega_image_subheader_2,
-        promo_text_color: block.settings.overlay_text_color_promo_2,
-        promo_link: block.settings.mega_image_link_2
-      %}
+      {% render 'mega-menu-promo-card' with promo_wrapper_classes, promo_wrapper_classes: "dropdown-submenu", promo_block_id: block.id, promo_wrapper_attr: "aria-haspopup='true'", promo_img: block.settings.mega_image_2, promo_img_crop: block.settings.image_2_aspect_ratio, promo_text_overlay: block.settings.overlay_text_on_image_promo_2, promo_text_heading: block.settings.mega_image_header_2, promo_text_subheading: block.settings.mega_image_subheader_2, promo_text_color: block.settings.overlay_text_color_promo_2, promo_link: block.settings.mega_image_link_2 %}
     </div>
   {% endif %}
 
 </div>
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{% render 'mega-menu-promo-card' with \n        promo_wrapper_classes: \"dropdown-submenu\",\n
+    \       promo_block_id: block.id,\n        promo_wrapper_attr: \"aria-haspopup='true'\",\n
+    \       promo_img: block.settings.mega_image_1,\n        promo_img_crop: block.settings.image_1_aspect_ratio,\n
+    \       promo_text_overlay: block.settings.overlay_text_on_image_promo_1,\n        promo_text_heading:
+    block.settings.mega_image_header_1,\n        promo_text_subheading: block.settings.mega_image_subheader_1,\n
+    \       promo_text_color: block.settings.overlay_text_color_promo_1,\n        promo_link:
+    block.settings.mega_image_link_1\n      %}"
+  to: '{% render ''mega-menu-promo-card'' with promo_wrapper_classes, promo_wrapper_classes:
+    "dropdown-submenu", promo_block_id: block.id, promo_wrapper_attr: "aria-haspopup=''true''",
+    promo_img: block.settings.mega_image_1, promo_img_crop: block.settings.image_1_aspect_ratio,
+    promo_text_overlay: block.settings.overlay_text_on_image_promo_1, promo_text_heading:
+    block.settings.mega_image_header_1, promo_text_subheading: block.settings.mega_image_subheader_1,
+    promo_text_color: block.settings.overlay_text_color_promo_1, promo_link: block.settings.mega_image_link_1
+    %}'
+  position: 2828..3387
+- from: "{% render 'mega-menu-promo-card' with \n        promo_wrapper_classes: \"dropdown-submenu\",\n
+    \       promo_block_id: block.id,\n        promo_wrapper_attr: \"aria-haspopup='true'\",\n
+    \       promo_img: block.settings.mega_image_2,\n        promo_img_crop: block.settings.image_2_aspect_ratio,\n
+    \       promo_text_overlay: block.settings.overlay_text_on_image_promo_2,\n        promo_text_heading:
+    block.settings.mega_image_header_2,\n        promo_text_subheading: block.settings.mega_image_subheader_2,\n
+    \       promo_text_color: block.settings.overlay_text_color_promo_2,\n        promo_link:
+    block.settings.mega_image_link_2\n      %}"
+  to: '{% render ''mega-menu-promo-card'' with promo_wrapper_classes, promo_wrapper_classes:
+    "dropdown-submenu", promo_block_id: block.id, promo_wrapper_attr: "aria-haspopup=''true''",
+    promo_img: block.settings.mega_image_2, promo_img_crop: block.settings.image_2_aspect_ratio,
+    promo_text_overlay: block.settings.overlay_text_on_image_promo_2, promo_text_heading:
+    block.settings.mega_image_header_2, promo_text_subheading: block.settings.mega_image_subheader_2,
+    promo_text_color: block.settings.overlay_text_color_promo_2, promo_link: block.settings.mega_image_link_2
+    %}'
+  position: 3469..4028
+{% endcomment %}

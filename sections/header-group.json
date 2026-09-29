@@ -65,6 +65,15 @@
     "announcement-bar": {
       "type": "announcement-bar",
       "blocks": {
+        "announcement_gdf9gL": {
+          "type": "announcement",
+          "disabled": true,
+          "settings": {
+            "announcement_text": "Celebrate with us · Our Birthday Special -15% awaits you · August 30–31",
+            "announcement_bg_color": "#ded7d7",
+            "announcement_text_color": "#242424"
+          }
+        },
         "announcement": {
           "type": "announcement",
           "settings": {
@@ -83,6 +92,7 @@
         }
       },
       "block_order": [
+        "announcement_gdf9gL",
         "announcement",
         "aebe68ef-8489-4ee8-86e6-12dc826943f1"
       ],

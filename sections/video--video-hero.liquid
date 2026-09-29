@@ -92,7 +92,7 @@
     <div class="hero-video--wrapper">
         <div class="hero-video--media type-{{ type }}">
             {% if section.settings.video %}
-                {% render 'native-video' with video: section.settings.video, autoplay: true, loop: true, muted: true, overlay: false, controls: false %}
+                {% render 'native-video' with video, video: section.settings.video, autoplay: true, loop: true, muted: true, overlay: false, controls: false %}
             {% else %}
             <wetheme-video
                 section-id="{{ section.id }}"
@@ -422,3 +422,15 @@
   }
 }
 {% endschema %}
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{% render 'native-video' with video: section.settings.video, autoplay: true,
+    loop: true, muted: true, overlay: false, controls: false %}"
+  to: "{% render 'native-video' with video, video: section.settings.video, autoplay:
+    true, loop: true, muted: true, overlay: false, controls: false %}"
+  position: 3052..3195
+{% endcomment %}

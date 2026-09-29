@@ -24,7 +24,7 @@
         {% if section.settings.image != blank %}
           <div id="rellax--{{ section.id }}" class="img" data-rellax-percentage="0.5" data-rellax-speed="-6">
             {% assign img_alt = section.settings.image.alt | default: shop.name %}
-            {% render 'responsive-image' with section.settings.image, alt: img_alt | escape, sizes: '100vw' %}
+            {% render 'responsive-image' with section.settings.image, alt: img_alt, sizes: '100vw' %}
           </div>
         {% else %}
           <div id="rellax--{{ section.id }}" class="placeholder-background img" data-rellax-percentage="0.5" data-rellax-speed="-6">
@@ -216,3 +216,15 @@
   }
 }
 {% endschema %}
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{% render 'responsive-image' with section.settings.image, alt: img_alt |
+    escape, sizes: '100vw' %}"
+  to: "{% render 'responsive-image' with section.settings.image, alt: img_alt, sizes:
+    '100vw' %}"
+  position: 1516..1605
+{% endcomment %}

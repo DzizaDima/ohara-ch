@@ -23,11 +23,20 @@
 
                         <div id="newsletter-wrapper">
                             <input id="newsletter_text" type="email" value="{% if customer %}{{ customer.email }}{% endif %}" placeholder="{{ 'general.newsletter_form_section.newsletter_text' | t }}" name="contact[email]" class="input-group-field email" aria-label="{{ 'general.newsletter_form_section.newsletter_email' | t }}" autocorrect="off" autocapitalize="off">
-                            <button id="newsletter_submit" type="submit" aria-label="{{ 'general.accessibility.contact_form.submit' | t }}" class="standalone-icon--wrapper">{% render 'theme-icon' with icon: 'chevron_right', iconSize: 20 %}</button>
+                            <button id="newsletter_submit" type="submit" aria-label="{{ 'general.accessibility.contact_form.submit' | t }}" class="standalone-icon--wrapper">{% render 'theme-icon' with icon, icon: 'chevron_right', iconSize: 20 %}</button>
                         </div>
                     {% endif %}
                 {% endform %}
             </div>
         </div>
     </div>
-</div>
+</div>{%- comment -%}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{% render 'theme-icon' with icon: 'chevron_right', iconSize: 20 %}"
+  to: "{% render 'theme-icon' with icon, icon: 'chevron_right', iconSize: 20 %}"
+  position: 1824..1896
+{%- endcomment -%}

@@ -113,7 +113,7 @@
                       assign formId = 'form_' | append: nameInputString | downcase | handleize
                       assign input_attr = 'aria-labelledby="' | append: formId | append: '" data-aid="name-input"'
                     %}
-                    {% render 'form-input' with type: 'text', has_label: false, animate_label: false, label_text: nameInputString, id: formId, placeholder: labelPlaceholder, value: nameInputVal, name: formName, required: block.settings.required, attributes: input_attr %}
+                    {% render 'form-input' with type, type: 'text', has_label: false, animate_label: false, label_text: nameInputString, id: formId, placeholder: labelPlaceholder, value: nameInputVal, name: formName, required: block.settings.required, attributes: input_attr %}
                   </div>
 
                 {% when 'email_input' %}
@@ -122,7 +122,7 @@
                       assign formId = 'form_' | append: emailInputString | downcase | handleize
                       assign input_attr = 'aria-labelledby="' | append: formId | append: '" data-aid="email-input"'
                     %}
-                    {% render 'form-input' with type: 'email', has_label: false, animate_label: false, label_text: emailInputString, id: formId, placeholder: labelPlaceholder, value: emailInputVal, name: formEmailName, required: block.settings.required, attributes: input_attr %}
+                    {% render 'form-input' with type, type: 'email', has_label: false, animate_label: false, label_text: emailInputString, id: formId, placeholder: labelPlaceholder, value: emailInputVal, name: formEmailName, required: block.settings.required, attributes: input_attr %}
                   </div>
 
                 {% when 'tel_input' %}
@@ -131,7 +131,7 @@
                       assign formId = 'form_' | append: telInputString | downcase | handleize
                       assign input_attr = 'aria-labelledby="' | append: formId | append: '" data-aid="tel-input"'
                     %}
-                    {% render 'form-input' with type: 'tel', has_label: false, animate_label: false, label_text: telInputString, id: formId, placeholder: labelPlaceholder, value: phoneInputVal, name: formTelName, required: block.settings.required, attributes: input_attr %}
+                    {% render 'form-input' with type, type: 'tel', has_label: false, animate_label: false, label_text: telInputString, id: formId, placeholder: labelPlaceholder, value: phoneInputVal, name: formTelName, required: block.settings.required, attributes: input_attr %}
                   </div>
 
                 {% when 'message_input' %}
@@ -140,12 +140,12 @@
                       assign formId = 'form_' | append: msgInputString | downcase | handleize
                       assign input_attr = 'aria-labelledby="' | append: formId | append: '" data-aid="message-input"'
                     %}
-                    {% render 'form-input--textarea' with id: formId, placeholder: labelPlaceholder, name: formMsgName, has_label: false, animate_label: false, label_text: msgInputString, attributes: input_attr, required: block.settings.required, content: form.body %}
+                    {% render 'form-input--textarea' with id, id: formId, placeholder: labelPlaceholder, name: formMsgName, has_label: false, animate_label: false, label_text: msgInputString, attributes: input_attr, required: block.settings.required, content: form.body %}
                   </div>
 
                 {% when 'custom_input' %}
                   <div class="{{ input_width }}">
-                    {% render 'form-input' with type: 'text', has_label: false, animate_label: false, label_text: inputString, id: formId, placeholder: labelPlaceholder, value: form.body, name: inputName, required: block.settings.required, attributes: input_attr %}
+                    {% render 'form-input' with type, type: 'text', has_label: false, animate_label: false, label_text: inputString, id: formId, placeholder: labelPlaceholder, value: form.body, name: inputName, required: block.settings.required, attributes: input_attr %}
                   </div>
 
               {% endcase %}
@@ -433,4 +433,55 @@
     ]
   }
 }
-{% endschema %}
+{% endschema %}{%- comment -%}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{% render 'form-input' with type: 'text', has_label: false, animate_label:
+    false, label_text: nameInputString, id: formId, placeholder: labelPlaceholder,
+    value: nameInputVal, name: formName, required: block.settings.required, attributes:
+    input_attr %}"
+  to: "{% render 'form-input' with type, type: 'text', has_label: false, animate_label:
+    false, label_text: nameInputString, id: formId, placeholder: labelPlaceholder,
+    value: nameInputVal, name: formName, required: block.settings.required, attributes:
+    input_attr %}"
+  position: 4985..5242
+- from: "{% render 'form-input' with type: 'email', has_label: false, animate_label:
+    false, label_text: emailInputString, id: formId, placeholder: labelPlaceholder,
+    value: emailInputVal, name: formEmailName, required: block.settings.required,
+    attributes: input_attr %}"
+  to: "{% render 'form-input' with type, type: 'email', has_label: false, animate_label:
+    false, label_text: emailInputString, id: formId, placeholder: labelPlaceholder,
+    value: emailInputVal, name: formEmailName, required: block.settings.required,
+    attributes: input_attr %}"
+  position: 5645..5910
+- from: "{% render 'form-input' with type: 'tel', has_label: false, animate_label:
+    false, label_text: telInputString, id: formId, placeholder: labelPlaceholder,
+    value: phoneInputVal, name: formTelName, required: block.settings.required, attributes:
+    input_attr %}"
+  to: "{% render 'form-input' with type, type: 'tel', has_label: false, animate_label:
+    false, label_text: telInputString, id: formId, placeholder: labelPlaceholder,
+    value: phoneInputVal, name: formTelName, required: block.settings.required, attributes:
+    input_attr %}"
+  position: 6307..6566
+- from: "{% render 'form-input--textarea' with id: formId, placeholder: labelPlaceholder,
+    name: formMsgName, has_label: false, animate_label: false, label_text: msgInputString,
+    attributes: input_attr, required: block.settings.required, content: form.body
+    %}"
+  to: "{% render 'form-input--textarea' with id, id: formId, placeholder: labelPlaceholder,
+    name: formMsgName, has_label: false, animate_label: false, label_text: msgInputString,
+    attributes: input_attr, required: block.settings.required, content: form.body
+    %}"
+  position: 6971..7223
+- from: "{% render 'form-input' with type: 'text', has_label: false, animate_label:
+    false, label_text: inputString, id: formId, placeholder: labelPlaceholder, value:
+    form.body, name: inputName, required: block.settings.required, attributes: input_attr
+    %}"
+  to: "{% render 'form-input' with type, type: 'text', has_label: false, animate_label:
+    false, label_text: inputString, id: formId, placeholder: labelPlaceholder, value:
+    form.body, name: inputName, required: block.settings.required, attributes: input_attr
+    %}"
+  position: 7362..7613
+{%- endcomment -%}

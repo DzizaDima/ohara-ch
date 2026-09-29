@@ -23,7 +23,7 @@
         {% endfor %}
         
         <li>
-          <a class="nav-expand inline-icon--wrapper icon--right" href="#"><span>See more</span>{% render 'theme-icon' with icon: 'plus', iconClasses: 'plus-icon', iconSize: 16 %}</a>
+          <a class="nav-expand inline-icon--wrapper icon--right" href="#"><span>See more</span>{% render 'theme-icon' with icon, icon: 'plus', iconClasses: 'plus-icon', iconSize: 16 %}</a>
         </li>
 
       </ul>
@@ -35,7 +35,7 @@
         {% endfor %}
 
         <li>
-          <a class="nav-collapse inline-icon--wrapper icon--right" href="#"><span>See less</span>{% render 'theme-icon' with icon: 'minus', iconClasses: 'minus-icon', iconSize: 16 %}</a>
+          <a class="nav-collapse inline-icon--wrapper icon--right" href="#"><span>See less</span>{% render 'theme-icon' with icon, icon: 'minus', iconClasses: 'minus-icon', iconSize: 16 %}</a>
         </li>
 
       </ul>
@@ -152,3 +152,20 @@
   }
 }
 {% endschema %}
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{% render 'theme-icon' with icon: 'plus', iconClasses: 'plus-icon', iconSize:
+    16 %}"
+  to: "{% render 'theme-icon' with icon, icon: 'plus', iconClasses: 'plus-icon', iconSize:
+    16 %}"
+  position: 1421..1510
+- from: "{% render 'theme-icon' with icon: 'minus', iconClasses: 'minus-icon', iconSize:
+    16 %}"
+  to: "{% render 'theme-icon' with icon, icon: 'minus', iconClasses: 'minus-icon',
+    iconSize: 16 %}"
+  position: 1955..2046
+{% endcomment %}

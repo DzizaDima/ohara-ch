@@ -113,12 +113,12 @@
                 <div class="js-qty-wrapper">
                   <div class="js-qty">
                     <button type="button" aria-label="{{ 'general.accessibility.quantity.decrease_quantity' | t }}" class="js js-qty__adjust js-qty__adjust--minus icon-fallback-text standalone-icon--wrapper" data-id="" data-qty="0">
-                      {% render 'theme-icon' with icon: 'minus', iconClasses: 'flex-full', iconAttributes: 'aria-hidden="true"' %}
+                      {% render 'theme-icon' with icon, icon: 'minus', iconClasses: 'flex-full', iconAttributes: 'aria-hidden="true"' %}
                       <span class="fallback-text">−</span>
                     </button>
                     <input type="text" class="js-qty__num" value="{{ item.quantity }}" min="1" data-id="" aria-label="quantity" pattern="[0-9]*" name="updates[]" id="updates_{{ item.id }}">
                     <button type="button" aria-label="{{ 'general.accessibility.quantity.increase_quantity' | t }}" class="js js-qty__adjust js-qty__adjust--plus icon-fallback-text standalone-icon--wrapper" data-id="" data-qty="11">
-                      {% render 'theme-icon' with icon: 'plus', iconClasses: 'flex-full', iconAttributes: 'aria-hidden="true"' %}
+                      {% render 'theme-icon' with icon, icon: 'plus', iconClasses: 'flex-full', iconAttributes: 'aria-hidden="true"' %}
                       <span class="fallback-text">+</span>
                     </button>
                   </div>
@@ -246,4 +246,20 @@
 {
   "name": "t:sections.template--cart.name"
 }
-{% endschema %}
+{% endschema %}{%- comment -%}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: '{% render ''theme-icon'' with icon: ''minus'', iconClasses: ''flex-full'',
+    iconAttributes: ''aria-hidden="true"'' %}'
+  to: '{% render ''theme-icon'' with icon, icon: ''minus'', iconClasses: ''flex-full'',
+    iconAttributes: ''aria-hidden="true"'' %}'
+  position: 5506..5620
+- from: '{% render ''theme-icon'' with icon: ''plus'', iconClasses: ''flex-full'',
+    iconAttributes: ''aria-hidden="true"'' %}'
+  to: '{% render ''theme-icon'' with icon, icon: ''plus'', iconClasses: ''flex-full'',
+    iconAttributes: ''aria-hidden="true"'' %}'
+  position: 6155..6268
+{%- endcomment -%}

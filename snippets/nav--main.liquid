@@ -65,7 +65,7 @@
                         {{ sub_link.title | escape }}
                       </span>
                     </div>
-                    <span class="site-nav--link-icon">{% render 'theme-icon' with icon: 'chevron_right' %}</span>
+                    <span class="site-nav--link-icon">{% render 'theme-icon' with icon, icon: 'chevron_right' %}</span>
                   </div>
                 </a>
                 <ul class="site-nav__subdropdown">
@@ -135,3 +135,13 @@
     </li>
   {% endif %}
 {% endfor %}
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{% render 'theme-icon' with icon: 'chevron_right' %}"
+  to: "{% render 'theme-icon' with icon, icon: 'chevron_right' %}"
+  position: 2370..2428
+{% endcomment %}

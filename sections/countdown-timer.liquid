@@ -122,15 +122,7 @@
 
               {% when 'countdown_timer' %}
 
-                {% render 'countdown-timer' with
-                  timer_id: section.id,
-                  end_date_setting: block.settings.end_date,
-                  end_time_setting: block.settings.end_time,
-                  hide_when_complete: block.settings.hide_when_complete,
-                  time_labels: block.settings.time_labels,
-                  is_block: true,
-                  background_color_override: section.settings.text_color
-                %}
+                {% render 'countdown-timer' with timer_id, timer_id: section.id, end_date_setting: block.settings.end_date, end_time_setting: block.settings.end_time, hide_when_complete: block.settings.hide_when_complete, time_labels: block.settings.time_labels, is_block: true, background_color_override: section.settings.text_color %}
 
               {% when 'subheading' %}
 
@@ -394,3 +386,25 @@
   }
 }
 {% endschema %}
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: |-
+    {% render 'countdown-timer' with
+                      timer_id: section.id,
+                      end_date_setting: block.settings.end_date,
+                      end_time_setting: block.settings.end_time,
+                      hide_when_complete: block.settings.hide_when_complete,
+                      time_labels: block.settings.time_labels,
+                      is_block: true,
+                      background_color_override: section.settings.text_color
+                    %}
+  to: "{% render 'countdown-timer' with timer_id, timer_id: section.id, end_date_setting:
+    block.settings.end_date, end_time_setting: block.settings.end_time, hide_when_complete:
+    block.settings.hide_when_complete, time_labels: block.settings.time_labels, is_block:
+    true, background_color_override: section.settings.text_color %}"
+  position: 4294..4614
+{% endcomment %}

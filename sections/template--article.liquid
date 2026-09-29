@@ -37,7 +37,7 @@
   		{% if article.image %}
   			<div class="article--image-wrapper">
             {% capture article_alt %}{{ article.image.alt | default: article.title }}{% endcapture %}
-            {% render 'responsive-image' with article.image, img_tag: article.title, alt: article_alt | escape, sizes: '100vw' %}
+            {% render 'responsive-image' with article.image, img_tag: article.title, alt: article_alt, sizes: '100vw' %}
   		  </div>
   		{% endif %}
 
@@ -56,14 +56,14 @@
       <p class="clearfix article-prev-next-wrapper nav-link-animated--custom">
         {% if blog.previous_article %}
           <span class="left inline-icon--wrapper icon--left">
-            {% render 'theme-icon' with icon: 'chevron_left', iconSize: 16 %}
+            {% render 'theme-icon' with icon, icon: 'chevron_left', iconSize: 16 %}
             <a class="animated-link--item" href="{{ blog.previous_article }}">{{ 'blogs.article.older_post' | t }}</a>
           </span>
         {% endif %}
         {% if blog.next_article %}
           <span class="right inline-icon--wrapper icon--right">
             <a class="animated-link--item" href="{{ blog.next_article }}">{{ 'blogs.article.newer_post' | t }}</a>
-            {% render 'theme-icon' with icon: 'chevron_right', iconSize: 16 %}
+            {% render 'theme-icon' with icon, icon: 'chevron_right', iconSize: 16 %}
           </span>
         {% endif %}
       </p>
@@ -226,7 +226,7 @@
       {% endif %}
 
       {% capture article_sidebar_alt %}{{ section.settings.blog-sidebar-image.alt | default: shop.name }}{% endcapture %}
-      {% render 'responsive-image' with section.settings.blog-sidebar-image, class: 'blog-sidebar-image', alt: article_sidebar_alt | escape %}
+      {% render 'responsive-image' with section.settings.blog-sidebar-image, class: 'blog-sidebar-image', alt: article_sidebar_alt %}
 
       {% if section.settings.blog-sidebar-link %}
         </a>
@@ -309,3 +309,26 @@
   ]
 }
 {% endschema %}
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{% render 'responsive-image' with article.image, img_tag: article.title,
+    alt: article_alt | escape, sizes: '100vw' %}"
+  to: "{% render 'responsive-image' with article.image, img_tag: article.title, alt:
+    article_alt, sizes: '100vw' %}"
+  position: 1520..1628
+- from: "{% render 'theme-icon' with icon: 'chevron_left', iconSize: 16 %}"
+  to: "{% render 'theme-icon' with icon, icon: 'chevron_left', iconSize: 16 %}"
+  position: 2160..2231
+- from: "{% render 'theme-icon' with icon: 'chevron_right', iconSize: 16 %}"
+  to: "{% render 'theme-icon' with icon, icon: 'chevron_right', iconSize: 16 %}"
+  position: 2615..2687
+- from: "{% render 'responsive-image' with section.settings.blog-sidebar-image, class:
+    'blog-sidebar-image', alt: article_sidebar_alt | escape %}"
+  to: "{% render 'responsive-image' with section.settings.blog-sidebar-image, class:
+    'blog-sidebar-image', alt: article_sidebar_alt %}"
+  position: 9490..9617
+{% endcomment %}

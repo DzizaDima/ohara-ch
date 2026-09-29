@@ -81,7 +81,7 @@
 								<div class="info-cols--video-wrapper info-cols--media__aspect-ratio--{{ block.settings.grid_video_size }}">
 									<div class="info-cols--video type-{{ type }}">
 										{% if block.settings.video %}
-											{% render 'native-video' with video: block.settings.video, autoplay: true, loop: true, muted: true, overlay: true, overlay_button: false, controls: false %}
+											{% render 'native-video' with video, video: block.settings.video, autoplay: true, loop: true, muted: true, overlay: true, overlay_button: false, controls: false %}
 										{% elsif block.settings.video_url %}
 											<wetheme-video
 											section-id="{{ block.id }}"
@@ -452,3 +452,17 @@
   }
 }
 {% endschema %}
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{% render 'native-video' with video: block.settings.video, autoplay: true,
+    loop: true, muted: true, overlay: true, overlay_button: false, controls: false
+    %}"
+  to: "{% render 'native-video' with video, video: block.settings.video, autoplay:
+    true, loop: true, muted: true, overlay: true, overlay_button: false, controls:
+    false %}"
+  position: 3649..3812
+{% endcomment %}

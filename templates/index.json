@@ -33,7 +33,7 @@
         "template--15051013783622__af3e824e-6ca9-4ac4-9510-a07cb14e4a66-button-1": {
           "type": "button",
           "settings": {
-            "button_url": "shopify://collections/womens-day",
+            "button_url": "shopify://collections/autumn",
             "button_text": "Shop now",
             "color_button_text": "#6d555b",
             "color_button_background": "#f1efeb"
@@ -47,14 +47,14 @@
       ],
       "settings": {
         "colors": "accent",
-        "image_desktop": "shopify://shop_images/DSCF3395.jpg",
+        "image_desktop": "shopify://shop_images/IMG_9964.jpg",
         "height_desktop": "l",
         "text_size_desktop": 38,
         "text_position_desktop": "top_left",
-        "image_mobile": "shopify://shop_images/DSCF3479.jpg",
+        "image_mobile": "shopify://shop_images/IMG_9964.jpg",
         "height_mobile": "full",
         "text_size_mobile": 28,
-        "text_position_mobile": "left"
+        "text_position_mobile": "top_left"
       }
     },
     "3643d38b-24f2-4040-ab67-4b4b44a63aab": {

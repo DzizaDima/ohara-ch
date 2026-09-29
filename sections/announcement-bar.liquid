@@ -29,11 +29,7 @@
   -%}
 
   <div class="announcement_bar" data-wetheme-section-type="announcement-bar" data-wetheme-section-id="{{ section.id }}" data-social-media-enabled="{{ enable_social_icons }}">
-    {% render 'animated-background-text-colors' with 
-      section_blocks: section.blocks, 
-      announcement_bar_layout: announcement_bar_layout, 
-      enable_social_icons: enable_social_icons  
-    %}
+    {% render 'animated-background-text-colors' with section_blocks, section_blocks: section.blocks, announcement_bar_layout: announcement_bar_layout, enable_social_icons: enable_social_icons %}
   </div>
   
 {%- endif -%}
@@ -117,4 +113,17 @@
     ]
   }
 }
-{% endschema %}
+{% endschema %}{%- comment -%}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{% render 'animated-background-text-colors' with \n      section_blocks:
+    section.blocks, \n      announcement_bar_layout: announcement_bar_layout, \n      enable_social_icons:
+    enable_social_icons  \n    %}"
+  to: "{% render 'animated-background-text-colors' with section_blocks, section_blocks:
+    section.blocks, announcement_bar_layout: announcement_bar_layout, enable_social_icons:
+    enable_social_icons %}"
+  position: 1633..1823
+{%- endcomment -%}

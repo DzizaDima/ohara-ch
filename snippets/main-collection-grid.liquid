@@ -41,7 +41,7 @@
     {% if paginate.pages > 1 %}
       {% if pagination_options == 'pagination_infinite_scrolling' %}
         <div style="display: none" class="pagination-loading">
-          {% render 'theme-icon' with icon: 'circle-notch', iconClasses: 'spin flex-full', icon_fill: settings.color_primary_button_text, iconSize: '20' %}
+          {% render 'theme-icon' with icon, icon: 'circle-notch', iconClasses: 'spin flex-full', icon_fill: settings.color_primary_button_text, iconSize: '20' %}
           <span class="sr-only">{{ 'collections.paginate.load_more' | t }}</span>
         </div>
         <noscript>
@@ -132,4 +132,15 @@
     {{ paginate_style }}
   </div>
 
-{% endpaginate %}
+{% endpaginate %}{%- comment -%}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{% render 'theme-icon' with icon: 'circle-notch', iconClasses: 'spin flex-full',
+    icon_fill: settings.color_primary_button_text, iconSize: '20' %}"
+  to: "{% render 'theme-icon' with icon, icon: 'circle-notch', iconClasses: 'spin
+    flex-full', icon_fill: settings.color_primary_button_text, iconSize: '20' %}"
+  position: 1965..2116
+{%- endcomment -%}

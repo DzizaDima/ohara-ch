@@ -30,7 +30,7 @@
                 assign input_attr = 'aria-labelledby="' | append: formId | append: '" data-aid="email-input"'
                 assign emailInputPlaceholder = emailInputString | prepend: ' *'
             %}
-            {% render 'form-input' with type: 'email', has_label: false, animate_label: false, label_text: emailInputString, id: formId, placeholder: emailInputPlaceholder, name: emailInputName, required: true, attributes: input_attr, disabled: true %}
+            {% render 'form-input' with type, type: 'email', has_label: false, animate_label: false, label_text: emailInputString, id: formId, placeholder: emailInputPlaceholder, name: emailInputName, required: true, attributes: input_attr, disabled: true %}
         </div>
         
         <div class="gift-card--recipient-form-input-container">
@@ -38,7 +38,7 @@
                 assign formId = 'form_' | append: nameInputString | downcase | handleize
                 assign input_attr = 'aria-labelledby="' | append: formId | append: '" data-aid="name-input"'
             %}
-            {% render 'form-input' with type: 'text', has_label: false, animate_label: false, label_text: nameInputString, id: formId, placeholder: nameInputString, name: nameInputName, required: false, attributes: input_attr, disabled: true %}
+            {% render 'form-input' with type, type: 'text', has_label: false, animate_label: false, label_text: nameInputString, id: formId, placeholder: nameInputString, name: nameInputName, required: false, attributes: input_attr, disabled: true %}
         </div>
 
         <div class="gift-card--recipient-form-input-container">
@@ -48,7 +48,36 @@
             assign max_characters = 200
             assign max_characters_message = 'gift_cards.recipient.max_characters' | t: max: max_characters
             %}
-            {% render 'form-input--textarea' with has_label: false, animate_label: false, label_text: msgInputString, max_characters: max_characters, secondary_label: max_characters_message, id: formId, placeholder: msgInputString, name: msgInputName, required: false, attributes: input_attr, disabled: true %}
+            {% render 'form-input--textarea' with has_label, has_label: false, animate_label: false, label_text: msgInputString, max_characters: max_characters, secondary_label: max_characters_message, id: formId, placeholder: msgInputString, name: msgInputName, required: false, attributes: input_attr, disabled: true %}
         </div>
     </div>
-</div>
+</div>{%- comment -%}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{% render 'form-input' with type: 'email', has_label: false, animate_label:
+    false, label_text: emailInputString, id: formId, placeholder: emailInputPlaceholder,
+    name: emailInputName, required: true, attributes: input_attr, disabled: true %}"
+  to: "{% render 'form-input' with type, type: 'email', has_label: false, animate_label:
+    false, label_text: emailInputString, id: formId, placeholder: emailInputPlaceholder,
+    name: emailInputName, required: true, attributes: input_attr, disabled: true %}"
+  position: 1605..1851
+- from: "{% render 'form-input' with type: 'text', has_label: false, animate_label:
+    false, label_text: nameInputString, id: formId, placeholder: nameInputString,
+    name: nameInputName, required: false, attributes: input_attr, disabled: true %}"
+  to: "{% render 'form-input' with type, type: 'text', has_label: false, animate_label:
+    false, label_text: nameInputString, id: formId, placeholder: nameInputString,
+    name: nameInputName, required: false, attributes: input_attr, disabled: true %}"
+  position: 2187..2425
+- from: "{% render 'form-input--textarea' with has_label: false, animate_label: false,
+    label_text: msgInputString, max_characters: max_characters, secondary_label: max_characters_message,
+    id: formId, placeholder: msgInputString, name: msgInputName, required: false,
+    attributes: input_attr, disabled: true %}"
+  to: "{% render 'form-input--textarea' with has_label, has_label: false, animate_label:
+    false, label_text: msgInputString, max_characters: max_characters, secondary_label:
+    max_characters_message, id: formId, placeholder: msgInputString, name: msgInputName,
+    required: false, attributes: input_attr, disabled: true %}"
+  position: 2894..3203
+{%- endcomment -%}

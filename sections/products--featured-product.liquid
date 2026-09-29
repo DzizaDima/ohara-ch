@@ -166,12 +166,12 @@
                             <label for="Quantity" class="quantity-selector product-sub-label label-font">{{ 'products.product.quantity' | t }}</label>
                             <div class="js-qty">
                               <button type="button" aria-label="{{ 'general.accessibility.quantity.decrease_quantity' | t }}" class="js-qty__adjust js-qty__adjust--minus icon-fallback-text standalone-icon--wrapper" v-on:click="decreaseQuantity">
-                                {% render 'theme-icon' with icon: 'minus', iconClasses: 'flex-full', iconAttributes: 'aria-hidden="true"' %}
+                                {% render 'theme-icon' with icon, icon: 'minus', iconClasses: 'flex-full', iconAttributes: 'aria-hidden="true"' %}
                                 <span class="fallback-text">−</span>
                               </button>
                               <input v-model="quantity" type="text" class="js-qty__num" value="1" min="1" aria-label="quantity" pattern="[0-9]*" name="quantity" id="Quantity">
                               <button type="button" aria-label="{{ 'general.accessibility.quantity.increase_quantity' | t }}" class="js-qty__adjust js-qty__adjust--plus icon-fallback-text standalone-icon--wrapper" v-on:click="increaseQuantity">
-                                {% render 'theme-icon' with icon: 'plus', iconClasses: 'flex-full', iconAttributes: 'aria-hidden="true"' %}
+                                {% render 'theme-icon' with icon, icon: 'plus', iconClasses: 'flex-full', iconAttributes: 'aria-hidden="true"' %}
                                 <span class="fallback-text">+</span>
                               </button>
                             </div>
@@ -199,7 +199,7 @@
                                 v-bind:disabled="addToCartDisabled"
                               >
                                 {% assign icon_attrs = 'v-if="state === ' | append: "'adding'" | append: '" v-cloak' %}
-                                {% render 'theme-icon' with icon: 'circle-notch', iconClasses: 'spin js fa-2x flex-full', iconAttributes: icon_attrs iconSize: '1.6em', icon_fill: settings.color_primary_button_text %}<span class="sr-only">{{ 'collections.paginate.loading' | t }}</span>
+                                {% render 'theme-icon' with icon, icon: 'circle-notch', iconClasses: 'spin js fa-2x flex-full', iconAttributes: icon_attrs, iconSize: '1.6em', icon_fill: settings.color_primary_button_text %}<span class="sr-only">{{ 'collections.paginate.loading' | t }}</span>
                                 <span class="{% if current_variant.available %}js{% endif %}" v-if="state === 'ready'"{% unless current_variant.available %} v-cloak{% endunless %}>{{ 'products.product.add_to_cart' | t }}</span>
                                 <span class="js" v-if="state === 'added'" v-cloak>{{ 'products.product.added' | t }}</span>
                                 <span class="{% unless current_variant.available %}js{% endunless %}" v-if="state === 'soldOut'" v-cloak>{{ 'products.product.sold_out' | t }}</span>
@@ -339,30 +339,11 @@
                     </div>
 
                   {% when 'text-with-icon' %}
-                    {% render 'text-with-icon' with icon: block.settings.icon, 
-                      text: block.settings.text, 
-                      link: block.settings.link, 
-                      borders: true, 
-                      block_attributes: block.shopify_attributes,
-                      classes: spacing_classes
-                    %}
+                    {% render 'text-with-icon' with icon, icon: block.settings.icon, text: block.settings.text, link: block.settings.link, borders: true, block_attributes: block.shopify_attributes, classes: spacing_classes %}
 
                   {% when 'stock-level-indicator' %}
                     <div class="{{ spacing_classes }}">
-                      {% render 'stock-level-indicator' with 
-                        block_attributes: block.shopify_attributes,
-                        stock_product: product,
-                        stock_variant: current_variant,
-                        stock_style: block.settings.stock-level-indicator-style,
-                        stock_bar_color: block.settings.bar-indicator-color,
-                        stock_indicator_animation: block.settings.stock_indicator_animation,
-                        stock_amt: block.settings.stock-range,
-                        stock_notice: block.settings.stock-level-notice,
-                        show_stock_count: block.settings.show-stock-count,
-                        in_stock_message: block.settings.in-stock-message,
-                        low_stock_message: block.settings.low-stock-message,
-                        out_of_stock_message: block.settings.out-of-stock-message
-                      %}
+                      {% render 'stock-level-indicator' with block_attributes, block_attributes: block.shopify_attributes, stock_product: product, stock_variant: current_variant, stock_style: block.settings.stock-level-indicator-style, stock_bar_color: block.settings.bar-indicator-color, stock_indicator_animation: block.settings.stock_indicator_animation, stock_amt: block.settings.stock-range, stock_notice: block.settings.stock-level-notice, show_stock_count: block.settings.show-stock-count, in_stock_message: block.settings.in-stock-message, low_stock_message: block.settings.low-stock-message, out_of_stock_message: block.settings.out-of-stock-message %}
                     </div>
                     
                 {% endcase %}
@@ -891,3 +872,55 @@
   }
 }
 {% endschema %}
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: '{% render ''theme-icon'' with icon: ''minus'', iconClasses: ''flex-full'',
+    iconAttributes: ''aria-hidden="true"'' %}'
+  to: '{% render ''theme-icon'' with icon, icon: ''minus'', iconClasses: ''flex-full'',
+    iconAttributes: ''aria-hidden="true"'' %}'
+  position: 8794..8908
+- from: '{% render ''theme-icon'' with icon: ''plus'', iconClasses: ''flex-full'',
+    iconAttributes: ''aria-hidden="true"'' %}'
+  to: '{% render ''theme-icon'' with icon, icon: ''plus'', iconClasses: ''flex-full'',
+    iconAttributes: ''aria-hidden="true"'' %}'
+  position: 9471..9584
+- from: "{% render 'theme-icon' with icon: 'circle-notch', iconClasses: 'spin js fa-2x
+    flex-full', iconAttributes: icon_attrs iconSize: '1.6em', icon_fill: settings.color_primary_button_text
+    %}"
+  to: "{% render 'theme-icon' with icon, icon: 'circle-notch', iconClasses: 'spin
+    js fa-2x flex-full', iconAttributes: icon_attrs, iconSize: '1.6em', icon_fill:
+    settings.color_primary_button_text %}"
+  position: 11311..11502
+- from: "{% render 'text-with-icon' with icon: block.settings.icon, \n                      text:
+    block.settings.text, \n                      link: block.settings.link, \n                      borders:
+    true, \n                      block_attributes: block.shopify_attributes,\n                      classes:
+    spacing_classes\n                    %}"
+  to: "{% render 'text-with-icon' with icon, icon: block.settings.icon, text: block.settings.text,
+    link: block.settings.link, borders: true, block_attributes: block.shopify_attributes,
+    classes: spacing_classes %}"
+  position: 19319..19524
+- from: "{% render 'stock-level-indicator' with \n                        block_attributes:
+    block.shopify_attributes,\n                        stock_product: product,\n                        stock_variant:
+    current_variant,\n                        stock_style: block.settings.stock-level-indicator-style,\n
+    \                       stock_bar_color: block.settings.bar-indicator-color,\n
+    \                       stock_indicator_animation: block.settings.stock_indicator_animation,\n
+    \                       stock_amt: block.settings.stock-range,\n                        stock_notice:
+    block.settings.stock-level-notice,\n                        show_stock_count:
+    block.settings.show-stock-count,\n                        in_stock_message: block.settings.in-stock-message,\n
+    \                       low_stock_message: block.settings.low-stock-message,\n
+    \                       out_of_stock_message: block.settings.out-of-stock-message\n
+    \                     %}"
+  to: "{% render 'stock-level-indicator' with block_attributes, block_attributes:
+    block.shopify_attributes, stock_product: product, stock_variant: current_variant,
+    stock_style: block.settings.stock-level-indicator-style, stock_bar_color: block.settings.bar-indicator-color,
+    stock_indicator_animation: block.settings.stock_indicator_animation, stock_amt:
+    block.settings.stock-range, stock_notice: block.settings.stock-level-notice, show_stock_count:
+    block.settings.show-stock-count, in_stock_message: block.settings.in-stock-message,
+    low_stock_message: block.settings.low-stock-message, out_of_stock_message: block.settings.out-of-stock-message
+    %}"
+  position: 19657..20296
+{% endcomment %}

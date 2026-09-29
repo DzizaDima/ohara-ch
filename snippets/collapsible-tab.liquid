@@ -4,8 +4,8 @@
             {% render 'text-with-icon', icon: icon, custom_icon: custom_icon, text: heading, text_classes: heading_classes %}
             <span class="inline-icon--wrapper icon--right">
                 {% if open_close_icon == "plus_minus" %}
-                    {% render 'theme-icon' with icon: 'plus', iconClasses: 'plus-icon' %}
-                    {% render 'theme-icon' with icon: 'minus', iconClasses: 'minus-icon' %}
+                    {% render 'theme-icon' with icon, icon: 'plus', iconClasses: 'plus-icon' %}
+                    {% render 'theme-icon' with icon, icon: 'minus', iconClasses: 'minus-icon' %}
                 {% elsif open_close_icon == "caret" %}
                     {% render 'theme-icon', icon: 'chevron_down', iconClasses: 'chevron-down' %}
                 {% endif %}
@@ -32,8 +32,8 @@
                 {% render 'text-with-icon', icon: icon, custom_icon: custom_icon, text: heading, text_classes: heading_classes %}
                 <span class="inline-icon--wrapper icon--right">
                     {% if open_close_icon == "plus_minus" %}
-                        {% render 'theme-icon' with icon: 'plus', iconClasses: 'plus-icon' %}
-                        {% render 'theme-icon' with icon: 'minus', iconClasses: 'minus-icon' %}
+                        {% render 'theme-icon' with icon, icon: 'plus', iconClasses: 'plus-icon' %}
+                        {% render 'theme-icon' with icon, icon: 'minus', iconClasses: 'minus-icon' %}
                     {% elsif open_close_icon == "caret" %}
                         {% render 'theme-icon', icon: 'chevron_up', iconClasses: 'chevron-up' %}
                         {% render 'theme-icon', icon: 'chevron_down', iconClasses: 'chevron-down' %}
@@ -51,4 +51,24 @@
 
 <safe-load-scripts class="hidden">
     <script src="{{ 'component-collapsible-button.js' | asset_url }}" type="module" defer="defer" data-flow-load-key="component-collapsible-button"></script>
-</safe-load-scripts>
+</safe-load-scripts>{%- comment -%}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{% render 'theme-icon' with icon: 'plus', iconClasses: 'plus-icon' %}"
+  to: "{% render 'theme-icon' with icon, icon: 'plus', iconClasses: 'plus-icon' %}"
+  position: 404..479
+- from: "{% render 'theme-icon' with icon: 'minus', iconClasses: 'minus-icon' %}"
+  to: "{% render 'theme-icon' with icon, icon: 'minus', iconClasses: 'minus-icon'
+    %}"
+  position: 500..577
+- from: "{% render 'theme-icon' with icon: 'plus', iconClasses: 'plus-icon' %}"
+  to: "{% render 'theme-icon' with icon, icon: 'plus', iconClasses: 'plus-icon' %}"
+  position: 1674..1749
+- from: "{% render 'theme-icon' with icon: 'minus', iconClasses: 'minus-icon' %}"
+  to: "{% render 'theme-icon' with icon, icon: 'minus', iconClasses: 'minus-icon'
+    %}"
+  position: 1774..1851
+{%- endcomment -%}

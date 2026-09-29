@@ -45,7 +45,7 @@ Parameters:
                   aria-label="{{ 'general.accessibility.play_icon.play_media' | t }}"
                   v-cloak
                 >
-                  {% render 'theme-icon' with icon: 'play', iconSize: 20 %}
+                  {% render 'theme-icon' with icon, icon: 'play', iconSize: 20 %}
                 </button>
                 <button
                   type="button"
@@ -57,7 +57,7 @@ Parameters:
                   aria-label="{{ 'general.accessibility.3d_model.load_3d_model' | t }}"
                   v-cloak
                 >
-                  {% render 'theme-icon' with icon: 'cube', iconSize: 20 %}
+                  {% render 'theme-icon' with icon, icon: 'cube', iconSize: 20 %}
                 </button>
               </div>
 
@@ -166,7 +166,7 @@ Parameters:
                   </div>
                 {% elsif media.media_type == 'video' or media.media_type == 'external_video' %}
                   <div class="product-medias__emblem">
-                    {% render 'theme-icon' with icon: 'play', iconSize: 20 %}
+                    {% render 'theme-icon' with icon, icon: 'play', iconSize: 20 %}
                   </div>
                 {% endif %}
 
@@ -187,7 +187,7 @@ Parameters:
                     {{ media.alt }}
                   {% endif %}
                 {% endcapture %}
-                {% render 'responsive-image' with media.preview_image, class: class, alt: thumbalt | escape, default_size: '300x', props: props, blur: false, styles: styles %}
+                {% render 'responsive-image' with media.preview_image, class: class, alt: thumbalt, default_size: '300x', props: props, blur: false, styles: styles %}
               </a>
             {% endunless %}
         {% endfor %}
@@ -195,3 +195,25 @@ Parameters:
     {% endif %}
   </div>
 </div>
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{% render 'theme-icon' with icon: 'play', iconSize: 20 %}"
+  to: "{% render 'theme-icon' with icon, icon: 'play', iconSize: 20 %}"
+  position: 2168..2231
+- from: "{% render 'theme-icon' with icon: 'cube', iconSize: 20 %}"
+  to: "{% render 'theme-icon' with icon, icon: 'cube', iconSize: 20 %}"
+  position: 2742..2805
+- from: "{% render 'theme-icon' with icon: 'play', iconSize: 20 %}"
+  to: "{% render 'theme-icon' with icon, icon: 'play', iconSize: 20 %}"
+  position: 7478..7541
+- from: "{% render 'responsive-image' with media.preview_image, class: class, alt:
+    thumbalt | escape, default_size: '300x', props: props, blur: false, styles: styles
+    %}"
+  to: "{% render 'responsive-image' with media.preview_image, class: class, alt: thumbalt,
+    default_size: '300x', props: props, blur: false, styles: styles %}"
+  position: 8594..8744
+{% endcomment %}

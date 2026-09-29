@@ -53,9 +53,9 @@
                 assign cta_text = block.settings.btn_text
 
                 if section.settings.layout == 'grid'
-                  render 'events-calendar--grid' with day: day, month: month, tbc: tbc, day_time: day_time, price: price, heading: heading, event_location: event_location, cta: cta, cta_link: cta_link, cta_text: cta_text, event_image: event_image, event_image_alt: event_image_alt, event_image_aspect_ratio: event_image_aspect_ratio, placeholder_number: placeholder_number
+                  render 'events-calendar--grid' with day, day: day, month: month, tbc: tbc, day_time: day_time, price: price, heading: heading, event_location: event_location, cta: cta, cta_link: cta_link, cta_text: cta_text, event_image: event_image, event_image_alt: event_image_alt, event_image_aspect_ratio: event_image_aspect_ratio, placeholder_number: placeholder_number
                 else
-                  render 'events-calendar--list' with day: day, month: month, tbc: tbc, day_time: day_time, price: price, heading: heading, event_location: event_location, cta: cta, cta_link: cta_link, cta_text: cta_text
+                  render 'events-calendar--list' with day, day: day, month: month, tbc: tbc, day_time: day_time, price: price, heading: heading, event_location: event_location, cta: cta, cta_link: cta_link, cta_text: cta_text
                 endif
               %}
             </li>
@@ -325,3 +325,28 @@
   }
 }
 {% endschema %}
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "                  render 'events-calendar--grid' with day: day, month: month,
+    tbc: tbc, day_time: day_time, price: price, heading: heading, event_location:
+    event_location, cta: cta, cta_link: cta_link, cta_text: cta_text, event_image:
+    event_image, event_image_alt: event_image_alt, event_image_aspect_ratio: event_image_aspect_ratio,
+    placeholder_number: placeholder_number"
+  to: "                  render 'events-calendar--grid' with day, day: day, month:
+    month, tbc: tbc, day_time: day_time, price: price, heading: heading, event_location:
+    event_location, cta: cta, cta_link: cta_link, cta_text: cta_text, event_image:
+    event_image, event_image_alt: event_image_alt, event_image_aspect_ratio: event_image_aspect_ratio,
+    placeholder_number: placeholder_number"
+  position: 2780..3157
+- from: "                  render 'events-calendar--list' with day: day, month: month,
+    tbc: tbc, day_time: day_time, price: price, heading: heading, event_location:
+    event_location, cta: cta, cta_link: cta_link, cta_text: cta_text"
+  to: "                  render 'events-calendar--list' with day, day: day, month:
+    month, tbc: tbc, day_time: day_time, price: price, heading: heading, event_location:
+    event_location, cta: cta, cta_link: cta_link, cta_text: cta_text"
+  position: 3179..3404
+{% endcomment %}

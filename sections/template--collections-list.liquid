@@ -104,7 +104,7 @@
 
               <div class="list-collections--more-link nav-link-animated--custom inline-icon--wrapper">
                 <a class="animated-link--item" href="{{ collection.url }}" title="{{ 'collections.general.link_title' | t: title: collection_title }}">{{ 'collections.general.see_more' | t }} {{ collection_title }}</a>
-                {% render 'theme-icon' with icon: 'chevron_right', iconSize: 16 %}
+                {% render 'theme-icon' with icon, icon: 'chevron_right', iconSize: 16 %}
               </div>
 
               {% unless forloop.last %}
@@ -134,7 +134,7 @@
             {% if collection.products != empty %}
             <div class="list-collections--more-link nav-link-animated--custom inline-icon--wrapper">
               <a class="animated-link--item" href="{{ collection.url }}" title="{{ 'collections.general.link_title' | t: title: collection_title }}">{{ 'collections.general.see_more' | t }} {{ collection_title }}</a>
-              {% render 'theme-icon' with icon: 'chevron_right', iconSize: 16 %}
+              {% render 'theme-icon' with icon, icon: 'chevron_right', iconSize: 16 %}
             </div>
             {% endif %}
 
@@ -324,3 +324,16 @@
   ]
 }
 {% endschema %}
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{% render 'theme-icon' with icon: 'chevron_right', iconSize: 16 %}"
+  to: "{% render 'theme-icon' with icon, icon: 'chevron_right', iconSize: 16 %}"
+  position: 4430..4502
+- from: "{% render 'theme-icon' with icon: 'chevron_right', iconSize: 16 %}"
+  to: "{% render 'theme-icon' with icon, icon: 'chevron_right', iconSize: 16 %}"
+  position: 5781..5853
+{% endcomment %}

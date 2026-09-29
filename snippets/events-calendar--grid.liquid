@@ -38,7 +38,7 @@
           if day_time != ''
             assign divider = true
           endif
-          render 'price-currency-specified' with price: price, add_divider: divider
+          render 'price-currency-specified' with price, price: price, add_divider: divider
         endunless
       %}
       {% if day_time != '' %}
@@ -64,3 +64,15 @@
   </div>
 
 </div>
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "          render 'price-currency-specified' with price: price, add_divider:
+    divider"
+  to: "          render 'price-currency-specified' with price, price: price, add_divider:
+    divider"
+  position: 1430..1520
+{% endcomment %}

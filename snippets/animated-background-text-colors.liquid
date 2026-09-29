@@ -37,7 +37,7 @@
 
   {%- liquid
     if enable_social_icons
-      render 'social-icons' with icon_wrapper_classes: 'icon-no-padding', icon_classes: 'fa-2x'
+      render 'social-icons' with icon_wrapper_classes, icon_wrapper_classes: 'icon-no-padding', icon_classes: 'fa-2x'
     endif 
   -%}
   
@@ -46,4 +46,15 @@
   <safe-load-scripts class="hidden">
     <script src="{{ 'component-animated-background-text-colors.js' | asset_url }}" type="module" defer="defer" data-flow-load-key="component-animated-background-text-colors"></script>
   </safe-load-scripts>
-{%- endif -%}
+{%- endif -%}{%- comment -%}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "      render 'social-icons' with icon_wrapper_classes: 'icon-no-padding',
+    icon_classes: 'fa-2x'"
+  to: "      render 'social-icons' with icon_wrapper_classes, icon_wrapper_classes:
+    'icon-no-padding', icon_classes: 'fa-2x'"
+  position: 1746..1863
+{%- endcomment -%}

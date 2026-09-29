@@ -10,7 +10,7 @@
       <span class="text-with-icon--icon">
     {% endif %}
 
-      {% render 'responsive-image' with icon, default_size: iconSize | append: 'x', blur: false %}
+      {% render 'responsive-image' with icon, default_size: iconSize, append: 'x', blur: false %}
 
     {% if link %}
       </a>
@@ -49,3 +49,15 @@
 
   </div>
 </div>
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{% render 'responsive-image' with icon, default_size: iconSize | append:
+    'x', blur: false %}"
+  to: "{% render 'responsive-image' with icon, default_size: iconSize, append: 'x',
+    blur: false %}"
+  position: 428..519
+{% endcomment %}

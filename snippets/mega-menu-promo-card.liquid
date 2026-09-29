@@ -62,15 +62,36 @@
         </div>
 
         {% if promo_text != blank and promo_text_overlay %}
-          {% render 'mega-menu-promo-card--text-content' with promo_text_heading: promo_text_heading, promo_link: promo_link, promo_text_subheading: promo_text_subheading, promo_text_overlay: promo_text_overlay, text_color: promo_text_color %}
+          {% render 'mega-menu-promo-card--text-content' with promo_text_heading, promo_text_heading: promo_text_heading, promo_link: promo_link, promo_text_subheading: promo_text_subheading, promo_text_overlay: promo_text_overlay, text_color: promo_text_color %}
         {% endif %}
     
       </{{ tag }}>
 
       {% if promo_text != blank and promo_text_overlay == false %}
-        {% render 'mega-menu-promo-card--text-content' with promo_text_heading: promo_text_heading, promo_link: promo_link, promo_text_subheading: promo_text_subheading, promo_text_overlay: promo_text_overlay, attr: attr %}
+        {% render 'mega-menu-promo-card--text-content' with promo_text_heading, promo_text_heading: promo_text_heading, promo_link: promo_link, promo_text_subheading: promo_text_subheading, promo_text_overlay: promo_text_overlay, attr: attr %}
 
       {% endif %}
     </div>
   </div>
 </li>
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{% render 'mega-menu-promo-card--text-content' with promo_text_heading: promo_text_heading,
+    promo_link: promo_link, promo_text_subheading: promo_text_subheading, promo_text_overlay:
+    promo_text_overlay, text_color: promo_text_color %}"
+  to: "{% render 'mega-menu-promo-card--text-content' with promo_text_heading, promo_text_heading:
+    promo_text_heading, promo_link: promo_link, promo_text_subheading: promo_text_subheading,
+    promo_text_overlay: promo_text_overlay, text_color: promo_text_color %}"
+  position: 2707..2960
+- from: "{% render 'mega-menu-promo-card--text-content' with promo_text_heading: promo_text_heading,
+    promo_link: promo_link, promo_text_subheading: promo_text_subheading, promo_text_overlay:
+    promo_text_overlay, attr: attr %}"
+  to: "{% render 'mega-menu-promo-card--text-content' with promo_text_heading, promo_text_heading:
+    promo_text_heading, promo_link: promo_link, promo_text_subheading: promo_text_subheading,
+    promo_text_overlay: promo_text_overlay, attr: attr %}"
+  position: 3081..3316
+{% endcomment %}

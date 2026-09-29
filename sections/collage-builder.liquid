@@ -38,15 +38,7 @@
                 {% endif %}
                 {% if block.type == 'countdown_timer' %}
                   <div class="collage-builder__timer">
-                    {% render 'countdown-timer' with
-                      timer_id: block.id,
-                      end_date_setting: block.settings.end_date,
-                      end_time_setting: block.settings.end_time,
-                      hide_when_complete: false,
-                      time_labels: block.settings.time_labels,
-                      is_block: true,
-                      background_color_override: block.settings.text_color
-                    %}
+                    {% render 'countdown-timer' with timer_id, timer_id: block.id, end_date_setting: block.settings.end_date, end_time_setting: block.settings.end_time, hide_when_complete: false, time_labels: block.settings.time_labels, is_block: true, background_color_override: block.settings.text_color %}
                   </div>
                 {% endif %}
                 {% if block.settings.text != blank %}
@@ -152,7 +144,7 @@
 
                   <div class="collage-builder__background-video collage-builder__background-video--desktop collage-builder__background-video--{{ block_aspect_type }} type-{{ type }}">
                     {% if block.settings.video %}
-                      {% render 'native-video' with video: block.settings.video, autoplay: true, loop: true, muted: true, overlay: false, controls: false %}
+                      {% render 'native-video' with video, video: block.settings.video, autoplay: true, loop: true, muted: true, overlay: false, controls: false %}
                     {% elsif block.settings.video_url %}
                       <wetheme-video
                         section-id="{{ block.id }}"
@@ -172,7 +164,7 @@
                   {% if block.settings.mobile_video_url != blank or block.settings.mobile_video %}
                     <div class="collage-builder__background-video collage-builder__background-video--mobile type-{{ mobile_type }}">
                       {% if block.settings.mobile_video %}
-                        {% render 'native-video' with video: block.settings.mobile_video, autoplay: true, loop: true, muted: true, overlay: false, controls: false %}
+                        {% render 'native-video' with video, video: block.settings.mobile_video, autoplay: true, loop: true, muted: true, overlay: false, controls: false %}
                       {% elsif block.settings.mobile_video_url %}
                         <wetheme-video
                           section-id="{{ block.id }}"
@@ -214,7 +206,7 @@
                 <div class="collage-builder__media-wrapper">
                   <div class="collage-builder__video collage-builder__video--desktop type-{{ type }} block--{{ block.id }}">
                     {% if block.settings.video %}
-                      {% render 'native-video' with video: block.settings.video, autoplay: false, loop: false, muted: false, overlay: true, controls: false, scope_id: block.id %}
+                      {% render 'native-video' with video, video: block.settings.video, autoplay: false, loop: false, muted: false, overlay: true, controls: false, scope_id: block.id %}
                     {% elsif block.settings.video_url %}
                       <wetheme-video
                         section-id="{{ block.id }}"
@@ -232,7 +224,7 @@
                   {% if block.settings.mobile_video_url != blank or block.settings.mobile_video %}
                     <div class="collage-builder__video collage-builder__video--mobile type-{{ mobile_type }}">
                       {% if block.settings.mobile_video %}
-                        {% render 'native-video' with video: block.settings.mobile_video, autoplay: false, loop: false, muted: false, overlay: true, controls: false, scope_id: block.id %}
+                        {% render 'native-video' with video, video: block.settings.mobile_video, autoplay: false, loop: false, muted: false, overlay: true, controls: false, scope_id: block.id %}
                       {% elsif block.settings.mobile_video_url %}
                         <wetheme-video
                           section-id="{{ block.id }}"
@@ -1705,3 +1697,49 @@
   }
 }
 {% endschema %}
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: |-
+    {% render 'countdown-timer' with
+                          timer_id: block.id,
+                          end_date_setting: block.settings.end_date,
+                          end_time_setting: block.settings.end_time,
+                          hide_when_complete: false,
+                          time_labels: block.settings.time_labels,
+                          is_block: true,
+                          background_color_override: block.settings.text_color
+                        %}
+  to: "{% render 'countdown-timer' with timer_id, timer_id: block.id, end_date_setting:
+    block.settings.end_date, end_time_setting: block.settings.end_time, hide_when_complete:
+    false, time_labels: block.settings.time_labels, is_block: true, background_color_override:
+    block.settings.text_color %}"
+  position: 2696..2984
+- from: "{% render 'native-video' with video: block.settings.video, autoplay: true,
+    loop: true, muted: true, overlay: false, controls: false %}"
+  to: "{% render 'native-video' with video, video: block.settings.video, autoplay:
+    true, loop: true, muted: true, overlay: false, controls: false %}"
+  position: 8353..8494
+- from: "{% render 'native-video' with video: block.settings.mobile_video, autoplay:
+    true, loop: true, muted: true, overlay: false, controls: false %}"
+  to: "{% render 'native-video' with video, video: block.settings.mobile_video, autoplay:
+    true, loop: true, muted: true, overlay: false, controls: false %}"
+  position: 9461..9609
+- from: "{% render 'native-video' with video: block.settings.video, autoplay: false,
+    loop: false, muted: false, overlay: true, controls: false, scope_id: block.id
+    %}"
+  to: "{% render 'native-video' with video, video: block.settings.video, autoplay:
+    false, loop: false, muted: false, overlay: true, controls: false, scope_id: block.id
+    %}"
+  position: 11443..11606
+- from: "{% render 'native-video' with video: block.settings.mobile_video, autoplay:
+    false, loop: false, muted: false, overlay: true, controls: false, scope_id: block.id
+    %}"
+  to: "{% render 'native-video' with video, video: block.settings.mobile_video, autoplay:
+    false, loop: false, muted: false, overlay: true, controls: false, scope_id: block.id
+    %}"
+  position: 12501..12671
+{% endcomment %}
