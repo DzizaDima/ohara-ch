@@ -392,6 +392,26 @@
         "name": "boolean",
         "category": "TRUE_FALSE"
       }
+    },
+    {
+      "key": "config",
+      "namespace": "rivo_customer_account",
+      "name": "Rivo Customer Account App Config",
+      "description": "Rivo loyalty config for Customer Accounts",
+      "type": {
+        "name": "json",
+        "category": "JSON"
+      }
+    },
+    {
+      "key": "translation_config",
+      "namespace": "rivo_customer_account",
+      "name": "Rivo Customer Account Translations",
+      "description": "Rivo translations for Customer Accounts",
+      "type": {
+        "name": "json",
+        "category": "JSON"
+      }
     }
   ]
 }
