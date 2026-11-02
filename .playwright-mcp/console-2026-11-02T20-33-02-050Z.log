@@ -1,0 +1,182 @@
+[   37075ms] [LOG] cart {note: null, attributes: Object, original_total_price: 0, total_price: 0, total_discount: 0} @ http://127.0.0.1:9292/pages/contact:3422
+[   37576ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ https://127.0.0.1/api/2026-04/graphql.json:0
+[   37578ms] [INFO] [HotReload] Connected @ http://127.0.0.1:9292/cdn/shopifycloud/theme-hot-reload/theme-hot-reload.js:299
+[   37589ms] [ERROR] Access to fetch at 'https://ohara-flowers-ch.myshopify.com/api/collect' from origin 'http://127.0.0.1:9292' has been blocked by CORS policy: Response to preflight request doesn't pass access control check: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://127.0.0.1:9292/pages/contact:0
+[   37589ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://ohara-flowers-ch.myshopify.com/api/collect:0
+[   37710ms] [LOG] %c 
+- Increased repurchase rates
+- Increased LTV
+- Fully customizable
+
+
+Hit us up at: https://www.rivo.io/developers
+
+ font-size: 13px; @ https://cdn.shopify.com/extensions/01a1997d-580a-7784-8c1d-3da4a33f289f/rivo-loyalty-rewards-referrals-833/assets/ba_loy_init.js:0
+[   37818ms] [ERROR] Framing 'https://shop.app/' violates the following Content Security Policy directive: "frame-ancestors https://ohara-flowers-ch.myshopify.com https://ohara-flowers-ch.account.myshopify.com https://oharaflowers.ch https://www.oharaflowers.ch https://shopify.com". The request has been blocked.
+ @ :0
+[   38681ms] [ERROR] Access to fetch at 'https://ohara-flowers-ch.myshopify.com/api/collect' from origin 'http://127.0.0.1:9292' has been blocked by CORS policy: Response to preflight request doesn't pass access control check: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://127.0.0.1:9292/pages/contact:0
+[   38682ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://ohara-flowers-ch.myshopify.com/api/collect:0
+[   38683ms] TypeError: Failed to fetch
+    at patched (http://127.0.0.1:9292/cdn/shop/t/9/assets/buunto-add-to-cart.js?v=28689920003671486791793651444:420:16)
+    at https://ohara-flowers-ch.myshopify.com/cdn/wpm/b610a19cewf693d529pf324840bm6169d9b4m.js:1:84156
+    at window.fetch (https://cdn.shopify.com/extensions/01a186e7-93c0-7a8b-b790-2025e9489c56/lb-upsell-465/assets/lb-selleasy.js:1:37240)
+    at window2.fetch (http://127.0.0.1:9292/cdn/shopifycloud/storefront/assets/shop_events_listener-819172a8.js:1:7379)
+    at window.fetch (https://cdn.shopify.com/extensions/01a19c0d-af7f-79b2-863f-e5235f599349/shop-by-date-319/assets/buunto-date-picker.js:2:441176)
+    at Pe.sendBeacon (http://127.0.0.1:9292/cdn/shopifycloud/perf-kit/shopify-perf-kit-3.14.0.min.js:1:52190)
+    at http://127.0.0.1:9292/cdn/shopifycloud/perf-kit/shopify-perf-kit-3.14.0.min.js:1:53129
+[   39173ms] [ERROR] [HotReload] Connection closed by the server, attempting to reconnect... @ http://127.0.0.1:9292/cdn/shopifycloud/theme-hot-reload/theme-hot-reload.js:304
+[   39173ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_RESET @ http://127.0.0.1:9292/:0
+[   39175ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/cdn/shopifycloud/checkout-web/assets/c1/fb3b4968.BheSaiqU.js:0
+[   39186ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/cdn/shopifycloud/checkout-web/assets/c1/f8706cb6.CTmwTw5m.js:0
+[   39191ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/cdn/shopifycloud/checkout-web/assets/c1/0e9ee714.BLr9qk_I.js:0
+[   39193ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/cdn/shopifycloud/checkout-web/assets/c1/39921a74.CrS_IdC9.js:0
+[   39196ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/cdn/shopifycloud/checkout-web/assets/c1/7a8217fd.BDAyOoQt.js:0
+[   39198ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/cdn/shopifycloud/checkout-web/assets/c1/8599b02a.BoD2KCzg.js:0
+[   39200ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/cdn/shopifycloud/checkout-web/assets/c1/dffdfb34.BdGnQ6l3.js:0
+[   39202ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/cdn/shopifycloud/checkout-web/assets/c1/a422df8c.uy_VVPbO.js:0
+[   39203ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/cdn/shopifycloud/checkout-web/assets/c1/efa0389a.DTBaR652.js:0
+[   39205ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/cdn/shopifycloud/checkout-web/assets/c1/c8760fd8.c-zd8oyj.js:0
+[   39206ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/cdn/shopifycloud/checkout-web/assets/c1/53bbdad9.DRH2hhE4.js:0
+[   39207ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/cdn/shopifycloud/checkout-web/assets/c1/1f5e7811.DUqMNMr9.js:0
+[   39209ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/cdn/shopifycloud/checkout-web/assets/c1/1a6c2867.DIvU9A1-.js:0
+[   39211ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/cdn/shopifycloud/checkout-web/assets/c1/2fdb3dd3.CcMotzMB.js:0
+[   39213ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/cdn/shopifycloud/checkout-web/assets/c1/22345fd4.BA7ONia0.js:0
+[   39216ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/cdn/shopifycloud/checkout-web/assets/c1/0e67bd3b.BYi1UIh2.js:0
+[   39222ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/cdn/shopifycloud/checkout-web/assets/c1/a9fa9fda.CAhyEvzr.js:0
+[   39230ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/cdn/shopifycloud/checkout-web/assets/c1/ca3e798e.bE3ngdiU.js:0
+[   39232ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/cdn/shopifycloud/checkout-web/assets/c1/f7861534.MjMLHa_X.js:0
+[   39233ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/cdn/shopifycloud/checkout-web/assets/c1/47b970b2.CgWSX7pS.js:0
+[   39235ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/cdn/shopifycloud/checkout-web/assets/c1/064f6ac1.CUMFXtOh.js:0
+[   39237ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/cdn/shopifycloud/checkout-web/assets/c1/17425706.DfsgZTvK.js:0
+[   39240ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/cdn/shopifycloud/checkout-web/assets/c1/71ae3d5c.CoJustmJ.js:0
+[   39242ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/cdn/shopifycloud/checkout-web/assets/c1/cb5cf153.ByxzL-Eb.js:0
+[   39244ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/cdn/shopifycloud/checkout-web/assets/c1/06ef5503.DK3nU0fF.js:0
+[   39246ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/cdn/shopifycloud/checkout-web/assets/c1/acc42fa8.D49xlhmf.js:0
+[   39247ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/cdn/shopifycloud/checkout-web/assets/c1/cccd6056.Do8cSk0Z.js:0
+[   39249ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/cdn/shopifycloud/checkout-web/assets/c1/0b8657b8.WF_t24Hp.js:0
+[   39250ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/cdn/shopifycloud/checkout-web/assets/c1/79974aab.D7rlaYWY.js:0
+[   39252ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/cdn/shopifycloud/checkout-web/assets/c1/89e2d30a.CHEzaoJ3.js:0
+[   39253ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/cdn/shopifycloud/checkout-web/assets/c1/ed9f2238.CHCMWPkA.js:0
+[   39255ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/cdn/shopifycloud/checkout-web/assets/c1/6fb6f9d8.DLJ38U9o.js:0
+[   39256ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/cdn/shopifycloud/checkout-web/assets/c1/1444e6bd.DES4bTiy.js:0
+[   39277ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/cdn/shopifycloud/checkout-web/assets/c1/55098bf1.BR2XuTeb.js:0
+[   39293ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/cdn/shopifycloud/checkout-web/assets/c1/f49d4216.ohRpeZzF.js:0
+[   39297ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/cdn/shopifycloud/checkout-web/assets/c1/7b0c98ea.CdhDVyCy.js:0
+[   39324ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/cdn/shopifycloud/checkout-web/assets/c1/6bfea526.DfbCg_pY.js:0
+[   39326ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/cdn/shopifycloud/checkout-web/assets/c1/ac5a19ff.X11skusB.js:0
+[   39328ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/cdn/shopifycloud/checkout-web/assets/c1/598fef4e.C1PuNbuC.js:0
+[   39331ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/cdn/shopifycloud/checkout-web/assets/c1/e77f7fe0.BhYewYde.js:0
+[   39332ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/cdn/shopifycloud/checkout-web/assets/c1/cc6ff67d.DUHlf50D.js:0
+[   39334ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/cdn/shopifycloud/checkout-web/assets/c1/bf513f9c.qcsLkEZG.js:0
+[   39355ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/cdn/shopifycloud/checkout-web/assets/c1/dfca5da5.CCCgix52.js:0
+[   39359ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/cdn/shopifycloud/checkout-web/assets/c1/dae24aab.kZqOHVc7.js:0
+[   39361ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/cdn/shopifycloud/checkout-web/assets/c1/ddf59287.D39Fj1JJ.js:0
+[   39363ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/cdn/shopifycloud/checkout-web/assets/c1/01973ac7.CeP5giYC.js:0
+[   39364ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/cdn/shopifycloud/checkout-web/assets/c1/58314944.aDVI_1YJ.js:0
+[   39366ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/cdn/shopifycloud/checkout-web/assets/c1/945a08d6.CZYhEecS.js:0
+[   39367ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/cdn/shopifycloud/checkout-web/assets/c1/a25deb9a.BwI5fG7_.js:0
+[   39369ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/cdn/shopifycloud/checkout-web/assets/c1/2b89a178.CJDEQOHG.js:0
+[   39370ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/cdn/shopifycloud/checkout-web/assets/c1/9068a4ed.DIyaJAf2.js:0
+[   39372ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/cdn/shopifycloud/checkout-web/assets/c1/b684bff6.D7e2B3kn.js:0
+[   39374ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/cdn/shopifycloud/checkout-web/assets/c1/f1968089.TSPH8mRF.js:0
+[   39377ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/cdn/shopifycloud/checkout-web/assets/c1/c09515bf.r_jr6HWq.js:0
+[   39380ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/cdn/shopifycloud/checkout-web/assets/c1/910cd6e2.B_EuPD4O.js:0
+[   39382ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/cdn/shopifycloud/checkout-web/assets/c1/347b440c.C051dzWM.js:0
+[   39383ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/cdn/shopifycloud/checkout-web/assets/c1/5ade1ef3.C5r6KNsW.js:0
+[   39385ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/cdn/shopifycloud/checkout-web/assets/c1/181d38d3.CviwPAPX.js:0
+[   39387ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/cdn/shopifycloud/checkout-web/assets/c1/5a347040.Dqm1BRhz.js:0
+[   39389ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/cdn/shopifycloud/checkout-web/assets/c1/792bb671.CHYEE9d3.js:0
+[   39390ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/cdn/shopifycloud/checkout-web/assets/c1/9ca7d819.BJzjFGQ_.js:0
+[   39393ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/cdn/shopifycloud/checkout-web/assets/c1/f51e663e.KipcknS8.js:0
+[   39395ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/cdn/shopifycloud/checkout-web/assets/c1/21cc90a2.DHzOO82q.js:0
+[   39398ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/cdn/shopifycloud/checkout-web/assets/c1/64de7b49.7Jx5WMpH.js:0
+[   39400ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/cdn/shopifycloud/checkout-web/assets/c1/ca0c3e72.BmRqmDaQ.js:0
+[   39401ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/cdn/shopifycloud/checkout-web/assets/c1/8e79be58.Bk_kz57A.js:0
+[   39404ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/cdn/shopifycloud/checkout-web/assets/c1/90e26f5f.DZ9Y-uMM.js:0
+[   39406ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/cdn/shopifycloud/checkout-web/assets/c1/31cc568e.95lmLO5k.js:0
+[   39408ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/cdn/shopifycloud/checkout-web/assets/c1/65f3d4da.Bb3QiqCm.js:0
+[   39409ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/cdn/shopifycloud/checkout-web/assets/c1/d5d34b3b.DrvF4NBT.js:0
+[   39433ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/cdn/shopifycloud/checkout-web/assets/c1/ca5e9c49.B6vMp6_K.js:0
+[   39437ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/cdn/shopifycloud/checkout-web/assets/c1/f3e117aa.D1N7wkAx.js:0
+[   39439ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/cdn/shopifycloud/checkout-web/assets/c1/7aefefff.BgzxSKCS.js:0
+[   39442ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/cdn/shopifycloud/checkout-web/assets/c1/73a9b0a0.BXyUnS7I.js:0
+[   39444ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/cdn/shopifycloud/checkout-web/assets/c1/86720dbb.DygoxIeH.js:0
+[   39447ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/cdn/shopifycloud/checkout-web/assets/c1/0724c71d.BbNbBKkZ.js:0
+[   39450ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/cdn/shopifycloud/checkout-web/assets/c1/7114e006.DqX1E-0e.js:0
+[   39453ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/cdn/shopifycloud/checkout-web/assets/c1/9babe369.Cr7ldOQj.js:0
+[   39455ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/cdn/shopifycloud/checkout-web/assets/c1/434e3b0a.oup8Ur0H.js:0
+[   39457ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/cdn/shopifycloud/checkout-web/assets/c1/e0989459.D54VrQRK.js:0
+[   39459ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/cdn/shopifycloud/checkout-web/assets/c1/cdfd59e6.D8yMCzQg.js:0
+[   39460ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/cdn/shopifycloud/checkout-web/assets/c1/d2e6a587.CtkU3UbJ.js:0
+[   39461ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/cdn/shopifycloud/checkout-web/assets/c1/ca3c8263.MsbK3tRL.js:0
+[   39462ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/cdn/shopifycloud/checkout-web/assets/c1/b3389d5c.HIu3T41m.js:0
+[   39462ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/cdn/shopifycloud/checkout-web/assets/c1/083cdde5.DpMeoBXq.js:0
+[   39463ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/cdn/shopifycloud/checkout-web/assets/c1/fe885b80.BgJ4_950.js:0
+[   39464ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/cdn/shopifycloud/checkout-web/assets/c1/f78726c8.8L14I-rG.js:0
+[   39465ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/cdn/shopifycloud/checkout-web/assets/c1/d93ca466.Bd3pYK1G.js:0
+[   39465ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/cdn/shopifycloud/checkout-web/assets/c1/d4ea2faa.CJQ4k8uL.js:0
+[   39466ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/cdn/shopifycloud/checkout-web/assets/c1/051149c8.lHD9iIAq.js:0
+[   39467ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/cdn/shopifycloud/checkout-web/assets/c1/d7065744.BxZPoXEB.js:0
+[   39467ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/cdn/shopifycloud/checkout-web/assets/c1/7ee73f43.Ko-cEeLx.js:0
+[   39468ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/cdn/shopifycloud/checkout-web/assets/c1/0c0ad074.loCHW4oA.js:0
+[   39469ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/cdn/shopifycloud/checkout-web/assets/c1/8fe56fc9.C5UsIurT.js:0
+[   39470ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/cdn/shopifycloud/checkout-web/assets/c1/2210eadb.DF0gIp_2.js:0
+[   39470ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/cdn/shopifycloud/checkout-web/assets/c1/8a00b682.BpyDY9CA.js:0
+[   39471ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/cdn/shopifycloud/checkout-web/assets/c1/87bfafec.DmCX1yLV.js:0
+[   39472ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/cdn/shopifycloud/checkout-web/assets/c1/e477f96c.B7RRII2U.js:0
+[   39472ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/cdn/shopifycloud/checkout-web/assets/c1/c6b02d73.DZKGEP_T.js:0
+[   39476ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/cdn/shopifycloud/checkout-web/assets/c1/71b60e0a.Bdvld-6t.js:0
+[   39478ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/cdn/shopifycloud/checkout-web/assets/c1/24773686.B4nk_IqS.js:0
+[   39479ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/cdn/shopifycloud/checkout-web/assets/c1/7048f38b.vWJYymiG.js:0
+[   39483ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/cdn/shopifycloud/checkout-web/assets/c1/c3c7c048.wJULYu_4.js:0
+[   39483ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/cdn/shopifycloud/checkout-web/assets/c1/7aa3b627.p0LyIh5j.js:0
+[   39484ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/cdn/shopifycloud/checkout-web/assets/c1/dada7e07.Ddh3qZ6S.js:0
+[   39485ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/cdn/shopifycloud/checkout-web/assets/c1/c10167e6.BtJuGYT-.js:0
+[   39485ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/cdn/shopifycloud/checkout-web/assets/c1/17e57de1.12PD_KqE.js:0
+[   39486ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/cdn/shopifycloud/checkout-web/assets/c1/assets/app.DBH01810.css:0
+[   39487ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/cdn/shopifycloud/checkout-web/assets/c1/assets/is-address-empty.DDArxpAV.css:0
+[   39488ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/cdn/shopifycloud/checkout-web/assets/c1/assets/hydrate.C29WrdjU.css:0
+[   39488ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/cdn/shopifycloud/checkout-web/assets/c1/assets/OnePage.Cjql4LNe.css:0
+[   39489ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/cdn/shopifycloud/checkout-web/assets/c1/assets/StickyPayButton.D-gNjNDa.css:0
+[   39491ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/cdn/shopifycloud/checkout-web/assets/c1/assets/Switch.BS8yVgoP.css:0
+[   39495ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/cdn/shopifycloud/checkout-web/assets/c1/assets/VatNumberValidationField.Bf0VmTo6.css:0
+[   39496ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/cdn/shopifycloud/checkout-web/assets/c1/assets/EmptyState.BEvzDDvy.css:0
+[   39496ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/cdn/shopifycloud/checkout-web/assets/c1/assets/Choice.BMdzfW_y.css:0
+[   39497ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/cdn/shopifycloud/checkout-web/assets/c1/assets/ShopPayLogo.87JMHPUK.css:0
+[   39498ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/cdn/shopifycloud/checkout-web/assets/c1/assets/ChangeCompanyLocationLink.B1YSPUDc.css:0
+[   39500ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/cdn/shopifycloud/checkout-web/assets/c1/assets/Popover.Bi1nHaU-.css:0
+[   39501ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/cdn/shopifycloud/checkout-web/assets/c1/assets/index.Du9dByaI.css:0
+[   39502ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/cdn/shopifycloud/checkout-web/assets/c1/assets/useApplePayButtonStatus.ct4xfivv.css:0
+[   39502ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/cdn/shopifycloud/checkout-web/assets/c1/assets/TransitionHeight.CuRoM9zv.css:0
+[   39503ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/cdn/shopifycloud/checkout-web/assets/c1/assets/Tipping.BcTJoNaV.css:0
+[   39504ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/cdn/shopifycloud/checkout-web/assets/c1/assets/PaymentIcon.gzvCNwz_.css:0
+[   39505ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/cdn/shopifycloud/checkout-web/assets/c1/assets/PaymentLine.B0R7Gq-A.css:0
+[   39506ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/cdn/shopifycloud/checkout-web/assets/c1/assets/findSelectedDeliveryMethod.xO_7ctnq.css:0
+[   39508ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/cdn/shopifycloud/checkout-web/assets/c1/assets/EstimatedDeliveryContent.BAjucZ-8.css:0
+[   39509ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/cdn/shopifycloud/checkout-web/assets/c1/assets/BrandedPromise.B0RErzdh.css:0
+[   39510ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/cdn/shopifycloud/checkout-web/assets/c1/assets/ShippingMethods.DU0m5rdF.css:0
+[   39510ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/cdn/shopifycloud/checkout-web/assets/c1/assets/ShippingMethodSelector.B0hio2RO.css:0
+[   39511ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/cdn/shopifycloud/checkout-web/assets/c1/assets/SubscriptionPriceBreakdown.vTcdVGq4.css:0
+[   39512ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/cdn/shopifycloud/checkout-web/assets/c1/assets/BelowTheFoldContent.DRJckcGa.css:0
+[   39512ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/cdn/shopifycloud/checkout-web/assets/c1/assets/RememberMeSection.JBO5WNhc.css:0
+[   39513ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/cdn/shopifycloud/checkout-web/assets/c1/assets/PaymentMethodProgressionHost.kQR0txJ7.css:0
+[   39515ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/cdn/shopifycloud/checkout-web/assets/c1/assets/MissingFields.BbxB_6wt.css:0
+[   39515ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/cdn/shopifycloud/checkout-web/assets/c1/assets/MobileOrderSummary.CyQZvZOO.css:0
+[   39516ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/cdn/shopifycloud/checkout-web/assets/c1/assets/useOnePageFormSubmit.BXTpVlzB.css:0
+[   39517ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/cdn/shopifycloud/checkout-web/assets/c1/assets/checkout-pay-button-exit.KhTiKgPS.css:0
+[   39517ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/cdn/shopifycloud/checkout-web/assets/c1/assets/observe-fit-scale.DpLOWYa8.css:0
+[   39518ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/cdn/shopifycloud/checkout-web/assets/c1/assets/useShopPayButtonClassName.btyKOfco.css:0
+[   39519ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/cdn/shopifycloud/checkout-web/assets/c1/assets/Payment.DrWvAMMF.css:0
+[   39520ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/cdn/shopifycloud/checkout-web/assets/c1/assets/PaymentOptionSelector.s-Kd_X2E.css:0
+[   40772ms] [ERROR] Access to fetch at 'https://ohara-flowers-ch.myshopify.com/api/collect' from origin 'http://127.0.0.1:9292' has been blocked by CORS policy: Response to preflight request doesn't pass access control check: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://127.0.0.1:9292/pages/contact:0
+[   40773ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://ohara-flowers-ch.myshopify.com/api/collect:0
+[   40773ms] TypeError: Failed to fetch
+    at patched (http://127.0.0.1:9292/cdn/shop/t/9/assets/buunto-add-to-cart.js?v=28689920003671486791793651444:420:16)
+    at https://ohara-flowers-ch.myshopify.com/cdn/wpm/b610a19cewf693d529pf324840bm6169d9b4m.js:1:84156
+    at window.fetch (https://cdn.shopify.com/extensions/01a186e7-93c0-7a8b-b790-2025e9489c56/lb-upsell-465/assets/lb-selleasy.js:1:37240)
+    at window2.fetch (http://127.0.0.1:9292/cdn/shopifycloud/storefront/assets/shop_events_listener-819172a8.js:1:7379)
+    at window.fetch (https://cdn.shopify.com/extensions/01a19c0d-af7f-79b2-863f-e5235f599349/shop-by-date-319/assets/buunto-date-picker.js:2:441176)
+    at Pe.sendBeacon (http://127.0.0.1:9292/cdn/shopifycloud/perf-kit/shopify-perf-kit-3.14.0.min.js:1:52190)
+    at http://127.0.0.1:9292/cdn/shopifycloud/perf-kit/shopify-perf-kit-3.14.0.min.js:1:53129
+[   42178ms] [ERROR] [HotReload] Connection closed by the server, attempting to reconnect... @ http://127.0.0.1:9292/cdn/shopifycloud/theme-hot-reload/theme-hot-reload.js:304
+[   42178ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:9292/:0

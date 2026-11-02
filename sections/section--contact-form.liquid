@@ -27,7 +27,7 @@
 
       {% if section.settings.whatsapp_link_text != blank and settings.sm_whatsapp_link != blank %}
         <div class="grid__item {{ form_width }}">
-          <div class="section-contact-form--whatsapp text-link-animated">
+          <div class="section-contact-form--whatsapp">
             <a href="{{ settings.sm_whatsapp_link }}" target="_blank" rel="noopener">
               {% render 'theme-icon', icon: 'whatsapp', iconSize: '20' %}
               <span>{{ section.settings.whatsapp_link_text | escape }}</span>
