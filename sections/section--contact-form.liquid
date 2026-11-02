@@ -25,6 +25,17 @@
         </div>
       {% endif %}
 
+      {% if section.settings.whatsapp_link_text != blank and settings.sm_whatsapp_link != blank %}
+        <div class="grid__item {{ form_width }}">
+          <div class="section-contact-form--whatsapp text-link-animated">
+            <a href="{{ settings.sm_whatsapp_link }}" target="_blank" rel="noopener">
+              {% render 'theme-icon', icon: 'whatsapp', iconSize: '20' %}
+              <span>{{ section.settings.whatsapp_link_text | escape }}</span>
+            </a>
+          </div>
+        </div>
+      {% endif %}
+
       {% unless section.blocks.size == 0 %}
         <div class="grid__item {{ form_width }}">
           {% form 'contact', id: 'ContactForm', class: 'section-contact-form--form' %}
@@ -207,6 +218,12 @@
       "id": "form_description",
       "label": "t:all.Description",
       "default": "<p>Have a question, or want a product recommendation? Get in touch.</p>"
+    },
+    {
+      "type": "text",
+      "id": "whatsapp_link_text",
+      "label": "WhatsApp link text",
+      "info": "Shown above the form. Uses the WhatsApp link from Theme settings > Social media. Leave empty to hide."
     },
     {
       "type": "header",

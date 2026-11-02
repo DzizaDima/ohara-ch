@@ -51,6 +51,7 @@
         "form_width": "narrow",
         "form_title": "Contact us",
         "form_description": "<p>Whether it’s an enquiry about a current order, our flower school or event our team of experts are here to help and will respond as soon as possible.</p>",
+        "whatsapp_link_text": "Chat with us on WhatsApp",
         "section_color_scheme": "white"
       }
     }
