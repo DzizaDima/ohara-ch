@@ -1,0 +1,47 @@
+{%- comment -%}
+  Required Terms & Conditions agreement shown above the cart checkout button.
+
+  Accepts:
+  - id: unique suffix for element ids ('page' or 'drawer'), both carts can be in the DOM at once
+
+  The checkbox is `required`, so a native cart form will not submit to checkout
+  without it. assets/terms-consent.js adds the friendly error, stamps the
+  agreement time, saves it to cart attributes (so it lands on the order, including
+  express checkouts) and unlocks [data-terms-express] buttons.
+
+  Usage:
+  {% render 'terms-checkbox', id: 'page' %}
+{%- endcomment -%}
+{%- liquid
+  assign terms_url = shop.terms_of_service.url
+  assign refund_url = shop.refund_policy.url
+-%}
+{%- if settings.terms_checkbox_enable and terms_url != blank -%}
+  {%- capture terms_link -%}<a href="{{ terms_url }}" target="_blank" rel="noopener">{{ 'cart.general.terms_link_label' | t }}</a>{%- endcapture -%}
+  {%- capture refund_link -%}<a href="{{ refund_url }}" target="_blank" rel="noopener">{{ 'cart.general.refund_link_label' | t }}</a>{%- endcapture -%}
+  <div class="terms-consent" data-terms-consent>
+    {%- comment -%} Enabled by terms-consent.js only while the box is ticked {%- endcomment -%}
+    <input type="hidden" name="attributes[Terms version]" value="{{ settings.terms_version | escape }}" disabled data-terms-version>
+    <input type="hidden" name="attributes[Terms accepted at]" value="" disabled data-terms-accepted-at>
+    <label class="terms-consent__label text-link-animated" for="TermsConsent-{{ id }}">
+      <input
+        type="checkbox"
+        id="TermsConsent-{{ id }}"
+        class="terms-consent__checkbox"
+        name="attributes[Terms accepted]"
+        value="Yes"
+        required
+        aria-describedby="TermsConsentError-{{ id }}"
+        data-terms-checkbox
+      >
+      <span class="terms-consent__text">
+        {%- if refund_url != blank -%}
+          {{ 'cart.general.terms_agreement_html' | t: terms_link: terms_link, refund_link: refund_link }}
+        {%- else -%}
+          {{ 'cart.general.terms_agreement_no_refund_html' | t: terms_link: terms_link }}
+        {%- endif -%}
+      </span>
+    </label>
+    <p class="terms-consent__error" id="TermsConsentError-{{ id }}" role="alert" hidden data-terms-error>{{ 'cart.general.terms_required' | t }}</p>
+  </div>
+{%- endif -%}

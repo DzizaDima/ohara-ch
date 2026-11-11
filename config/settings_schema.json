@@ -556,6 +556,24 @@
         "label": "t:settings_schema.Cart.settings.enable-additional-checkout-buttons.label",
         "info": "t:settings_schema.Cart.settings.enable-additional-checkout-buttons.info",
         "default": true
+      },
+      {
+        "type": "header",
+        "content": "Terms & Conditions"
+      },
+      {
+        "type": "checkbox",
+        "id": "terms_checkbox_enable",
+        "label": "Require Terms & Conditions agreement",
+        "info": "Customers must tick the agreement checkbox in the cart before checking out. Express checkout buttons stay locked until it is ticked.",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "terms_version",
+        "label": "Terms version",
+        "info": "Saved with every order next to the agreement. Change it whenever the Terms & Conditions or Refund Policy are updated.",
+        "default": "2026-11-11"
       }
     ]
   },
