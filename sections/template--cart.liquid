@@ -7,6 +7,8 @@
 
 {% endcomment %}
 
+<script src="{{ 'terms-consent.js' | asset_url }}" defer></script>
+
 <div class="wrapper-padded main-page-container">
 
   {% assign subtotal_compare_at_price = 0 %}
@@ -16,7 +18,7 @@
       <h1 class="page--title">{{ 'cart.general.title' | t }}</h1>
     </div>
 
-    <form action="{{ routes.cart_url }}" method="post" novalidate class="cart table-wrap" data-wetheme-section-type="template--cart" data-wetheme-section-id="template--cart">
+    <form action="{{ routes.cart_url }}" method="post" class="cart table-wrap" data-wetheme-section-type="template--cart" data-wetheme-section-id="template--cart">
       <table class="cart-table full table--responsive">
         <thead class="cart__row cart__header-labels">
           <th scope="row" colspan="2" class="text-center"></th>
@@ -215,15 +217,23 @@
 
           <div class="cart__shipping rte text-link-animated"><em>{{ taxes_shipping_checkout }}</em></div>
 
+          {% render 'terms-checkbox', id: 'page' %}
+
           <div class="btn-wrapper-default">
-            <input type="submit" name="update" class="btn btn--secondary update-cart cart--button-update btn--secondary" aria-label="{{ 'cart.general.update' | t }}" value="{{ 'cart.general.update' | t }}">
+            <input type="submit" name="update" formnovalidate class="btn btn--secondary update-cart cart--button-update btn--secondary" aria-label="{{ 'cart.general.update' | t }}" value="{{ 'cart.general.update' | t }}">
             <button type="submit" name="checkout" aria-label="{{ 'cart.general.checkout' | t }}" class="btn cart--button-checkout">{{ 'cart.general.checkout' | t }}</button>
           </div>
 
           {% if additional_checkout_buttons and settings.enable-additional-checkout-buttons %}
-          <div class="additional-checkout-buttons additional-checkout-buttons--vertical">
-              {{ content_for_additional_checkout_buttons }}
-          </div>
+            {%- if settings.terms_checkbox_enable and shop.terms_of_service.url != blank -%}
+              <div class="additional-checkout-buttons additional-checkout-buttons--vertical is-terms-locked" data-terms-express>
+                <div data-terms-express-inner inert>{{ content_for_additional_checkout_buttons }}</div>
+              </div>
+            {%- else -%}
+              <div class="additional-checkout-buttons additional-checkout-buttons--vertical">
+                {{ content_for_additional_checkout_buttons }}
+              </div>
+            {%- endif -%}
           {% endif %}
         </div>
       </div>

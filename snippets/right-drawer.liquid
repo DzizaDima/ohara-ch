@@ -4,6 +4,7 @@
     search-collections="{{ settings.predictive_search_collections }}"
     language-url="{{ localization.language.root_url }}"></wetheme-right-drawer>
 </div>
+<script src="{{ 'terms-consent.js' | asset_url }}" defer></script>
 <script type="text/x-template" id="wetheme-right-drawer-template">
   <div>
     <transition name="drawer-right">
@@ -218,14 +219,22 @@
                       />
                   </div>
 
+                  {% render 'terms-checkbox', id: 'drawer' %}
+
                   <button type="submit" class="btn cart__checkout" name="checkout">
                     {{ 'cart.general.checkout' | t }}
                   </button>
 
                   {% if additional_checkout_buttons and settings.enable-additional-checkout-buttons %}
-                    <div class="additional-checkout-buttons additional-checkout-buttons--vertical">
-                      {{ content_for_additional_checkout_buttons }}
-                    </div>
+                    {%- if settings.terms_checkbox_enable and shop.terms_of_service.url != blank -%}
+                      <div class="additional-checkout-buttons additional-checkout-buttons--vertical is-terms-locked" data-terms-express>
+                        <div data-terms-express-inner inert>{{ content_for_additional_checkout_buttons }}</div>
+                      </div>
+                    {%- else -%}
+                      <div class="additional-checkout-buttons additional-checkout-buttons--vertical">
+                        {{ content_for_additional_checkout_buttons }}
+                      </div>
+                    {%- endif -%}
                   {% endif %}
                 </div>
               </div>

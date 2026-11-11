@@ -68,3 +68,63 @@ form[action*="/cart/add"].buunto-locked [data-shopify="payment-button"] {
     box-shadow: 0 0 0 3px rgba(208, 46, 46, 0.55);
   }
 }
+
+/* Required Terms & Conditions agreement in the cart and cart drawer.
+   See snippets/terms-checkbox.liquid and assets/terms-consent.js. */
+.terms-consent {
+  margin: 15px 0;
+  text-align: left;
+}
+
+.terms-consent__label {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  cursor: pointer;
+  font-size: 0.9em;
+  line-height: 1.4;
+  text-transform: none;
+  letter-spacing: normal;
+}
+
+.terms-consent__label a {
+  text-decoration: underline;
+}
+
+.terms-consent__checkbox {
+  flex: 0 0 auto;
+  width: 18px;
+  height: 18px;
+  margin: 1px 0 0;
+  cursor: pointer;
+}
+
+.terms-consent__error {
+  margin: 6px 0 0 28px;
+  font-size: 0.85em;
+  color: var(--error-color, #d02e2e);
+}
+
+.terms-consent--invalid .terms-consent__checkbox {
+  outline: 2px solid var(--error-color, #d02e2e);
+  outline-offset: 2px;
+}
+
+/* Express checkout buttons stay inert until the agreement is ticked. The inner
+   wrapper adds no box, so the theme's flex layout of the buttons is unchanged;
+   the pointer-events rule covers browsers without `inert` support. */
+[data-terms-express-inner] {
+  display: contents;
+}
+
+.additional-checkout-buttons.is-terms-locked {
+  cursor: not-allowed;
+}
+
+.additional-checkout-buttons.is-terms-locked [data-terms-express-inner] {
+  pointer-events: none;
+}
+
+.additional-checkout-buttons.is-terms-locked [data-terms-express-inner] > * {
+  opacity: 0.45;
+}

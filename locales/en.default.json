@@ -182,7 +182,12 @@
       "checkout": "Check out",
       "empty": "Your cart is currently empty.",
       "close_cart": "Close cart",
-      "savings_html": "You're saving {{ price }}"
+      "savings_html": "You're saving {{ price }}",
+      "terms_agreement_html": "I have read and agree to the {{ terms_link }}, including the {{ refund_link }}.",
+      "terms_agreement_no_refund_html": "I have read and agree to the {{ terms_link }}.",
+      "terms_link_label": "Terms & Conditions",
+      "refund_link_label": "Refund & Cancellation Policy",
+      "terms_required": "Please confirm that you agree to the Terms & Conditions to continue."
     },
     "label": {
       "product": "Product",
