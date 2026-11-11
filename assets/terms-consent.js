@@ -67,6 +67,9 @@
     var version = find(consent, '[data-terms-version]');
     var attributes = {};
 
+    acceptedAt.disabled = !checkbox.checked;
+    version.disabled = !checkbox.checked;
+
     if (checkbox.checked) {
       acceptedAt.value = new Date().toISOString();
       attributes[ATTR_ACCEPTED] = 'Yes';
@@ -116,22 +119,34 @@
     requireAgreement(checkbox);
   }, true);
 
+  // Whether submitting `form` will land in checkout. Besides the checkout button,
+  // the Buunto delivery-date app rewrites the cart form action to
+  // /cart?checkout[...]&step=contact_information, which sends every submit
+  // (including "Update cart") straight to checkout.
+  function leadsToCheckout(form, submitter) {
+    if (!submitter || submitter.name === 'checkout') return true;
+    var action = (submitter.getAttribute('formaction') || form.getAttribute('action') || '');
+    return /checkout/i.test(action);
+  }
+
   document.addEventListener('submit', function (event) {
-    var checkbox = find(event.target, CHECKBOX);
-    if (!checkbox) return;
+    var form = event.target;
+    var checkbox = find(form, CHECKBOX);
+    if (!checkbox || !leadsToCheckout(form, event.submitter)) return;
 
-    var submitter = event.submitter;
-    if (submitter && submitter.name !== 'checkout') return;
-
-    // Backstop for forms with `novalidate` or browsers without constraint validation.
+    // Backstop for `formnovalidate` buttons, forms with `novalidate` and
+    // browsers without constraint validation.
     if (!checkbox.checked) {
       event.preventDefault();
       requireAgreement(checkbox);
       return;
     }
 
-    var acceptedAt = find(event.target, '[data-terms-accepted-at]');
-    if (acceptedAt && !acceptedAt.value) acceptedAt.value = new Date().toISOString();
+    var acceptedAt = find(form, '[data-terms-accepted-at]');
+    var version = find(form, '[data-terms-version]');
+    if (!acceptedAt.value) acceptedAt.value = new Date().toISOString();
+    acceptedAt.disabled = false;
+    version.disabled = false;
   }, true);
 
   // Browsers restore checkbox state on back/forward navigation; resync the

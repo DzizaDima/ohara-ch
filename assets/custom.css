@@ -91,7 +91,8 @@ form[action*="/cart/add"].buunto-locked [data-shopify="payment-button"] {
   text-decoration: underline;
 }
 
-.terms-consent__checkbox {
+/* Extra specificity to beat the theme's input[type="checkbox"] reset. */
+.terms-consent input.terms-consent__checkbox {
   flex: 0 0 auto;
   width: 18px;
   height: 18px;
@@ -105,7 +106,7 @@ form[action*="/cart/add"].buunto-locked [data-shopify="payment-button"] {
   color: var(--error-color, #d02e2e);
 }
 
-.terms-consent--invalid .terms-consent__checkbox {
+.terms-consent--invalid input.terms-consent__checkbox {
   outline: 2px solid var(--error-color, #d02e2e);
   outline-offset: 2px;
 }

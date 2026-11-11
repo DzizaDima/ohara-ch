@@ -20,8 +20,9 @@
   {%- capture terms_link -%}<a href="{{ terms_url }}" target="_blank" rel="noopener">{{ 'cart.general.terms_link_label' | t }}</a>{%- endcapture -%}
   {%- capture refund_link -%}<a href="{{ refund_url }}" target="_blank" rel="noopener">{{ 'cart.general.refund_link_label' | t }}</a>{%- endcapture -%}
   <div class="terms-consent" data-terms-consent>
-    <input type="hidden" name="attributes[Terms version]" value="{{ settings.terms_version | escape }}" data-terms-version>
-    <input type="hidden" name="attributes[Terms accepted at]" value="" data-terms-accepted-at>
+    {%- comment -%} Enabled by terms-consent.js only while the box is ticked {%- endcomment -%}
+    <input type="hidden" name="attributes[Terms version]" value="{{ settings.terms_version | escape }}" disabled data-terms-version>
+    <input type="hidden" name="attributes[Terms accepted at]" value="" disabled data-terms-accepted-at>
     <label class="terms-consent__label text-link-animated" for="TermsConsent-{{ id }}">
       <input
         type="checkbox"
